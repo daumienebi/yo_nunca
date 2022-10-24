@@ -1,6 +1,6 @@
-# flutter_apps
+# yo_nunca
 
-Juego de Yo Nunca
+A new Flutter project to create a simple quiz game
 
 ## Getting Started
 
