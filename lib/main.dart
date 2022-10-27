@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yo_nunca/src/pages/pages.dart';
-import 'package:yo_nunca/src/utils/routes.dart';
+import 'package:yo_nunca/src/utils/constants.dart';
 
 void main() {
   runApp(const AppState());
@@ -11,10 +11,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: MyRoutes.homePage,
+      initialRoute: Constants.routes.homepage,
       //debugShowCheckedModeBanner: false,
       routes: {
-        MyRoutes.homePage : (_) => HomePage()
+        Constants.routes.homepage : (_) => const HomePage()
       },
       theme: ThemeData(
         primarySwatch: Colors.amber

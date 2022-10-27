@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 
 class HomePage extends StatelessWidget{
   const HomePage({Key? key}) : super(key: key);
@@ -8,9 +9,13 @@ class HomePage extends StatelessWidget{
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Hello World'),
+      appBar: NewGradientAppBar(
+        title: Text("#Test"),
+        gradient: const LinearGradient(colors: [Colors.greenAccent,Colors.white60,Colors.cyan]),//Change it later
       ),
+      //appBar: AppBar(
+        //title: Text('Hello World'),
+      //),
       body:  Center(
         child: Container(
           decoration: BoxDecoration(
