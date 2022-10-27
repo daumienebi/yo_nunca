@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomePageList extends StatelessWidget{
+  const HomePageList({Key? key}) : super(key: key);
 
-  final detail_style = TextStyle(color: Colors.black,fontSize: 20);
 
   @override
   Widget build(BuildContext context) {
