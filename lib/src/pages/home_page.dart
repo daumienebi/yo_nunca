@@ -13,9 +13,6 @@ class HomePage extends StatelessWidget{
         title: Text("#Test"),
         gradient: const LinearGradient(colors: [Colors.greenAccent,Colors.white60,Colors.cyan]),//Change it later
       ),
-      //appBar: AppBar(
-        //title: Text('Hello World'),
-      //),
       body:  Center(
         child: Container(
           decoration: BoxDecoration(
