@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 // ignore_for_file: prefer_const_constructors
 
 import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
+import 'package:yo_nunca/src/utils/constants.dart';
 import 'package:yo_nunca/src/widgets/widgets.dart';
 
 class HomePage extends StatelessWidget{
@@ -13,8 +14,9 @@ class HomePage extends StatelessWidget{
     // TODO: implement build
     //physics: const AlwaysScrollableScrollPhysics(),
     return Scaffold(
+      drawer: MyDrawer(),
       appBar: NewGradientAppBar(
-        title: Text("My Test"),
+        title: Text(Constants.title),
         gradient: const LinearGradient(colors: [Colors.white,Colors.amberAccent,Colors.white]),//Change it later
       ),
       body:  SafeArea(

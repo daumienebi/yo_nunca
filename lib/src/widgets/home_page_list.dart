@@ -11,7 +11,6 @@ class HomePageList extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    final int widgetHeight = 200;
     return Column(
       children:[
         _getNormalLevelWidget(context),
@@ -33,7 +32,7 @@ Widget _getNormalLevelWidget(context) {
       image: DecorationImage(
           image: AssetImage('assets/images/bar.jpg'),
           colorFilter: ColorFilter.mode(
-              Colors.white.withOpacity(0.2), BlendMode.saturation),
+              Colors.white.withOpacity(0.5), BlendMode.saturation),
           fit: BoxFit.fill
       ),
       color: Colors.white,

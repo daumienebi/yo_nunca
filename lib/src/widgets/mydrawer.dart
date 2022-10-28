@@ -3,58 +3,53 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 
-class MiDrawer extends StatelessWidget{
-  //const MiDrawer({Key? key}) : super(key: key);
-  final _estiloPuntos = TextStyle(fontSize: 20);
+class MyDrawer extends StatelessWidget{
+  const MyDrawer({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
 
     return Drawer(
 
-      child: _contenidoDrawer(context),
+      child: _drawerContents(context),
     );
   }
 
-  List<Widget> _listaDrawer(context){
-    //devuelve la lista de widgets para el listview
-    List<Widget> lista = [];
+  List<Widget> _drawerList(context){
+    final drawerTextStyle = TextStyle(color: Colors.white);
+    final iconColor = Colors.white;
 
-    lista.add(InkWell(
-      child: ListTile(
-        title: Text("Mi Perfil"),
-        trailing: Icon(Icons.person),
-        onTap: ()=>_funcionNoImplementada(context),
+    List<Widget> _listItems = [];
 
-      ),
-    ));
-    lista.add(ListTile(
-        title: Text("Calendario"),
-        trailing: Icon(Icons.calendar_view_month_sharp),
-        onTap: ()=>_funcionNoImplementada(context)
-    ));
-    lista.add(ListTile(
-      title: Text("Lista de tareas"),
-      trailing: Icon(Icons.add),
-      onTap: ()=>_funcionNoImplementada(context),
+    _listItems.add(ListTile(
+      title: Text("Mis Categorías",style: drawerTextStyle,),
+      trailing: Icon(Icons.list_alt_outlined,color: iconColor,),
+      onTap: ()=>_unImplementedEx(context),
     ));
 
-    lista.add(ListTile(
-        title: Text("Recordatorios"),
-        trailing: Icon(Icons.notifications),
-        onTap: ()=>_funcionNoImplementada(context)
+    _listItems.add(ListTile(
+      title: Text("Favoritos",style: drawerTextStyle,),
+      trailing: Icon(Icons.favorite_outline_rounded,color: iconColor,),
+      onTap: ()=>_unImplementedEx(context),
     ));
 
-    lista.add(ListTile(
-        title: Text("Ayuda"),
-        trailing: Icon(Icons.help),
-        onTap: ()=>_funcionNoImplementada(context)
+    _listItems.add(ListTile(
+        title: Text("Privacidad",style: drawerTextStyle,),
+        trailing: Icon(Icons.privacy_tip_outlined,color: iconColor,),
+        onTap: ()=>_unImplementedEx(context)
     ));
-    return lista;
+
+    _listItems.add(ListTile(
+        title: Text("Ayuda",style: drawerTextStyle,),
+        trailing: Icon(Icons.help, color: iconColor,),
+        onTap: ()=>_unImplementedEx(context)
+    ));
+    return _listItems;
   }
 
-  Widget _contenidoDrawer(context){
+  Widget _drawerContents(context){
     return Container(
-      color: Colors.redAccent[200],
+      color: Colors.grey,
       child: Column(
           children: [
             Container(
@@ -75,10 +70,16 @@ class MiDrawer extends StatelessWidget{
             ),
             Expanded(
               child: Container(
-                color: Colors.indigo[100],
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/drawer_vertical.png'),
+                    fit: BoxFit.fitHeight
+                  )
+                ),
+                //color: Colors.amberAccent[100],
                 child: ListView(
                     children:
-                    _listaDrawer(context)
+                    _drawerList(context)
                 ),
               ),
             ),
@@ -87,7 +88,7 @@ class MiDrawer extends StatelessWidget{
   }
 
   //o declararlo como un Future : Future _funcionNoImplementada (context){}
-  _funcionNoImplementada (context){
+  _unImplementedEx (context){
     return showDialog(
         context: context,
         builder: (_) =>AlertDialog(

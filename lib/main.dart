@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       initialRoute: Constants.routes.homepage,
-      //debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false,
       routes: {
         Constants.routes.homepage : (_) => const HomePage()
       },
@@ -22,7 +22,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
 class AppState extends StatelessWidget {
   const AppState({Key? key}) : super(key: key);
 

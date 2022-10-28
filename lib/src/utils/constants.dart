@@ -1,6 +1,7 @@
 class Constants {
   static Routes routes = const Routes();
   static double homePageWidgetHeight = 200;
+  static String title = 'YO NUNCA';
 }
 
 class Routes {
