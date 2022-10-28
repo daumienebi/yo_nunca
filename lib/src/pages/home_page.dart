@@ -14,10 +14,15 @@ class HomePage extends StatelessWidget{
     // TODO: implement build
     //physics: const AlwaysScrollableScrollPhysics(),
     return Scaffold(
+      //drawerScrimColor: Colors.red,
       drawer: MyDrawer(),
       appBar: NewGradientAppBar(
         title: Text(Constants.title),
-        gradient: const LinearGradient(colors: [Colors.white,Colors.amberAccent,Colors.white]),//Change it later
+        gradient: const LinearGradient(colors: [Colors.amberAccent,Colors.amberAccent,Colors.white]),//Change it later
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: (){showDatePicker(context: context, initialDate: DateTime.now(), firstDate: DateTime.now(), lastDate: DateTime.now());},//Just trying it out
       ),
       body:  SafeArea(
         child: SingleChildScrollView(

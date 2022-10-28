@@ -70,7 +70,8 @@ Widget _getIntermediateLevelWidget(context){
       image: DecorationImage(
           image: AssetImage('assets/images/smirk_face.png'),
           colorFilter: ColorFilter.mode(Colors.white.withOpacity(0.2), BlendMode.saturation),
-          fit: BoxFit.fill
+          fit: BoxFit.fill,
+        repeat: ImageRepeat.repeat
       ),
       color: Colors.white,
       borderRadius: const BorderRadius.all(Radius.circular(10)),
