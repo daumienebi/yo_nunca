@@ -16,8 +16,8 @@ class MyDrawer extends StatelessWidget{
   }
 
   List<Widget> _drawerList(context){
-    final drawerTextStyle = TextStyle(color: Colors.white);
-    final iconColor = Colors.white;
+    const drawerTextStyle = TextStyle(color: Colors.white);
+    const iconColor = Colors.white;
 
     List<Widget> _listItems = [];
 
@@ -73,7 +73,7 @@ class MyDrawer extends StatelessWidget{
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage('assets/images/drawer_vertical.png'),
-                    fit: BoxFit.fitHeight
+                    fit: BoxFit.fill //to fit the image to the drawer  vertically and horizontally
                   )
                 ),
                 //color: Colors.amberAccent[100],

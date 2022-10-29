@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:yo_nunca/src/pages/favourites_page.dart';
 import 'package:yo_nunca/src/pages/pages.dart';
+import 'package:yo_nunca/src/pages/question_page.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
 
 void main() {
@@ -14,7 +16,9 @@ class MyApp extends StatelessWidget {
       initialRoute: Constants.routes.homepage,
       debugShowCheckedModeBanner: false,
       routes: {
-        Constants.routes.homepage : (_) => const HomePage()
+        Constants.routes.homepage : (_) => const HomePage(),
+        Constants.routes.questionsPage : (_) => const QuestionPage(),
+        Constants.routes.favouritesPage : (_) => const FavouritesPage()
       },
       theme: ThemeData(
         primarySwatch: Colors.amber

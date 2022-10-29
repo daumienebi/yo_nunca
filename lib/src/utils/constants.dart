@@ -7,6 +7,8 @@ class Constants {
 class Routes {
   const Routes();
   String get homepage => 'homepage';
+  String get favouritesPage => 'favourites';
+  String get questionsPage => 'questions';
 }
 
 

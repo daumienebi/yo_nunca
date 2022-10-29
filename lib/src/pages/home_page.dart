@@ -17,10 +17,26 @@ class HomePage extends StatelessWidget{
       //drawerScrimColor: Colors.red,
       drawer: MyDrawer(),
       appBar: NewGradientAppBar(
-        title: Text(Constants.title),
+        //title: Text(Constants.title),
+        centerTitle: true,
+        title:
+        Container(
+          decoration: BoxDecoration(
+            //color: Colors.red,
+            image: DecorationImage(
+              image: AssetImage('assets/images/beer.png'),
+              fit: BoxFit.contain,
+            )
+          ),
+          height: 40,
+          width: 150,
+          //child: Text('YO NUNCA')
+        ),
         gradient: const LinearGradient(colors: [Colors.amberAccent,Colors.amberAccent,Colors.white]),//Change it later
       ),
+      backgroundColor: Colors.orange[50],
       floatingActionButton: FloatingActionButton(
+        tooltip: 'Añadir nueva categoría',
         child: Icon(Icons.add),
         onPressed: (){showDatePicker(context: context, initialDate: DateTime.now(), firstDate: DateTime.now(), lastDate: DateTime.now());},//Just trying it out
       ),
@@ -28,7 +44,8 @@ class HomePage extends StatelessWidget{
         child: SingleChildScrollView(
           child: Column(
             children: [
-              HomePageList()
+              HomePageList(),
+              _goToFavouritesBtn()
             ],
           ),
         ),
@@ -36,4 +53,16 @@ class HomePage extends StatelessWidget{
     );
   }
 
+  Widget _goToFavouritesBtn(){
+    //?
+    return ElevatedButton(onPressed: (){},
+        child: Text('Favorítos ❤️',style: TextStyle(color: Colors.white),),
+      style: TextButton.styleFrom(
+        backgroundColor: Colors.black,
+        minimumSize: Size(150,40),
+        maximumSize: Size(300,80),
+        side: BorderSide(width: 10.0)
+      ),
+    );
+  }
 }
