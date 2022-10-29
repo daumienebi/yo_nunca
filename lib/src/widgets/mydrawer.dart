@@ -49,7 +49,7 @@ class MyDrawer extends StatelessWidget{
 
   Widget _drawerContents(context){
     return Container(
-      color: Colors.amberAccent,
+      color: Colors.amberAccent[200],
       child: Column(
           children: [
             Container(
@@ -60,7 +60,7 @@ class MyDrawer extends StatelessWidget{
                   Container(
                     padding: EdgeInsets.all(5),
                     child: CircleAvatar(
-                      backgroundImage: AssetImage("assets/images/bar.jpg"),
+                      backgroundImage: AssetImage("assets/images/beer2.png"),
                       maxRadius: 50,
                     ),
                   ),

@@ -13,10 +13,10 @@ class QuestionPage extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    String modo = ModalRoute.of(context)!.settings.arguments as String;
+    String gameMode = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
       appBar: NewGradientAppBar(
-        title: Text(modo),
+        title: Text(gameMode),
         gradient: const LinearGradient(colors: [Colors.amberAccent,Colors.amberAccent,Colors.white]),//Change it later
       ),
     );
