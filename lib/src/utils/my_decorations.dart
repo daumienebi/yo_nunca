@@ -23,12 +23,12 @@ class MyDecorations{
     );
   }
 
-  static Text homePageBoxText(String content,Color textColor){
+  static Text homePageBoxText(String content,Color textColor,Color? bgColor){
     return Text(content,
       textAlign: TextAlign.left,style: TextStyle(
           fontWeight: FontWeight.bold,fontSize: 35,
           color: textColor,
-          fontFamily: 'OoohBaby'
+          fontFamily: 'OoohBaby',backgroundColor: bgColor
       ),
     );
   }

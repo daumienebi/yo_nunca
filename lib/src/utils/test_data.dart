@@ -1,6 +1,6 @@
 //Dummy data class; will be deleted later on
 import 'package:yo_nunca/src/models/category.dart';
-import 'package:yo_nunca/src/models/questions.dart';
+import 'package:yo_nunca/src/models/question.dart';
 
 class TestData {
   List<Question> _questionsList = [];
@@ -66,37 +66,6 @@ class TestData {
       'isFavourite': '0',
     }
   ];
-
-  //Credits
-  //NormalImage <a href="https://www.freepik.com/free-photo/friends-clinking-drink-glasses-modern-bar_5600264.htm#query=friends%20party&position=3&from_view=keyword">Image by jcomp</a> on Freepik
-
-  /*
-  * Center(
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(10),
-                topRight: Radius.circular(10),
-                bottomLeft: Radius.circular(10),
-                bottomRight: Radius.circular(10)
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
-                spreadRadius: 5,
-                blurRadius: 7,
-                offset: Offset(0, 3), // changes position of shadow
-              ),
-            ],
-          ),
-          height: 300,
-          width: 300,
-          child: Center(child: const Text("Yo nunca he dicho Damian ",textAlign: TextAlign.justify,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30, color: Colors.grey),)),
-        ),
-      ),
-  *
-  * */
 
 
 /*

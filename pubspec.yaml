@@ -79,6 +79,9 @@ flutter:
     - family: OoohBaby
       fonts:
         - asset: assets/fonts/OoohBaby-Regular.ttf
+    - family: Abel
+      fonts:
+        - asset: assets/fonts/Abel-Regular.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

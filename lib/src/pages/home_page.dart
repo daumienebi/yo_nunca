@@ -24,7 +24,6 @@ class HomePage extends StatelessWidget {
           child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
             Container(
               decoration: BoxDecoration(
-                  //color: Colors.red,
                   image: DecorationImage(
                 image: AssetImage('assets/images/beer.png'),
                 fit: BoxFit.contain,
