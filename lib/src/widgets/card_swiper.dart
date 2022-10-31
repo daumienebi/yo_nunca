@@ -21,19 +21,20 @@ class CardSwiper extends StatelessWidget {
     final TestData data = TestData();
     List<DefaultCategory> defaultCategories = data.getDefaultCategoriesList;
     final size = MediaQuery.of(context).size;
-    String categoryName = '';
     return Column(children: [
       SizedBox(
         width: double.infinity,
         height: size.height * 0.5,
         child: Swiper(
           itemBuilder: (BuildContext context, int index) {
+            //Generate a unique id for each Hero because they have to be different
+            defaultCategories[index].heroId = 'card ${defaultCategories[index].id}';
             return GestureDetector(
               onTap: () => Navigator.of(context).pushNamed(
                   Constants.routes.questionsPage,
                   arguments: defaultCategories[index]),
               child: Hero(
-                  tag: defaultCategories[index].id!,
+                  tag: defaultCategories[index].heroId!, //not going to be null here
                   child: Container(
                       margin: const EdgeInsets.all(10),
                       padding: EdgeInsets.all(5),

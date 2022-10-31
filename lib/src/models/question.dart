@@ -10,12 +10,12 @@ class QuestionFields{
 }
 
 class Question{
-  final int? id;
-  final int? categoryId;
-  final String description;
-  final bool isFavourite; //?
+  int? id;
+  int? categoryId;
+  String description;
+  bool isFavourite; //?
 
-  const Question({this.id,this.categoryId,required this.description,required this.isFavourite});
+  Question({this.id,this.categoryId,required this.description,required this.isFavourite});
 
   factory Question.fromMap(Map<String,dynamic> value) =>
       Question(
@@ -34,6 +34,6 @@ class Question{
 
   @override
   String toString(){
-    return 'VisitPlace{id : $id,description : $description, Favourite : $isFavourite}';
+    return 'VisitPlace{id : $id,description : $description,category : $categoryId, Favourite : $isFavourite}';
   }
 }

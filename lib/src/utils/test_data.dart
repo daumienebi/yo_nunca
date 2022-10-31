@@ -45,17 +45,17 @@ class TestData {
     {
       'id': '1',
       'description': 'NORMAL',
-      'imageRoute' : 'assets/images/wine.jpg'
+      'imageRoute' : 'assets/images/wine.jpg',
     },
     {
       'id': '2',
       'description': 'INTERMEDIO',
-      'imageRoute' : 'assets/images/shots.jpg'
+      'imageRoute' : 'assets/images/shots.jpg',
     },
     {
       'id': '3',
       'description': 'CALIENTE',
-      'imageRoute' : 'assets/images/smirk_face.png'
+      'imageRoute' : 'assets/images/smirk_face.png',
     },
   ];
 
@@ -105,34 +105,34 @@ class TestData {
 
   final favourites = [
     {
-      'id': '1',
-      'categoryId': '1',
+      'id': 1,
+      'categoryId': 1,
       'description': 'Favorito 1',
-      'isFavourite': '1',
+      'isFavourite': true,
     },
     {
-      'id': '2',
-      'categoryId': '1',
+      'id': 2,
+      'categoryId': 1,
       'description': 'Favorito 1',
-      'isFavourite': '1',
+      'isFavourite': true,
     },
     {
-      'id': '3',
-      'categoryId': '2',
+      'id': 3,
+      'categoryId': 2,
       'description': 'Favorito 1',
-      'isFavourite': '1',
+      'isFavourite': true,
     },
     {
-      'id': '4',
-      'categoryId': '3',
+      'id': 4,
+      'categoryId': 3,
       'description': 'Favorito 1',
-      'isFavourite': '1',
+      'isFavourite': true,
     },
     {
-      'id': '5',
-      'categoryId': '3',
+      'id': 5,
+      'categoryId': 3,
       'description': 'Favorito 1',
-      'isFavourite': '1',
+      'isFavourite': true,
     }
   ];
 
