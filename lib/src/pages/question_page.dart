@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
+import 'package:yo_nunca/src/models/default_category.dart';
 import 'package:yo_nunca/src/widgets/widgets.dart';
 
 class QuestionPage extends StatelessWidget{
@@ -14,10 +15,11 @@ class QuestionPage extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    String gameMode = ModalRoute.of(context)!.settings.arguments as String;
+    //String gameMode = ModalRoute.of(context)!.settings.arguments as String;
+    DefaultCategory dc = ModalRoute.of(context)!.settings.arguments as DefaultCategory;
     return Scaffold(
       appBar: NewGradientAppBar(
-        title: Text(gameMode),
+        title: Text(dc.description),
         gradient: const LinearGradient(colors: [Colors.amber,Colors.white70,Colors.amber]),//Change it later
       ),
       body: QuestionWidget()

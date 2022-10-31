@@ -24,6 +24,7 @@ class HomePageList extends StatelessWidget{
       ] 
     );
   }
+
 }
 /* Normal */
 Widget _getNormalLevelWidget(context) {

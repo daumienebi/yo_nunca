@@ -1,21 +1,27 @@
 //Dummy data class; will be deleted later on
 import 'package:yo_nunca/src/models/category.dart';
+import 'package:yo_nunca/src/models/default_category.dart';
 import 'package:yo_nunca/src/models/question.dart';
 
 class TestData {
   List<Question> _questionsList = [];
   List<Category> _categoriesList = [];
   List<Question> _favouritesList = [];
+  List<DefaultCategory> _defaultCategoriesList = [];
 
-  List<Question> get questionsList{
+  List<Question> get getQuestionsList{
     return _getQuestions();
   }
 
-  List<Question> get categoriesList{
+  List<Question> get getCategoriesList{
     return _getCategories();
   }
 
-  List<Question> get favouritesList{
+  List<DefaultCategory> get getDefaultCategoriesList{
+    return _getDefaultCategories();
+  }
+
+  List<Question> get getFavouritesList{
     return _getFavourites();
   }
 
@@ -26,11 +32,32 @@ class TestData {
   _getQuestions() {
     return _questionsList = questions.map((e) => Question.fromMap(e)).toList();
   }
+
+  _getDefaultCategories() {
+    return _defaultCategoriesList = defaultCategories.map((e) => DefaultCategory.fromMap(e)).toList();
+  }
+
   _getCategories() {
     return _categoriesList = categories.map((e) => Category.fromMap(e)).toList();
   }
 
-
+  final defaultCategories = [
+    {
+      'id': '1',
+      'description': 'NORMAL',
+      'imageRoute' : 'assets/images/wine.jpg'
+    },
+    {
+      'id': '2',
+      'description': 'INTERMEDIO',
+      'imageRoute' : 'assets/images/shots.jpg'
+    },
+    {
+      'id': '3',
+      'description': 'CALIENTE',
+      'imageRoute' : 'assets/images/smirk_face.png'
+    },
+  ];
 
   final categories = [
     {'id': '1', 'description': 'Normal'},

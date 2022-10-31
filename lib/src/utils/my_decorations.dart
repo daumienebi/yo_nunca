@@ -11,7 +11,7 @@ class MyDecorations{
           fit: BoxFit.fill,
       ),
       color: Colors.white,
-      borderRadius: const BorderRadius.all(Radius.circular(10)),
+      borderRadius: const BorderRadius.all(Radius.circular(15)),
       boxShadow: [
         BoxShadow(
           color: Colors.grey.withOpacity(0.5),
@@ -25,7 +25,7 @@ class MyDecorations{
 
   static Text homePageBoxText(String content,Color textColor,Color? bgColor){
     return Text(content,
-      textAlign: TextAlign.left,style: TextStyle(
+      textAlign: TextAlign.center,style: TextStyle(
           fontWeight: FontWeight.bold,fontSize: 35,
           color: textColor,
           fontFamily: 'OoohBaby',backgroundColor: bgColor
