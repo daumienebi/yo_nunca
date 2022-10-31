@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:yo_nunca/src/utils/constants.dart';
 
 
 class MyDrawer extends StatelessWidget{
@@ -30,13 +31,13 @@ class MyDrawer extends StatelessWidget{
     _listItems.add(ListTile(
       title: Text("Favoritos",style: drawerTextStyle,),
       trailing: Icon(Icons.favorite_outline_rounded,color: iconColor,),
-      onTap: ()=>_unImplementedEx(context),
+      onTap: ()=>Navigator.pushNamed(context, Constants.routes.favouritesPage),
     ));
 
     _listItems.add(ListTile(
         title: Text("Privacidad",style: drawerTextStyle,),
         trailing: Icon(Icons.privacy_tip_outlined,color: iconColor,),
-        onTap: ()=>_unImplementedEx(context)
+        onTap: ()=>showLicensePage(context: context,applicationIcon:_privacyWidget(),applicationName: "YO NUNCA",applicationVersion: "1.O",applicationLegalese: "Dev D.")
     ));
 
     _listItems.add(ListTile(
@@ -49,7 +50,7 @@ class MyDrawer extends StatelessWidget{
 
   Widget _drawerContents(context){
     return Container(
-      color: Colors.amberAccent[200],
+      color: Colors.amber,
       child: Column(
           children: [
             Container(
@@ -85,6 +86,30 @@ class MyDrawer extends StatelessWidget{
             ),
           ]),
     );
+  }
+
+  Widget _privacyWidget(){
+    return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+      Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/beer.png'),
+              fit: BoxFit.contain,
+            )),
+        height: 50,
+        width: 40,
+      ),
+      Container(
+        decoration: BoxDecoration(
+          //color: Colors.red,
+            image: DecorationImage(
+              image: AssetImage('assets/images/gin3.png'),
+              fit: BoxFit.contain,
+            )),
+        height: 40,
+        width: 40,
+      ),
+    ]);
   }
 
   //o declararlo como un Future : Future _funcionNoImplementada (context){}

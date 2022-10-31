@@ -46,15 +46,15 @@ class HomePage extends StatelessWidget {
         actions: [
 
           InkWell(
-              child: Icon(Icons.share_outlined),
+              child: Icon(Icons.share_rounded),
               onTap: _launchUrl
           ),
           SizedBox(width: 5,)
         ],
         gradient: const LinearGradient(colors: [
-          Colors.amberAccent,
-          Colors.amberAccent,
-          Colors.white
+          Colors.amber,
+          Colors.white70  ,
+          Colors.amber
         ]), //Change it later
       ),
       backgroundColor: Colors.orange[50],

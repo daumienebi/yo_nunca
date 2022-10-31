@@ -5,6 +5,7 @@ import 'package:yo_nunca/src/models/question.dart';
 class TestData {
   List<Question> _questionsList = [];
   List<Category> _categoriesList = [];
+  List<Question> _favouritesList = [];
 
   List<Question> get questionsList{
     return _getQuestions();
@@ -12,6 +13,14 @@ class TestData {
 
   List<Question> get categoriesList{
     return _getCategories();
+  }
+
+  List<Question> get favouritesList{
+    return _getFavourites();
+  }
+
+  _getFavourites() {
+    return _favouritesList = favourites.map((e) => Question.fromMap(e)).toList();
   }
 
   _getQuestions() {
@@ -64,6 +73,39 @@ class TestData {
       'categoryId': '3',
       'description': 'Dummy text dummy text dummy text dummy 5',
       'isFavourite': '0',
+    }
+  ];
+
+  final favourites = [
+    {
+      'id': '1',
+      'categoryId': '1',
+      'description': 'Favorito 1',
+      'isFavourite': '1',
+    },
+    {
+      'id': '2',
+      'categoryId': '1',
+      'description': 'Favorito 1',
+      'isFavourite': '1',
+    },
+    {
+      'id': '3',
+      'categoryId': '2',
+      'description': 'Favorito 1',
+      'isFavourite': '1',
+    },
+    {
+      'id': '4',
+      'categoryId': '3',
+      'description': 'Favorito 1',
+      'isFavourite': '1',
+    },
+    {
+      'id': '5',
+      'categoryId': '3',
+      'description': 'Favorito 1',
+      'isFavourite': '1',
     }
   ];
 

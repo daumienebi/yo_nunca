@@ -18,7 +18,7 @@ class QuestionPage extends StatelessWidget{
     return Scaffold(
       appBar: NewGradientAppBar(
         title: Text(gameMode),
-        gradient: const LinearGradient(colors: [Colors.amberAccent,Colors.amberAccent,Colors.white]),//Change it later
+        gradient: const LinearGradient(colors: [Colors.amber,Colors.white70,Colors.amber]),//Change it later
       ),
       body: QuestionWidget()
     );

@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:yo_nunca/src/utils/my_decorations.dart';
 
-class NewCategoryPage extends StatefulWidget{
+class NewCategoryPage extends StatefulWidget {
   const NewCategoryPage({Key? key}) : super(key: key);
 
   @override
@@ -18,7 +18,6 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
   final TextEditingController nameController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
@@ -26,61 +25,61 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
       ),
       body: Container(
         margin: EdgeInsets.all(10),
-        child: Column(
-            children: [
-              _formFields(),
-              _addQuestionBtn(),
-              SizedBox(height: 20,),
-              Expanded(child: _questionsList()),
-              _addButton()
-            ]
-        ),
+        child: Column(children: [
+          _formFields(),
+          _addQuestionBtn(),
+          SizedBox(
+            height: 20,
+          ),
+          Expanded(child: _questionsList()),
+          _addButton()
+        ]),
       ),
     );
   }
 
-  Widget _formFields(){
+  Widget _formFields() {
     return Container(
       child: Column(
         children: [
           TextFormField(
-          controller: categoryNameController,
-          keyboardType: TextInputType.name,
-          textCapitalization: TextCapitalization.words,
-          decoration: InputDecoration(
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              labelText: 'Nombre',
-              hintText: 'Introduce el nombre de la categoría',
-              suffixIcon: Icon(Icons.category)
-          ),
-          validator: (String? value){
-            if(value == null || value.isEmpty){
-              return "Por favor, introduce un nombre valído";
-            }return null;
-          }
-      )
+              controller: categoryNameController,
+              keyboardType: TextInputType.name,
+              textCapitalization: TextCapitalization.words,
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  labelText: 'Nombre',
+                  hintText: 'Introduce el nombre de la categoría',
+                  suffixIcon: Icon(Icons.category)),
+              validator: (String? value) {
+                if (value == null || value.isEmpty) {
+                  return "Por favor, introduce un nombre valído";
+                }
+                return null;
+              })
         ],
       ),
     );
   }
 
-  Widget _addQuestionBtn(){
+  Widget _addQuestionBtn() {
     return Container(
-      margin: EdgeInsets.only(top: 5),
-      width: 50,
-      alignment: Alignment.topRight,
+        margin: EdgeInsets.only(top: 5),
+        width: 50,
+        alignment: Alignment.topRight,
         child: InkWell(
-          onTap: (){
+          onTap: () {
             _popUpForm();
             //setState(() {});
           },
           child: Icon(
-            Icons.add,color: Colors.blue,size: 50,
+            Icons.add,
+            color: Colors.blue,
+            size: 50,
           ),
-        )
-    );
+        ));
   }
 
   Future _popUpForm() {
@@ -125,63 +124,60 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
     );
   }
 
-  Widget _questionsList(){
+  Widget _questionsList() {
     return ListView(
       children: [
-        _questionTiles("Yo nunca he dummy dummy dummy dummy dummy dummyyy"),
-        _questionTiles("Yo nunca he dummy dummy dummy dummy dummy dummyyy"),
-        _questionTiles("Yo nunca he dummy dummy dummy dummy dummy dummyyy"),
-        _questionTiles("Yo nunca he dummy dummy dummy dummy dummy dummyyy"),
-        //_questionTiles("Yo nunca he dummy dummy dummy dummy dummy dummyyy"),
-        //_questionTiles("Yo nunca he dummy dummy dummy dummy dummy dummyyy"),
-        //_questionTiles("Yo nunca he dummy dummy dummy dummy dummy dummyyy"),
-        //_questionTiles("Yo nunca he dummy dummy dummy dummy dummy dummyyy"),
-        //_questionTiles("Yo nunca he dummy dummy dummy dummy dummy dummyyy"),
-        //_questionTiles("Yo nunca he dummy dummy dummy dummy dummy dummyyy"),
-        //_questionTiles("Yo nunca he dummy dummy dummy dummy dummy dummyyy"),
-
+        _questionTile("Yo nunca he dummy dummy dummy dummy dummy dummyyy"),
+        _questionTile("Yo nunca he dummy dummy dummy dummy dummy dummyyy"),
+        _questionTile("Yo nunca he dummy dummy dummy dummy dummy dummyyy"),
+        _questionTile("Yo nunca he dummy dummy dummy dummy dummy dummyyy"),
+        _questionTile("Yo nunca he dummy dummy dummy dummy dummy dummyyy")
       ],
+      scrollDirection: Axis.vertical,
     );
   }
 
-
-  ListTile _questionTiles(String title){
+  Widget _questionTile(String title) {
     return ListTile(
       title: Text(title),
       tileColor: Colors.black12,
       trailing: InkWell(
-        onTap: (){print("TODO : Delete question");},
+        onTap: () {
+          print("TODO : Delete question");
+        },
         child: Icon(
-          Icons.delete_forever_rounded,color: Colors.black,size: 30,
+          Icons.delete_forever_rounded,
+          color: Colors.black,
+          size: 30,
         ),
       ),
-      onTap: (){print("TODO : Edit question");},
-      shape: Border.all(
-        color: Colors.white
-      ),
-
+      onTap: () {
+        print("TODO : Edit question");
+      },
+      shape: Border.all(color: Colors.white),
     );
   }
-  Widget _addButton(){
-    final btnStyle = ElevatedButton.styleFrom(textStyle: TextStyle(color: Colors.blue,fontSize: 20));
+
+  Widget _addButton() {
+    final btnStyle = ElevatedButton.styleFrom(
+        textStyle: TextStyle(color: Colors.blue, fontSize: 20));
     return ElevatedButton(
         style: btnStyle,
-        onPressed: (){
-          if(_formKey.currentState!.validate()){
-              print(categoryNameController.text);
+        onPressed: () {
+          if (_formKey.currentState!.validate()) {
+            print(categoryNameController.text);
           }
         },
-        child: Text("Guardar")
-    );
+        child: Text("Guardar"));
   }
 
-_checkResult(int result) {
-  result > 0
-      ? ScaffoldMessenger.of(context)
-      .showSnackBar(const SnackBar(content: Text('New Location saved')))
-      : ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-      content:
-      Text('The location was not saved, introduce a valid name')));
-  Navigator.pop(context);
-}
+  void _checkResult(int result) {
+    result > 0
+        ? ScaffoldMessenger.of(context)
+            .showSnackBar(const SnackBar(content: Text('Pregunta guardada!')))
+        : ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content:
+                Text('No se pudo guardar la pregunta')));
+    Navigator.pop(context);
+  }
 }
