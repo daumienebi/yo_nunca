@@ -62,11 +62,7 @@ class HomePage extends StatelessWidget {
         tooltip: 'Añadir nueva categoría',
         child: Icon(Icons.add),
         onPressed: () {
-          showDatePicker(
-              context: context,
-              initialDate: DateTime.now(),
-              firstDate: DateTime.now(),
-              lastDate: DateTime.now());
+          Navigator.pushNamed(context, Constants.routes.newCategory);
         }, //Just trying it out
       ),
       body: SafeArea(

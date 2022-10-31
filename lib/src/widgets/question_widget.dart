@@ -19,7 +19,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
       child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            _questionTextWidget(Colors.blueGrey),
+            _questionTextWidget(Colors.grey),
             SizedBox(height: 10),
             _nextButton()
           ]
@@ -31,9 +31,9 @@ class _QuestionWidgetState extends State<QuestionWidget> {
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('assets/images/blurBW.png'),
-              fit: BoxFit.contain,
-              opacity: 200
+              image: AssetImage('assets/images/cold_beer2.jpg'),
+              fit: BoxFit.fill,
+              opacity: 230
           ),
         //color: Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(25)),
@@ -62,15 +62,11 @@ class _QuestionWidgetState extends State<QuestionWidget> {
   }
 
   Widget _nextButton() {
-    return TextButton(
+    final btnStyle = ElevatedButton.styleFrom(textStyle: TextStyle(color: Colors.blue,fontSize: 20));
+    return ElevatedButton(
         onPressed: () {},
-        child: Text('Siguiente',
-          style: TextStyle(fontSize: 15,color: Colors.black),
-        ),
-        style: TextButton.styleFrom(
-          backgroundColor: Colors.lightGreenAccent,
-          fixedSize: Size(100,40)
-        ),
+        child: Text('Siguiente'),
+        style: btnStyle
     );
   }
 }

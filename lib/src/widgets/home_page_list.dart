@@ -29,11 +29,11 @@ class HomePageList extends StatelessWidget{
 Widget _getNormalLevelWidget(context) {
   return Container(
     margin: const EdgeInsets.all(10),
-    padding: EdgeInsets.all(10),
-    decoration: MyDecorations.homePageBoxDecoration('assets/images/bar.jpg'),
+    padding: EdgeInsets.all(5),
+    decoration: MyDecorations.homePageBoxDecoration('assets/images/cold_beer.jpg'),
     height: Constants.homePageWidgetHeight,
-    width: double.infinity,
-    child: MyDecorations.homePageBoxText('NORMAL', Colors.white,Colors.black45)
+    width: 300,
+    child: MyDecorations.homePageBoxText('NORMAL', Colors.white,null)
   );
 }
 
@@ -41,24 +41,22 @@ Widget _getNormalLevelWidget(context) {
 Widget _getIntermediateLevelWidget(context){
   return Container(
     margin: const EdgeInsets.all(10),
-    padding: EdgeInsets.all(10),
-    decoration: MyDecorations.homePageBoxDecoration('assets/images/smirk_face.png'),
+    padding: EdgeInsets.all(5),
+    decoration: MyDecorations.homePageBoxDecoration('assets/images/shots.jpg'),
     height: Constants.homePageWidgetHeight,
-    width: double.infinity,
-    child: MyDecorations.homePageBoxText('INTERMEDIO', Colors.deepOrange,Colors.white54)
+    width: 300,
+    child: MyDecorations.homePageBoxText('INTERMEDIO', Colors.white,null)
   );
 }
 
 /* Picante*/
 Widget _getHotLevelWidget(context){
-  //TestData data = new TestData();
-  //List<Question> _questionsList = data.questionsList;
   return Container(
     margin: const EdgeInsets.all(10),
-    padding: EdgeInsets.all(10),
-    decoration: MyDecorations.homePageBoxDecoration('assets/images/picante.jpg'),
+    padding: EdgeInsets.all(5),
+    decoration: MyDecorations.homePageBoxDecoration('assets/images/smirk_face.png'),
     height: Constants.homePageWidgetHeight,
-    width: double.infinity,
-    child: MyDecorations.homePageBoxText('PICANTE', Colors.red,Colors.white24)
+    width: 300,
+    child: MyDecorations.homePageBoxText('PICANTE', Colors.red,Colors.white38)
   );
 }

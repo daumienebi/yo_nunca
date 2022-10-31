@@ -32,5 +32,21 @@ class MyDecorations{
       ),
     );
   }
+
+  static InputDecoration categoryField(){
+    return const InputDecoration(
+        labelText: "Categoría",
+        icon: Icon(Icons.category),
+        enabled: false
+    );
+  }
+
+  static InputDecoration questionField(){
+    return const InputDecoration(
+        labelText: "Pregunta",
+        icon: Icon(Icons.description),
+        enabled: true
+    );
+  }
 }
 

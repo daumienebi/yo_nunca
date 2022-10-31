@@ -10,6 +10,7 @@ class Routes {
   String get homepage => 'homepage';
   String get favouritesPage => 'favourites';
   String get questionsPage => 'questions';
+  String get newCategory => 'newcategory';
 }
 
 
