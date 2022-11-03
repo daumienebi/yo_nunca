@@ -24,7 +24,7 @@ class CardSwiper extends StatelessWidget {
     return Column(children: [
       SizedBox(
         width: double.infinity,
-        height: size.height * 0.5,
+        height: size.height * 0.45,
         child: Swiper(
           itemBuilder: (BuildContext context, int index) {
             //Generate a unique id for each Hero because they have to be different
@@ -49,8 +49,9 @@ class CardSwiper extends StatelessWidget {
             );
           },
           itemCount: defaultCategories.length,
-          itemHeight: size.height * 0.5,
-          itemWidth: size.width * 0.75,
+          itemHeight: size.height * 0.5, //try to calculate it depending on potrait or landscape mode
+          itemWidth: size.width * 0.85, //try to calculate it depending on potrait or landscape mode
+          //layout: SwiperLayout.TINDER,
           layout: SwiperLayout.STACK,
         ),
       ),

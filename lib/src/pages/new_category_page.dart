@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 import 'package:yo_nunca/src/utils/my_decorations.dart';
 
 class NewCategoryPage extends StatefulWidget {
@@ -20,8 +21,10 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Categoría nueva"),
+      appBar: NewGradientAppBar(
+        title: Text('Categoría Nueva'),
+        gradient: const LinearGradient(
+            colors: [Colors.amber, Colors.white70, Colors.amber]),
       ),
       body: Container(
         margin: EdgeInsets.all(10),
@@ -65,21 +68,10 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
   }
 
   Widget _addQuestionBtn() {
-    return Container(
-        margin: EdgeInsets.only(top: 5),
-        width: 50,
-        alignment: Alignment.topRight,
-        child: InkWell(
-          onTap: () {
-            _popUpForm();
-            //setState(() {});
-          },
-          child: Icon(
-            Icons.add,
-            color: Colors.blue,
-            size: 50,
-          ),
-        ));
+    return TextButton(onPressed: (){},
+        child: Text("Añadir Pregunta",style: TextStyle(color: Colors.black),),
+        style: TextButton.styleFrom(backgroundColor: Colors.greenAccent),
+    );
   }
 
   Future _popUpForm() {
@@ -116,7 +108,7 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
                 //int result = await provider.addVisitPlace(newName);
                 //_checkResult(result);
               },
-              child: Text('Save'),
+              child: Text('Aceptar'),
             ),
           ],
         );
@@ -147,7 +139,7 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
         },
         child: Icon(
           Icons.delete_forever_rounded,
-          color: Colors.black,
+          color: Colors.red,
           size: 30,
         ),
       ),

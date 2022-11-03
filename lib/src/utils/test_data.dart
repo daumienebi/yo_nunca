@@ -113,25 +113,25 @@ class TestData {
     {
       'id': 2,
       'categoryId': 1,
-      'description': 'Favorito 1',
-      'isFavourite': true,
+      'description': 'Favorito 2',
+      'isFavourite': false,
     },
     {
       'id': 3,
       'categoryId': 2,
-      'description': 'Favorito 1',
+      'description': 'Favorito 3',
       'isFavourite': true,
     },
     {
       'id': 4,
       'categoryId': 3,
-      'description': 'Favorito 1',
+      'description': 'Favorito 4',
       'isFavourite': true,
     },
     {
       'id': 5,
       'categoryId': 3,
-      'description': 'Favorito 1',
+      'description': 'Favorito 5',
       'isFavourite': true,
     }
   ];
