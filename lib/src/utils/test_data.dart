@@ -9,21 +9,10 @@ class TestData {
   List<Question> _favouritesList = [];
   List<DefaultCategory> _defaultCategoriesList = [];
 
-  List<Question> get getQuestionsList{
-    return _getQuestions();
-  }
-
-  List<Question> get getCategoriesList{
-    return _getCategories();
-  }
-
-  List<DefaultCategory> get getDefaultCategoriesList{
-    return _getDefaultCategories();
-  }
-
-  List<Question> get getFavouritesList{
-    return _getFavourites();
-  }
+  List<Question> get getQuestionsList => _getQuestions();
+  List<Question> get getCategoriesList => _getCategories();
+  List<DefaultCategory> get getDefaultCategoriesList => _getDefaultCategories();
+  List<Question> get getFavouritesList => _getFavourites();
 
   _getFavourites() {
     return _favouritesList = favourites.map((e) => Question.fromMap(e)).toList();

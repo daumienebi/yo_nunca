@@ -37,6 +37,7 @@ dependencies:
   new_gradient_app_bar: ^0.2.0
   url_launcher: ^6.1.5
   card_swiper: ^2.0.2
+  appinio_swiper: ^1.1.0
 
 dev_dependencies:
   flutter_test:
