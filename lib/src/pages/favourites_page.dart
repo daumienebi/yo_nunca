@@ -15,27 +15,36 @@ class FavouritesPage extends StatefulWidget {
 
 class _FavouritesPageState extends State<FavouritesPage> {
 
-  Icon _unFav = Icon(Icons.favorite_outline_rounded);
-  Icon _fav = Icon(Icons.favorite,color: Colors.red);
-
-
   @override
   Widget build(BuildContext context) {
     TestData data = TestData();
     List<Question> _favouriteList = data.getFavouritesList;
     return Scaffold(
         appBar: NewGradientAppBar(
-          title: Text('Favoritos'),
+          title: Text('Preguntas destacadas'),
           gradient: const LinearGradient(
               colors: [Colors.amber, Colors.white70, Colors.amber]),
         ),
-        body: Container(
-          margin: EdgeInsets.all(5),
-          child: ListView.builder(
-            itemBuilder: (_, int index) => _favListTile(_favouriteList[index]),
-            itemCount: _favouriteList.length,
-            scrollDirection: Axis.vertical,
+        body: Column(
+          children: [
+          Expanded(
+            child: Container(
+              margin: EdgeInsets.all(5),
+              child: ListView.builder(
+                itemBuilder: (_, int index) => Dismissible(
+                  child: _favListTile(_favouriteList[index]),
+                  key: UniqueKey(),
+                  background: Icon(Icons.star),//Try out
+                  secondaryBackground: Icon(Icons.delete_forever_rounded,color: Colors.red,),//Try out
+                ),
+                itemCount: _favouriteList.length,
+                scrollDirection: Axis.vertical,
+              ),
+            ),
           ),
+            _newGameBtn(),
+            Text("Se creará un juego con solo las preguntas destacadas",style: TextStyle(color: Colors.grey))
+          ]
         ));
   }
 
@@ -45,19 +54,31 @@ class _FavouritesPageState extends State<FavouritesPage> {
     return ListTile(
       title: Text(question.description),
       subtitle: Text(
-        "Categoría",
+        "Nombre Categoría",
         overflow: TextOverflow.ellipsis,
-        maxLines: 1,
         style: TextStyle(fontSize: 13),
       ),
+      //tileColor: Colors.black26, -- not all titles are getting the colour
       trailing: InkWell(
           onTap: () {
             setState(() {
-              _isFavourite = false;
+              //_isFavourite = false;
             });
           },
-          child: _isFavourite ? _fav : _unFav
+          child: Icon(Icons.delete_forever_rounded,color: Colors.red,)
       )
+    );
+  }
+
+  Widget _newGameBtn() {
+    final btnStyle = ElevatedButton.styleFrom(
+        textStyle: TextStyle(color: Colors.blue, fontSize: 20));
+    return ElevatedButton(
+      onPressed: () {
+        print("Cargando juego con preguntas destacadas");
+      },
+      child: Text('Crear juego',),
+      style: btnStyle,
     );
   }
 }
