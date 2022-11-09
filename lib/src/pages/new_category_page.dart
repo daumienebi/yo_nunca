@@ -42,33 +42,32 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
   }
 
   Widget _formFields() {
-    return Container(
-      child: Column(
-        children: [
-          TextFormField(
-              controller: categoryNameController,
-              keyboardType: TextInputType.name,
-              textCapitalization: TextCapitalization.words,
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  labelText: 'Nombre',
-                  hintText: 'Introduce el nombre de la categoría',
-                  suffixIcon: Icon(Icons.category)),
-              validator: (String? value) {
-                if (value == null || value.isEmpty) {
-                  return "Por favor, introduce un nombre valído";
-                }
-                return null;
-              })
-        ],
-      ),
+    return Column(
+      children: [
+        TextFormField(
+            controller: categoryNameController,
+            keyboardType: TextInputType.name,
+            textCapitalization: TextCapitalization.words,
+            decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                labelText: 'Nombre',
+                hintText: 'Introduce el nombre de la categoría',
+                suffixIcon: Icon(Icons.category)),
+            validator: (String? value) {
+              if (value == null || value.isEmpty) {
+                return "Por favor, introduce un nombre valído";
+              }
+              return null;
+            })
+      ],
     );
   }
 
   Widget _addQuestionBtn() {
-    return TextButton(onPressed: (){},
+    return TextButton(
+      onPressed: () => _popUpForm(),
         child: Text("Añadir Pregunta",style: TextStyle(color: Colors.black),),
         style: TextButton.styleFrom(backgroundColor: Colors.greenAccent),
     );

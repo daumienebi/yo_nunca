@@ -34,7 +34,8 @@ class CardSwiper extends StatelessWidget {
                   Constants.routes.questionsPage,
                   arguments: defaultCategories[index]),
               child: Hero(
-                  tag: defaultCategories[index].heroId!, //not going to be null here
+                  tag: UniqueKey(), //or find another way to use a unique tag
+                //tag: defaultCategories[index].heroId!, //not going to be null here
                   child: Container(
                       margin: const EdgeInsets.all(10),
                       padding: EdgeInsets.all(5),
