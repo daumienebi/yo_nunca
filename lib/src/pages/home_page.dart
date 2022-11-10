@@ -18,17 +18,19 @@ class HomePage extends StatelessWidget {
     List<DefaultCategory> _defaultCategories = data.getDefaultCategoriesList;
     //physics: const AlwaysScrollableScrollPhysics(),
     return Scaffold(
-        //drawerScrimColor: Colors.red,
         drawer: MyDrawer(),
         appBar: NewGradientAppBar(
-          //title: Text(Constants.title),
           centerTitle: true,
           title: _appBarTitle(),
           actions: [
-            InkWell(child: Icon(Icons.share_rounded), onTap: _launchUrl),
-            SizedBox(
-              width: 5,
-            )
+            PopupMenuButton(
+                itemBuilder: (BuildContext ctx){
+                  return [
+                    PopupMenuItem(child: InkWell(child: Text("Compartir"), onTap: _launchUrl)),
+                    PopupMenuItem(child: InkWell(child: Text("Info"), onTap: _launchUrl)),
+                  ];
+                }
+            ),
           ],
           gradient: const LinearGradient(colors: [
             Colors.amber,

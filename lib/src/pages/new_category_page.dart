@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
+import 'package:yo_nunca/src/models/question.dart';
 import 'package:yo_nunca/src/utils/my_decorations.dart';
 
 class NewCategoryPage extends StatefulWidget {
@@ -14,6 +15,7 @@ class NewCategoryPage extends StatefulWidget {
 class _NewCategoryPageState extends State<NewCategoryPage> {
   String _category = "";
   String _question = "";
+  List<Question> newQuestions = [];
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController categoryNameController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
@@ -30,12 +32,13 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
         margin: EdgeInsets.all(10),
         child: Column(children: [
           _formFields(),
+          SizedBox(height: 10,),
           _addQuestionBtn(),
           SizedBox(
             height: 20,
           ),
           Expanded(child: _questionsList()),
-          _addButton()
+          _saveButton()
         ]),
       ),
     );
@@ -102,10 +105,15 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
             ),
             TextButton(
               onPressed: () async {
-                _category = nameController.text;
+                _category = _categoryController.text;
                 _question = _questionController.text;
+                var newX = Question(description: _question, isFavourite: false,categoryId: 1);
+                setState(() {
+                  newQuestions.add(newX);
+                });
                 //int result = await provider.addVisitPlace(newName);
                 //_checkResult(result);
+                dispose();
               },
               child: Text('Aceptar'),
             ),
@@ -116,25 +124,26 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
   }
 
   Widget _questionsList() {
-    return ListView(
-      children: [
-        _questionTile("Yo nunca he dummy dummy dummy dummy dummy dummyyy"),
-        _questionTile("Yo nunca he dummy dummy dummy dummy dummy dummyyy"),
-        _questionTile("Yo nunca he dummy dummy dummy dummy dummy dummyyy"),
-        _questionTile("Yo nunca he dummy dummy dummy dummy dummy dummyyy"),
-        _questionTile("Yo nunca he dummy dummy dummy dummy dummy dummyyy")
-      ],
-      scrollDirection: Axis.vertical,
+    return ListView.builder(
+        itemBuilder: (context, int index){
+          return _questionTile(newQuestions[index]);
+
+        },
+        itemCount: newQuestions.length,
     );
   }
 
-  Widget _questionTile(String title) {
+  Widget _questionTile(Question question) {
     return ListTile(
-      title: Text(title),
-      tileColor: Colors.black12,
+      title: Text(question.description),
+      //tileColor: Colors.black12,
       trailing: InkWell(
         onTap: () {
           print("TODO : Delete question");
+          setState(() {
+            newQuestions.remove(question);
+          });
+
         },
         child: Icon(
           Icons.delete_forever_rounded,
@@ -149,7 +158,7 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
     );
   }
 
-  Widget _addButton() {
+  Widget _saveButton() {
     final btnStyle = ElevatedButton.styleFrom(
         textStyle: TextStyle(color: Colors.blue, fontSize: 20));
     return ElevatedButton(

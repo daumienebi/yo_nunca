@@ -64,31 +64,31 @@ class TestData {
       'id': '1',
       'categoryId': '1',
       'description': 'Dummy text dummy text dummy text dummy 1',
-      'isFavourite': '1',
+      'isFavourite': false,
     },
     {
       'id': '2',
       'categoryId': '1',
       'description': 'Dummy text dummy text dummy text dummy 2',
-      'isFavourite': '1',
+      'isFavourite': true,
     },
     {
       'id': '3',
       'categoryId': '2',
       'description': 'Dummy text dummy text dummy text dummy 3',
-      'isFavourite': '0',
+      'isFavourite': false,
     },
     {
       'id': '4',
       'categoryId': '3',
       'description': 'Dummy text dummy text dummy text dummy 4',
-      'isFavourite': '1',
+      'isFavourite': true,
     },
     {
       'id': '5',
       'categoryId': '3',
       'description': 'Dummy text dummy text dummy text dummy 5',
-      'isFavourite': '0',
+      'isFavourite': false,
     }
   ];
 
