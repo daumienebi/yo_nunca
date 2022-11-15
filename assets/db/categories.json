@@ -1,16 +1,16 @@
 [
   {
-    "id": "1",
+    "id": 1,
     "description": "NORMAL",
     "imageRoute" : "assets/images/wine.jpg"
   },
   {
-    "id": "2",
+    "id": 2,
     "description": "INTERMEDIO",
     "imageRoute" : "assets/images/shots.jpg"
   },
   {
-    "id": "3",
+    "id": 3,
     "description": "CALIENTE",
     "imageRoute" : "assets/images/smirk_face.png"
   }

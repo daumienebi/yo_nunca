@@ -1,0 +1,14 @@
+[
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Question 1",
+    "isFavourite": false
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Question 2",
+    "isFavourite": true
+  }
+]

@@ -5,6 +5,9 @@ class Constants {
   static double homePageWidgetHeight = 200;
   static String title = 'YO NUNCA';
   static String playStoreUrl = "https://www.youtube.com";
+  static int normalCategoryId = 1;
+  static int intermediateCategoryId = 2;
+  static int hotCategoryId = 3;
   static List<Color>   randomColours = [
     Colors.greenAccent, Colors.black87, Colors.deepOrange, Colors.blueGrey, Colors.amber, Colors.cyan,
     Colors.teal, Colors.brown,
