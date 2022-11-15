@@ -17,7 +17,9 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
   String _question = "";
   List<Question> newQuestions = [];
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController categoryNameController = TextEditingController();
+  final TextEditingController categoryNameController = TextEditingController(
+    text: ""
+  );
   final TextEditingController nameController = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -80,16 +82,15 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
     return showDialog(
       context: context,
       builder: (_) {
-        TextEditingController _categoryController = TextEditingController();
+        TextEditingController _categoryController = TextEditingController(
+          text: _category
+        );
         TextEditingController _questionController = TextEditingController();
         return AlertDialog(
           title: const Text('Añadir una nueva pregunta'),
           content: SingleChildScrollView(
             child: Column(
               children: [
-                TextFormField(
-                    controller: _categoryController,
-                    decoration: MyDecorations.categoryField()),
                 TextFormField(
                   controller: _questionController,
                   decoration: MyDecorations.questionField(),
@@ -113,7 +114,7 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
                 });
                 //int result = await provider.addVisitPlace(newName);
                 //_checkResult(result);
-                dispose();
+                Navigator.pop(context); // instead of dispose();
               },
               child: Text('Aceptar'),
             ),
