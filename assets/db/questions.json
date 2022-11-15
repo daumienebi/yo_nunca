@@ -1,0 +1,32 @@
+[
+  {
+    "id": "0",
+    "categoryId": "1",
+    "description": "Question 1",
+    "isFavourite": false
+  },
+  {
+    "id": "0",
+    "categoryId": "1",
+    "description": "Question 2",
+    "isFavourite": true
+  },
+  {
+    "id": "0",
+    "categoryId": "2",
+    "description": "Question 3",
+    "isFavourite": false
+  },
+  {
+    "id": "0",
+    "categoryId": "2",
+    "description": "Question 4",
+    "isFavourite": true
+  },
+  {
+    "id": "0",
+    "categoryId": "3",
+    "description": "Question 5",
+    "isFavourite": false
+  }
+]
