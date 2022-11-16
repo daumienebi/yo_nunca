@@ -2,7 +2,10 @@ import 'package:flutter/cupertino.dart';
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
+import 'package:provider/provider.dart';
+import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/models/question.dart';
+import 'package:yo_nunca/src/providers/providers.dart';
 import 'package:yo_nunca/src/utils/my_decorations.dart';
 
 class NewCategoryPage extends StatefulWidget {
@@ -13,16 +16,15 @@ class NewCategoryPage extends StatefulWidget {
 }
 
 class _NewCategoryPageState extends State<NewCategoryPage> {
-  String _category = "";
   String _question = "";
   List<Question> newQuestions = [];
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController categoryNameController = TextEditingController(
-    text: ""
-  );
+  final TextEditingController categoryNameController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    //CategoryProvider xProvider = Provider.of<CategoryProvider>(context, listen: true);
     // TODO: implement build
     return Scaffold(
       appBar: NewGradientAppBar(
@@ -34,7 +36,9 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
         margin: EdgeInsets.all(10),
         child: Column(children: [
           _formFields(),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           _addQuestionBtn(),
           SizedBox(
             height: 20,
@@ -73,8 +77,11 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
   Widget _addQuestionBtn() {
     return TextButton(
       onPressed: () => _popUpForm(),
-        child: Text("Añadir Pregunta",style: TextStyle(color: Colors.black),),
-        style: TextButton.styleFrom(backgroundColor: Colors.greenAccent),
+      child: Text(
+        "Añadir Pregunta",
+        style: TextStyle(color: Colors.black),
+      ),
+      style: TextButton.styleFrom(backgroundColor: Colors.greenAccent),
     );
   }
 
@@ -82,69 +89,66 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
     return showDialog(
       context: context,
       builder: (_) {
-        TextEditingController _categoryController = TextEditingController(
-          text: _category
-        );
         TextEditingController _questionController = TextEditingController();
-        return AlertDialog(
-          title: const Text('Añadir una nueva pregunta'),
-          content: SingleChildScrollView(
-            child: Column(
-              children: [
-                TextFormField(
-                  controller: _questionController,
-                  decoration: MyDecorations.questionField(),
-                  maxLines: null,
-                ),
-              ],
+        return Consumer(builder: (_, CategoryProvider provider, __) {
+          return AlertDialog(
+            title: const Text('Añadir una nueva pregunta'),
+            content: SingleChildScrollView(
+              child: Column(
+                children: [
+                  TextFormField(
+                    controller: _questionController,
+                    decoration: MyDecorations.questionField(),
+                    maxLines: null,
+                  ),
+                ],
+              ),
             ),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: Text('Cancel'),
-            ),
-            TextButton(
-              onPressed: () async {
-                _category = _categoryController.text;
-                _question = _questionController.text;
-                var newX = Question(description: _question, isFavourite: false,categoryId: 1);
-                setState(() {
-                  newQuestions.add(newX);
-                });
-                //int result = await provider.addVisitPlace(newName);
-                //_checkResult(result);
-                Navigator.pop(context); // instead of dispose();
-              },
-              child: Text('Aceptar'),
-            ),
-          ],
-        );
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text('Cancel'),
+              ),
+              TextButton(
+                onPressed: () async {
+                  _question = _questionController.text;
+                  var newQuestion = Question(
+                      description: _question,
+                      isFavourite: false,
+                      categoryId: 1);
+                  setState(() {
+                    newQuestions.add(newQuestion);
+                  });
+                  //int result = await provider.addQuestion (newQuestion);
+                  //_checkResult(result);
+                  Navigator.pop(context); // instead of dispose();
+                },
+                child: Text('Aceptar'),
+              ),
+            ],
+          );
+        });
       },
     );
   }
 
   Widget _questionsList() {
     return ListView.builder(
-        itemBuilder: (context, int index){
-          return _questionTile(newQuestions[index]);
-
-        },
-        itemCount: newQuestions.length,
+      itemBuilder: (context, int index) {
+        return _questionTile(newQuestions[index]);
+      },
+      itemCount: newQuestions.length,
     );
   }
 
   Widget _questionTile(Question question) {
     return ListTile(
       title: Text(question.description),
-      //tileColor: Colors.black12,
       trailing: InkWell(
         onTap: () {
-          print("TODO : Delete question");
           setState(() {
             newQuestions.remove(question);
           });
-
         },
         child: Icon(
           Icons.delete_forever_rounded,
@@ -162,23 +166,28 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
   Widget _saveButton() {
     final btnStyle = ElevatedButton.styleFrom(
         textStyle: TextStyle(color: Colors.blue, fontSize: 20));
-    return ElevatedButton(
-        style: btnStyle,
-        onPressed: () {
-          if (_formKey.currentState!.validate()) {
-            print(categoryNameController.text);
-          }
-        },
-        child: Text("Guardar"));
+    return Consumer(builder: (_, CategoryProvider provider, __) {
+      return ElevatedButton(
+          style: btnStyle,
+          onPressed: () async {
+            List<Category> x = await provider.getCategories();
+            x.forEach((element) {
+              print(element.description);
+            });
+            if (_formKey.currentState!.validate()) {
+              print(categoryNameController.text);
+            }
+          },
+          child: Text("Guardar"));
+    });
   }
 
   void _checkResult(int result) {
     result > 0
         ? ScaffoldMessenger.of(context)
             .showSnackBar(const SnackBar(content: Text('Pregunta guardada!')))
-        : ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            content:
-                Text('No se pudo guardar la pregunta')));
+        : ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('No se pudo guardar la pregunta')));
     Navigator.pop(context);
   }
 }

@@ -32,6 +32,11 @@ class Question{
     QuestionFields.isFavourite: isFavourite,
   };
 
+  factory Question.fromJson(dynamic json) {
+    return
+      Question(id: json['id'],categoryId: json['categoryId'], description: json['description'], isFavourite: json['isFavourite']);
+  }
+
   @override
   String toString(){
     return 'VisitPlace{id : $id,description : $description,category : $categoryId, Favourite : $isFavourite}';

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:yo_nunca/src/pages/pages.dart';
+import 'package:yo_nunca/src/providers/category_provider.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
 
 void main() {
@@ -30,6 +32,11 @@ class AppState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MyApp();
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => CategoryProvider())
+        ],
+      child: MyApp(),
+    );
   }
 }
