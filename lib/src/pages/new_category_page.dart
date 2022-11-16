@@ -17,6 +17,7 @@ class NewCategoryPage extends StatefulWidget {
 
 class _NewCategoryPageState extends State<NewCategoryPage> {
   String _question = "";
+  String _category = "";
   List<Question> newQuestions = [];
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController categoryNameController = TextEditingController();
@@ -53,23 +54,26 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
   Widget _formFields() {
     return Column(
       children: [
-        TextFormField(
-            controller: categoryNameController,
-            keyboardType: TextInputType.name,
-            textCapitalization: TextCapitalization.words,
-            decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                labelText: 'Nombre',
-                hintText: 'Introduce el nombre de la categoría',
-                suffixIcon: Icon(Icons.category)),
-            validator: (String? value) {
-              if (value == null || value.isEmpty) {
-                return "Por favor, introduce un nombre valído";
-              }
-              return null;
-            })
+        Form(
+          key: _formKey,
+          child: TextFormField(
+              controller: categoryNameController,
+              keyboardType: TextInputType.name,
+              textCapitalization: TextCapitalization.words,
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  labelText: 'Nombre',
+                  hintText: 'Introduce el nombre de la categoría',
+                  suffixIcon: Icon(Icons.category)),
+              validator: (String? value) {
+                if (value == null || value.isEmpty) {
+                  return "Por favor, introduce un nombre de categoria valída";
+                }
+                return null;
+              }),
+        )
       ],
     );
   }
@@ -170,12 +174,13 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
       return ElevatedButton(
           style: btnStyle,
           onPressed: () async {
-            List<Category> x = await provider.getCategories();
-            x.forEach((element) {
-              print(element.description);
-            });
+            int newCategoryId = provider.categoriesCount() + 1;
+            //maybe add an image
             if (_formKey.currentState!.validate()) {
-              print(categoryNameController.text);
+              _category = categoryNameController.text.toUpperCase();
+              Category newCategory = Category(id : newCategoryId, description: _category, imageRoute: "assets/images/blurBW.png");
+              provider.addCategory(newCategory);
+              print(newCategory.toString());
             }
           },
           child: Text("Guardar"));

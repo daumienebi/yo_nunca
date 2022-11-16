@@ -4,17 +4,23 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:yo_nunca/src/models/category.dart';
+import 'package:yo_nunca/src/models/question.dart';
+import 'package:yo_nunca/src/providers/providers.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
 
 class QuestionCard extends StatefulWidget {
-  const QuestionCard({Key? key}) : super(key: key);
+  final Category category;
+  const QuestionCard({Key? key,required this.category}) : super(key: key);
   @override
   State<StatefulWidget> createState() => _QuestionCardState();
 }
 
 class _QuestionCardState extends State<QuestionCard> {
-  final List<Widget> cards = [];
 
+  final List<Widget> cards = [];
+  List<Question> questions = [];
   @override
   void initState() {
     if (cards.isEmpty) {
@@ -24,11 +30,59 @@ class _QuestionCardState extends State<QuestionCard> {
   }
 
   void _loadCards() {
-    cards.add(_testCard("Yo nunca he utilizado Visual Studio Code.", true));
-    cards.add(_testCard("Yo nunca he utilizado Android Studio.", false));
-    cards.add(_testCard("Yo nunca he utilizado Netbeans.", true));
-    cards.add(_testCard("Yo nunca he utilizado un bucle FOR.", false));
-    cards.add(_testCard("Yo nunca he yo nunca.", true));
+    print(widget.category.toString());
+    int normal = Constants.normalCategoryId;
+    int intermediate = Constants.intermediateCategoryId;
+    int hot = Constants.hotCategoryId;
+
+    switch(widget.category.id){
+
+      case Constants.normalCategoryId : {
+        Consumer(
+          builder: (_,QuestionProvider provider,__){
+            questions = provider.normalQuestions;
+            questions.forEach((element) {
+              cards.add(_testCard(element.description));
+            });
+            return Container();
+          }
+        );
+        print("holamundo");
+      }
+      break;
+      case Constants.intermediateCategoryId : {
+        Consumer(
+            builder: (_,QuestionProvider provider,__){
+              questions = provider.intermediateQuestions;
+              questions.forEach((element) {
+                cards.add(_testCard(element.description));
+              });
+              return Container();
+            }
+        );
+      }
+      break;
+      case Constants.hotCategoryId : {
+        Consumer(
+            builder: (_,QuestionProvider provider,__){
+              questions = provider.normalQuestions;
+              questions.forEach((element) {
+                cards.add(_testCard(element.description));
+              });
+              return Container();
+            }
+        );
+      }
+      break;
+      default : {
+        print(widget.category.id);
+        cards.add(_testCard("Yo nunca he utilizado Visual Studio Code."));
+        cards.add(_testCard("Yo nunca he utilizado Android Studio."));
+        cards.add(_testCard("Yo nunca he utilizado Netbeans."));
+        cards.add(_testCard("Yo nunca he utilizado un bucle FOR."));
+        cards.add(_testCard("Yo nunca he yo nunca."));
+      }
+    }
   }
 
   @override
@@ -69,7 +123,7 @@ class _QuestionCardState extends State<QuestionCard> {
     );
   }
 
-  Widget _testCard(String qst, bool isFav) {
+  Widget _testCard(String qst) {
     //create a fake future before loading the cards
     return Container(
       alignment: Alignment.bottomCenter,

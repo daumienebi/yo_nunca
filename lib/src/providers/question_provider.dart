@@ -10,10 +10,29 @@ class QuestionProvider with ChangeNotifier{
   List<Question> _intermediateQuestions = [];
   List<Question> _hotQuestions = [];
 
+  List<Question> get normalQuestions{
+    if(_normalQuestions.isNotEmpty) return _normalQuestions;
+    getNormalQuestions();
+    return _normalQuestions;
+  }
+
+  List<Question> get intermediateQuestions{
+    if(_intermediateQuestions.isNotEmpty) return _intermediateQuestions;
+    getIntermediateQuestions();
+    return _intermediateQuestions;
+  }
+
+  List<Question> get hotQuestions{
+    if(_hotQuestions.isNotEmpty) return _hotQuestions;
+    getNormalQuestions();
+    return _hotQuestions;
+  }
+
   Future<List<Question>> getNormalQuestions() async{
   String questionsJson = await rootBundle.loadString('assets/db/normal_questions.json');
   var jsonToList = json.decode(questionsJson) as List;
   _normalQuestions = jsonToList.map((jsonToList) => Question.fromJson(jsonToList)).toList();
+  print(_normalQuestions.length);
     notifyListeners();
     return _normalQuestions;
   }

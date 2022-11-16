@@ -30,7 +30,7 @@ class Category{
     CategoryFields.imgRoute: imageRoute,
   };
 
-  //factory Category.fromJson(String str) => Category.fromMap(json.decode(str)); check this out
+  //factory Category.fromJson(String str) => Category.fromMap(json.decode(str)); ?
 
   factory Category.fromJson(dynamic json) {
     return

@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 // ignore_for_file: prefer_const_constructors
 import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
-import 'package:yo_nunca/src/models/default_category.dart';
+import 'package:yo_nunca/src/models/category.dart';
+import 'package:yo_nunca/src/providers/providers.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
-import 'package:yo_nunca/src/utils/my_decorations.dart';
 import 'package:yo_nunca/src/utils/test_data.dart';
 import 'package:yo_nunca/src/widgets/widgets.dart';
 
@@ -14,8 +15,8 @@ class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final TestData data = TestData();
-    List<DefaultCategory> _defaultCategories = data.getDefaultCategoriesList;
+    CategoryProvider provider = Provider.of<CategoryProvider>(context,listen: true);
+    List<Category> _categories =  provider.categories;
     //physics: const AlwaysScrollableScrollPhysics(),
     return Scaffold(
         drawer: MyDrawer(),
@@ -53,7 +54,7 @@ class HomePage extends StatelessWidget {
                   margin: EdgeInsets.only(top: 50),
                   //alignment: Alignment.center, child: HomePageList()),// not used anymore for now. Might change my mind later  :)
                   alignment: Alignment.center,
-                  child: CardSwiper(defaultCategories: _defaultCategories)),
+                  child: CardSwiper(categories: _categories)),
             ),
           ),
         ));

@@ -1,14 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
+import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/models/default_category.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
 import 'package:yo_nunca/src/utils/my_decorations.dart';
 import 'package:yo_nunca/src/utils/test_data.dart';
 
 class CardSwiper extends StatelessWidget {
-  final List<DefaultCategory> defaultCategories;
-  const CardSwiper({Key? key, required this.defaultCategories})
+  //final List<DefaultCategory> defaultCategories;
+  final List<Category> categories;
+  const CardSwiper({Key? key, required this.categories})
       : super(key: key);
 
   @override
@@ -19,7 +21,7 @@ class CardSwiper extends StatelessWidget {
 
   Widget _cardSwiper(context) {
     final TestData data = TestData();
-    List<DefaultCategory> defaultCategories = data.getDefaultCategoriesList;
+    //List<DefaultCategory> defaultCategories = data.getDefaultCategoriesList;
     final size = MediaQuery.of(context).size;
     return Column(children: [
       SizedBox(
@@ -28,11 +30,11 @@ class CardSwiper extends StatelessWidget {
         child: Swiper(
           itemBuilder: (BuildContext context, int index) {
             //Generate a unique id for each Hero because they have to be different
-            defaultCategories[index].heroId = 'card ${defaultCategories[index].id}';
+            //categories[index].heroId = 'card ${categories[index].id}';
             return GestureDetector(
               onTap: () => Navigator.of(context).pushNamed(
                   Constants.routes.questionsPage,
-                  arguments: defaultCategories[index]),
+                  arguments: categories[index]),
               child: Hero(
                   tag: UniqueKey(), //or find another way to use a unique tag
                 //tag: defaultCategories[index].heroId!, //not going to be null here
@@ -40,16 +42,16 @@ class CardSwiper extends StatelessWidget {
                       margin: const EdgeInsets.all(10),
                       padding: EdgeInsets.all(5),
                       decoration: MyDecorations.homePageBoxDecoration(
-                          defaultCategories[index].imageRoute),
+                          categories[index].imageRoute),
                       height: Constants.homePageWidgetHeight,
                       width: 300,
                       child: MyDecorations.homePageBoxText(
-                          defaultCategories[index].description,
+                          categories[index].description,
                           Colors.white,
                           null))),
             );
           },
-          itemCount: defaultCategories.length,
+          itemCount: categories.length,
           itemHeight: size.height * 0.5, //try to calculate it depending on potrait or landscape mode
           itemWidth: size.width * 0.80, //try to calculate it depending on potrait or landscape mode
           //layout: SwiperLayout.TINDER,
