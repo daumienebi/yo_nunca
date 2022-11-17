@@ -12,76 +12,66 @@ import 'package:yo_nunca/src/utils/constants.dart';
 
 class QuestionCard extends StatefulWidget {
   final Category category;
-  const QuestionCard({Key? key,required this.category}) : super(key: key);
+  const QuestionCard({Key? key, required this.category}) : super(key: key);
   @override
   State<StatefulWidget> createState() => _QuestionCardState();
 }
 
 class _QuestionCardState extends State<QuestionCard> {
-
-  final List<Widget> cards = [];
+  List<Widget> cards = [];
   List<Question> questions = [];
+
   @override
   void initState() {
-    if (cards.isEmpty) {
       _loadCards();
-    }
     super.initState();
   }
 
-  void _loadCards() {
-    print(widget.category.toString());
+  void _loadCards() async{
+    QuestionProvider provider =
+        Provider.of<QuestionProvider>(context, listen: false);
+    print(widget.category.toString() + "wtf");
     int normal = Constants.normalCategoryId;
     int intermediate = Constants.intermediateCategoryId;
     int hot = Constants.hotCategoryId;
 
-    switch(widget.category.id){
-
-      case Constants.normalCategoryId : {
-        Consumer(
-          builder: (_,QuestionProvider provider,__){
-            questions = provider.normalQuestions;
-            questions.forEach((element) {
-              cards.add(_testCard(element.description));
-            });
-            return Container();
+    switch (widget.category.id) {
+      case Constants.normalCategoryId:
+        {
+          questions = await provider.normalQuestions;
+          for (var element in questions) {
+            cards.add(_testCard(element.description));
+            print(element.description);
           }
-        );
-        print("holamundo");
-      }
-      break;
-      case Constants.intermediateCategoryId : {
-        Consumer(
-            builder: (_,QuestionProvider provider,__){
-              questions = provider.intermediateQuestions;
-              questions.forEach((element) {
-                cards.add(_testCard(element.description));
-              });
-              return Container();
-            }
-        );
-      }
-      break;
-      case Constants.hotCategoryId : {
-        Consumer(
-            builder: (_,QuestionProvider provider,__){
-              questions = provider.normalQuestions;
-              questions.forEach((element) {
-                cards.add(_testCard(element.description));
-              });
-              return Container();
-            }
-        );
-      }
-      break;
-      default : {
-        print(widget.category.id);
-        cards.add(_testCard("Yo nunca he utilizado Visual Studio Code."));
-        cards.add(_testCard("Yo nunca he utilizado Android Studio."));
-        cards.add(_testCard("Yo nunca he utilizado Netbeans."));
-        cards.add(_testCard("Yo nunca he utilizado un bucle FOR."));
-        cards.add(_testCard("Yo nunca he yo nunca."));
-      }
+          print("holamundo");
+        }
+        break;
+      case Constants.intermediateCategoryId:
+        {
+          questions = provider.intermediateQuestions;
+          for (var element in questions) {
+            cards.add(_testCard(element.description));
+            print(element.description);
+          }
+        }
+        break;
+      case Constants.hotCategoryId:
+        {
+          questions = provider.hotQuestions;
+          for (var element in questions) {
+            cards.add(_testCard(element.description));
+          }
+        }
+        break;
+      default:
+        {
+          print(widget.category.id);
+          cards.add(_testCard("Yo nunca he utilizado Visual Studio Code."));
+          cards.add(_testCard("Yo nunca he utilizado Android Studio."));
+          cards.add(_testCard("Yo nunca he utilizado Netbeans."));
+          cards.add(_testCard("Yo nunca he utilizado un bucle FOR."));
+          cards.add(_testCard("Yo nunca he yo nunca."));
+        }
     }
   }
 
@@ -132,31 +122,33 @@ class _QuestionCardState extends State<QuestionCard> {
         borderRadius: BorderRadius.all(Radius.circular(30)),
         boxShadow: [
           BoxShadow(
-            //color: Colors.greenAccent.withOpacity(0.6),
-            color: Constants.randomColours.elementAt(Random().nextInt(Constants.randomColours.length)).withOpacity(0.95)
-            // changes position of shadow
-          ),
+              //color: Colors.greenAccent.withOpacity(0.6),
+              color: Constants.randomColours
+                  .elementAt(Random().nextInt(Constants.randomColours.length))
+                  .withOpacity(0.95)
+              // changes position of shadow
+              ),
         ],
       ),
-      child: Column(
-          children: [
-            Container(
-              height: 200,
-              width: double.infinity,
-              child: Center(
-                child: Text(
-                  qst,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: 23, color: Colors.white,fontWeight: FontWeight.w800, fontFamily: 'Abel'),
-                ),
-              ),
+      child: Column(children: [
+        Container(
+          height: 200,
+          width: double.infinity,
+          child: Center(
+            child: Text(
+              qst,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontSize: 23,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w800,
+                  fontFamily: 'Abel'),
             ),
-          ]),
+          ),
+        ),
+      ]),
     );
   }
-
-
 
   void _swipe(int index, AppinioSwiperDirection direction) {
     //try to get the current card after swiped
@@ -187,7 +179,6 @@ class _QuestionCardState extends State<QuestionCard> {
       style: btnStyle,
     );
   }
-
 
   /*
   Widget _oldShit (String qst, bool isFav) {

@@ -2,13 +2,235 @@
   {
     "id": 0,
     "categoryId": 1,
-    "description": "Question 1",
+    "description": "Yo nunca he fingido estar enfermo para evitar ir a la escuela.",
     "isFavourite": false
   },
   {
     "id": 0,
     "categoryId": 1,
-    "description": "Question 2",
+    "description": "Yo nunca he intimidado a un compañero de clase.",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Yo nunca he vomitado durante una excursión escolar.",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Yo nunca he conocido a alguien famoso.",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Yo nunca he hablado con un extraño por internet.",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Yo nunca he hecho trampa en un examen.",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Yo nunca he fingido conocer a un extraño porque sentía que alguien me seguía.",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Yo nunca me he recolocado el calzoncillo en público.",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Yo nunca he comido accidentalmente comida para perros.",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Yo nunca he intentado impresionar al que me gustaba pareciendo estar informada.",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Yo nunca he sido echado de un pub / club / bar.",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Yo nunca he salvado la vida de otra persona.",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Yo nunca he hecho un simpa en un restaurante.",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Yo nunca he tenido que ir a un juzgado.",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Yo nunca he troleado a alguien en las redes sociales.",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Yo nunca me había reído tanto que me hice pis en los pantalones.",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Yo nunca he inventado un novio / novia falso.",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Yo nunca he fingido estar enfermo para que la gente me preste atención.",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Yo nunca he ido solo al cine.",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Yo nunca he sido sorprendido con una fiesta sorpresa.",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Nunca he mentido a un amigo para evitar un mal mayor.",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Yo nunca me he quedado despierto toda la noch",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Yo nunca he fingido estar en un videoclip cuando salgo de la ducha mientras pongo caras intensas en el espejo.",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Yo nunca he mirado el papel después de ir al baño.",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Yo nunca les he robado comida a mis hermanos o amigos cuando se levantan para ir al baño.",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Yo nunca he usado pijama en la calle y fingí que era ropa.",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Yo nunca he borrado una foto de una red social por no gustarme cómo salgo.",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Yo nunca he dicho una mentira a mis amigos.",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Yo nunca he entrado a una fiesta sin que me hayan invitado.",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Yo nunca he recibido una bofetada en público.",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Yo nunca he escuchado reggaetón en sesión privada en Spotify para que nadie me descubriera.",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Yo nunca he tenido una época vegetariana o vegana.",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Yo nunca he hecho trampas en un juego de mesa.",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Yo nunca he vomitado encima de alguien.",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Yo nunca he mentido diciendo que me gustaba lo que había cocinado una amistad o mi pareja.",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Yo nunca le he hecho ghosting a nadie.",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Yo nunca he llegado tarde al trabajo.",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Yo nunca me he comido algo del suelo.",
+    "isFavourite": true
+  },
+  {
+    "id": 0,
+    "categoryId": 1,
+    "description": "Yo nunca he cogido dinero de mis padres sin avisar",
     "isFavourite": true
   }
 ]

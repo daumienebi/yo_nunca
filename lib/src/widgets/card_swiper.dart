@@ -8,7 +8,6 @@ import 'package:yo_nunca/src/utils/my_decorations.dart';
 import 'package:yo_nunca/src/utils/test_data.dart';
 
 class CardSwiper extends StatelessWidget {
-  //final List<DefaultCategory> defaultCategories;
   final List<Category> categories;
   const CardSwiper({Key? key, required this.categories})
       : super(key: key);
@@ -20,8 +19,6 @@ class CardSwiper extends StatelessWidget {
   }
 
   Widget _cardSwiper(context) {
-    final TestData data = TestData();
-    //List<DefaultCategory> defaultCategories = data.getDefaultCategoriesList;
     final size = MediaQuery.of(context).size;
     return Column(children: [
       SizedBox(
