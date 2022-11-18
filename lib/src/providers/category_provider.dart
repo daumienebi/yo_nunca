@@ -16,7 +16,7 @@ class CategoryProvider with ChangeNotifier{
 
   Future<List<Category>> getCategories() async{
     //help from https://www.bezkoder.com/dart-flutter-parse-json-string-array-to-object-list/#DartFlutter_parse_JSON_array_into_List
-    String categoriesJson = await rootBundle.loadString('assets/db/categories.json');//get the data later from the database
+    String categoriesJson = await rootBundle.loadString('assets/questions/categories.json');//get the data later from the database
     var jsonToList = json.decode(categoriesJson)['categories'] as List;
     _categories = jsonToList.map((jsonToList) => Category.fromJson(jsonToList)).toList();
     notifyListeners();

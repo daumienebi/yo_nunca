@@ -29,7 +29,7 @@ class QuestionProvider with ChangeNotifier{
       return _hotQuestions;
   }
   Future getNormalQuestions() async{
-    String questionsJson = await rootBundle.loadString('assets/db/normal_questions.json');
+    String questionsJson = await rootBundle.loadString('assets/questions/normal_questions.json');
     var jsonToList = json.decode(questionsJson) as List;
     _normalQuestions = jsonToList.map((jsonToList) => Question.fromJson(jsonToList)).toList();
     notifyListeners();
@@ -37,7 +37,7 @@ class QuestionProvider with ChangeNotifier{
   }
 
   Future<List<Question>> getIntermediateQuestions() async{
-    String questionsJson = await rootBundle.loadString('assets/db/intermediate_questions.json');
+    String questionsJson = await rootBundle.loadString('assets/questions/intermediate_questions.json');
     var jsonToList = json.decode(questionsJson) as List;
     _intermediateQuestions = jsonToList.map((jsonToList) => Question.fromJson(jsonToList)).toList();
     notifyListeners();
@@ -45,7 +45,7 @@ class QuestionProvider with ChangeNotifier{
   }
 
   Future<List<Question>> getHotQuestions() async{
-    String questionsJson = await rootBundle.loadString('assets/db/hot_questions.json');
+    String questionsJson = await rootBundle.loadString('assets/questions/hot_questions.json');
     var jsonToList = json.decode(questionsJson) as List;
     _hotQuestions = jsonToList.map((jsonToList) => Question.fromJson(jsonToList)).toList();
     notifyListeners();
