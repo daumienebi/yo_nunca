@@ -9,7 +9,9 @@ class QuestionProvider with ChangeNotifier{
   List<Question> _normalQuestions = [];
   List<Question> _intermediateQuestions = [];
   List<Question> _hotQuestions = [];
+  List<Question> _favouriteQuestions = [];
 
+  //getters
   List<Question> get normalQuestions {
     if(_normalQuestions.isNotEmpty) return _normalQuestions;
     getNormalQuestions();
@@ -28,6 +30,13 @@ class QuestionProvider with ChangeNotifier{
     }
       return _hotQuestions;
   }
+
+  List<Question> get favouriteQuestions {
+    if(_favouriteQuestions.isNotEmpty) return _favouriteQuestions;
+    return _favouriteQuestions;
+  }
+
+
   Future getNormalQuestions() async{
     String questionsJson = await rootBundle.loadString('assets/questions/normal_questions.json');
     var jsonToList = json.decode(questionsJson) as List;
@@ -50,6 +59,17 @@ class QuestionProvider with ChangeNotifier{
     _hotQuestions = jsonToList.map((jsonToList) => Question.fromJson(jsonToList)).toList();
     notifyListeners();
     return _hotQuestions;
+  }
+
+  Future addToFavourites (Question question) async{
+    _favouriteQuestions.add(question);
+    notifyListeners();
+  }
+
+  //make it Future later on
+  removeFromFavourites (Question question) async{
+    _favouriteQuestions.remove(question);
+    notifyListeners();
   }
 
   Future<List<Question>> getAllQuestions() async{

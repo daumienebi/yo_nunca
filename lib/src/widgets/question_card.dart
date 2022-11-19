@@ -99,6 +99,7 @@ class _QuestionCardState extends State<QuestionCard> {
             unlimitedUnswipe: true,
             controller: controller,
             unswipe: _unswipe,
+
             cards: cards,
             onSwipe: _swipe,
             padding: const EdgeInsets.only(
@@ -179,43 +180,4 @@ class _QuestionCardState extends State<QuestionCard> {
       style: btnStyle,
     );
   }
-
-  /*
-  Widget _oldShit (String qst, bool isFav) {
-    //create a fake future before loading the cards
-    return Container(
-      alignment: Alignment.bottomCenter,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-            //image: AssetImage('assets/images/blurBW.png'), //Damian
-            image: AssetImage('assets/images/red_cup.jpg'), //Damian
-            fit: BoxFit.fill,
-            opacity: 200),
-        //color: Colors.white,
-        borderRadius: BorderRadius.all(Radius.circular(20)),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.6),
-            // changes position of shadow
-          ),
-        ],
-      ),
-      child: Column(
-          children: [
-            Container(
-              height: 200,
-              width: double.infinity,
-              child: Center(
-                child: Text(
-                  qst,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: 23, color: Colors.white,fontWeight: FontWeight.w800, fontFamily: 'Abel'),
-                ),
-              ),
-            ),
-          ]),
-    );
-  }
-  */
 }
