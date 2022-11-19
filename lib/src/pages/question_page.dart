@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
@@ -18,7 +17,12 @@ class QuestionPage extends StatelessWidget{
     Category category = ModalRoute.of(context)!.settings.arguments as Category;
     return Scaffold(
       appBar: NewGradientAppBar(
-        title: Text(category.description),
+        title: Text(category.description,style: TextStyle(
+            color: Colors.cyan,
+            fontWeight: FontWeight.w400,
+          ),
+
+        ),
         gradient: const LinearGradient(colors: [Colors.amber,Colors.white70,Colors.amber]),//Change it later
       ),
       body: QuestionWidget(category: category)

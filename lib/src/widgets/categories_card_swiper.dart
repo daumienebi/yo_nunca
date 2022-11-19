@@ -1,15 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:yo_nunca/src/models/category.dart';
-import 'package:yo_nunca/src/models/default_category.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
 import 'package:yo_nunca/src/utils/my_decorations.dart';
-import 'package:yo_nunca/src/utils/test_data.dart';
 
-class CardSwiper extends StatelessWidget {
+class CategoriesCardSwiper extends StatelessWidget {
   final List<Category> categories;
-  const CardSwiper({Key? key, required this.categories})
+  const CategoriesCardSwiper({Key? key, required this.categories})
       : super(key: key);
 
   @override
@@ -34,7 +31,6 @@ class CardSwiper extends StatelessWidget {
                   arguments: categories[index]),
               child: Hero(
                   tag: UniqueKey(), //or find another way to use a unique tag
-                //tag: defaultCategories[index].heroId!, //not going to be null here
                   child: Container(
                       margin: const EdgeInsets.all(10),
                       padding: EdgeInsets.all(5),

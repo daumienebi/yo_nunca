@@ -136,7 +136,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
         height: 250,
         width: 300,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Colors.red[200],
           borderRadius: BorderRadius.all(Radius.circular(10)),
           boxShadow: [
             BoxShadow(
@@ -154,11 +154,11 @@ class _QuestionWidgetState extends State<QuestionWidget> {
             children: [
               Icon(
                 Icons.error_outline,
-                color: Colors.grey,
-                size: 60,
+                color: Colors.black54,
+                size: 50,
               ),
               Text(errorMessage,textAlign: TextAlign.center,style: TextStyle(
-                fontSize: 16,
+                fontSize: 16,color: Colors.black54
               ),),
             ],
           ),
@@ -166,8 +166,6 @@ class _QuestionWidgetState extends State<QuestionWidget> {
       ),
       SizedBox(height: 20,),
       _goToCategoriesBtn()
-
-
     ];
   }
 
