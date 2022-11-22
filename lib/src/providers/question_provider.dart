@@ -36,6 +36,13 @@ class QuestionProvider with ChangeNotifier{
     return _favouriteQuestions;
   }
 
+  /// Returns all questions for mixed mode
+  List<Question> get questions {
+    if(_questions.isNotEmpty) return _questions;
+    getAllQuestions();
+    return _questions;
+  }
+
 
   Future getNormalQuestions() async{
     String questionsJson = await rootBundle.loadString('assets/questions/normal_questions.json');

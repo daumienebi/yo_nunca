@@ -25,7 +25,7 @@ class QuestionPage extends StatelessWidget{
         ),
         gradient: const LinearGradient(colors: [Colors.amber,Colors.white70,Colors.amber]),//Change it later
       ),
-      body: QuestionWidget(category: category)
+      body: QuestionWidget(category: category,mixedMode: false,)
     );
   }
 

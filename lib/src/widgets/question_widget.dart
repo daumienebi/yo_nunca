@@ -11,7 +11,8 @@ import 'package:yo_nunca/src/utils/messages.dart';
 
 class QuestionWidget extends StatefulWidget {
   final Category category;
-  const QuestionWidget({Key? key, required this.category}) : super(key: key);
+  final bool mixedMode;
+  const QuestionWidget({Key? key, required this.category,required this.mixedMode}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -28,35 +29,40 @@ class _QuestionWidgetState extends State<QuestionWidget> {
     QuestionProvider provider =
         Provider.of<QuestionProvider>(context, listen: true);
 
-    switch (widget.category.id) {
-      case Constants.normalCategoryId:
-        {
-          questions = provider.normalQuestions;
-          return Future<List<Question>>.delayed(
-              const Duration(seconds: 1), () => questions);
-        }
-        break;
-      case Constants.intermediateCategoryId:
-        {
-          questions = provider.intermediateQuestions;
-          return Future<List<Question>>.delayed(
-              const Duration(seconds: 1), () => questions);
-        }
-        break;
-      case Constants.hotCategoryId:
-        {
-          questions = provider.hotQuestions;
-          return Future<List<Question>>.delayed(
-              const Duration(seconds: 1), () => questions);
-        }
-        break;
-      default:
-        {
-          print(widget.category.id);
-          return Future<List<Question>>.delayed(
-              const Duration(seconds: 2), () => []);
-        }
+    if(!widget.mixedMode){
+      switch (widget.category.id) {
+        case Constants.normalCategoryId:
+          {
+            questions = provider.normalQuestions;
+            return Future<List<Question>>.delayed(
+                const Duration(seconds: 1), () => questions);
+          }
+          break;
+        case Constants.intermediateCategoryId:
+          {
+            questions = provider.intermediateQuestions;
+            return Future<List<Question>>.delayed(
+                const Duration(seconds: 1), () => questions);
+          }
+          break;
+        case Constants.hotCategoryId:
+          {
+            questions = provider.hotQuestions;
+            return Future<List<Question>>.delayed(
+                const Duration(seconds: 1), () => questions);
+          }
+          break;
+        default:
+          {
+            print(widget.category.id);
+            return Future<List<Question>>.delayed(
+                const Duration(seconds: 2), () => []);
+          }
+      }
+    }else{
+      questions = provider.questions;
     }
+    return Future.delayed(Duration(seconds: 2),()=> questions);
   }
 
   @override

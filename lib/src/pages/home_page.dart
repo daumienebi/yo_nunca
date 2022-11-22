@@ -56,14 +56,15 @@ class HomePage extends StatelessWidget {
                     SizedBox(
                       height: 30,
                     ),
-                    _mixedModeWidget()
+                    _mixedModeWidget(context)
                   ]))),
         ),
       ),
     );
   }
 
-  Widget _mixedModeWidget() {
+  Widget _mixedModeWidget(BuildContext context) {
+    //guess its not advisable to pass the context like this
     return Column(
       children: [
         Container(
@@ -84,6 +85,7 @@ class HomePage extends StatelessWidget {
         ),
         ElevatedButton(
           onPressed: () {
+            Navigator.pushNamed(context, Constants.routes.mixedModePage,arguments: Category(id:0,description: 'MODO MIXTO',imageRoute: ''));
             print("TODO: Generate mixed questions with all the categories");
           },
           child: Text(
