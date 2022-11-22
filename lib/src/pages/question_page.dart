@@ -18,7 +18,7 @@ class QuestionPage extends StatelessWidget{
     return Scaffold(
       appBar: NewGradientAppBar(
         title: Text(category.description,style: TextStyle(
-            color: Colors.cyan,
+            color: Colors.blueGrey,
             fontWeight: FontWeight.w400,
           ),
 
@@ -26,7 +26,6 @@ class QuestionPage extends StatelessWidget{
         gradient: const LinearGradient(colors: [Colors.amber,Colors.white70,Colors.amber]),//Change it later
       ),
       body: QuestionWidget(category: category)
-      //body: QuestionCard(category: category,)
     );
   }
 

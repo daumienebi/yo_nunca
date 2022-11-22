@@ -50,8 +50,6 @@ class HomePage extends StatelessWidget {
           child: Center(
               child: Container(
                   margin: EdgeInsets.only(top: 50),
-                  //alignment: Alignment.center, child: HomePageList()),// not used anymore for now. Might change my mind later  :)
-                  //alignment: Alignment.center,
                   child: Column(children: [
                     Text("Desliza para ver las categorias...",style: TextStyle(color: Colors.black54,fontSize: 15),),
                     CategoriesCardSwiper(categories: _categories),

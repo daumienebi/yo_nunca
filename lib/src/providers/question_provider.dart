@@ -66,8 +66,8 @@ class QuestionProvider with ChangeNotifier{
     notifyListeners();
   }
 
-  //make it Future later on
-  removeFromFavourites (Question question) async{
+  //make it Future later on, onDismissed method must be void : check it out
+  removeFromFavourites (Question question){
     _favouriteQuestions.remove(question);
     notifyListeners();
   }

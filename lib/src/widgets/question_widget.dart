@@ -207,32 +207,14 @@ class _QuestionWidgetState extends State<QuestionWidget> {
                 provider.removeFromFavourites(question);
                 question.isFavourite = false;
                 snackBar = SnackBar(
-                  content: const Text('Pregunta añadida a favoritos'),
-                  action: SnackBarAction(
-                    label: 'Deshacer',
-                    onPressed: () {
-                      setState(() {
-                        question.isFavourite = true;
-                        provider.addToFavourites(question);
-                      });
-                    },
-                  ),
+                  content: const Text('Pregunta eliminada de favoritos'),
                 );
                 ScaffoldMessenger.of(context).showSnackBar(snackBar);
               }else{
                 provider.addToFavourites(question);
                 question.isFavourite = true;
                 snackBar = SnackBar(
-                  content: const Text('Pregunta eliminada de favoritos'),
-                  action: SnackBarAction(
-                    label: 'Deshacer',
-                    onPressed: () {
-                      setState(() {
-                        provider.removeFromFavourites(question);
-                        question.isFavourite = false;
-                      });
-                    },
-                  ),
+                  content: const Text('Pregunta añadida a favoritos'),
                 );
                 ScaffoldMessenger.of(context).showSnackBar(snackBar);
               }
