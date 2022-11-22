@@ -21,6 +21,7 @@ class Routes {
   String get favouritesPage => 'favourites';
   String get questionsPage => 'questions';
   String get newCategory => 'newcategory';
+  String get favouriteQuestionPage => 'favouritequestionpage';
 }
 
 

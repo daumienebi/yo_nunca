@@ -20,5 +20,5 @@
     https://psycatgames.com/es/magazine/party-games/never-ever/ -- they accepted
 
 ## Bugs
-- Snackbar de "deshacer" no debe aparecer despues de salir de esa pantalla de preguntas porque lo intenta redibujar y la pantalla ya esta cerrada
+- Snackbar de "deshacer" no debe aparecer despues de salir de esa pantalla de preguntas porque lo intenta redibujar y la pantalla ya esta cerrada -- /// It is an error to call [setState] unless [mounted] is true.(Answer)
 

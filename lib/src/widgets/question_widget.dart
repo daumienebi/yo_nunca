@@ -7,6 +7,7 @@ import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/models/question.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
+import 'package:yo_nunca/src/utils/messages.dart';
 
 class QuestionWidget extends StatefulWidget {
   final Category category;
@@ -23,16 +24,9 @@ class _QuestionWidgetState extends State<QuestionWidget> {
   List<Question> questions = [];
   int _currentndex = 0;
 
-  /*
-  @override
-  void initState() {
-    _loadCards();
-    super.initState();
-  }
-*/
   Future<List<Question>> _getQstData() {
     QuestionProvider provider =
-        Provider.of<QuestionProvider>(context, listen: false);
+        Provider.of<QuestionProvider>(context, listen: true);
 
     switch (widget.category.id) {
       case Constants.normalCategoryId:
@@ -67,47 +61,33 @@ class _QuestionWidgetState extends State<QuestionWidget> {
 
   @override
   Widget build(BuildContext context) {
-    QuestionProvider provider =
-        Provider.of<QuestionProvider>(context, listen: true);
+    //QuestionProvider provider =
+        //Provider.of<QuestionProvider>(context, listen: true);
     // TODO: implement build
     return Center(
       child: FutureBuilder(
           future: _getQstData(),
           builder: (_, AsyncSnapshot snapshot) {
-            List<Widget> test = [];
-            if (snapshot.hasData) {
-              test = snapshot.data != null && snapshot.data.length > 0
+            List<Widget> futureWidgets = [];
+            if(snapshot.hasData) {
+              //if data is available then display the questions(set the list of widgets to the questions), else display the error page
+              futureWidgets = snapshot.data != null && snapshot.data.length > 0
                   ? _questionContainerWidget(snapshot)
                   : _noQuestionWidget();
+              //test = _questionContainerWidget(snapshot);
             } else if (snapshot.hasError) {
-              test = <Widget>[
-                const Icon(
-                  Icons.error_outline,
-                  color: Colors.red,
-                  size: 60,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 16),
-                  child: Text('Error: No se pudo cargar las preguntas :('),
-                ),
+              futureWidgets = <Widget>[
+                Messages.errorWidget('No se pudieron cargar las preguntas :('),
               ];
             } else {
-              test = const <Widget>[
-                SizedBox(
-                  width: 60,
-                  height: 60,
-                  child: CircularProgressIndicator(),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 16),
-                  child: Text('Cargando preguntas...'),
-                ),
+              futureWidgets = <Widget>[
+                Messages.circularLoadingWidget('Cargando preguntas ...'),
               ];
             }
             return Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: test,
+                children: futureWidgets,
               ),
             );
           }),
@@ -119,9 +99,10 @@ class _QuestionWidgetState extends State<QuestionWidget> {
     return <Widget>[
       Column(mainAxisAlignment: MainAxisAlignment.center, children: [
         //if data is available then display the questions, else display the error page
-        snapshot.data != null && snapshot.data.length > 0
-            ? _questionTextWidget(snapshot.data[_currentndex])
-            : _noQuestionWidget(),
+        //snapshot.data != null && snapshot.data.length > 0
+            //? _questionTextWidget(snapshot.data[_currentndex])
+            //: _noQuestionWidget(),
+        _questionTextWidget(snapshot.data [_currentndex]),
         SizedBox(height: 10),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -139,45 +120,10 @@ class _QuestionWidgetState extends State<QuestionWidget> {
     //displays this widget when no data is received or when the category has
     //no questions
     String errorMessage =
-        'No hay preguntas para la categoría : ${widget.category.description}, ve a las categorias para añadirlas.';
+        'No hay preguntas disponibles para la categoría : ${widget.category.description}, ve a las categorias para añadirlas.';
     return <Widget>[
-      Container(
-        height: 250,
-        width: 300,
-        decoration: BoxDecoration(
-          color: Colors.red[200],
-          borderRadius: BorderRadius.all(Radius.circular(10)),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 5,
-              blurRadius: 7,
-              offset: Offset(0, 3), // changes position of shadow
-            ),
-          ],
-        ),
-        child: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.error_outline,
-                color: Colors.black54,
-                size: 50,
-              ),
-              Text(
-                errorMessage,
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 16, color: Colors.black54),
-              ),
-            ],
-          ),
-        ),
-      ),
-      SizedBox(
-        height: 20,
-      ),
+     Messages.errorWidget2(errorMessage,null, 0.5),
+      SizedBox(height: 20,),
       _goToCategoriesBtn()
     ];
   }
@@ -207,6 +153,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
                 provider.removeFromFavourites(question);
                 question.isFavourite = false;
                 snackBar = SnackBar(
+                  duration: Duration(seconds: 1),
                   content: const Text('Pregunta eliminada de favoritos'),
                 );
                 ScaffoldMessenger.of(context).showSnackBar(snackBar);
@@ -214,6 +161,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
                 provider.addToFavourites(question);
                 question.isFavourite = true;
                 snackBar = SnackBar(
+                  duration: Duration(seconds: 1),
                   content: const Text('Pregunta añadida a favoritos'),
                 );
                 ScaffoldMessenger.of(context).showSnackBar(snackBar);
@@ -252,6 +200,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
   }
 
   Widget _prevQstButton() {
+    //Previous question button
     final btnStyle = ElevatedButton.styleFrom(
         textStyle: TextStyle(color: Colors.blue, fontSize: 17));
     return ElevatedButton(
@@ -268,7 +217,9 @@ class _QuestionWidgetState extends State<QuestionWidget> {
     );
   }
 
+  /// [listLength] - to obtain the length of the questions list
   Widget _nextQstButton(int listLength) {
+    //Button for next question
     final btnStyle = ElevatedButton.styleFrom(
         textStyle: TextStyle(color: Colors.blue, fontSize: 17));
     return ElevatedButton(

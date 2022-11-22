@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:yo_nunca/src/pages/favourite_question_page.dart';
 import 'package:yo_nunca/src/pages/pages.dart';
 import 'package:yo_nunca/src/providers/category_provider.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
         Constants.routes.homepage : (_) => const HomePage(),
         Constants.routes.questionsPage : (_) => const QuestionPage(),
         Constants.routes.favouritesPage : (_) => const FavouritesPage(),
-        Constants.routes.newCategory : (_) => const NewCategoryPage()
+        Constants.routes.newCategory : (_) => const NewCategoryPage(),
+        Constants.routes.favouriteQuestionPage : (_) => const FavouriteQuestionPage()
       },
       theme: ThemeData(
         primarySwatch: Colors.amber
