@@ -26,6 +26,7 @@ class _FavouritesPageState extends State<FavouritesPage> {
           gradient: const LinearGradient(
               colors: [Colors.amber, Colors.white70, Colors.amber]),
         ),
+        backgroundColor: Colors.orange[50],
         body: Column(
           children: [
           Expanded(

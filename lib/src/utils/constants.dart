@@ -23,6 +23,7 @@ class Routes {
   String get newCategory => 'newcategory';
   String get favouriteQuestionPage => 'favouritequestionpage';
   String get mixedModePage => 'mixedmodepage';
+  String get categoryManagementPage => 'categorymanagementpage';
 }
 
 

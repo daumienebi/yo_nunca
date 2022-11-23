@@ -21,10 +21,12 @@ class MyApp extends StatelessWidget {
         Constants.routes.favouritesPage : (_) => const FavouritesPage(),
         Constants.routes.newCategory : (_) => const NewCategoryPage(),
         Constants.routes.favouriteQuestionPage : (_) => const FavouriteQuestionPage(),
-        Constants.routes.mixedModePage : (_) => const MixedModePage()
+        Constants.routes.mixedModePage : (_) => const MixedModePage(),
+        Constants.routes.categoryManagementPage : (_) => const CategoryManagementPage()
       },
       theme: ThemeData(
-        primarySwatch: Colors.amber
+        primarySwatch: Colors.amber,
+        backgroundColor: Colors.orange[100]
       ),
     );
   }
