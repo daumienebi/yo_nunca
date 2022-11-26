@@ -29,19 +29,4 @@ class QuestionPage extends StatelessWidget{
       body: QuestionWidget(category: category,mixedMode: false,)
     );
   }
-
-  _blurContainer(){
-    return Container(
-      margin: EdgeInsets.all(10),
-      width: double.infinity,
-      decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('assets/images/blurBW.png'),
-              fit: BoxFit.contain,
-              opacity: 170
-          )
-      ),
-      //child: Image.asset('assets/images/blur1.png'),
-    );
-  }
 }

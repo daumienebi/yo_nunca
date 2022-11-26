@@ -22,7 +22,8 @@ class MyApp extends StatelessWidget {
         Constants.routes.newCategory : (_) => const NewCategoryPage(),
         Constants.routes.favouriteQuestionPage : (_) => const FavouriteQuestionPage(),
         Constants.routes.mixedModePage : (_) => const MixedModePage(),
-        Constants.routes.categoryManagementPage : (_) => const CategoryManagementPage()
+        Constants.routes.categoryManagementPage : (_) => const CategoryManagementPage(),
+        Constants.routes.categoryListPage : (_) => const CategoryListPage()
       },
       theme: ThemeData(
         primarySwatch: Colors.amber,

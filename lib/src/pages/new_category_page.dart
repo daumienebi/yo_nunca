@@ -33,6 +33,7 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
         gradient: const LinearGradient(
             colors: [Colors.amber, Colors.white70, Colors.amber]),
       ),
+      backgroundColor: Colors.orange[50],
       body: Container(
         margin: EdgeInsets.all(10),
         child: Column(children: [
@@ -181,6 +182,12 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
               Category newCategory = Category(id : newCategoryId, description: _category, imageRoute: "assets/images/blurBW.png");
               provider.addCategory(newCategory);
               print(newCategory.toString());
+              final snackBar = SnackBar(
+                duration: Duration(seconds: 1),
+                content: const Text('Nueva categoría añadida'),
+              );
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              Navigator.pop(context);
             }
           },
           child: Text("Guardar"));

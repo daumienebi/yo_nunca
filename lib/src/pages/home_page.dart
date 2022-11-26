@@ -12,9 +12,12 @@ class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    CategoryProvider provider =
-        Provider.of<CategoryProvider>(context, listen: true);
-    List<Category> _categories = provider.categories;
+    CategoryProvider provider = Provider.of<CategoryProvider>(context, listen: true);
+    //Obtaining all the categories here because the provider.allCategories
+    //method is not returning the items.
+    List<Category> _allCategories = [];
+    _allCategories.addAll(provider.defaultCategories);
+    _allCategories.addAll(provider.categories);
     //physics: const AlwaysScrollableScrollPhysics(),
     return Scaffold(
       drawer: MyDrawer(),
@@ -52,7 +55,7 @@ class HomePage extends StatelessWidget {
                   margin: EdgeInsets.only(top: 50),
                   child: Column(children: [
                     Text("Desliza para ver las categorias...",style: TextStyle(color: Colors.black54,fontSize: 15),),
-                    CategoriesCardSwiper(categories: _categories),
+                    CategoriesCardSwiper(categories: _allCategories),
                     SizedBox(
                       height: 30,
                     ),
@@ -79,7 +82,7 @@ class HomePage extends StatelessWidget {
           ]),
           child: Column(
             children: const[
-              Text("Dudas con que categoria elegir ?  👀 ", textAlign: TextAlign.center, style: TextStyle(color: Colors.black,fontSize: 16)),
+              Text("Dudas con que categoria elegir ?  👀 ", textAlign: TextAlign.center, style: TextStyle(color: Colors.black54,fontSize: 16)),
             ]
           ),
         ),

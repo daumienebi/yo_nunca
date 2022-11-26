@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:yo_nunca/src/models/question.dart';
+import 'package:yo_nunca/src/utils/constants.dart';
 
 class QuestionProvider with ChangeNotifier{
 
@@ -79,8 +80,37 @@ class QuestionProvider with ChangeNotifier{
     notifyListeners();
   }
 
+  ///This method returns the number of questions per Category, the default
+  ///categories will be obtained seperately and the rest will be requested from
+  ///the DB
+  int getNumberOfQuestionsPerCategory(int categoryId){
+    int questionsCount;
+    switch(categoryId){
+      case Constants.normalCategoryId : {
+        print("Normal questions: ${_normalQuestions.length}");
+        return normalQuestions.length;
+      }
+      break;
+      case Constants.intermediateCategoryId : {
+        return intermediateQuestions.length;
+      }
+      break;
+      case Constants.hotCategoryId : {
+        return hotQuestions.length;
+      }
+      break;
+      default :
+        {
+          //Get the rest from the DB
+          questionsCount = 0;
+          return questionsCount;
+        }
+    }
+  }
+
   Future<List<Question>> getAllQuestions() async{
     //Add all the questions to the main list then return it
+    //Check it out
     _questions.addAll(await getNormalQuestions());
     _questions.addAll(await getIntermediateQuestions());
     _questions.addAll(await getHotQuestions());

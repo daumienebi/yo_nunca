@@ -25,7 +25,7 @@ class MyDrawer extends StatelessWidget{
     _listItems.add(ListTile(
       title: Text("Mis Categorías",style: drawerTextStyle,),
       trailing: Icon(Icons.list_alt_outlined,color: iconColor,),
-      onTap: ()=>Navigator.pushNamed(context, Constants.routes.categoryManagementPage),
+      onTap: ()=>Navigator.pushNamed(context, Constants.routes.categoryListPage),
     ));
 
     _listItems.add(ListTile(
