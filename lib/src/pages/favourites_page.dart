@@ -65,7 +65,7 @@ class _FavouritesPageState extends State<FavouritesPage> {
           ),
         ),
         _newGameBtn(),
-        Text("Se creará un juego con solo las preguntas destacadas",style: TextStyle(color: Colors.blue)),
+        Text("Se creará un juego con solo tus preguntas favoritas",style: TextStyle(color: Colors.blue)),
         SizedBox(height: 20,)
       ],
     );
@@ -110,7 +110,6 @@ class _FavouritesPageState extends State<FavouritesPage> {
       onPressed: () {
         //Navigator.push(context, MaterialPageRoute(builder: (context)=>FavouriteQuestionPage())); //just to remember the other way
         Navigator.pushNamed(context, Constants.routes.favouriteQuestionPage);
-        print("Cargando juego con preguntas destacadas.");
       },
       child: Text('Crear juego'),
       style: btnStyle,

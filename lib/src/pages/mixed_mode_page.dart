@@ -22,7 +22,7 @@ class MixedModePage extends StatelessWidget{
           ),
           gradient: const LinearGradient(colors: [Colors.amber,Colors.white70,Colors.amber]),//Change it later
         ),
-        backgroundColor: Colors.orange[100],
+        backgroundColor: Colors.orange[50],
         body: QuestionWidget(category: category,mixedMode: true,)
     );
   }

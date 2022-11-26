@@ -11,7 +11,7 @@ class FavouriteQuestionPage extends StatelessWidget{
     // TODO: implement build
     return Scaffold(
       appBar: NewGradientAppBar(
-        title: Text('FAVORITAS ❤️'),
+        title: Text('Preguntas destacadas️'),
         gradient: const LinearGradient(
             colors: [Colors.amber, Colors.white70, Colors.amber]),
       ),

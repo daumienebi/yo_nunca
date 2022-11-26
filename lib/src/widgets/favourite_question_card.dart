@@ -20,7 +20,8 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
   List<Widget> cards = [];
   List<Question> questions = [];
   bool visible = false;
-  int swipeIndex = 0;
+  final ValueNotifier<bool> isPotrait = ValueNotifier<bool>(true);
+
   @override
   void initState() {
     _loadCards();
@@ -45,15 +46,20 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Center(
-      child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            _questionAppinioSwiper(),
-            SizedBox(height: 10),
-            Visibility(child: _restartButton(), visible: visible)
-          ]),
+    return OrientationBuilder(
+      builder: (BuildContext context,Orientation orientation){
+          isPotrait.value = orientation == Orientation.portrait;
+          return Center(
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  _questionAppinioSwiper(),
+                  SizedBox(height: 5),
+                  Center(child: Visibility(child: _restartButton(), visible: visible))
+                ]),
+          );
+      },
     );
   }
 
@@ -68,16 +74,15 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
           } else if (snapshot.hasError) {
             return Messages.errorWidget('Error: No se pudieron cargar las preguntas :(');
           } else {
-            return Messages.circularLoadingWidget('Creando juego con preguntas favoritas...');
+            return Messages.circularLoadingWidget('Creando juego con tus preguntas favoritas...');
           }
           //main content to return with the data
           return Column(
             children: [
-              const SizedBox(
-                height: 50,
-              ),
+              Text("Desliza en cualquier dirección para pasar a la siguiente pregunta.",style: TextStyle(fontSize: 15,color: Colors.black54),textAlign: TextAlign.center,),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.55,
+                height: MediaQuery.of(context).size.height * 0.48,//48%
+                width: isPotrait.value == true ? 370 : 500,
                 child: AppinioSwiper(
                   unlimitedUnswipe: true,
                   controller: controller,
@@ -87,8 +92,8 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
                   padding: const EdgeInsets.only(
                     left: 25,
                     right: 25,
-                    top: 50,
-                    bottom: 40,
+                    top: 10,
+                    bottom: 30,
                   ),
                 ),
               ),
@@ -99,35 +104,40 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
 
   Widget _questionCard(String qst) {
     //create a fake future before loading the cards
-    return Container(
-      alignment: Alignment.bottomCenter,
-      decoration: BoxDecoration(
-        //color: Colors.white,
-        borderRadius: BorderRadius.all(Radius.circular(30)),
-        boxShadow: [
-          BoxShadow(
-              color: Constants.randomColours
-                  .elementAt(Random().nextInt(Constants.randomColours.length))
-                  .withOpacity(0.95)),
-        ],
-      ),
-      child: Column(children: [
-        Container(
-          height: 200,
-          width: double.infinity,
-          child: Center(
-            child: Text(
-              qst,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontSize: 23,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w800,
-                  fontFamily: 'Abel'),
-            ),
+    return ValueListenableBuilder(
+      valueListenable: isPotrait,
+      builder: (BuildContext context,_,Widget ?child){
+        return Container(
+          alignment: Alignment.bottomCenter,
+          decoration: BoxDecoration(
+            //color: Colors.white,
+            borderRadius: BorderRadius.all(Radius.circular(30)),
+            boxShadow: [
+              BoxShadow(
+                  color: Constants.randomColours
+                      .elementAt(Random().nextInt(Constants.randomColours.length))
+                      .withOpacity(0.95)),
+            ],
           ),
-        ),
-      ]),
+          child: Column(children: [
+            SizedBox(
+              height: isPotrait.value == true ? 200 : 100, // make the questions readable in landscape mode
+              width: double.infinity,
+              child: Center(
+                child: Text(
+                  qst,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: 23,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w800,
+                      fontFamily: 'Abel'),
+                ),
+              ),
+            ),
+          ]),
+        );
+      },
     );
   }
 

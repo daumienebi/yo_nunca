@@ -22,23 +22,12 @@ class CategoryListPage extends StatelessWidget{
         length: tabLength,
         child: Scaffold(
             appBar: NewGradientAppBar(
-              actions: [
-                TextButton(
-                  onPressed: (){},
-                  child:
-                  Text("$categoriesCount",style: TextStyle(color: Colors.white,fontSize: 17),),
-                  style: TextButton.styleFrom(
-                    backgroundColor: Colors.green[200],
-                    fixedSize: Size(15,15),
-                  ),
-                )
-              ],
               title: Text('Mis Categorías'),
               bottom: TabBar(
                 indicatorColor: Colors.cyan,
-                tabs: const[
-                  Tab(text: "Predertaminados"),
-                  Tab(text: "Agregados"),
+                tabs: [
+                  Tab(child: _categoriesCountWidget(_defaultCategories.length,'Por Defecto'),),
+                  Tab(child: _categoriesCountWidget(_categories.length,'Agregados'),),
                 ],
               ),
               gradient: const LinearGradient(
@@ -53,6 +42,24 @@ class CategoryListPage extends StatelessWidget{
             )
         ),
       );
+  }
+
+  _categoriesCountWidget(int number,String tabName){
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children:[
+        Text(tabName),
+        SizedBox(width: 5,),
+        Container(
+        child: Center(child: Text(number.toString(),textAlign: TextAlign.center,style: TextStyle(color: Colors.white),)),
+        decoration: BoxDecoration(
+          color: Colors.red,
+          borderRadius: BorderRadius.circular(15),
+        ),
+        height: 30,
+        width: 50,
+      ),]
+    );
   }
 
   Widget _defaultCategoryContents(List<Category> categories){
@@ -104,7 +111,7 @@ class CategoryListPage extends StatelessWidget{
             onPressed: (){
               Navigator.pushNamed(context, Constants.routes.newCategory);
             },
-            child: Text("Añadir categorias"),
+            child: Text("Añadir categoria"),
           style: TextButton.styleFrom(backgroundColor: Colors.greenAccent),
         )
       ],
