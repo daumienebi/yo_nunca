@@ -186,7 +186,7 @@ class _CategoryManagementPageState extends State<CategoryManagementPage>{
 
   Widget _questionTile(Question question) {
     return ListTile(
-      title: Text(question.description),
+      title: Text(question.description,overflow: TextOverflow.ellipsis),
       trailing: InkWell(
         onTap: () {
           setState(() {

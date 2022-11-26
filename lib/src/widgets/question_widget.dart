@@ -11,7 +11,9 @@ import 'package:yo_nunca/src/utils/messages.dart';
 class QuestionWidget extends StatefulWidget {
   final Category category;
   final bool mixedMode;
-  const QuestionWidget({Key? key, required this.category,required this.mixedMode}) : super(key: key);
+  const QuestionWidget(
+      {Key? key, required this.category, required this.mixedMode})
+      : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -23,12 +25,13 @@ class _QuestionWidgetState extends State<QuestionWidget> {
   List<Widget> questionWidgets = [];
   List<Question> questions = [];
   int _currentndex = 0;
+  final ValueNotifier<bool> isPotrait = ValueNotifier<bool>(true);
 
   Future<List<Question>> _getQstData() {
     QuestionProvider provider =
         Provider.of<QuestionProvider>(context, listen: true);
 
-    if(!widget.mixedMode){
+    if (!widget.mixedMode) {
       switch (widget.category.id) {
         case Constants.normalCategoryId:
           {
@@ -58,56 +61,64 @@ class _QuestionWidgetState extends State<QuestionWidget> {
                 const Duration(seconds: 2), () => []);
           }
       }
-    }else{
+    } else {
       questions = provider.questions;
     }
-    return Future.delayed(Duration(seconds: 2),()=> questions);
+    return Future.delayed(Duration(seconds: 2), () => questions);
   }
 
   @override
   Widget build(BuildContext context) {
     //QuestionProvider provider =
-        //Provider.of<QuestionProvider>(context, listen: true);
+    //Provider.of<QuestionProvider>(context, listen: true);
     // TODO: implement build
-    return Center(
-      child: FutureBuilder(
-          future: _getQstData(),
-          builder: (_, AsyncSnapshot snapshot) {
-            List<Widget> futureWidgets = [];
-            if(snapshot.hasData) {
-              //if data is available then display the questions(set the list of widgets to the questions), else display the error page
-              futureWidgets = snapshot.data != null && snapshot.data.length > 0
-                  ? _questionContainerWidget(snapshot)
-                  : _noQuestionWidget();
-              //test = _questionContainerWidget(snapshot);
-            } else if (snapshot.hasError) {
-              futureWidgets = <Widget>[
-                Messages.errorWidget('No se pudieron cargar las preguntas :('),
-              ];
-            } else {
-              futureWidgets = <Widget>[
-                Messages.circularLoadingWidget('Cargando preguntas ...'),
-              ];
-            }
-            return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: futureWidgets,
-              ),
-            );
-          }),
+    return OrientationBuilder(
+      builder: (BuildContext context, Orientation orientation) {
+        isPotrait.value = orientation == Orientation.portrait;
+        return Center(
+          child: FutureBuilder(
+              future: _getQstData(),
+              builder: (_, AsyncSnapshot snapshot) {
+                List<Widget> futureWidgets = [];
+                if (snapshot.hasData) {
+                  //if data is available then display the questions(set the list of widgets to the questions), else display the error page
+                  futureWidgets =
+                      snapshot.data != null && snapshot.data.length > 0
+                          ? _questionContainerWidget(snapshot)
+                          : _noQuestionWidget();
+                  //test = _questionContainerWidget(snapshot);
+                } else if (snapshot.hasError) {
+                  futureWidgets = <Widget>[
+                    Messages.errorWidget(
+                        'No se pudieron cargar las preguntas :('),
+                  ];
+                } else {
+                  futureWidgets = <Widget>[
+                    Messages.circularLoadingWidget('Cargando preguntas ...'),
+                  ];
+                }
+                return Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: futureWidgets,
+                  ),
+                );
+              }),
+        );
+      },
     );
   }
 
+  ///Parent container for the fav button,question textWidget and the Previous & Next Button
   _questionContainerWidget(AsyncSnapshot snapshot) {
     //displays this widget when data is received
     return <Widget>[
       Column(mainAxisAlignment: MainAxisAlignment.center, children: [
         //if data is available then display the questions, else display the error page
         //snapshot.data != null && snapshot.data.length > 0
-            //? _questionTextWidget(snapshot.data[_currentndex])
-            //: _noQuestionWidget(),
-        _questionTextWidget(snapshot.data [_currentndex]),
+        //? _questionTextWidget(snapshot.data[_currentndex])
+        //: _noQuestionWidget(),
+        _questionTextWidget(snapshot.data[_currentndex]),
         SizedBox(height: 10),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -127,34 +138,38 @@ class _QuestionWidgetState extends State<QuestionWidget> {
     String errorMessage =
         'No hay preguntas disponibles para la categoría : ${widget.category.description}, ve a las categorias para añadirlas.';
     return <Widget>[
-     Messages.errorWidget2(errorMessage,null, 0.5),
-      SizedBox(height: 20,),
-      _goToCategoriesBtn()
+      Messages.errorWidget2(errorMessage, null, 0.5),
+      SizedBox(
+        height: 20,
+      ),
+      ElevatedButton(
+        onPressed: () {
+          Navigator.pushNamed(context, Constants.routes.categoryListPage);
+        },
+        child: Text('Ir a Categorias'),
+        style: TextButton.styleFrom(backgroundColor: Colors.greenAccent),
+      )
     ];
   }
 
-  Widget _goToCategoriesBtn() {
-    return ElevatedButton(
-      onPressed: () {
-        print("TODO: Go to categories");
-      },
-      child: Text('Ir a Categorias'),
-      style: TextButton.styleFrom(backgroundColor: Colors.greenAccent),
-    );
-  }
-
   Widget _questionTextWidget(Question question) {
-    Icon likedIcon = Icon(Icons.favorite,color: Colors.red,size: 40,);
-    Icon unLikedIcon = Icon(Icons.favorite_border,size: 40,);
+    Icon likedIcon = Icon(
+      Icons.favorite,
+      color: Colors.red,
+      size: 40,
+    );
+    Icon unLikedIcon = Icon(
+      Icons.favorite_border,
+      size: 40,
+    );
     var snackBar;
     return Consumer(
-      builder:(_,QuestionProvider provider,__) => Column(
-          children: [
+      builder: (_, QuestionProvider provider, __) => Column(children: [
         //like and unlike icon
         TextButton(
           onPressed: () {
             setState(() {
-              if(question.isFavourite){
+              if (question.isFavourite) {
                 provider.removeFromFavourites(question);
                 question.isFavourite = false;
                 snackBar = SnackBar(
@@ -162,7 +177,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
                   content: const Text('Pregunta eliminada de favoritos'),
                 );
                 ScaffoldMessenger.of(context).showSnackBar(snackBar);
-              }else{
+              } else {
                 provider.addToFavourites(question);
                 question.isFavourite = true;
                 snackBar = SnackBar(
@@ -175,30 +190,34 @@ class _QuestionWidgetState extends State<QuestionWidget> {
           },
           child: question.isFavourite ? likedIcon : unLikedIcon,
         ),
-        SizedBox(height: 10),
         //question description
-        Container(
-          decoration: BoxDecoration(
-            color: Colors.teal[100],
-            borderRadius: BorderRadius.all(Radius.circular(25)),
-            boxShadow: [
-              BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 5,
-                  blurRadius: 5,
-                  offset: Offset(0, 3))
-            ],
-          ),
-          height: 320,
-          width: 320,
-          child: Center(
-            child: Text(
-              question.description,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontSize: 20, color: Colors.black, fontFamily: 'Abel'),
-            ),
-          ),
+        ValueListenableBuilder(
+          valueListenable: isPotrait,
+          builder: (BuildContext context, _, Widget? child) {
+            return Container(
+              decoration: BoxDecoration(
+                color: Colors.teal[100],
+                borderRadius: BorderRadius.all(Radius.circular(25)),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 5,
+                      blurRadius: 5,
+                      offset: Offset(0, 3))
+                ],
+              ),
+              height: isPotrait.value == true ? 320 : 150,
+              width: isPotrait.value == true ? 320 : 420,
+              child: Center(
+                child: Text(
+                  question.description,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: 20, color: Colors.black, fontFamily: 'Abel'),
+                ),
+              ),
+            );
+          },
         ),
       ]),
     );

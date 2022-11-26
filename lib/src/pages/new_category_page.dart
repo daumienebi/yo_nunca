@@ -148,7 +148,7 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
 
   Widget _questionTile(Question question) {
     return ListTile(
-      title: Text(question.description),
+      title: Text(question.description,overflow: TextOverflow.ellipsis),
       trailing: InkWell(
         onTap: () {
           setState(() {

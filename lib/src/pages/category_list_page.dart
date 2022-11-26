@@ -16,8 +16,6 @@ class CategoryListPage extends StatelessWidget{
     CategoryProvider provider = Provider.of<CategoryProvider>(context, listen: true);
     List<Category> _defaultCategories = provider.defaultCategories;
     List<Category> _categories = provider.categories;
-    int categoriesCount = _defaultCategories.length + _categories.length; //get the size here bcoz the one from the provider is messing everything up
-
       return DefaultTabController(
         length: tabLength,
         child: Scaffold(
@@ -46,7 +44,7 @@ class CategoryListPage extends StatelessWidget{
 
   _categoriesCountWidget(int number,String tabName){
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.center,
       children:[
         Text(tabName),
         SizedBox(width: 5,),
@@ -132,7 +130,7 @@ class CategoryListPage extends StatelessWidget{
             height: 120,
             width: double.infinity,
             decoration: BoxDecoration(
-                color: Colors.black,
+                color: Colors.black87,
                 borderRadius: BorderRadius.circular(15)
             ),
             child: Column(
