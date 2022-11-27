@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 import 'package:yo_nunca/src/models/category.dart';
-import 'package:yo_nunca/src/widgets/widgets.dart';
+import 'package:yo_nunca/src/ui/widgets/widgets.dart';
 
 class MixedModePage extends StatelessWidget{
   const MixedModePage({Key? key}) : super(key: key);
