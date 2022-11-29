@@ -6,7 +6,7 @@ class QuestionFields{
   static const String isFavourite = 'isFavourite';
 
   //Static list with the name values to easily retrieve fields values from the DB
-  static final List <String> values =[id,description,isFavourite];
+  static final List <String> values =[id,categoryId,description,isFavourite];
 }
 
 class Question{

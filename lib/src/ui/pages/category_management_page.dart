@@ -45,6 +45,7 @@ class _CategoryManagementPageState extends State<CategoryManagementPage>{
           gradient: const LinearGradient(
               colors: [Colors.amber, Colors.white70, Colors.amber]),
         ),
+        backgroundColor: Colors.orange[50],
         body: Container(
           margin: EdgeInsets.all(10),
           child: Column(
@@ -70,7 +71,7 @@ class _CategoryManagementPageState extends State<CategoryManagementPage>{
       itemBuilder: (context, int index) {
         return _questionTile(existingQuestions[index]);
       },
-      separatorBuilder: (ctx,index)=> Divider(color: Colors.black54,height: 5,),
+      separatorBuilder: (ctx,index)=> Divider(color: Colors.greenAccent,height: 5,),
       itemCount: existingQuestions.length,
     );
   }

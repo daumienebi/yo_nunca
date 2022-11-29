@@ -18,6 +18,7 @@
     https://www.mdzol.com/sociedad/2021/3/10/yo-nunca-70-ideas-de-preguntas-para-jugar-con-tus-amigos-144225.html --questions
     https://psycatgames.com/es/magazine/party-games/dirty-never-ever/
     https://psycatgames.com/es/magazine/party-games/never-ever/ -- they accepted
+    -New Category Image : <a href="https://www.freepik.com/free-vector/vector-glass-cosmopolitan-cocktail-garnished-with-slice-lime-bar-counter-blur-brown-background_11053206.htm?query=drinks?query=drinks&collectionId=1032&&position=9&from_view=collections#position=9">Image by macrovector</a> on Freepik
 
 ## Bugs
 - Snackbar de "deshacer" no debe aparecer despues de salir de esa pantalla de preguntas porque lo intenta redibujar y la pantalla ya esta cerrada -- /// It is an error to call [setState] unless [mounted] is true.(Answer)

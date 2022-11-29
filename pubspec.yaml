@@ -39,6 +39,8 @@ dependencies:
   card_swiper: ^2.0.2
   appinio_swiper: ^1.1.0
   provider: ^6.0.4
+  sqflite: ^2.0.2
+  path: ^1.8.0
 
 dev_dependencies:
   flutter_test:

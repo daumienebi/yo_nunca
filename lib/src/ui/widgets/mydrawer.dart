@@ -50,7 +50,7 @@ class MyDrawer extends StatelessWidget{
 
   Widget _drawerContents(context){
     return Container(
-      color: Colors.amber,
+      color: Colors.amber[300],
       child: Column(
           children: [
             Container(

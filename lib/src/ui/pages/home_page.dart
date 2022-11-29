@@ -89,7 +89,6 @@ class HomePage extends StatelessWidget {
         ElevatedButton(
           onPressed: () {
             Navigator.pushNamed(context, Constants.routes.mixedModePage,arguments: Category(id:0,description: 'MODO MIXTO',imageRoute: ''));
-            print("TODO: Generate mixed questions with all the categories");
           },
           child: Text(
             'MODO MIXTO',

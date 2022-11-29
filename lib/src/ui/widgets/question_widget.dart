@@ -94,7 +94,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
                   ];
                 } else {
                   futureWidgets = <Widget>[
-                    Messages.circularLoadingWidget('Cargando preguntas ...'),
+                    Messages.circularLoadingWidget(widget.mixedMode ? 'Cargando preguntas de todas las categorías...' : 'Cargando preguntas ...'),
                   ];
                 }
                 return Center(
@@ -169,6 +169,15 @@ class _QuestionWidgetState extends State<QuestionWidget> {
         TextButton(
           onPressed: () {
             setState(() {
+              //based on the shitty database structure, create a method to check if
+              // the question description already exists in the favourite
+              // table[store the entire question there too]
+
+              //TODO : maybe create two cases depending on if the question was by default or added by the user
+              //pseudo code :
+              //if(question.isDefault){
+                //code if its a default question
+              //}
               if (question.isFavourite) {
                 provider.removeFromFavourites(question);
                 question.isFavourite = false;

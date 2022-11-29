@@ -42,7 +42,7 @@ class AppState extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => CategoryProvider()),
           ChangeNotifierProvider(create: (_) => QuestionProvider()),
         ],
-      child: MyApp(),
+      child: const MyApp(),
     );
   }
 }

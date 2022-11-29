@@ -46,9 +46,9 @@ class CategoriesCardSwiper extends StatelessWidget {
           },
           itemCount: categories.length,
           itemHeight: size.height * 0.5, //try to calculate it depending on potrait or landscape mode
-          itemWidth: size.width * 0.80, //try to calculate it depending on potrait or landscape mode
-          //layout: SwiperLayout.TINDER,
-          layout: SwiperLayout.STACK,
+          itemWidth: size.width * 0.85, //try to calculate it depending on potrait or landscape mode
+          layout: SwiperLayout.TINDER,
+          //layout: SwiperLayout.STACK,
         ),
       ),
     ]);

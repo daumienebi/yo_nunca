@@ -179,7 +179,7 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
             //maybe add an image
             if (_formKey.currentState!.validate()) {
               _category = categoryNameController.text.toUpperCase();
-              Category newCategory = Category(id : newCategoryId, description: _category, imageRoute: "assets/images/blurBW.png");
+              Category newCategory = Category(id : newCategoryId, description: _category, imageRoute: "assets/images/newCategoryImage.jpg");
               provider.addCategory(newCategory);
               print(newCategory.toString());
               final snackBar = SnackBar(
