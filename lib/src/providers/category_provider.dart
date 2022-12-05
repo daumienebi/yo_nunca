@@ -1,67 +1,81 @@
-import 'dart:convert';
-
+import 'dart:developer' as dev;
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/services.dart';
 import 'package:yo_nunca/src/models/category.dart';
+import 'package:yo_nunca/src/repository/category_repository.dart';
 
 class CategoryProvider with ChangeNotifier{
+  //Obtain an instance of the Repository
+  final _categoryRepository = CategoryRepository();
 
+  List<Category> _categories = [];
   List<Category> _defaultCategories = [];
-  List<Category> _categories = []; //the new categories to be added by the user
-  List<Category> _allCategories = []; //the new categories to be added by the user
-
-  List<Category> get defaultCategories{
-    if(_defaultCategories.isNotEmpty) return _defaultCategories;
-    getDefaultCategories();
-    return _defaultCategories;
-  }
+  List<Category> _newCategories = [];
 
   List<Category> get categories{
-    if(_categories.isNotEmpty) return _categories;
     getCategories();
     return _categories;
   }
 
-  //nope
-  List<Category> get allCategories{
-    getAllCategories();
-    return _allCategories;
+  List<Category> get defaultCategories {
+    getDefaultCategories();
+    return _defaultCategories;
   }
 
-  Future<List<Category>> getDefaultCategories() async{
-    //help from https://www.bezkoder.com/dart-flutter-parse-json-string-array-to-object-list/#DartFlutter_parse_JSON_array_into_List
-    String categoriesJson = await rootBundle.loadString('assets/questions/categories.json');//get the data later from the database
-    var jsonToList = json.decode(categoriesJson)['categories'] as List;
-    _defaultCategories = jsonToList.map((jsonToList) => Category.fromJson(jsonToList)).toList();
+  List<Category> get newCategories {
+    getNewCategories();
+    return _newCategories;
+  }
+
+  _setCategories(List<Category> dbCategories){
+    _categories = dbCategories;
+    //dev.log('${_categories.length} categories in setCategories');
+    notifyListeners();
+  }
+  int categoriesCount() => categories.length;
+
+  //From DB
+  addCategory (Category category) async{
+    final id = await _categoryRepository.addCategory(category);
+    notifyListeners();
+    return id;
+  }
+
+  deleteCategory (Category category) async{
+    final id = await _categoryRepository.deleteCategory(category);
+    notifyListeners();
+    return id;
+  }
+
+  modifyCategory (Category category) async{
+    final id = await _categoryRepository.modifyCategory(category);
+    notifyListeners();
+    return id;
+  }
+
+  //Return the default categories
+  List<Category> get defaultQuestion {
+    getDefaultCategories();
     notifyListeners();
     return _defaultCategories;
   }
 
+  getDefaultCategories() async{
+    var defaultCategories = await _categoryRepository.getDefaultCategories();
+    _defaultCategories = defaultCategories;
+    notifyListeners();
+  }
+
+  getNewCategories() async{
+    var newCategories = await _categoryRepository.getNewCategories();
+    _newCategories = newCategories;
+    notifyListeners();
+  }
+
   ///Returns the list of categories added by the user
-  Future<List<Category>> getCategories() async{
-    return _categories;
-  }
-
-  ///Returns the default categories and the ones added by the user
-  Future<List<Category>> getAllCategories() async{
-    // nope
-    _allCategories.addAll(defaultCategories);
-    _allCategories.addAll(categories);
-    return _allCategories;
-  }
-
-  int categoriesCount() => allCategories.length;
-
-  Future<int> addCategory (Category category) async{
-    _categories.add(category);
-    notifyListeners();
-    return category.id ?? 0;
-  }
-
-  Future<int> deleteCategory (Category category) async{
-    _categories.remove(category);
-    notifyListeners();
-    return category.id ?? 0;
+  void getCategories() async{
+    var dbCategories = await _categoryRepository.getAllCategories();
+    _setCategories(dbCategories);
+    //dev.log('${_categories.length} categories in getCategories');
   }
 
 }

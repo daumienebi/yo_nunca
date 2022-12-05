@@ -7,6 +7,7 @@ import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/models/question.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
 import 'package:yo_nunca/src/utils/my_decorations.dart';
+import 'dart:developer' as dev;
 
 class NewCategoryPage extends StatefulWidget {
   const NewCategoryPage({Key? key}) : super(key: key);
@@ -26,7 +27,6 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
   @override
   Widget build(BuildContext context) {
     //CategoryProvider xProvider = Provider.of<CategoryProvider>(context, listen: true);
-    // TODO: implement build
     return Scaffold(
       appBar: NewGradientAppBar(
         title: Text('Categoría Nueva'),
@@ -116,11 +116,13 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
               ),
               TextButton(
                 onPressed: () async {
+                  int newCategoryId = provider.categoriesCount() + 1;
                   _question = _questionController.text;
                   var newQuestion = Question(
                       description: _question,
                       isFavourite: false,
-                      categoryId: 1);
+                      categoryId: newCategoryId//the new id will be used if its added
+                  );
                   setState(() {
                     newQuestions.add(newQuestion);
                   });
@@ -148,7 +150,7 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
 
   Widget _questionTile(Question question) {
     return ListTile(
-      title: Text(question.description,overflow: TextOverflow.ellipsis),
+      title: Text(question.description, overflow: TextOverflow.ellipsis),
       trailing: InkWell(
         onTap: () {
           setState(() {
@@ -162,7 +164,7 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
         ),
       ),
       onTap: () {
-        print("TODO : Edit question");
+        dev.log("TODO : Edit question");
       },
       shape: Border.all(color: Colors.white),
     );
@@ -175,31 +177,29 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
       return ElevatedButton(
           style: btnStyle,
           onPressed: () async {
-            int newCategoryId = provider.categoriesCount() + 1;
-            //maybe add an image
             if (_formKey.currentState!.validate()) {
               _category = categoryNameController.text.toUpperCase();
-              Category newCategory = Category(id : newCategoryId, description: _category, imageRoute: "assets/images/newCategoryImage.jpg");
-              provider.addCategory(newCategory);
-              print(newCategory.toString());
-              final snackBar = SnackBar(
-                duration: Duration(seconds: 1),
-                content: const Text('Nueva categoría añadida'),
-              );
-              ScaffoldMessenger.of(context).showSnackBar(snackBar);
-              Navigator.pop(context);
+              Category newCategory = Category(
+                  description: _category,
+                  imageRoute: "assets/images/newCategoryImage.png");
+              int result = await provider.addCategory(newCategory);
+              dev.log(newCategory.toString());
+              _showSnackBar(result);
             }
           },
           child: Text("Guardar"));
     });
   }
 
-  void _checkResult(int result) {
+  ///Displays a snack bar depending on if the category was added or not
+  void _showSnackBar(int result) {
+    dev.log(result.toString());
     result > 0
-        ? ScaffoldMessenger.of(context)
-            .showSnackBar(const SnackBar(content: Text('Pregunta guardada!')))
-        : ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('No se pudo guardar la pregunta')));
+        ? ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            duration: Duration(seconds: 1), content: Text('Categoría añadida')))
+        : ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            duration: Duration(seconds: 1),
+            content: Text('No se puedo añadir la categoría')));
     Navigator.pop(context);
   }
 }

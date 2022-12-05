@@ -12,11 +12,6 @@ class CategoriesCardSwiper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return _cardSwiper(context);
-  }
-
-  Widget _cardSwiper(context) {
-    final size = MediaQuery.of(context).size;
     return Column(children: [
       SizedBox(
         width: double.infinity,
@@ -33,14 +28,14 @@ class CategoriesCardSwiper extends StatelessWidget {
                   tag: UniqueKey(), //or find another way to use a unique tag
                   child: Container(
                       margin: const EdgeInsets.all(10),
-                      padding: EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(5),
                       decoration: MyDecorations.homePageBoxDecoration(
                           categories[index].imageRoute),
                       height: Constants.homePageWidgetHeight,
                       width: 300,
                       child: MyDecorations.homePageBoxText(
                           categories[index].description,
-                          Colors.white,
+                          categories[index].id! > 3 ? Colors.black : Colors.white,
                           null))),
             );
           },

@@ -10,14 +10,11 @@ import 'package:yo_nunca/src/ui/widgets/widgets.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     CategoryProvider provider = Provider.of<CategoryProvider>(context, listen: true);
-    //Obtaining all the categories here because the provider.allCategories
-    //method is not returning the items.
-    List<Category> _allCategories = [];
-    _allCategories.addAll(provider.defaultCategories);
-    _allCategories.addAll(provider.categories);
+    List<Category> categories = provider.categories;
     //physics: const AlwaysScrollableScrollPhysics(),
     return Scaffold(
       drawer: MyDrawer(),
@@ -54,8 +51,11 @@ class HomePage extends StatelessWidget {
               child: Container(
                   margin: EdgeInsets.only(top: 50),
                   child: Column(children: [
-                    Text("Desliza para ver las categorias...",style: TextStyle(color: Colors.black54,fontSize: 15),),
-                    CategoriesCardSwiper(categories: _allCategories),
+                    Text(
+                      "Desliza para ver las categorias...",
+                      style: TextStyle(color: Colors.black54, fontSize: 15),
+                    ),
+                    CategoriesCardSwiper(categories: categories),
                     SizedBox(
                       height: 30,
                     ),
@@ -71,7 +71,7 @@ class HomePage extends StatelessWidget {
     return Column(
       children: [
         Container(
-          margin: EdgeInsets.symmetric(horizontal: 20,vertical: 5),
+          margin: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
           padding: EdgeInsets.all(7),
           decoration: BoxDecoration(color: Colors.white, boxShadow: [
             BoxShadow(
@@ -80,15 +80,17 @@ class HomePage extends StatelessWidget {
                 blurRadius: 10,
                 offset: Offset(0, 3))
           ]),
-          child: Column(
-            children: const[
-              Text("Dudas con que categoria elegir ?  👀 ", textAlign: TextAlign.center, style: TextStyle(color: Colors.black54,fontSize: 16)),
-            ]
-          ),
+          child: Column(children: const [
+            Text("Dudas con que categoria elegir ?  👀 ",
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.black54, fontSize: 16)),
+          ]),
         ),
         ElevatedButton(
           onPressed: () {
-            Navigator.pushNamed(context, Constants.routes.mixedModePage,arguments: Category(id:0,description: 'MODO MIXTO',imageRoute: ''));
+            Navigator.pushNamed(context, Constants.routes.mixedModePage,
+                arguments:
+                    Category(id: 0, description: 'MODO MIXTO', imageRoute: ''));
           },
           child: Text(
             'MODO MIXTO',

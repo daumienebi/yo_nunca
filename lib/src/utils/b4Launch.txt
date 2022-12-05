@@ -1,3 +1,6 @@
+#Help Links
+//help from https://www.bezkoder.com/dart-flutter-parse-json-string-array-to-object-list/#DartFlutter_parse_JSON_array_into_List
+
 # Settings
     -- urlLanucher : https://pub.dev/packages/url_launcher
     <queries>
@@ -18,7 +21,10 @@
     https://www.mdzol.com/sociedad/2021/3/10/yo-nunca-70-ideas-de-preguntas-para-jugar-con-tus-amigos-144225.html --questions
     https://psycatgames.com/es/magazine/party-games/dirty-never-ever/
     https://psycatgames.com/es/magazine/party-games/never-ever/ -- they accepted
-    -New Category Image : <a href="https://www.freepik.com/free-vector/vector-glass-cosmopolitan-cocktail-garnished-with-slice-lime-bar-counter-blur-brown-background_11053206.htm?query=drinks?query=drinks&collectionId=1032&&position=9&from_view=collections#position=9">Image by macrovector</a> on Freepik
+    -New Category Image : <a href="https://www.flaticon.com/free-icons/cheers" title="cheers icons">Cheers icons created by Freepik - Flaticon</a>
+    openReadOnlyDatabase(path) -- to maybe create a read only database for the default data
+    love.png : <a href="https://www.flaticon.com/free-icon/love_1029183?term=heart&page=1&position=14&page=1&position=14&related_id=1029183&origin=tag"> Heart icons created by Freepik - Flaticon</a>
+    question image  : <a href="https://www.flaticon.com/free-icon/question_2538036?related_id=2538036">Question icons created by Freepik - Flaticon</a>
 
 ## Bugs
 - Snackbar de "deshacer" no debe aparecer despues de salir de esa pantalla de preguntas porque lo intenta redibujar y la pantalla ya esta cerrada -- /// It is an error to call [setState] unless [mounted] is true.(Answer)

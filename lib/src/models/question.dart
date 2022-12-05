@@ -11,25 +11,25 @@ class QuestionFields{
 
 class Question{
   int? id;
-  int? categoryId;
+  int categoryId;
   String description;
-  bool isFavourite; //?
+  bool isFavourite;
 
-  Question({this.id,this.categoryId,required this.description,required this.isFavourite});
+  Question({this.id,required this.categoryId,required this.description,required this.isFavourite});
 
   factory Question.fromMap(Map<String,dynamic> value) =>
       Question(
         id: value["id"],
         categoryId: value["categoryId"],
         description: value["description"],
-        isFavourite: value["isFavourite"]
+        isFavourite: value["isFavourite"] == 1 ? true : false
       );
 
   Map<String,dynamic> toMap() =>{
-    QuestionFields.id: id,
+    //QuestionFields.id: id!,
     QuestionFields.categoryId: categoryId,
     QuestionFields.description: description,
-    QuestionFields.isFavourite: isFavourite,
+    QuestionFields.isFavourite: isFavourite == true ? 1 : 0, // the field is an INTEGER in the Database
   };
 
   factory Question.fromJson(dynamic json) {

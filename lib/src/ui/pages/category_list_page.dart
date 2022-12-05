@@ -1,10 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:yo_nunca/src/models/category.dart';
+import 'package:yo_nunca/src/models/question.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
+import 'dart:developer' as dev;
 // ignore_for_file: prefer_const_constructors
 
 class CategoryListPage extends StatelessWidget{
@@ -15,7 +16,7 @@ class CategoryListPage extends StatelessWidget{
     const int tabLength = 2;
     CategoryProvider provider = Provider.of<CategoryProvider>(context, listen: true);
     List<Category> _defaultCategories = provider.defaultCategories;
-    List<Category> _categories = provider.categories;
+    List<Category> _categories = provider.newCategories;
       return DefaultTabController(
         length: tabLength,
         child: Scaffold(
@@ -69,7 +70,7 @@ class CategoryListPage extends StatelessWidget{
           Expanded(
             child: ListView.separated(
               itemBuilder: (BuildContext context, int index){
-                return _catgegoryTile(categories[index],false);
+                return CategoryTile(category:categories[index],defaultCategory: false);
               },
               separatorBuilder: (context,index) => Divider(height: 3,),
               itemCount: categories.length
@@ -89,7 +90,7 @@ class CategoryListPage extends StatelessWidget{
             Expanded(
               child: ListView.separated(
                   itemBuilder: (BuildContext context, int index){
-                    return _catgegoryTile(categories[index],true);
+                    return CategoryTile(category:categories[index],defaultCategory: true);
                   },
                   separatorBuilder: (context,index) => Divider(height: 3,),
                   itemCount: categories.length
@@ -115,38 +116,60 @@ class CategoryListPage extends StatelessWidget{
       ],
     );
   }
+}
 
-  Widget _catgegoryTile(Category category,bool defaultCategory){
+class CategoryTile extends StatefulWidget{
+  final Category category;
+  final bool defaultCategory;
+  const CategoryTile({Key? key,required this.category,required this.defaultCategory}) : super(key: key);
+
+  @override
+  State<CategoryTile> createState() => _CategoryTileState();
+}
+
+class _CategoryTileState extends State<CategoryTile> {
+  int _count = 0;
+
+  Future<void> getCount() async {
+    QuestionProvider provider = Provider.of<QuestionProvider>(context,listen: false);
+    List<Question> questions = await provider.getQuestionsPerCategory(widget.category.id!); // Await on your future.
+    _count = questions.length;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    getCount();
     final mainTxtStyle = TextStyle(fontSize: 25,color: Colors.cyan,fontFamily: 'OoohBaby',fontWeight: FontWeight.bold);
-    final countTxtSyle = TextStyle(fontSize: 18,color: Colors.white,fontWeight: FontWeight.normal);
+    final countTxtStyle = TextStyle(fontSize: 18,color: Colors.white,fontWeight: FontWeight.normal);
     final editBtn = TextButton.styleFrom(backgroundColor: Colors.lightGreen);
     final deleteBtn = TextButton.styleFrom(backgroundColor: Colors.redAccent);
+    CategoryProvider provider = Provider.of<CategoryProvider>(context,listen: true);
+    // TODO: implement build
     return Center(
-      child: Consumer(
-        builder: (BuildContext context, QuestionProvider provider,__){
-          return Container(
-            padding: EdgeInsets.all(7),
-            margin: EdgeInsets.all(10),
-            height: 120,
-            width: double.infinity,
-            decoration: BoxDecoration(
-                color: Colors.black87,
-                borderRadius: BorderRadius.circular(15)
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(category.description,style: mainTxtStyle,textAlign: TextAlign.left,),
-                RichText(text: TextSpan(text: '${provider.getNumberOfQuestionsPerCategory(category.id!)} preguntas',style: countTxtSyle)),
-                Center(
+        child:
+        Container(
+          padding: EdgeInsets.all(7),
+          margin: EdgeInsets.all(10),
+          height: 120,
+          width: double.infinity,
+          decoration: BoxDecoration(
+              color: Colors.black87,
+              borderRadius: BorderRadius.circular(15)
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(widget.category.description,style: mainTxtStyle,textAlign: TextAlign.left,),
+              RichText(text: TextSpan(text: '$_count preguntas',style: countTxtStyle)),
+              Center(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Visibility(
-                        visible: defaultCategory,
+                        visible: widget.defaultCategory,
                         child: ElevatedButton(
                           onPressed: (){
-                            Navigator.pushNamed(context, Constants.routes.categoryManagementPage,arguments: category);//send the category to be edited to the next page
+                            Navigator.pushNamed(context, Constants.routes.categoryManagementPage,arguments: widget.category);//send the category to be edited to the next page
                           },
                           child: Text(
                             'Editar',
@@ -160,9 +183,12 @@ class CategoryListPage extends StatelessWidget{
                       ),
                       SizedBox(width: 10,),
                       Visibility(
-                        visible: defaultCategory,
+                        visible: widget.defaultCategory,
                         child: ElevatedButton(
-                          onPressed: (){},
+                          onPressed: (){
+                            provider.deleteCategory(widget.category);
+
+                          },
                           child: Text(
                             'Borrar',
                             style: TextStyle(
@@ -175,12 +201,10 @@ class CategoryListPage extends StatelessWidget{
                       ),
                     ],
                   )
-                )
-              ],
-            ),
-          );
-        },
-      ),
+              )
+            ],
+          ),
+        )
     );
   }
 }

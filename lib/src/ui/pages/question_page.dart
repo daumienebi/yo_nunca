@@ -6,11 +6,6 @@ import 'package:yo_nunca/src/ui/widgets/widgets.dart';
 
 class QuestionPage extends StatelessWidget{
   const QuestionPage({Key? key}) : super(key: key);
-
-  //-- This shit should be for the stateless widget, not the whole page
-  //final String pageTitle;
-  //const QuestionPage({Key? key, required this.pageTitle}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -26,6 +21,7 @@ class QuestionPage extends StatelessWidget{
         gradient: const LinearGradient(colors: [Colors.amber,Colors.white70,Colors.amber]),//Change it later
       ),
         backgroundColor: Colors.orange[50],
+        //[mixedMode] is false because this widget is used to display questions for each category
       body: QuestionWidget(category: category,mixedMode: false,)
     );
   }

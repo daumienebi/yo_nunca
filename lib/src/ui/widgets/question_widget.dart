@@ -7,6 +7,7 @@ import 'package:yo_nunca/src/models/question.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
 import 'package:yo_nunca/src/utils/messages.dart';
+import 'dart:developer' as dev;
 
 class QuestionWidget extends StatefulWidget {
   final Category category;
@@ -27,44 +28,22 @@ class _QuestionWidgetState extends State<QuestionWidget> {
   int _currentndex = 0;
   final ValueNotifier<bool> isPotrait = ValueNotifier<bool>(true);
 
-  Future<List<Question>> _getQstData() {
+  Future<List<Question>> _getQstData() async{
     QuestionProvider provider =
         Provider.of<QuestionProvider>(context, listen: true);
 
-    if (!widget.mixedMode) {
-      switch (widget.category.id) {
-        case Constants.normalCategoryId:
-          {
-            questions = provider.normalQuestions;
-            return Future<List<Question>>.delayed(
-                const Duration(seconds: 1), () => questions);
-          }
-          break;
-        case Constants.intermediateCategoryId:
-          {
-            questions = provider.intermediateQuestions;
-            return Future<List<Question>>.delayed(
-                const Duration(seconds: 1), () => questions);
-          }
-          break;
-        case Constants.hotCategoryId:
-          {
-            questions = provider.hotQuestions;
-            return Future<List<Question>>.delayed(
-                const Duration(seconds: 1), () => questions);
-          }
-          break;
-        default:
-          {
-            print(widget.category.id);
-            return Future<List<Question>>.delayed(
-                const Duration(seconds: 2), () => []);
-          }
-      }
-    } else {
+    if (widget.mixedMode) {
+      dev.log("Mixed mode");
+      await provider.getAllQuestions();
       questions = provider.questions;
+      //dev.log(questions.toString());
+      return Future.delayed(Duration(seconds: 2), () => questions);
+    } else {
+      dev.log("category mode");
+      questions = await provider.getQuestionsPerCategory(widget.category.id!);
+      return Future<List<Question>>.delayed(
+          const Duration(seconds: 1), () => questions);
     }
-    return Future.delayed(Duration(seconds: 2), () => questions);
   }
 
   @override
@@ -86,7 +65,6 @@ class _QuestionWidgetState extends State<QuestionWidget> {
                       snapshot.data != null && snapshot.data.length > 0
                           ? _questionContainerWidget(snapshot)
                           : _noQuestionWidget();
-                  //test = _questionContainerWidget(snapshot);
                 } else if (snapshot.hasError) {
                   futureWidgets = <Widget>[
                     Messages.errorWidget(
@@ -135,13 +113,38 @@ class _QuestionWidgetState extends State<QuestionWidget> {
   _noQuestionWidget() {
     //displays this widget when no data is received or when the category has
     //no questions
-    String errorMessage =
-        'No hay preguntas disponibles para la categoría : ${widget.category.description}, ve a las categorias para añadirlas.';
+    String part1 = 'No hay preguntas disponibles para la categoría ';
+    String part2 = ', ve a las categorias para añadirlas.';
+    final textStyle = TextStyle(color: Colors.black54,fontSize: 17);
     return <Widget>[
-      Messages.errorWidget2(errorMessage, null, 0.5),
-      SizedBox(
-        height: 20,
+      Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset('assets/images/question.png',scale: 8,),
+              RichText(
+                textAlign: TextAlign.center,
+                text: TextSpan(
+                text: part1,
+                style: textStyle,
+                children: [
+                  TextSpan(text : widget.category.description,
+                    style: TextStyle(
+
+                      fontSize: 17,
+                      color: Colors.redAccent[200],
+                      fontWeight: FontWeight.bold
+                    ),),
+                  TextSpan(text : part2,
+                    style: textStyle
+                  )
+                ]
+              ),)
+            ],
+          )
       ),
+      //Messages.errorWidget2(errorMessage, null, 0.5),
+      SizedBox(height: 20,),
       ElevatedButton(
         onPressed: () {
           Navigator.pushNamed(context, Constants.routes.categoryListPage);
@@ -167,35 +170,28 @@ class _QuestionWidgetState extends State<QuestionWidget> {
       builder: (_, QuestionProvider provider, __) => Column(children: [
         //like and unlike icon
         TextButton(
-          onPressed: () {
-            setState(() {
-              //based on the shitty database structure, create a method to check if
-              // the question description already exists in the favourite
-              // table[store the entire question there too]
-
-              //TODO : maybe create two cases depending on if the question was by default or added by the user
-              //pseudo code :
-              //if(question.isDefault){
-                //code if its a default question
-              //}
-              if (question.isFavourite) {
-                provider.removeFromFavourites(question);
-                question.isFavourite = false;
-                snackBar = SnackBar(
-                  duration: Duration(seconds: 1),
-                  content: const Text('Pregunta eliminada de favoritos'),
-                );
-                ScaffoldMessenger.of(context).showSnackBar(snackBar);
-              } else {
-                provider.addToFavourites(question);
-                question.isFavourite = true;
-                snackBar = SnackBar(
-                  duration: Duration(seconds: 1),
-                  content: const Text('Pregunta añadida a favoritos'),
-                );
-                ScaffoldMessenger.of(context).showSnackBar(snackBar);
-              }
-            });
+          onPressed: () async{
+            if (question.isFavourite) {
+              question.isFavourite = false;
+              await provider.removeFromFavourites(question);
+              dev.log(question.isFavourite.toString());
+              snackBar = SnackBar(
+                duration: Duration(seconds: 1),
+                content: const Text('Pregunta eliminada de favoritos'),
+              );
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            } else {
+              question.isFavourite = true;
+              await provider.addToFavourites(question);
+              dev.log(question.isFavourite.toString());
+              snackBar = SnackBar(
+                duration: Duration(seconds: 1),
+                content: const Text('Pregunta añadida a favoritos'),
+              );
+              //dev.log(question.isFavourite.toString());
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            }
+            setState(() {});//to rebuild the widget
           },
           child: question.isFavourite ? likedIcon : unLikedIcon,
         ),
