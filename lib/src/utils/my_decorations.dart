@@ -23,6 +23,21 @@ class MyDecorations{
     );
   }
 
+  static BoxDecoration homePageBoxDecorationWithoutImage (){
+    return BoxDecoration(
+      color: Colors.red[600],
+      borderRadius: const BorderRadius.all(Radius.circular(15)),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.grey.withOpacity(0.5),
+          spreadRadius: 5,
+          blurRadius: 7,
+          offset: Offset(0, 3), // changes position of shadow
+        ),
+      ],
+    );
+  }
+
   static Text homePageBoxText(String content,Color textColor,Color? bgColor){
     return Text(content,
       textAlign: TextAlign.center,style: TextStyle(

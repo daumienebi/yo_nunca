@@ -39,6 +39,6 @@ class Question{
 
   @override
   String toString(){
-    return 'VisitPlace{id : $id,description : $description,category : $categoryId, Favourite : $isFavourite}';
+    return 'Question{id : $id,description : $description,category : $categoryId, Favourite : $isFavourite}';
   }
 }

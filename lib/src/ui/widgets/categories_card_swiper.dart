@@ -29,13 +29,14 @@ class CategoriesCardSwiper extends StatelessWidget {
                   child: Container(
                       margin: const EdgeInsets.all(10),
                       padding: const EdgeInsets.all(5),
-                      decoration: MyDecorations.homePageBoxDecoration(
-                          categories[index].imageRoute),
+                      //decoration: MyDecorations.homePageBoxDecoration(
+                          //categories[index].imageRoute),
+                      decoration: MyDecorations.homePageBoxDecorationWithoutImage(),
                       height: Constants.homePageWidgetHeight,
                       width: 300,
                       child: MyDecorations.homePageBoxText(
                           categories[index].description,
-                          categories[index].id! > 3 ? Colors.black : Colors.white,
+                          Colors.white,
                           null))),
             );
           },

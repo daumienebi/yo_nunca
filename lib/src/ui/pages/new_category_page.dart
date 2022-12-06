@@ -65,9 +65,10 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  labelText: 'Nombre',
+                  labelText: 'Nombre de la categoría',
                   hintText: 'Introduce el nombre de la categoría',
                   suffixIcon: Icon(Icons.category)),
+              maxLength: 25,
               validator: (String? value) {
                 if (value == null || value.isEmpty) {
                   return "Por favor, introduce un nombre de categoria valída";
@@ -116,18 +117,15 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
               ),
               TextButton(
                 onPressed: () async {
-                  int newCategoryId = provider.categoriesCount() + 1;
                   _question = _questionController.text;
                   var newQuestion = Question(
                       description: _question,
                       isFavourite: false,
-                      categoryId: newCategoryId//the new id will be used if its added
+                      categoryId: 0//the new id will be used if its added
                   );
                   setState(() {
                     newQuestions.add(newQuestion);
                   });
-                  //int result = await provider.addQuestion (newQuestion);
-                  //_checkResult(result);
                   Navigator.pop(context); // instead of dispose();
                 },
                 child: Text('Aceptar'),
@@ -173,6 +171,7 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
   Widget _saveButton() {
     final btnStyle = ElevatedButton.styleFrom(
         textStyle: TextStyle(color: Colors.blue, fontSize: 20));
+    QuestionProvider questionProvider = Provider.of<QuestionProvider>(context,listen: false);
     return Consumer(builder: (_, CategoryProvider provider, __) {
       return ElevatedButton(
           style: btnStyle,
@@ -181,10 +180,20 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
               _category = categoryNameController.text.toUpperCase();
               Category newCategory = Category(
                   description: _category,
-                  imageRoute: "assets/images/newCategoryImage.png");
-              int result = await provider.addCategory(newCategory);
+                  //image depending on the epoch ?
+                  imageRoute: "assets/images/newCategoryImage.jpg");
+              int id = await provider.addCategory(newCategory);
+              dev.log(id.toString() + 'is the new category id');
+              //If the new category was inserted correctly, set the questions
+              //category to the new one
+              if(id > 0){
+                for(Question question in newQuestions){
+                  question.categoryId = id;
+                }
+                await questionProvider.addQuestions(newQuestions);
+              }
               dev.log(newCategory.toString());
-              _showSnackBar(result);
+              _showSnackBar(id);
             }
           },
           child: Text("Guardar"));
@@ -192,14 +201,14 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
   }
 
   ///Displays a snack bar depending on if the category was added or not
-  void _showSnackBar(int result) {
-    dev.log(result.toString());
-    result > 0
+  void _showSnackBar(int id) {
+    dev.log(id.toString());
+    id > 0
         ? ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             duration: Duration(seconds: 1), content: Text('Categoría añadida')))
         : ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             duration: Duration(seconds: 1),
-            content: Text('No se puedo añadir la categoría')));
+            content: Text('No se pudo añadir la categoría')));
     Navigator.pop(context);
   }
 }

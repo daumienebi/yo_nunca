@@ -20,6 +20,10 @@ class CategoryListPage extends StatelessWidget{
       return DefaultTabController(
         length: tabLength,
         child: Scaffold(
+          floatingActionButton: FloatingActionButton(
+            child: Icon(Icons.add),
+            onPressed: ()=> Navigator.pushNamed(context, Constants.routes.newCategory)
+          ),
             appBar: NewGradientAppBar(
               title: Text('Mis Categorías'),
               bottom: TabBar(
@@ -132,14 +136,26 @@ class _CategoryTileState extends State<CategoryTile> {
 
   Future<void> getCount() async {
     QuestionProvider provider = Provider.of<QuestionProvider>(context,listen: false);
-    List<Question> questions = await provider.getQuestionsPerCategory(widget.category.id!); // Await on your future.
-    _count = questions.length;
+    int count = await provider.countQuestionsPerCategory(widget.category.id!);
+    _count = count;
   }
 
   @override
-  Widget build(BuildContext context) {
+  void initState(){
     getCount();
-    final mainTxtStyle = TextStyle(fontSize: 25,color: Colors.cyan,fontFamily: 'OoohBaby',fontWeight: FontWeight.bold);
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies(){
+    //rebuild the widget in case a change was made
+    getCount();
+    super.didChangeDependencies();
+}
+
+  @override
+  Widget build(BuildContext context) {
+    final mainTxtStyle = TextStyle(fontSize: 20,color: Colors.cyan,fontFamily: 'OoohBaby',fontWeight: FontWeight.bold);
     final countTxtStyle = TextStyle(fontSize: 18,color: Colors.white,fontWeight: FontWeight.normal);
     final editBtn = TextButton.styleFrom(backgroundColor: Colors.lightGreen);
     final deleteBtn = TextButton.styleFrom(backgroundColor: Colors.redAccent);
@@ -160,7 +176,8 @@ class _CategoryTileState extends State<CategoryTile> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(widget.category.description,style: mainTxtStyle,textAlign: TextAlign.left,),
-              RichText(text: TextSpan(text: '$_count preguntas',style: countTxtStyle)),
+              RichText(text: TextSpan(text: _count > 0 ? '$_count preguntas' :
+                  'sin preguntas',style: countTxtStyle)),
               Center(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,

@@ -30,17 +30,16 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
 
   Future<List<Question>> _getData() {
     //to simulate fake loading :)
-    QuestionProvider provider = Provider.of<QuestionProvider>(context, listen: false);
     return Future.delayed(Duration(seconds: 2), () => questions);
   }
 
-  void _loadCards() {
+  void _loadCards(){
     QuestionProvider provider =
         Provider.of<QuestionProvider>(context, listen: false);
     questions = provider.favouriteQuestions;
-    questions.forEach((question) {
+    for (var question in questions) {
       cards.add(_questionCard(question.description));
-    });
+    }
   }
 
   @override
@@ -86,7 +85,6 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
                 child: AppinioSwiper(
                   unlimitedUnswipe: true,
                   controller: controller,
-                  unswipe: _unswipe,
                   cards: cards,
                   onSwipe: _swipe,
                   padding: const EdgeInsets.only(
@@ -102,21 +100,18 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
         });
   }
 
-  Widget _questionCard(String qst) {
-    //create a fake future before loading the cards
+  Widget _questionCard(String question) {
     return ValueListenableBuilder(
       valueListenable: isPotrait,
       builder: (BuildContext context,_,Widget ?child){
         return Container(
           alignment: Alignment.bottomCenter,
           decoration: BoxDecoration(
-            //color: Colors.white,
             borderRadius: BorderRadius.all(Radius.circular(30)),
             boxShadow: [
               BoxShadow(
                   color: Constants.randomColours
-                      .elementAt(Random().nextInt(Constants.randomColours.length))
-                      .withOpacity(0.95)),
+                      .elementAt(Random().nextInt(Constants.randomColours.length))),
             ],
           ),
           child: Column(children: [
@@ -125,7 +120,7 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
               width: double.infinity,
               child: Center(
                 child: Text(
-                  qst,
+                  question,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: 23,
@@ -142,21 +137,10 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
   }
 
   void _swipe(int index, AppinioSwiperDirection direction) {
-    dev.log("the card was swiped to the: " + direction.name);
     if (cards.isEmpty) {
       setState(() {
         visible = true;
       });
-    } else {
-      false;
-    }
-  }
-
-  void _unswipe(bool unswiped) {
-    if (unswiped) {
-      dev.log("SUCCESS: card was unswiped");
-    } else {
-      dev.log("FAIL: no card left to unswipe");
     }
   }
 

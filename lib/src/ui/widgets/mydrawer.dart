@@ -60,12 +60,14 @@ class MyDrawer extends StatelessWidget{
                   //foto
                   Container(
                     padding: EdgeInsets.all(5),
-                    child: CircleAvatar(
-                      backgroundImage: AssetImage("assets/images/beer2.png"),
-                      maxRadius: 50,
-                    ),
+                    child: Row(
+                      children: [
+                        Image.asset("assets/images/question.png",scale: 6,),
+                        SizedBox(width: 20),
+                        _howToPlayButton()
+                      ],
+                    )
                   ),
-                  SizedBox(width: 20,),
                 ],
               ),
             ),
@@ -131,5 +133,11 @@ class MyDrawer extends StatelessWidget{
     );
   }
 
+  _howToPlayButton(){
+    return ElevatedButton(onPressed: (){
+    }, child: Text('Ajustes'),
+        style: TextButton.styleFrom(backgroundColor: Colors.greenAccent),
+    );
+  }
 
 }

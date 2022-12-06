@@ -5,11 +5,13 @@ import 'package:provider/provider.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/models/question.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
+import 'package:yo_nunca/src/utils/messages.dart';
+import 'dart:developer' as dev;
 import 'package:yo_nunca/src/utils/my_decorations.dart';
 // ignore_for_file: prefer_const_constructors
 
-class CategoryManagementPage extends StatefulWidget{
-  const CategoryManagementPage({Key? key}) : super(key:key);
+class CategoryManagementPage extends StatefulWidget {
+  const CategoryManagementPage({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -17,29 +19,26 @@ class CategoryManagementPage extends StatefulWidget{
   }
 }
 
-class _CategoryManagementPageState extends State<CategoryManagementPage>{
+class _CategoryManagementPageState extends State<CategoryManagementPage> {
   String _question = "";
   String _category = "";
   List<Question> newQuestions = [];
-  List<Question> existingQuestions = [];
+  List<Question> questions = [];
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController categoryNameController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
 
-  @override
-  void initState(){
-    for(int i = 1;i <=5;i++){
-      Question q = Question(id: 0,description: 'Random Question $i',isFavourite: false,categoryId: 0);
-      existingQuestions.add(q);
-    }
-    super.initState();
+  Future<List<Question>> getQuestions(Category category) async {
+    QuestionProvider questionProvider =
+    Provider.of<QuestionProvider>(context, listen: false);
+    return await questionProvider.getQuestionsPerCategory(category.id!);
   }
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     Category category = ModalRoute.of(context)!.settings.arguments as Category;
     categoryNameController.text = category.description;
-      return Scaffold(
+    return Scaffold(
         appBar: NewGradientAppBar(
           title: Text('Editar Categoría'),
           gradient: const LinearGradient(
@@ -51,28 +50,37 @@ class _CategoryManagementPageState extends State<CategoryManagementPage>{
           child: Column(
             children: [
               _formFields(category),
-              _addQuestionBtn(),
+              _addQuestionBtn(category),
               Container(
-                padding: EdgeInsets.only(left: 15),
+                  padding: EdgeInsets.only(left: 15),
                   width: double.infinity,
-                  child: Text('Pincha sobre la pregunta para modificarla',style: TextStyle(color: Colors.black54,fontSize: 15),)),
-              SizedBox(height: 10,),
-              Expanded(child: _temporaryQuestionsList()),
-              _saveButton()
+                  child: Text(
+                    questions.isNotEmpty ?
+                    'Pincha sobre la pregunta para modificarla' :
+                    'Esta categoría no tiene preguntas',
+                    style: TextStyle(color: Colors.black54, fontSize: 15),
+                  )),
+              SizedBox(
+                height: 10,
+              ),
+              Expanded(child:_questionsList(category)),
+              _saveButton(category)
             ],
           ),
-        )
-      );
+        ));
   }
 
-  Widget _temporaryQuestionsList(){
+  Widget _temporaryQuestionsList() {
     //Will be changed later
     return ListView.separated(
       itemBuilder: (context, int index) {
-        return _questionTile(existingQuestions[index]);
+        return _questionTile(questions[index]);
       },
-      separatorBuilder: (ctx,index)=> Divider(color: Colors.greenAccent,height: 5,),
-      itemCount: existingQuestions.length,
+      separatorBuilder: (ctx, index) => Divider(
+        color: Colors.greenAccent,
+        height: 5,
+      ),
+      itemCount: questions.length,
     );
   }
 
@@ -89,7 +97,7 @@ class _CategoryManagementPageState extends State<CategoryManagementPage>{
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  labelText: 'Nombre',
+                  labelText: 'Nombre de la categoría',
                   hintText: 'Introduce el nombre de la categoría',
                   suffixIcon: Icon(Icons.category)),
               validator: (String? value) {
@@ -103,9 +111,9 @@ class _CategoryManagementPageState extends State<CategoryManagementPage>{
     );
   }
 
-  Widget _addQuestionBtn() {
+  Widget _addQuestionBtn(Category category) {
     return TextButton(
-      onPressed: () => _popUpForm(null,false),
+      onPressed: () => _popUpForm(null,category, false),
       child: Text(
         "Añadir Pregunta",
         style: TextStyle(color: Colors.black),
@@ -114,15 +122,20 @@ class _CategoryManagementPageState extends State<CategoryManagementPage>{
     );
   }
 
-  Future _popUpForm(Question? question ,bool isEditMode) {
+  Future _popUpForm(Question? question,Category? category, bool isEditMode) {
+
     return showDialog(
       context: context,
       builder: (_) {
         TextEditingController _questionController = TextEditingController();
         _questionController.text = question?.description ?? "";
         return Consumer(builder: (_, CategoryProvider provider, __) {
+          QuestionProvider questionProvider =
+          Provider.of<QuestionProvider>(context, listen: true);
           return AlertDialog(
-            title: isEditMode ? const Text('Modificar pregunta') : const Text('Añadir una nueva pregunta'),
+            title: isEditMode
+                ? const Text('Modificar pregunta')
+                : const Text('Añadir pregunta'),
             content: SingleChildScrollView(
               child: Column(
                 children: [
@@ -143,27 +156,26 @@ class _CategoryManagementPageState extends State<CategoryManagementPage>{
                 onPressed: () async {
                   //If the question is to be edited[edit = true], update it in the database
                   //else add a new question
-                  if(isEditMode){
-                    //editing an existing question
+                  if (isEditMode) {
+                    //edit an existing question
                     _question = _questionController.text;
-                    //Edit the question from db
-                    //setState(() {
-                      //existingQuestions.add(newQuestion);
-                    //});
-                  }else{
+                    question!.description = _question;
+                    int count = await questionProvider.modifyQuestion(question);
+                    //setState(() {});
+                  } else {
                     //new question
                     _question = _questionController.text;
                     var newQuestion = Question(
                         description: _question,
                         isFavourite: false,
-                        categoryId: 1 //get the real category id
-                    );
-                    setState(() {
-                      existingQuestions.add(newQuestion);
-                    });
+                        categoryId: category!.id! //get the real category id
+                        );
+                    int count = await questionProvider.addQuestion(newQuestion);
+                    //to avoid rebuilding the widget
+                    if(count > 0){
+                      questions.add(newQuestion);
+                    }
                   }
-                  //int result = await provider.addQuestion (newQuestion);
-                  //_checkResult(result);
                   Navigator.pop(context); // instead of dispose();
                 },
                 child: Text('Aceptar'),
@@ -175,23 +187,40 @@ class _CategoryManagementPageState extends State<CategoryManagementPage>{
     );
   }
 
-  Widget _questionsList() {
-    return ListView.separated(
-      itemBuilder: (context, int index) {
-        return _questionTile(newQuestions[index]);
-      },
-      separatorBuilder: (ctx,index)=> Divider(color: Colors.orange,height: 5,),
-      itemCount: newQuestions.length,
+  _questionsList(Category category) {
+    return FutureBuilder(
+      future: getQuestions(category),
+        builder: (BuildContext context,AsyncSnapshot snapshot){
+          List<Widget> futureWidgets = [];
+          if(snapshot.hasData){
+            questions =  snapshot.data;
+          }else if(snapshot.hasError){
+            futureWidgets = <Widget>[
+              Messages.errorWidget(
+                  'No se pudieron cargar las preguntas :('),
+            ];
+          }
+          return ListView.separated(
+            itemBuilder: (context, int index) {
+              return _questionTile(questions[index]);
+            },
+            separatorBuilder: (ctx, index) => Divider(
+              color: Colors.orange,
+              height: 5,
+            ),
+            itemCount: questions.length,
+          );
+        }
     );
   }
 
   Widget _questionTile(Question question) {
     return ListTile(
-      title: Text(question.description,overflow: TextOverflow.ellipsis),
+      title: Text(question.description, overflow: TextOverflow.ellipsis),
       trailing: InkWell(
         onTap: () {
           setState(() {
-            newQuestions.remove(question);
+            questions.remove(question);
           });
         },
         child: Icon(
@@ -201,39 +230,40 @@ class _CategoryManagementPageState extends State<CategoryManagementPage>{
         ),
       ),
       onTap: () {
-        _popUpForm(question, true);
-        print("TODO : Edit question");
+        _popUpForm(question,null, true);
       },
       shape: Border.all(color: Colors.white),
     );
   }
 
-  Widget _saveButton() {
+  Widget _saveButton(Category category) {
     final btnStyle = ElevatedButton.styleFrom(
         textStyle: TextStyle(color: Colors.blue, fontSize: 20));
     return Consumer(builder: (_, CategoryProvider provider, __) {
       return ElevatedButton(
           style: btnStyle,
           onPressed: () async {
-            int newCategoryId = provider.categoriesCount() + 1;
-            //maybe add an image
             if (_formKey.currentState!.validate()) {
               _category = categoryNameController.text.toUpperCase();
-              Category newCategory = Category(id : newCategoryId, description: _category, imageRoute: "assets/images/blurBW.png");
-              /*
-              provider.addCategory(newCategory);
-              print(newCategory.toString());
-              final snackBar = SnackBar(
-                duration: Duration(seconds: 1),
-                content: const Text('Nueva categoría añadida'),
-              );
-              ScaffoldMessenger.of(context).showSnackBar(snackBar);
-              Navigator.pop(context);
-              */
-              print(_category);
+              category.description = _category;
+              int count = await provider.modifyCategory(category);
+              dev.log(category.toString());
+              _showSnackBar(count);
+
             }
           },
           child: Text("Guardar"));
     });
+  }
+
+  void _showSnackBar(int count) {
+    dev.log(count.toString());
+    count > 0
+        ? ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        duration: Duration(seconds: 1), content: Text('Categoría modificada')))
+        : ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        duration: Duration(seconds: 1),
+        content: Text('No se pudo modificar la categoría')));
+    Navigator.pop(context);
   }
 }

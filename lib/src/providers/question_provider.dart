@@ -26,8 +26,14 @@ class QuestionProvider with ChangeNotifier{
 
   addQuestion(Question question) async{
     final id = await _questionRepository.addQuestion(question);
-    //notifyListeners();
+    notifyListeners();
     return id;
+  }
+
+  addQuestions(List<Question> questions) async{
+    final count = await _questionRepository.addQuestions(questions);
+    notifyListeners();
+    return count;
   }
 
   deleteQuestion(Question question) async{
@@ -38,7 +44,7 @@ class QuestionProvider with ChangeNotifier{
 
   modifyQuestion(Question question) async{
     final id = await _questionRepository.modifyQuestion(question);
-    //notifyListeners();
+    notifyListeners();
     return id;
   }
 

@@ -12,6 +12,7 @@ class CategoryDao{
     int id = 0;
     try{
       id = await database.insert(categoryTable,category.toMap());
+      //conflictAlgorithm: ConflictAlgorithm.replace,
     }on DatabaseException catch(ex){
       //compare to check if the name of the category already exists ; it has
       //to be unique
@@ -72,8 +73,8 @@ class CategoryDao{
   ///Modify an existing [category]
   modifyCategory(Category category) async{
     final database = await databaseProvider.database;
-    final id = await database.update(categoryTable,category.toMap(),where: '${CategoryFields.id} = ?',
+    final count = await database.update(categoryTable,category.toMap(),where: '${CategoryFields.id} = ?',
         whereArgs: [category.id]);
-    return true; //true if the category has been modified successfully
+    return count; //true if the category has been modified successfully
   }
 }

@@ -11,13 +11,35 @@ class QuestionDao {
   //Add a new [question]
   addQuestion(Question question) async {
     final database = await databaseProvider.database;
-    int id = 0;
+    int row = 0;
     try {
-      id = await database.insert(questionTable, question.toMap());
+      row = await database.insert(questionTable, question.toMap());
     } on DatabaseException catch (ex) {
       dev.log(ex.toString());
     }
-    return id;
+    return row;
+  }
+
+  addQuestions(List<Question> questions) async {
+    final database = await databaseProvider.database;
+    Batch batch = database.batch();
+    List<Object?> operations = [];
+    int count = 0;
+    try {
+      //row = await database.insert(questionTable, question.toMap());
+      for(var question in questions){
+        batch.insert(questionTable, question.toMap());
+        dev.log(question.toString() + 'dao');
+      }
+      operations = await batch.commit();
+      dev.log('Commited, no error');
+    } on DatabaseException catch (ex) {
+      dev.log(ex.toString());
+    }
+    if(operations.isNotEmpty){
+      count = operations.length;
+    }
+    return count;
   }
 
   //Delete a [question]
@@ -59,33 +81,33 @@ class QuestionDao {
   }
 
   countQuestionsPerCategory(int categoryId) async{
-    dev.log("Entering to count");
+    //dev.log("Entering to count");
     int count = 0;
     final database = await databaseProvider.database;
-    var result = await database.rawQuery('SELECT COUNT(*) from $questionTable'
-        ' where categoryId = $categoryId');
+    count = Sqflite.firstIntValue(await database.rawQuery('SELECT COUNT(*) from $questionTable'
+    ' where categoryId = $categoryId'))!;
     return count;
   }
 
   addToFavourites(Question question) async{
-    dev.log("Adding question to favourites");
+    //dev.log("Adding question to favourites");
     final database = await databaseProvider.database;
-    int id = 0;
+    int rows = 0;
     try {
-      id = await database.update(questionTable,question.toMap(),
+      rows = await database.update(questionTable,question.toMap(),
           where: '${QuestionFields.id} = ?',whereArgs: [question.id]);
     } on DatabaseException catch (ex) {
       dev.log(ex.toString());
     }
-    return id;
+    return rows;
   }
 
   removeFromFavourites(Question question) async{
     dev.log("Removing from favourites");
     final database = await databaseProvider.database;
-    final id = await database.update(questionTable,question.toMap(),
+    final rows = await database.update(questionTable,question.toMap(),
         where: '${QuestionFields.id} = ?',whereArgs: [question.id]);
-    return id;
+    return rows;
   }
 
 }

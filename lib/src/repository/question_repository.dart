@@ -6,6 +6,8 @@ class QuestionRepository {
 
   addQuestion(Question question) => questionDao.addQuestion(question);
 
+  addQuestions(List<Question> questions) => questionDao.addQuestions(questions);
+
   deleteQuestion(Question question) => questionDao.deleteQuestion(question);
 
   modifyQuestion(Question question) => questionDao.modifyQuestion(question);

@@ -11,10 +11,11 @@ class CategoryFields{
 }
 
 class Category{
-  final int? id;
-  final String description;
-  final String imageRoute;
-  const Category({this.id,required this.description,required this.imageRoute});
+  int? id;
+  String description;
+  String imageRoute;
+
+  Category({this.id,required this.description,required this.imageRoute});
 
   factory Category.fromMap(Map<String,dynamic> value) =>
       Category(

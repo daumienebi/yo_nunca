@@ -33,13 +33,10 @@ class _QuestionWidgetState extends State<QuestionWidget> {
         Provider.of<QuestionProvider>(context, listen: true);
 
     if (widget.mixedMode) {
-      dev.log("Mixed mode");
       await provider.getAllQuestions();
       questions = provider.questions;
-      //dev.log(questions.toString());
       return Future.delayed(Duration(seconds: 2), () => questions);
     } else {
-      dev.log("category mode");
       questions = await provider.getQuestionsPerCategory(widget.category.id!);
       return Future<List<Question>>.delayed(
           const Duration(seconds: 1), () => questions);
@@ -48,9 +45,6 @@ class _QuestionWidgetState extends State<QuestionWidget> {
 
   @override
   Widget build(BuildContext context) {
-    //QuestionProvider provider =
-    //Provider.of<QuestionProvider>(context, listen: true);
-    // TODO: implement build
     return OrientationBuilder(
       builder: (BuildContext context, Orientation orientation) {
         isPotrait.value = orientation == Orientation.portrait;
@@ -92,18 +86,14 @@ class _QuestionWidgetState extends State<QuestionWidget> {
     //displays this widget when data is received
     return <Widget>[
       Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        //if data is available then display the questions, else display the error page
-        //snapshot.data != null && snapshot.data.length > 0
-        //? _questionTextWidget(snapshot.data[_currentndex])
-        //: _noQuestionWidget(),
         _questionTextWidget(snapshot.data[_currentndex]),
         SizedBox(height: 10),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            _prevQstButton(),
+            _prevQuestiontButton(),
             SizedBox(width: 25),
-            _nextQstButton(snapshot.data.length)
+            _nextQuestionButton(snapshot.data.length)
           ],
         )
       ])
@@ -117,34 +107,35 @@ class _QuestionWidgetState extends State<QuestionWidget> {
     String part2 = ', ve a las categorias para añadirlas.';
     final textStyle = TextStyle(color: Colors.black54,fontSize: 17);
     return <Widget>[
-      Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset('assets/images/question.png',scale: 8,),
-              RichText(
-                textAlign: TextAlign.center,
-                text: TextSpan(
-                text: part1,
-                style: textStyle,
-                children: [
-                  TextSpan(text : widget.category.description,
-                    style: TextStyle(
+      Padding(
+        padding: EdgeInsets.all(10),
+        child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset('assets/images/question.png',scale: 8,),
+                RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                  text: part1,
+                  style: textStyle,
+                  children: [
+                    TextSpan(text : widget.category.description,
+                      style: TextStyle(
 
-                      fontSize: 17,
-                      color: Colors.redAccent[200],
-                      fontWeight: FontWeight.bold
-                    ),),
-                  TextSpan(text : part2,
-                    style: textStyle
-                  )
-                ]
-              ),)
-            ],
-          )
+                        fontSize: 17,
+                        color: Colors.redAccent[200],
+                        fontWeight: FontWeight.bold
+                      ),),
+                    TextSpan(text : part2,
+                      style: textStyle
+                    )
+                  ]
+                ),)
+              ],
+            )
+        ),
       ),
-      //Messages.errorWidget2(errorMessage, null, 0.5),
-      SizedBox(height: 20,),
       ElevatedButton(
         onPressed: () {
           Navigator.pushNamed(context, Constants.routes.categoryListPage);
@@ -228,7 +219,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
     );
   }
 
-  Widget _prevQstButton() {
+  Widget _prevQuestiontButton() {
     //Previous question button
     final btnStyle = ElevatedButton.styleFrom(
         textStyle: TextStyle(color: Colors.blue, fontSize: 17));
@@ -236,7 +227,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
       onPressed: () {
         setState(() {
           if (_currentndex > 0) {
-            print("current index: $_currentndex");
+            dev.log("current index: $_currentndex");
             _currentndex--;
           }
         });
@@ -247,7 +238,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
   }
 
   /// [listLength] - to obtain the length of the questions list
-  Widget _nextQstButton(int listLength) {
+  Widget _nextQuestionButton(int listLength) {
     //Button for next question
     final btnStyle = ElevatedButton.styleFrom(
         textStyle: TextStyle(color: Colors.blue, fontSize: 17));
@@ -255,7 +246,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
       onPressed: () {
         setState(() {
           if (_currentndex < listLength - 1) {
-            print("current index: $_currentndex");
+            dev.log("current index: $_currentndex");
             _currentndex++;
           }
         });
