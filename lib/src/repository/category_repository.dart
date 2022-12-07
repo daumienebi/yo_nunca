@@ -5,11 +5,14 @@ class CategoryRepository {
 
   final categoryDao = CategoryDao();
 
-  addCategory(Category category) async => await categoryDao.addCategory(category);
+  addCategory(Category category) async => await
+    categoryDao.addCategory(category);
 
-  modifyCategory(Category category) async => await categoryDao.modifyCategory(category);
+  modifyCategory(Category category) async => await
+    categoryDao.modifyCategory(category);
 
-  deleteCategory(Category category) async => await categoryDao.deleteCategory(category);
+  deleteCategory(Category category) async => await
+    categoryDao.deleteCategory(category);
 
   getCategory(int id) async => await categoryDao.getCategory(id);
 
@@ -18,4 +21,6 @@ class CategoryRepository {
   getNewCategories() async => await categoryDao.getNewCategories();
 
   getAllCategories() async => await categoryDao.getAllCategories();
+
+  categoryExists(String categoryName) => categoryDao.categoryExists(categoryName);
 }

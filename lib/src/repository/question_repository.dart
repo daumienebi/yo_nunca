@@ -23,4 +23,5 @@ class QuestionRepository {
   addToFavourites(Question question) => questionDao.addToFavourites(question);
 
   removeFromFavourites(Question question) => questionDao.removeFromFavourites(question);
+
 }

@@ -71,6 +71,12 @@ class CategoryProvider with ChangeNotifier{
     notifyListeners();
   }
 
+  categoryExists(String categoryName) async{
+    bool exists = await _categoryRepository.categoryExists(categoryName);
+    return exists;
+  }
+
+
   ///Returns the list of categories added by the user
   void getCategories() async{
     var dbCategories = await _categoryRepository.getAllCategories();

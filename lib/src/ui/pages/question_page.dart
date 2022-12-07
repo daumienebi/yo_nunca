@@ -18,9 +18,9 @@ class QuestionPage extends StatelessWidget{
           ),
 
         ),
-        gradient: const LinearGradient(colors: [Colors.amber,Colors.white70,Colors.amber]),//Change it later
+        gradient: const LinearGradient(colors: [Colors.amber,Colors.white38,Colors.amber]),//Change it later
       ),
-        backgroundColor: Colors.orange[50],
+        backgroundColor: Colors.orange[100],
         //[mixedMode] is false because this widget is used to display questions for each category
       body: QuestionWidget(category: category,mixedMode: false,)
     );

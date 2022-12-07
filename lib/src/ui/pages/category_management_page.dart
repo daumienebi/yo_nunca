@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 import 'package:provider/provider.dart';
@@ -31,20 +30,22 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
   Future<List<Question>> getQuestions(Category category) async {
     QuestionProvider questionProvider =
     Provider.of<QuestionProvider>(context, listen: false);
-    return await questionProvider.getQuestionsPerCategory(category.id!);
+    var data = await questionProvider.getQuestionsPerCategory(category.id!);
+    questions = data;
+    return data;
   }
 
   @override
   Widget build(BuildContext context) {
-    Category category = ModalRoute.of(context)!.settings.arguments as Category;
+    final Category category = ModalRoute.of(context)!.settings.arguments as Category;
     categoryNameController.text = category.description;
     return Scaffold(
         appBar: NewGradientAppBar(
           title: Text('Editar Categoría'),
           gradient: const LinearGradient(
-              colors: [Colors.amber, Colors.white70, Colors.amber]),
+              colors: [Colors.amber, Colors.white38, Colors.amber]),
         ),
-        backgroundColor: Colors.orange[50],
+        backgroundColor: Colors.orange[100],
         body: Container(
           margin: EdgeInsets.all(10),
           child: Column(
@@ -54,10 +55,7 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
               Container(
                   padding: EdgeInsets.only(left: 15),
                   width: double.infinity,
-                  child: Text(
-                    questions.isNotEmpty ?
-                    'Pincha sobre la pregunta para modificarla' :
-                    'Esta categoría no tiene preguntas',
+                  child: Text('Pulsa sobre una pregunta para modificarla',
                     style: TextStyle(color: Colors.black54, fontSize: 15),
                   )),
               SizedBox(
@@ -68,20 +66,7 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
             ],
           ),
         ));
-  }
 
-  Widget _temporaryQuestionsList() {
-    //Will be changed later
-    return ListView.separated(
-      itemBuilder: (context, int index) {
-        return _questionTile(questions[index]);
-      },
-      separatorBuilder: (ctx, index) => Divider(
-        color: Colors.greenAccent,
-        height: 5,
-      ),
-      itemCount: questions.length,
-    );
   }
 
   Widget _formFields(Category category) {
@@ -102,7 +87,7 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
                   suffixIcon: Icon(Icons.category)),
               validator: (String? value) {
                 if (value == null || value.isEmpty) {
-                  return "Por favor, introduce un nombre de categoria valída";
+                  return 'Por favor, introduce un nombre de categoria valída';
                 }
                 return null;
               }),
@@ -123,7 +108,6 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
   }
 
   Future _popUpForm(Question? question,Category? category, bool isEditMode) {
-
     return showDialog(
       context: context,
       builder: (_) {
@@ -161,7 +145,6 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
                     _question = _questionController.text;
                     question!.description = _question;
                     int count = await questionProvider.modifyQuestion(question);
-                    //setState(() {});
                   } else {
                     //new question
                     _question = _questionController.text;
@@ -171,10 +154,6 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
                         categoryId: category!.id! //get the real category id
                         );
                     int count = await questionProvider.addQuestion(newQuestion);
-                    //to avoid rebuilding the widget
-                    if(count > 0){
-                      questions.add(newQuestion);
-                    }
                   }
                   Navigator.pop(context); // instead of dispose();
                 },
@@ -245,25 +224,53 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
           onPressed: () async {
             if (_formKey.currentState!.validate()) {
               _category = categoryNameController.text.toUpperCase();
-              category.description = _category;
-              int count = await provider.modifyCategory(category);
+              String oldName = category.description;
+              bool categoryExists = await provider.categoryExists(_category);
+              int affectedRows = 0;
+              if(!categoryExists || (categoryExists && oldName == _category)){
+                category.description = _category;
+                affectedRows = await provider.modifyCategory(category);
+              }
               dev.log(category.toString());
-              _showSnackBar(count);
-
+              _showSnackBar(affectedRows,categoryExists,oldName,_category);
             }
           },
           child: Text("Guardar"));
     });
   }
 
-  void _showSnackBar(int count) {
-    dev.log(count.toString());
-    count > 0
-        ? ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        duration: Duration(seconds: 1), content: Text('Categoría modificada')))
-        : ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        duration: Duration(seconds: 1),
-        content: Text('No se pudo modificar la categoría')));
-    Navigator.pop(context);
+  ///[count] - The number of modified rows
+  ///
+  ///[categoryExists] - *True* if the category exists and *False* if not.
+  ///
+  ///[oldName] - The old name of the category
+  ///
+  ///[newName] - The new name to be assigned
+  void _showSnackBar(int count,bool categoryExists,String oldName,String newName) {
+    SnackBar snackBar;
+    //If the category was not inserted, the id is 0,unlikely to happen
+    if(count == 0 && !categoryExists){
+      snackBar = SnackBar(
+          duration: Duration(seconds: 1),
+          content: Text('Error interno,no se pudo modificar la categoría')
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    }
+    if(categoryExists && oldName != newName){
+      snackBar = SnackBar(
+          duration: Duration(seconds: 1),
+          content: Text('Ya existe una cateforía con ese nombre')
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    }
+    //When the category gets inserted
+    if(count > 0 && (!categoryExists || oldName == newName)){
+      snackBar = SnackBar(
+          duration: Duration(seconds: 1),
+          content: Text('Categoría modificada')
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      Navigator.pop(context);
+    }
   }
 }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:yo_nunca/src/models/category.dart';
-import 'package:yo_nunca/src/models/question.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
 import 'dart:developer' as dev;
@@ -34,9 +33,9 @@ class CategoryListPage extends StatelessWidget{
                 ],
               ),
               gradient: const LinearGradient(
-                  colors: [Colors.amber, Colors.white70, Colors.amber]),
+                  colors: [Colors.amber, Colors.white38, Colors.amber]),
             ),
-            backgroundColor: Colors.orange[50],
+            backgroundColor: Colors.orange[100],
             body: TabBarView(
                 children: [
                   _defaultCategoryContents(_defaultCategories),
@@ -202,9 +201,8 @@ class _CategoryTileState extends State<CategoryTile> {
                       Visibility(
                         visible: widget.defaultCategory,
                         child: ElevatedButton(
-                          onPressed: (){
-                            provider.deleteCategory(widget.category);
-
+                          onPressed: () async{
+                            await provider.deleteCategory(widget.category);
                           },
                           child: Text(
                             'Borrar',

@@ -13,9 +13,9 @@ class FavouriteQuestionPage extends StatelessWidget{
       appBar: NewGradientAppBar(
         title: Text('Preguntas destacadas️'),
         gradient: const LinearGradient(
-            colors: [Colors.amber, Colors.white70, Colors.amber]),
+            colors: [Colors.amber, Colors.white38, Colors.amber]),
       ),
-      backgroundColor: Colors.orange[50],
+      backgroundColor: Colors.orange[100],
       body: const FavouriteQuestionCard()
     );
   }

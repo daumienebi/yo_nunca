@@ -54,7 +54,7 @@ class QuestionDao {
   modifyQuestion(Question question) async{
     final database = await databaseProvider.database;
     final id = await database.update(questionTable,question.toMap(),
-        where: '${QuestionFields.id} = ?',whereArgs: [{question.id}]);
+        where: '${QuestionFields.id} = ?',whereArgs: [question.id]);
     return id;
   }
 

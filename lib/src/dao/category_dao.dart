@@ -26,7 +26,6 @@ class CategoryDao{
   deleteCategory(Category category) async{
     final database = await databaseProvider.database;
     final id = await database.delete(categoryTable,where: '${CategoryFields.id} = ?',whereArgs: [category.id]);
-
     return id; //return the deleted id
   }
 
@@ -45,13 +44,8 @@ class CategoryDao{
 
   ///Return all the available categories
   getAllCategories() async{
-    int dbCount = 0;
-    dbCount ++;
-    //dev.log("entering to get all categories");
-    //dev.log('Entered $dbCount times');
     final database = await databaseProvider.database;
     String orderBy = '${CategoryFields.description} ASC';
-    //database.query('SELECT * FROM $categoryTable ORDER BY $orderBy');
     final result = await database.query(categoryTable,orderBy: orderBy);
     return result.map((data) => Category.fromMap(data)).toList();
   }
@@ -63,6 +57,8 @@ class CategoryDao{
     return result.map((e) => Category.fromMap(e)).toList();
   }
 
+  ///Returns the categories added by the user, the first 3 were inserted on
+  ///creating the DB
   getNewCategories() async{
     final database = await databaseProvider.database;
     final result = await database.query(categoryTable,where: '${CategoryFields.id} NOT IN (?,?,?)',
@@ -70,11 +66,21 @@ class CategoryDao{
     return result.map((e) => Category.fromMap(e)).toList();
   }
 
+  /// Checks if a category with the given [categoryName] exists
+  categoryExists(String categoryName) async{
+    final database = await databaseProvider.database;
+    int count = 0;
+    count = Sqflite.firstIntValue(await database.rawQuery('SELECT COUNT(*) from $categoryTable'
+        ' where ${CategoryFields.description} = \"$categoryName\"'))!;
+    dev.log("$count categories with that name");
+    return count > 0 ? true : false;
+  }
+
   ///Modify an existing [category]
   modifyCategory(Category category) async{
     final database = await databaseProvider.database;
     final count = await database.update(categoryTable,category.toMap(),where: '${CategoryFields.id} = ?',
         whereArgs: [category.id]);
-    return count; //true if the category has been modified successfully
+    return count;
   }
 }

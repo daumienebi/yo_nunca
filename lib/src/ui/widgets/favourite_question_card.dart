@@ -73,12 +73,12 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
           } else if (snapshot.hasError) {
             return Messages.errorWidget('Error: No se pudieron cargar las preguntas :(');
           } else {
-            return Messages.circularLoadingWidget('Creando juego con tus preguntas favoritas...');
+            return Messages.circularLoadingWidget('Creando juego...');
           }
           //main content to return with the data
           return Column(
             children: [
-              Text("Desliza en cualquier dirección para pasar a la siguiente pregunta.",style: TextStyle(fontSize: 15,color: Colors.black54),textAlign: TextAlign.center,),
+              Text("Desliza en cualquier dirección para cambiar de pregunta.",style: TextStyle(fontSize: 15,color: Colors.black54),textAlign: TextAlign.center,),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.48,//48%
                 width: isPotrait.value == true ? 370 : 500,
@@ -160,7 +160,7 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
           visible = false;
         });
       },
-      child: Text('Reiniciar'),
+      child: Text('Reiniciar Juego'),
       style: btnStyle,
     );
   }

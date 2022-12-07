@@ -25,7 +25,7 @@ class QuestionWidget extends StatefulWidget {
 class _QuestionWidgetState extends State<QuestionWidget> {
   List<Widget> questionWidgets = [];
   List<Question> questions = [];
-  int _currentndex = 0;
+  int _currentIndex = 0;
   final ValueNotifier<bool> isPotrait = ValueNotifier<bool>(true);
 
   Future<List<Question>> _getQstData() async{
@@ -86,7 +86,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
     //displays this widget when data is received
     return <Widget>[
       Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        _questionTextWidget(snapshot.data[_currentndex]),
+        _questionTextWidget(snapshot.data[_currentIndex]),
         SizedBox(height: 10),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -156,7 +156,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
       Icons.favorite_border,
       size: 40,
     );
-    var snackBar;
+    SnackBar snackBar;
     return Consumer(
       builder: (_, QuestionProvider provider, __) => Column(children: [
         //like and unlike icon
@@ -226,9 +226,9 @@ class _QuestionWidgetState extends State<QuestionWidget> {
     return ElevatedButton(
       onPressed: () {
         setState(() {
-          if (_currentndex > 0) {
-            dev.log("current index: $_currentndex");
-            _currentndex--;
+          if (_currentIndex > 0) {
+            dev.log("current index: $_currentIndex");
+            _currentIndex--;
           }
         });
       },
@@ -243,13 +243,17 @@ class _QuestionWidgetState extends State<QuestionWidget> {
     final btnStyle = ElevatedButton.styleFrom(
         textStyle: TextStyle(color: Colors.blue, fontSize: 17));
     return ElevatedButton(
-      onPressed: () {
+      onPressed: (){
+        dev.log('current index : $_currentIndex, list : $listLength');
+        _currentIndex < listLength -1 ?
         setState(() {
-          if (_currentndex < listLength - 1) {
-            dev.log("current index: $_currentndex");
-            _currentndex++;
+          if (_currentIndex < listLength - 1) {
+            dev.log("current index: $_currentIndex");
+            _currentIndex++;
           }
-        });
+        }) : ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('No quedan preguntas de esta categoría')
+            ));
       },
       child: Text('Siguiente'),
       style: btnStyle,

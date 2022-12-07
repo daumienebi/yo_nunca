@@ -43,9 +43,9 @@ class _FavouritesPageState extends State<FavouritesPage> {
         appBar: NewGradientAppBar(
           title: Text('Preguntas favoritas'),
           gradient: const LinearGradient(
-              colors: [Colors.amber, Colors.white70, Colors.amber]),
+              colors: [Colors.amber, Colors.white38, Colors.amber]),
         ),
-        backgroundColor: Colors.orange[50],
+        backgroundColor: Colors.orange[100],
         body:
           FutureBuilder(
             future: _favouriteQuestionsFuture(),
@@ -70,7 +70,7 @@ class _FavouritesPageState extends State<FavouritesPage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Image.asset('assets/images/love.png',scale: 7,),
-                                Text("Todavía no hay preguntas favoritas"
+                                Text("Todavía no has añadido preguntas favoritas"
                                   ,style: TextStyle(
                                       fontSize: 17,
                                     color: Colors.black54
@@ -107,29 +107,10 @@ class _FavouritesPageState extends State<FavouritesPage> {
           ),
         ),
         _newGameBtn(),
-        Text("Se creará un juego con solo tus preguntas favoritas",style: TextStyle(color: Colors.blue)),
+        Text("Se creará un juego con solo las preguntas favoritas",style: TextStyle(color: Colors.blue)),
         SizedBox(height: 20,)
       ],
     );
-  }
-
-  String _getDefaultCategoriesName(int categoryId){
-    //get the name for the 3 main categories; might get the rest later
-    switch(categoryId){
-      case Constants.normalCategoryId : {
-        return 'NORMAL';
-      }
-      break;
-      case Constants.intermediateCategoryId : {
-        return 'INTERMEDIO';
-      }
-      break;
-      case Constants.hotCategoryId : {
-        return 'CALIENTE';
-      }
-      break;
-      default : return "-";
-    }
   }
 
   _favListTile(Question question) {

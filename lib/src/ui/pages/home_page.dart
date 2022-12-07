@@ -33,11 +33,11 @@ class HomePage extends StatelessWidget {
         ],
         gradient: const LinearGradient(colors: [
           Colors.amber,
-          Colors.white70,
-          Colors.amber
+          Colors.white38,
+          Colors.amber,
         ]), //Change it later
       ),
-      backgroundColor: Colors.orange[50],
+      backgroundColor: Colors.orange[100],
       floatingActionButton: FloatingActionButton(
         tooltip: 'Añadir nueva categoría',
         child: Icon(Icons.add),
@@ -72,8 +72,12 @@ class HomePage extends StatelessWidget {
       children: [
         Container(
           margin: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+          
           padding: EdgeInsets.all(7),
-          decoration: BoxDecoration(color: Colors.white, boxShadow: [
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+              color: Colors.white, 
+              boxShadow: [
             BoxShadow(
                 color: Colors.grey.withOpacity(0.5),
                 spreadRadius: 5,
@@ -83,7 +87,7 @@ class HomePage extends StatelessWidget {
           child: Column(children: const [
             Text("Dudas con que categoria elegir ?  👀 ",
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.black54, fontSize: 16)),
+                style: TextStyle(color: Colors.black87, fontSize: 16)),
           ]),
         ),
         ElevatedButton(

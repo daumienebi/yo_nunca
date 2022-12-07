@@ -24,8 +24,11 @@ class MyDecorations{
   }
 
   static BoxDecoration homePageBoxDecorationWithoutImage (){
+    final double fillPercent = 56.23; // fills 56.23% for container from bottom
+    final double fillStop = (100 - fillPercent) / 100;
+    final List<double> stops = [0.5, 0.5];
+    List<Color> colors = [Colors.teal,Colors.redAccent];
     return BoxDecoration(
-      color: Colors.red[600],
       borderRadius: const BorderRadius.all(Radius.circular(15)),
       boxShadow: [
         BoxShadow(
@@ -35,6 +38,12 @@ class MyDecorations{
           offset: Offset(0, 3), // changes position of shadow
         ),
       ],
+      gradient :LinearGradient(
+        colors: colors,
+        stops: stops,
+        end: Alignment.bottomCenter,
+        begin: Alignment.topCenter,
+      ),
     );
   }
 

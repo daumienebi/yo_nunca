@@ -63,8 +63,6 @@ class MyDrawer extends StatelessWidget{
                     child: Row(
                       children: [
                         Image.asset("assets/images/question.png",scale: 6,),
-                        SizedBox(width: 20),
-                        _howToPlayButton()
                       ],
                     )
                   ),
@@ -132,12 +130,4 @@ class MyDrawer extends StatelessWidget{
         )
     );
   }
-
-  _howToPlayButton(){
-    return ElevatedButton(onPressed: (){
-    }, child: Text('Ajustes'),
-        style: TextButton.styleFrom(backgroundColor: Colors.greenAccent),
-    );
-  }
-
 }

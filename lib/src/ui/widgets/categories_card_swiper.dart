@@ -19,7 +19,6 @@ class CategoriesCardSwiper extends StatelessWidget {
         child: Swiper(
           itemBuilder: (BuildContext context, int index) {
             //Generate a unique id for each Hero because they have to be different
-            //categories[index].heroId = 'card ${categories[index].id}';
             return GestureDetector(
               onTap: () => Navigator.of(context).pushNamed(
                   Constants.routes.questionsPage,
