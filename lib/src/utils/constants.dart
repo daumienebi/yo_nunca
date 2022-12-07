@@ -12,6 +12,7 @@ class Constants {
     Colors.greenAccent, Colors.black87, Colors.deepOrange, Colors.blueGrey, Colors.amber, Colors.cyan,
     Colors.teal, Colors.brown,
   ];
+  static var pageBackgroundColor = Colors.orange[50];
 
 }
 

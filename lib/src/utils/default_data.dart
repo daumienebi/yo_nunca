@@ -33,12 +33,12 @@ class DefaultData {
     },
     {
       'id': 2,
-      'description': 'INTERMEDIO',
+      'description': 'FIESTA',
     'imageRoute' : 'assets/images/shots.jpg'
     },
     {
       'id': 3,
-      'description': 'CALIENTE',
+      'description': 'PICANTE',
       'imageRoute' : 'assets/images/smirk_face.png'
     },
   ];

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/ui/widgets/widgets.dart';
+import 'package:yo_nunca/src/utils/constants.dart';
 
 class QuestionPage extends StatelessWidget{
   const QuestionPage({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class QuestionPage extends StatelessWidget{
         ),
         gradient: const LinearGradient(colors: [Colors.amber,Colors.white38,Colors.amber]),//Change it later
       ),
-        backgroundColor: Colors.orange[100],
+        backgroundColor: Constants.pageBackgroundColor,
         //[mixedMode] is false because this widget is used to display questions for each category
       body: QuestionWidget(category: category,mixedMode: false,)
     );

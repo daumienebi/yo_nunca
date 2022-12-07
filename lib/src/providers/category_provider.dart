@@ -77,10 +77,11 @@ class CategoryProvider with ChangeNotifier{
   }
 
 
-  ///Returns the list of categories added by the user
-  void getCategories() async{
+  ///Fetch the list of all categories
+  Future<List<Category>>getCategories() async{
     var dbCategories = await _categoryRepository.getAllCategories();
     _setCategories(dbCategories);
+    return dbCategories;
     //dev.log('${_categories.length} categories in getCategories');
   }
 

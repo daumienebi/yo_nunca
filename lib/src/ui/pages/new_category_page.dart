@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/models/question.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
+import 'package:yo_nunca/src/utils/constants.dart';
 import 'package:yo_nunca/src/utils/my_decorations.dart';
 import 'dart:developer' as dev;
 
@@ -32,7 +33,7 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
         gradient: const LinearGradient(
             colors: [Colors.amber, Colors.white38, Colors.amber]),
       ),
-      backgroundColor: Colors.orange[100],
+      backgroundColor: Constants.pageBackgroundColor,
       body: Container(
         margin: EdgeInsets.all(10),
         child: Column(children: [

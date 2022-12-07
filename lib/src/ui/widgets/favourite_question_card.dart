@@ -160,7 +160,7 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
           visible = false;
         });
       },
-      child: Text('Reiniciar Juego'),
+      child: Text('Reiniciar juego'),
       style: btnStyle,
     );
   }

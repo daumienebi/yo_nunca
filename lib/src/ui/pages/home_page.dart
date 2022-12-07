@@ -22,6 +22,13 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
         title: _appBarTitle(),
         actions: [
+          InkWell(
+              child: Icon(Icons.search),
+            onTap: ()=> showSearch(
+                context: context,
+                delegate: CategorySearchDelegate(hintText: 'Buscar categorias')
+            ),
+          ),
           PopupMenuButton(itemBuilder: (BuildContext ctx) {
             return [
               PopupMenuItem(
@@ -37,7 +44,7 @@ class HomePage extends StatelessWidget {
           Colors.amber,
         ]), //Change it later
       ),
-      backgroundColor: Colors.orange[100],
+      backgroundColor: Constants.pageBackgroundColor,
       floatingActionButton: FloatingActionButton(
         tooltip: 'Añadir nueva categoría',
         child: Icon(Icons.add),
@@ -50,9 +57,9 @@ class HomePage extends StatelessWidget {
           child: Center(
               child: Container(
                   margin: EdgeInsets.only(top: 50),
-                  child: Column(children: [
-                    Text(
-                      "Desliza para ver las categorias...",
+                  child: Column(
+                      children: [
+                    Text("Desliza para ver las categorias...",
                       style: TextStyle(color: Colors.black54, fontSize: 15),
                     ),
                     CategoriesCardSwiper(categories: categories),

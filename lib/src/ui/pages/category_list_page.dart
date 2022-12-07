@@ -35,7 +35,7 @@ class CategoryListPage extends StatelessWidget{
               gradient: const LinearGradient(
                   colors: [Colors.amber, Colors.white38, Colors.amber]),
             ),
-            backgroundColor: Colors.orange[100],
+            backgroundColor: Constants.pageBackgroundColor,
             body: TabBarView(
                 children: [
                   _defaultCategoryContents(_defaultCategories),

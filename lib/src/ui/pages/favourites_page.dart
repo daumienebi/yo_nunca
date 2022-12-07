@@ -45,7 +45,7 @@ class _FavouritesPageState extends State<FavouritesPage> {
           gradient: const LinearGradient(
               colors: [Colors.amber, Colors.white38, Colors.amber]),
         ),
-        backgroundColor: Colors.orange[100],
+        backgroundColor: Constants.pageBackgroundColor,
         body:
           FutureBuilder(
             future: _favouriteQuestionsFuture(),

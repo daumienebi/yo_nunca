@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/ui/widgets/widgets.dart';
+import 'package:yo_nunca/src/utils/constants.dart';
 
 class MixedModePage extends StatelessWidget{
   const MixedModePage({Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class MixedModePage extends StatelessWidget{
           ),
           gradient: const LinearGradient(colors: [Colors.amber,Colors.white38,Colors.amber]),//Change it later
         ),
-        backgroundColor: Colors.orange[100],
+        backgroundColor: Constants.pageBackgroundColor,
         body: QuestionWidget(category: category,mixedMode: true,)
     );
   }
