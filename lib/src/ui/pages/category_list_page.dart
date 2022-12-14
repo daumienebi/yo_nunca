@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
@@ -23,7 +22,7 @@ class CategoryListPage extends StatelessWidget{
             child: Icon(Icons.add),
             onPressed: ()=> Navigator.pushNamed(context, Constants.routes.newCategory)
           ),
-            appBar: NewGradientAppBar(
+            appBar: AppBar(
               title: Text('Mis Categorías'),
               bottom: TabBar(
                 indicatorColor: Colors.cyan,
@@ -32,10 +31,7 @@ class CategoryListPage extends StatelessWidget{
                   Tab(child: _categoriesCountWidget(_categories.length,'Agregados'),),
                 ],
               ),
-              gradient: const LinearGradient(
-                  colors: [Colors.amber, Colors.white38, Colors.amber]),
             ),
-            backgroundColor: Constants.pageBackgroundColor,
             body: TabBarView(
                 children: [
                   _defaultCategoryContents(_defaultCategories),
@@ -55,7 +51,7 @@ class CategoryListPage extends StatelessWidget{
         Container(
         child: Center(child: Text(number.toString(),textAlign: TextAlign.center,style: TextStyle(color: Colors.white),)),
         decoration: BoxDecoration(
-          color: Colors.red,
+          color: Colors.black,
           borderRadius: BorderRadius.circular(15),
         ),
         height: 30,
@@ -113,7 +109,8 @@ class CategoryListPage extends StatelessWidget{
             onPressed: (){
               Navigator.pushNamed(context, Constants.routes.newCategory);
             },
-            child: Text("Añadir categoria"),
+            child: Text("Añadir categoria",style:
+            TextStyle(color: Colors.black54),),
           style: TextButton.styleFrom(backgroundColor: Colors.greenAccent),
         )
       ],
@@ -202,7 +199,9 @@ class _CategoryTileState extends State<CategoryTile> {
                         visible: widget.defaultCategory,
                         child: ElevatedButton(
                           onPressed: () async{
-                            await provider.deleteCategory(widget.category);
+                            int returnValue = await _confirmDeleteWidget();
+                            returnValue == 1 ?
+                            await provider.deleteCategory(widget.category) : null;
                           },
                           child: Text(
                             'Borrar',
@@ -221,5 +220,27 @@ class _CategoryTileState extends State<CategoryTile> {
           ),
         )
     );
+  }
+
+  Future<int> _confirmDeleteWidget () async{
+    int returnValue  = 0;
+    await showDialog(
+        context: context,
+        builder: (_) =>AlertDialog(
+          title: Text("Confirmar borrado"),
+          content: Text("Seguro que quieres borrar la category y todas las preguntas ?"),
+          actions: [
+            TextButton(onPressed: (){
+              returnValue = 1;
+              Navigator.pop(context);
+            }, child: Text('Si')),
+            TextButton(onPressed: (){
+              Navigator.pop(context,'Return value');//Return value to the caller
+            },
+                child: Text('No')),
+          ],
+        )
+    );
+    return Future.value(returnValue);
   }
 }

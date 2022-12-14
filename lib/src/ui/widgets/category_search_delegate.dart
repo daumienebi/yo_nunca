@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/models/question.dart';
-import 'package:yo_nunca/src/providers/category_provider.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
 import 'dart:developer' as dev;
 
@@ -123,7 +122,6 @@ class _CategoryDetailState extends State<CategoryDetail> {
     QuestionProvider provider = Provider.of<QuestionProvider>(context,listen: false);
     List<Question> questionsPerCategory = await provider.getQuestionsPerCategory(widget.category.id!);
     int count = questionsPerCategory.length;
-    //int count = await provider.countQuestionsPerCategory(widget.category.id!);
     _questionsCount = count;
     dev.log('category :' + widget.category.toString());
     dev.log('count :' + count.toString());
@@ -175,7 +173,7 @@ class _CategoryDetailState extends State<CategoryDetail> {
               Icons.question_answer_outlined,
               color: Colors.white,
             ),
-            trailing: Text('${_questionsCount}',
+            trailing: Text('$_questionsCount',
                 style: TextStyle(
                     fontSize: 15,
                     color: Colors.white,

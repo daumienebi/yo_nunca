@@ -116,7 +116,8 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
           ),
           child: Column(children: [
             SizedBox(
-              height: isPotrait.value == true ? 200 : 100, // make the questions readable in landscape mode
+              // make the questions readable in landscape mode
+              height: isPotrait.value ? 200 : 100,
               width: double.infinity,
               child: Center(
                 child: Text(
@@ -160,7 +161,7 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
           visible = false;
         });
       },
-      child: Text('Reiniciar juego'),
+      child: Text('Reiniciar juego',style: TextStyle(color: Colors.black87),),
       style: btnStyle,
     );
   }

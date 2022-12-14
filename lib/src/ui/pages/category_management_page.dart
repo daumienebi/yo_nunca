@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/models/question.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
+import 'package:yo_nunca/src/ui/widgets/round_app_bar.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
 import 'package:yo_nunca/src/utils/messages.dart';
 import 'dart:developer' as dev;
@@ -41,12 +42,7 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
     final Category category = ModalRoute.of(context)!.settings.arguments as Category;
     categoryNameController.text = category.description;
     return Scaffold(
-        appBar: NewGradientAppBar(
-          title: Text('Editar Categoría'),
-          gradient: const LinearGradient(
-              colors: [Colors.amber, Colors.white38, Colors.amber]),
-        ),
-        backgroundColor: Constants.pageBackgroundColor,
+        appBar: RoundAppBar(title: Text('Editar Categoría'),homePage: false,),
         body: Container(
           margin: EdgeInsets.all(10),
           child: Column(
@@ -80,10 +76,16 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
               keyboardType: TextInputType.name,
               textCapitalization: TextCapitalization.words,
               decoration: InputDecoration(
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.black87
+                  )
+                ),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(20),
                   ),
-                  labelText: 'Nombre de la categoría',
+                  labelText: 'Nombre',
+                  labelStyle: TextStyle(color: Colors.black87,fontSize: 20),
                   hintText: 'Introduce el nombre de la categoría',
                   suffixIcon: Icon(Icons.category)),
               validator: (String? value) {
@@ -158,7 +160,7 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
                   }
                   Navigator.pop(context); // instead of dispose();
                 },
-                child: Text('Aceptar'),
+                child: Text('Aceptar',style: TextStyle(color: Colors.green)),
               ),
             ],
           );
@@ -185,7 +187,7 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
               return _questionTile(questions[index]);
             },
             separatorBuilder: (ctx, index) => Divider(
-              color: Colors.orange,
+              color: Colors.black87,
               height: 5,
             ),
             itemCount: questions.length,

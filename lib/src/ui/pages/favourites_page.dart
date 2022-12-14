@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 // ignore_for_file: prefer_const_constructors
-import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 import 'package:provider/provider.dart';
-import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/models/question.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
+import 'package:yo_nunca/src/ui/widgets/widgets.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
-import 'dart:developer' as dev;
-
 import 'package:yo_nunca/src/utils/messages.dart';
 
 class FavouritesPage extends StatefulWidget {
@@ -19,14 +16,6 @@ class FavouritesPage extends StatefulWidget {
 
 class _FavouritesPageState extends State<FavouritesPage> {
   List<Question> _favouriteQuestions = [];
-  String _categoryDesc = '';
-
-  getCategory(int categoryId) async{
-    QuestionProvider prov = Provider.of<QuestionProvider>(context,listen: true);
-    Category c = await prov.getCategory(categoryId);
-    dev.log(c.description);
-    _categoryDesc = c.description;
-  }
 
   Future<List<Question>> _favouriteQuestionsFuture() async{
     QuestionProvider provider = Provider.of<QuestionProvider>(context,listen: true);
@@ -36,16 +25,10 @@ class _FavouritesPageState extends State<FavouritesPage> {
     return questions;
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: NewGradientAppBar(
-          title: Text('Preguntas favoritas'),
-          gradient: const LinearGradient(
-              colors: [Colors.amber, Colors.white38, Colors.amber]),
-        ),
-        backgroundColor: Constants.pageBackgroundColor,
+        appBar: RoundAppBar(title: Text('Preguntas favoritas'),homePage: false,),
         body:
           FutureBuilder(
             future: _favouriteQuestionsFuture(),
@@ -94,12 +77,7 @@ class _FavouritesPageState extends State<FavouritesPage> {
           child: Container(
             margin: EdgeInsets.all(5),
             child: ListView.separated(
-              itemBuilder: (_, int index) => Dismissible(
-                child: _favListTile(favouriteQuestions[index]),
-                //onDismissed: provider.removeFromFavourites(favouriteQuestions[index]),--dunno wtf is wrong with this shitty line of code
-                key: UniqueKey(),
-                background: Icon(Icons.delete_forever_rounded,color: Colors.red,),
-              ),
+              itemBuilder: (_, int index) => _favListTile(favouriteQuestions[index]),
               separatorBuilder: (context,index) => Divider(color: Colors.red[100],height: 1,),
               itemCount: favouriteQuestions.length,
               scrollDirection: Axis.vertical,
@@ -118,7 +96,6 @@ class _FavouritesPageState extends State<FavouritesPage> {
       builder: (_, QuestionProvider provider, __) =>
       ListTile(
         title: Text(question.description,overflow: TextOverflow.ellipsis),
-        subtitle: Text(_categoryDesc.toString()),
         trailing: InkWell(
             onTap: () async{
               question.isFavourite = false;
@@ -138,7 +115,7 @@ class _FavouritesPageState extends State<FavouritesPage> {
         //Navigator.push(context, MaterialPageRoute(builder: (context)=>FavouriteQuestionPage())); //just to remember the other way
         Navigator.pushNamed(context, Constants.routes.favouriteQuestionPage);
       },
-      child: Text('Crear juego'),
+      child: Text('Crear juego',style: TextStyle(color: Colors.black87),),
       style: btnStyle,
     );
   }

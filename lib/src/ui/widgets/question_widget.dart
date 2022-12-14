@@ -140,7 +140,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
         onPressed: () {
           Navigator.pushNamed(context, Constants.routes.categoryListPage);
         },
-        child: Text('Ir a Categorias'),
+        child: Text('Ir a Categorias',style: TextStyle(color: Colors.black87),),
         style: TextButton.styleFrom(backgroundColor: Colors.greenAccent),
       )
     ];

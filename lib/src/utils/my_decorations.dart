@@ -23,9 +23,9 @@ class MyDecorations{
     );
   }
 
-  static BoxDecoration homePageBoxDecorationWithoutImage (){
-    final double fillPercent = 56.23; // fills 56.23% for container from bottom
-    final double fillStop = (100 - fillPercent) / 100;
+  static BoxDecoration homePageBoxDecorationWithoutImage_ (){
+    const double fillPercent = 56.23; // fills 56.23% for container from bottom
+    const double fillStop = (100 - fillPercent) / 100;
     final List<double> stops = [0.5, 0.5];
     List<Color> colors = [Colors.teal,Colors.redAccent];
     return BoxDecoration(
@@ -47,6 +47,22 @@ class MyDecorations{
     );
   }
 
+  static BoxDecoration homePageBoxDecorationWithoutImage (){
+    return const BoxDecoration(
+      borderRadius: BorderRadius.all(Radius.circular(15)),
+      boxShadow: [
+        BoxShadow(
+          spreadRadius: 0.5,
+          blurRadius: 0.5,
+          //offset: Offset(0, 0), // changes position of shadow
+        ),
+
+      ],
+      color: Colors.white,
+      //color: Colors.white
+    );
+  }
+
   static Text homePageBoxText(String content,Color textColor,Color? bgColor){
     return Text(content,
       textAlign: TextAlign.center,style: TextStyle(
@@ -60,8 +76,16 @@ class MyDecorations{
   static InputDecoration questionField(){
     return const InputDecoration(
         labelText: "Pregunta",
-        icon: Icon(Icons.description),
-        enabled: true
+        labelStyle: TextStyle(
+          color: Colors.black87
+        ),
+        icon: Icon(Icons.description,color: Colors.black87,),
+        enabled: true,
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.black87
+          )
+        )
     );
   }
 }

@@ -26,8 +26,9 @@ class MyApp extends StatelessWidget {
         Constants.routes.categoryListPage : (_) => const CategoryListPage()
       },
       theme: ThemeData(
-        primarySwatch: Colors.amber,
-        backgroundColor: Colors.orange[100]
+        scaffoldBackgroundColor: Colors.orange[50],
+        primaryColor: Colors.red,
+        primarySwatch: Colors.red,
       ),
     );
   }

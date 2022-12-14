@@ -12,7 +12,8 @@ class Constants {
     Colors.greenAccent, Colors.black87, Colors.deepOrange, Colors.blueGrey, Colors.amber, Colors.cyan,
     Colors.teal, Colors.brown,
   ];
-  static var pageBackgroundColor = Colors.orange[50];
+  static LinearGradient appBarGradient = const LinearGradient(colors: [
+  Colors.amber,Colors.white38,Colors.amber,]);
 
 }
 

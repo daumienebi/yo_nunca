@@ -35,7 +35,7 @@ class CategoriesCardSwiper extends StatelessWidget {
                       width: 300,
                       child: MyDecorations.homePageBoxText(
                           categories[index].description,
-                          Colors.white,
+                          Colors.black87,
                           null))),
             );
           },
