@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'dart:math' as math;
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
 import 'package:yo_nunca/src/ui/pages/mixed_mode_page.dart';
@@ -23,7 +22,6 @@ class HomePage extends StatelessWidget {
     List<Category> categories = provider.categories;
     //physics: const AlwaysScrollableScrollPhysics(),
     return Scaffold(
-      drawer: MyDrawer(),
       appBar: RoundAppBar(
         homePage: true,
       ),
@@ -186,10 +184,6 @@ class HomePage extends StatelessWidget {
           arguments: arguments),
       pageBuilder: (context, animation, secondaryAnimation) => const MixedModePage(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        const begin = Offset(0.5, 1.0);
-        const end = Offset.zero;
-        const curve = Curves.ease;
-        //var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
         return FadeTransition(
           opacity: animation,
           child: child,

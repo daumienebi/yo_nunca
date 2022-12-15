@@ -146,17 +146,22 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
                   if (isEditMode) {
                     //edit an existing question
                     _question = _questionController.text;
-                    question!.description = _question;
-                    int count = await questionProvider.modifyQuestion(question);
+                   if(_question.isNotEmpty){
+                     question!.description = _question;
+                     int count = await questionProvider.modifyQuestion(question);
+                   }
                   } else {
                     //new question
                     _question = _questionController.text;
-                    var newQuestion = Question(
-                        description: _question,
-                        isFavourite: false,
-                        categoryId: category!.id! //get the real category id
-                        );
-                    int count = await questionProvider.addQuestion(newQuestion);
+
+                    if(_question.isNotEmpty){
+                      var newQuestion = Question(
+                          description: _question,
+                          isFavourite: false,
+                          categoryId: category!.id! //get the real category id
+                      );
+                      int count = await questionProvider.addQuestion(newQuestion);
+                    }
                   }
                   Navigator.pop(context); // instead of dispose();
                 },

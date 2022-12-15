@@ -27,6 +27,7 @@ class Routes {
   String get mixedModePage => 'mixedmodepage';
   String get categoryManagementPage => 'categorymanagementpage';
   String get categoryListPage => 'categorylistpage';
+  String get drawerPage => 'drawerpage';
 }
 
 

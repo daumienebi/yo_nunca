@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:yo_nunca/src/ui/pages/pages.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
 
 void main() {
-  runApp(const AppState());
+  WidgetsFlutterBinding.ensureInitialized();
+
+  ///The landscape idea for the app has been scrapped for now, some classes still
+  ///have the code for landscape mode like [QuestionWidget], for future purposes
+  ///Setup preferred orientations before running the app
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((value) => runApp(const AppState()));
 }
 
 class MyApp extends StatelessWidget {
@@ -23,7 +30,8 @@ class MyApp extends StatelessWidget {
         Constants.routes.favouriteQuestionPage : (_) => const FavouriteQuestionPage(),
         Constants.routes.mixedModePage : (_) => const MixedModePage(),
         Constants.routes.categoryManagementPage : (_) => const CategoryManagementPage(),
-        Constants.routes.categoryListPage : (_) => const CategoryListPage()
+        Constants.routes.categoryListPage : (_) => const CategoryListPage(),
+        Constants.routes.drawerPage : (_) => const DrawerPage()
       },
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.orange[50],

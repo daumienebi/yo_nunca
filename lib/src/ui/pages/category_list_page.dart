@@ -231,16 +231,18 @@ class _CategoryTileState extends State<CategoryTile> {
         context: context,
         builder: (_) =>AlertDialog(
           title: Text("Confirmar borrado"),
-          content: Text("Seguro que quieres borrar la category y todas las preguntas ?"),
+          content: Text("Seguro que quieres borrar la categoría y todas las "
+              "preguntas que tiene ?"),
           actions: [
-            TextButton(onPressed: (){
-              returnValue = 1;
-              Navigator.pop(context);
-            }, child: Text('Si')),
             TextButton(onPressed: (){
               Navigator.pop(context,'Return value');//Return value to the caller
             },
-                child: Text('No')),
+                child: Text('No',style: TextStyle(color: Colors.red),)),
+            TextButton(onPressed: (){
+              returnValue = 1;
+              Navigator.pop(context);
+            }, child: Text('Si',style: TextStyle(color: Colors.green),))
+
           ],
         )
     );

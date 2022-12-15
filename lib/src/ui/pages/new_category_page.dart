@@ -33,7 +33,8 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
       ),
       body: Container(
         margin: EdgeInsets.all(10),
-        child: Column(children: [
+        child: Column(
+            children: [
           _formFields(),
           SizedBox(
             height: 10,
@@ -104,7 +105,7 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
         _questionController.text = question?.description ?? "";
         return Consumer(builder: (_, CategoryProvider provider, __) {
           return AlertDialog(
-            title: const Text('Añadir pregunta'),
+            title: Text(isEditMode ? 'Modificar pregunta' : 'Añadir pregunta'),
             content: SingleChildScrollView(
               child: Column(
                 children: [

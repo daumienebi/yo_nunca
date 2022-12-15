@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yo_nunca/src/ui/widgets/widgets.dart';
+import 'package:yo_nunca/src/utils/constants.dart';
 class RoundAppBar extends StatelessWidget with PreferredSizeWidget{
   final double barHeight = 10;
   final Text? title;
@@ -22,6 +23,10 @@ class RoundAppBar extends StatelessWidget with PreferredSizeWidget{
     return AppBar(
       centerTitle: true,
       title: Center(child: title),
+      leading: InkWell(
+        child: const Icon(Icons.menu),
+        onTap:()=> Navigator.of(context).pushNamed(Constants.routes.drawerPage)
+      ),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           bottom: Radius.circular(60.0),
