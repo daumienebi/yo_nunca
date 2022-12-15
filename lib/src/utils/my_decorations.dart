@@ -23,11 +23,12 @@ class MyDecorations{
     );
   }
 
-  static BoxDecoration homePageBoxDecorationWithoutImage_ (){
+  static BoxDecoration homePageBoxDecorationWithoutImage_
+      (){
     const double fillPercent = 56.23; // fills 56.23% for container from bottom
     const double fillStop = (100 - fillPercent) / 100;
     final List<double> stops = [0.5, 0.5];
-    List<Color> colors = [Colors.teal,Colors.redAccent];
+    List<Color> colors = [Colors.white,Colors.red];
     return BoxDecoration(
       borderRadius: const BorderRadius.all(Radius.circular(15)),
       boxShadow: [

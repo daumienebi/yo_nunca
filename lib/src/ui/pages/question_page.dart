@@ -10,6 +10,7 @@ class QuestionPage extends StatelessWidget{
   Widget build(BuildContext context) {
     // TODO: implement build
     Category category = ModalRoute.of(context)!.settings.arguments as Category;
+    //Category category = Category(id:1,description: 'dad',imageRoute: '');
     return Scaffold(
         appBar: RoundAppBar(title: Text(category.description,style: TextStyle(
           color: Colors.white,

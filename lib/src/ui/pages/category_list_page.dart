@@ -13,8 +13,9 @@ class CategoryListPage extends StatelessWidget{
   Widget build(BuildContext context) {
     const int tabLength = 2;
     CategoryProvider provider = Provider.of<CategoryProvider>(context, listen: true);
-    List<Category> _defaultCategories = provider.defaultCategories;
-    List<Category> _categories = provider.newCategories;
+    List<Category> _categories,_defaultCategories = [];
+    _defaultCategories = provider.defaultCategories;
+    _categories = provider.newCategories;
       return DefaultTabController(
         length: tabLength,
         child: Scaffold(
@@ -145,7 +146,9 @@ class _CategoryTileState extends State<CategoryTile> {
   @override
   void didChangeDependencies(){
     //rebuild the widget in case a change was made
-    getCount();
+    //no need to call the [getCount] method again, it rebuilds the widget
+    //unnecessarily
+    //getCount();
     super.didChangeDependencies();
 }
 

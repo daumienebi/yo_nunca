@@ -6,6 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'dart:math' as math;
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
+import 'package:yo_nunca/src/ui/pages/mixed_mode_page.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
 import 'package:yo_nunca/src/ui/widgets/widgets.dart';
 
@@ -89,6 +90,8 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+
+
 
   List<Widget> socialMediaButtons(context) {
     //Very shitty work around
@@ -177,6 +180,24 @@ class HomePage extends StatelessWidget {
     );
   }
 
+  Route _createRoute({required Object? arguments}) {
+    return PageRouteBuilder(
+      settings: RouteSettings(name: Constants.routes.mixedModePage,
+          arguments: arguments),
+      pageBuilder: (context, animation, secondaryAnimation) => const MixedModePage(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        const begin = Offset(0.5, 1.0);
+        const end = Offset.zero;
+        const curve = Curves.ease;
+        //var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+        return FadeTransition(
+          opacity: animation,
+          child: child,
+        );
+      },
+    );
+  }
+
   Widget _mixedModeWidget(BuildContext context) {
     //guess its not advisable to pass the context like this
     return Column(
@@ -202,9 +223,15 @@ class HomePage extends StatelessWidget {
         ),
         ElevatedButton(
           onPressed: () {
+            /*
             Navigator.pushNamed(context, Constants.routes.mixedModePage,
                 arguments:
                     Category(id: 0, description: 'MODO MIXTO', imageRoute: ''));
+             */
+            //The page receives a category with id : 0, because it is only going
+            //to be used for this mode
+            Navigator.of(context).push(_createRoute(arguments:
+            Category(id: 0, description: 'MODO MIXTO', imageRoute: '')));
           },
           child: Text(
             'MODO MIXTO',
