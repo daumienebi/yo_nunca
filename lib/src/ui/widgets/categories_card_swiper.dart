@@ -35,6 +35,8 @@ class CategoriesCardSwiper extends StatelessWidget {
                       decoration: MyDecorations.homePageBoxDecorationWithoutImage(),
                       height: Constants.homePageWidgetHeight,
                       width: 300,
+                      //Try the child with a future builder to simulate a fake
+                      //load
                       child: MyDecorations.homePageBoxText(
                           categories[index].description,
                           Colors.black87,
@@ -56,10 +58,6 @@ class CategoriesCardSwiper extends StatelessWidget {
       settings: RouteSettings(name: Constants.routes.questionsPage,arguments: arguments),
       pageBuilder: (context, animation, secondaryAnimation) => const QuestionPage(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        const begin = Offset(0.5, 1.0);
-        const end = Offset.zero;
-        const curve = Curves.ease;
-        //var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
         return FadeTransition(
           opacity: animation,
           child: child,
