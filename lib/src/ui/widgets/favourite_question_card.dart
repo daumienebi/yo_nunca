@@ -55,7 +55,8 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
                 children: [
                   _questionAppinioSwiper(),
                   SizedBox(height: 5),
-                  Center(child: Visibility(child: _restartButton(), visible: visible))
+                  Center(child: Visibility(child: _restartButton(),
+                      visible: visible))
                 ]),
           );
       },
@@ -71,14 +72,17 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
         builder: (context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {
           } else if (snapshot.hasError) {
-            return Messages.errorWidget('Error: No se pudieron cargar las preguntas :(');
+            return Messages.errorWidget('Error: No se pudieron cargar '
+                'las preguntas :(');
           } else {
             return Messages.circularLoadingWidget('Creando juego...');
           }
           //main content to return with the data
           return Column(
             children: [
-              Text("Desliza en cualquier dirección para cambiar de pregunta.",style: TextStyle(fontSize: 15,color: Colors.black54),textAlign: TextAlign.center,),
+              Text("Desliza en cualquier dirección para cambiar de pregunta.",
+                style: TextStyle(fontSize: 15,color: Colors.black54),
+                textAlign: TextAlign.center,),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.48,//48%
                 width: isPotrait.value == true ? 370 : 500,
@@ -109,12 +113,6 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(30)),
             boxShadow: const [
-              /*
-              BoxShadow(
-                  color: Constants.randomColours
-                      .elementAt(Random().nextInt
-                      (Constants.randomColours.length))),
-               */
               BoxShadow(
                   color: Colors.blueGrey)
             ],

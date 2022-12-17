@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/ui/widgets/widgets.dart';
-import 'package:yo_nunca/src/utils/constants.dart';
 
 class QuestionPage extends StatelessWidget{
   const QuestionPage({Key? key}) : super(key: key);

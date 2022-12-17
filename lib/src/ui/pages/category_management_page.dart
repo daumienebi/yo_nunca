@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/models/question.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
 import 'package:yo_nunca/src/ui/widgets/round_app_bar.dart';
-import 'package:yo_nunca/src/utils/constants.dart';
 import 'package:yo_nunca/src/utils/messages.dart';
 import 'dart:developer' as dev;
 import 'package:yo_nunca/src/utils/my_decorations.dart';

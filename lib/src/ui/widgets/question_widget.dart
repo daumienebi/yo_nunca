@@ -7,6 +7,7 @@ import 'package:yo_nunca/src/providers/providers.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
 import 'package:yo_nunca/src/utils/messages.dart';
 import 'dart:developer' as dev;
+import 'dart:math';
 
 class QuestionWidget extends StatefulWidget {
   final Category category;
@@ -24,7 +25,9 @@ class QuestionWidget extends StatefulWidget {
 class _QuestionWidgetState extends State<QuestionWidget> {
   List<Widget> questionWidgets = [];
   List<Question> questions = [];
-  int _currentIndex = 0;
+  int _currentIndex = 0; //the current question index
+  int _previousIndex = 0; //In case the user goes back to the previous question
+  int _randomIndex = 0; //The random generated index
   final ValueNotifier<bool> isPotrait = ValueNotifier<bool>(true);
 
   Future<List<Question>> _getQstData() async{
@@ -53,7 +56,8 @@ class _QuestionWidgetState extends State<QuestionWidget> {
               builder: (_, AsyncSnapshot snapshot) {
                 List<Widget> futureWidgets = [];
                 if (snapshot.hasData) {
-                  //if data is available then display the questions(set the list of widgets to the questions), else display the error page
+                  //if data is available then display the questions(set the list
+                  // of widgets to the questions), else display the error page
                   futureWidgets =
                       snapshot.data != null && snapshot.data.length > 0
                           ? _questionContainerWidget(snapshot)
@@ -65,7 +69,9 @@ class _QuestionWidgetState extends State<QuestionWidget> {
                   ];
                 } else {
                   futureWidgets = <Widget>[
-                    Messages.circularLoadingWidget(widget.mixedMode ? 'Cargando preguntas de todas las categorías...' : 'Cargando preguntas ...'),
+                    Messages.circularLoadingWidget(widget.mixedMode ?
+                    'Cargando preguntas de todas las categorías...' :
+                    'Cargando preguntas ...'),
                   ];
                 }
                 return Center(
@@ -82,6 +88,9 @@ class _QuestionWidgetState extends State<QuestionWidget> {
 
   ///Parent container for the fav button,question textWidget and the Previous & Next Button
   _questionContainerWidget(AsyncSnapshot snapshot) {
+    //Begin the game with a random index instead of 0
+    _randomIndex = Random().nextInt(snapshot.data.length);
+    //_currentIndex = _randomIndex;
     //displays this widget when data is received
     return <Widget>[
       Column(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -90,7 +99,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            _prevQuestiontButton(),
+            _previousQuestionButton(),
             SizedBox(width: 25),
             _nextQuestionButton(snapshot.data.length)
           ],
@@ -99,9 +108,9 @@ class _QuestionWidgetState extends State<QuestionWidget> {
     ];
   }
 
+  ///Displays this widget when no data is received or when the category has
+  ///no questions
   _noQuestionWidget() {
-    //displays this widget when no data is received or when the category has
-    //no questions
     String part1 = 'No hay preguntas disponibles para la categoría ';
     String part2 = ', ve a las categorias para añadirlas.';
     final textStyle = TextStyle(color: Colors.black54,fontSize: 17);
@@ -218,7 +227,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
     );
   }
 
-  Widget _prevQuestiontButton() {
+  Widget _previousQuestionButton() {
     //Previous question button
     final btnStyle = ElevatedButton.styleFrom(
         textStyle: TextStyle(color: Colors.blue, fontSize: 17));
@@ -227,6 +236,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
         setState(() {
           if (_currentIndex > 0) {
             dev.log("current index: $_currentIndex");
+
             _currentIndex--;
           }
         });
@@ -243,16 +253,18 @@ class _QuestionWidgetState extends State<QuestionWidget> {
         textStyle: TextStyle(color: Colors.blue, fontSize: 17));
     return ElevatedButton(
       onPressed: (){
-        dev.log('current index : $_currentIndex, list : $listLength');
-        _currentIndex < listLength -1 ?
+        //TODO: finish the logic
         setState(() {
           if (_currentIndex < listLength - 1) {
             dev.log("current index: $_currentIndex");
-            _currentIndex++;
+            _randomIndex = Random().nextInt(listLength);
+            dev.log(_randomIndex.toString());
+            _currentIndex = _randomIndex;
+            //get the current index here to use it later on
+            _previousIndex = _currentIndex;
+            //_currentIndex++;
           }
-        }) : ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('No quedan preguntas de esta categoría')
-            ));
+        });
       },
       child: Text('Siguiente'),
       style: btnStyle,

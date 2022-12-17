@@ -1,5 +1,7 @@
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:yo_nunca/src/ui/pages/category_list_page.dart';
 import 'package:yo_nunca/src/ui/pages/favourites_page.dart';
 import 'package:yo_nunca/src/ui/widgets/round_app_bar.dart';
@@ -25,7 +27,7 @@ class DrawerPage extends StatelessWidget{
       margin: EdgeInsets.only(top: 20,left: 15, right: 15),
       child: Column(
         children: [
-          _lastGameWidget(),
+          _buildLastEntryWidget(),
           SizedBox(height: 10),
           _optionsWidgets(context),
           TextButton(onPressed: (){
@@ -39,29 +41,50 @@ class DrawerPage extends StatelessWidget{
     );
   }
 
-  Widget _lastGameWidget(){
+    Widget _buildLastEntryWidget(){
+    return FutureBuilder(
+      future: getLastEntry(),
+      builder: (BuildContext context,AsyncSnapshot snapshot){
+        if(snapshot.hasData){
+          return _lastEntryWidget(snapshot.data);
+        }else{
+          return _lastEntryWidget('');
+        }
+      },
+    );
+  }
+
+  Widget _lastEntryWidget(String lastEntry){
     return Container(
       padding: EdgeInsets.all(7),
-      height: 120,
+      height: 90,
       decoration: BoxDecoration(
         color: Colors.blueGrey,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const[
-          Text("Buenas tardes,",textAlign: TextAlign.left,
+        children: [
+          Text("Hola Derick,",textAlign: TextAlign.left,
             style: TextStyle(
-              fontWeight: FontWeight.bold,fontSize: 25,color: Colors.cyan
+                fontWeight: FontWeight.bold,fontSize: 23,color: Colors.cyanAccent
             ),),
           SizedBox(height: 10),
-          Text("Jugaste por ultima vez el 21 de Octubre de 2022, hace 98 dias.",
+          Text(lastEntry.isNotEmpty ? "Jugaste por ultima vez el $lastEntry."
+            :"Todavía no jugaste ninguna partida",//empty space ;)
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 14,color: Colors.white
             ),)
         ],
       ),
     );
+  }
+
+
+  Future<String> getLastEntry()async{
+    SharedPreferences pref =await SharedPreferences.getInstance();
+    var lastEntry = pref.getString('lastEntry') ?? '';
+    return Future.value(lastEntry);
   }
 
   Widget _optionsWidgets(context){

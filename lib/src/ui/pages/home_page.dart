@@ -10,17 +10,19 @@ import 'package:yo_nunca/src/utils/constants.dart';
 import 'package:yo_nunca/src/ui/widgets/widgets.dart';
 
 ///Create an enum for the possible social medias where the app can be shared
-enum SocialMedia { facebook, twitter, instagram, whatsapp, }
+enum SocialMedia { facebook, twitter, instagram, whatsapp}
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
   static const _actionTitles = ['Valor la app en la Playstore'];
+
   @override
   Widget build(BuildContext context) {
     CategoryProvider provider =
         Provider.of<CategoryProvider>(context, listen: true);
     List<Category> categories = provider.categories;
     //physics: const AlwaysScrollableScrollPhysics(),
+
     return Scaffold(
       appBar: RoundAppBar(
         homePage: true,
@@ -34,7 +36,6 @@ class HomePage extends StatelessWidget {
                   context: context,
                   builder: (BuildContext ctx) {
                     return Container(
-                      //Set the height to 50% of the available size
                       height: 110,
                       child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -42,7 +43,7 @@ class HomePage extends StatelessWidget {
                             Text(
                               'Compartir',textAlign: TextAlign.left,
                               style: TextStyle(
-                                  color: Colors.black87, fontSize: 20),
+                                  color: Colors.blueGrey, fontSize: 20),
                             ),
                             SizedBox(height: 5,),
                             Expanded(
@@ -58,7 +59,7 @@ class HomePage extends StatelessWidget {
             icon: const Icon(Icons.share_sharp),
           ),
           ActionButton(
-            onPressed: () => _showAction(context, 0),
+            onPressed: () => print('Datetime :' + DateTime.now().toString()),
             icon: const Icon(Icons.star_border),
           ),
           ActionButton(
@@ -89,15 +90,12 @@ class HomePage extends StatelessWidget {
     );
   }
 
-
-
   List<Widget> socialMediaButtons(context) {
     //Very shitty work around
     // TODO : change it later on
-    final listTextStyle = TextStyle(color: Colors.black87);
     List<Widget> items = [];
     items.add(SizedBox(
-      width: 10,
+      width: 15,
     ));
     items.add(socialButton(
         socialMedia: SocialMedia.whatsapp,
@@ -108,7 +106,7 @@ class HomePage extends StatelessWidget {
         ),
         onClicked: () => share(SocialMedia.whatsapp)));
     items.add(SizedBox(
-      width: 10,
+      width: 15,
     ));
     items.add(socialButton(
         socialMedia: SocialMedia.instagram,
@@ -119,7 +117,7 @@ class HomePage extends StatelessWidget {
         ),
         onClicked: () => share(SocialMedia.instagram)));
     items.add(SizedBox(
-      width: 10,
+      width: 15,
     ));
     items.add(socialButton(
         socialMedia: SocialMedia.twitter,
@@ -130,7 +128,7 @@ class HomePage extends StatelessWidget {
         ),
         onClicked: () => share(SocialMedia.twitter)));
     items.add(SizedBox(
-      width: 10,
+      width: 15,
     ));
     items.add(socialButton(
         socialMedia: SocialMedia.facebook,
@@ -145,6 +143,7 @@ class HomePage extends StatelessWidget {
 
   socialButton({required SocialMedia socialMedia,required Icon icon,
       Function()? onClicked}) {
+    final listTextStyle = TextStyle(color: Colors.black54);
     return Container(
       child: Column(
         children: [
@@ -152,29 +151,9 @@ class HomePage extends StatelessWidget {
             child: icon,
             onTap: onClicked,
           ),
-          Text(socialMedia.name.toUpperCase()),
-          SizedBox(
-            width: 10,
-          )
+          Text(socialMedia.name.toUpperCase(),style: listTextStyle,),
         ],
       ),
-    );
-  }
-
-  void _showAction(BuildContext context, int index) {
-    showDialog<void>(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          content: Text(_actionTitles[index]),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: const Text('CLOSE'),
-            ),
-          ],
-        );
-      },
     );
   }
 
@@ -217,11 +196,6 @@ class HomePage extends StatelessWidget {
         ),
         ElevatedButton(
           onPressed: () {
-            /*
-            Navigator.pushNamed(context, Constants.routes.mixedModePage,
-                arguments:
-                    Category(id: 0, description: 'MODO MIXTO', imageRoute: ''));
-             */
             //The page receives a category with id : 0, because it is only going
             //to be used for this mode
             Navigator.of(context).push(_createRoute(arguments:
@@ -242,7 +216,6 @@ class HomePage extends StatelessWidget {
   }
 
   Future share(SocialMedia platform) async {
-    const subject = 'Aplicación de YO NUNCA con la opcion de personalizarla ';
     const text = 'Descarga y prueba esta app de YO NUNCA personalizable desde'
         'la Playstore';
     final urlShare = Uri.encodeComponent(Constants.playStoreUrl);

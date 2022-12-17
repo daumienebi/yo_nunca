@@ -12,6 +12,22 @@ class Constants {
     Colors.greenAccent, Colors.black87, Colors.deepOrange, Colors.blueGrey, Colors.amber, Colors.cyan,
     Colors.teal, Colors.brown,
   ];
+
+  static List<String> monthsInSpanish =
+   [
+    'Enero',
+    'Febrero',
+    'Marzo',
+    'Abril',
+    'Mayo',
+    'Junio',
+    'Julio',
+    'Agosto',
+    'Septiembre',
+    'Octubre',
+    'Noviembre',
+    'Diciembre',
+  ];
   static LinearGradient appBarGradient = const LinearGradient(colors: [
   Colors.amber,Colors.white38,Colors.amber,]);
 

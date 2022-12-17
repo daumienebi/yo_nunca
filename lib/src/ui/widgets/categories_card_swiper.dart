@@ -1,5 +1,6 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/ui/pages/pages.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
@@ -21,31 +22,34 @@ class CategoriesCardSwiper extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             //Generate a unique id for each Hero because they have to be different
             return GestureDetector(
-              //onTap: () => Navigator.of(context).pushNamed(
-                  //Constants.routes.questionsPage, arguments: categories[index]),
-              onTap: () => Navigator.of(context).push
-                (_createRoute(arguments: categories[index])),
-              child: Hero(
+                //onTap: () => Navigator.of(context).pushNamed(
+                //Constants.routes.questionsPage, arguments: categories[index]),
+                onTap: () async {
+                  //The idea is to save the date the user enters a category
+                  await _setPrefsData();
+                  Navigator.of(context)
+                      .push(_createRoute(arguments: categories[index]));
+                },
+                child: Hero(
                   tag: UniqueKey(), //or find another way to use a unique tag
                   child: Container(
                       margin: const EdgeInsets.all(10),
                       padding: const EdgeInsets.all(5),
                       //decoration: MyDecorations.homePageBoxDecoration(
-                          //categories[index].imageRoute),
-                      decoration: MyDecorations.homePageBoxDecorationWithoutImage(),
+                      //categories[index].imageRoute),
+                      decoration:
+                          MyDecorations.homePageBoxDecorationWithoutImage(),
                       height: Constants.homePageWidgetHeight,
                       width: 300,
                       //Try the child with a future builder to simulate a fake
                       //load
                       child: MyDecorations.homePageBoxText(
-                          categories[index].description,
-                          Colors.black87,
-                          null))),
-            );
+                          categories[index].description, Colors.black87)),
+                ));
           },
           itemCount: categories.length,
-          itemHeight: size.height * 0.5, //try to calculate it depending on potrait or landscape mode
-          itemWidth: size.width * 0.85, //try to calculate it depending on potrait or landscape mode
+          itemHeight: size.height * 0.5,
+          itemWidth: size.width * 0.85,
           layout: SwiperLayout.TINDER,
           //layout: SwiperLayout.STACK,
         ),
@@ -53,10 +57,30 @@ class CategoriesCardSwiper extends StatelessWidget {
     ]);
   }
 
+  /*
+  Future<List<Category>> categoriesFuture() async {
+    return Future.delayed(const Duration(seconds: 1), () => categories);
+  }
+  */
+
+  Future<void> _setPrefsData() async {
+    final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+    final SharedPreferences prefs = await _prefs;
+    String data = '';
+    int year = DateTime.now().year;
+    int day = DateTime.now().day;
+    int month = DateTime.now().month;
+    var months = Constants.monthsInSpanish;
+    data = '$day de ${months.elementAt(month - 1)} del $year';
+    prefs.setString('lastEntry', data);
+  }
+
   Route _createRoute({required Object? arguments}) {
     return PageRouteBuilder(
-      settings: RouteSettings(name: Constants.routes.questionsPage,arguments: arguments),
-      pageBuilder: (context, animation, secondaryAnimation) => const QuestionPage(),
+      settings: RouteSettings(
+          name: Constants.routes.questionsPage, arguments: arguments),
+      pageBuilder: (context, animation, secondaryAnimation) =>
+          const QuestionPage(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         return FadeTransition(
           opacity: animation,

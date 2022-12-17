@@ -64,12 +64,12 @@ class MyDecorations{
     );
   }
 
-  static Text homePageBoxText(String content,Color textColor,Color? bgColor){
+  static Text homePageBoxText(String content,Color textColor){
     return Text(content,
       textAlign: TextAlign.center,style: TextStyle(
           fontWeight: FontWeight.bold,fontSize: 35,
           color: textColor,
-          fontFamily: 'OoohBaby',backgroundColor: bgColor
+          fontFamily: 'OoohBaby'
       ),
     );
   }
