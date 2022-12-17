@@ -122,7 +122,8 @@ class CategoryListPage extends StatelessWidget{
 class CategoryTile extends StatefulWidget{
   final Category category;
   final bool defaultCategory;
-  const CategoryTile({Key? key,required this.category,required this.defaultCategory}) : super(key: key);
+  const CategoryTile({Key? key,required this.category,
+    required this.defaultCategory}) : super(key: key);
 
   @override
   State<CategoryTile> createState() => _CategoryTileState();
@@ -147,18 +148,22 @@ class _CategoryTileState extends State<CategoryTile> {
   void didChangeDependencies(){
     //rebuild the widget in case a change was made
     //no need to call the [getCount] method again, it rebuilds the widget
-    //unnecessarily
-    //getCount();
+    //unnecessarily.
+    //finally had to call it.....dunno right now
+    getCount();
     super.didChangeDependencies();
 }
 
   @override
   Widget build(BuildContext context) {
-    final mainTxtStyle = TextStyle(fontSize: 20,color: Colors.cyan,fontFamily: 'OoohBaby',fontWeight: FontWeight.bold);
-    final countTxtStyle = TextStyle(fontSize: 18,color: Colors.white,fontWeight: FontWeight.normal);
+    final mainTxtStyle = TextStyle(fontSize: 20,color: Colors.cyan,fontFamily:
+      'OoohBaby',fontWeight: FontWeight.bold);
+    final countTxtStyle = TextStyle(fontSize: 18,color: Colors.white,fontWeight:
+      FontWeight.normal);
     final editBtn = TextButton.styleFrom(backgroundColor: Colors.lightGreen);
     final deleteBtn = TextButton.styleFrom(backgroundColor: Colors.redAccent);
-    CategoryProvider provider = Provider.of<CategoryProvider>(context,listen: true);
+    CategoryProvider provider = Provider.of<CategoryProvider>(context,
+        listen: true);
     // TODO: implement build
     return Center(
         child:

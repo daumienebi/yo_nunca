@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -55,6 +54,15 @@ class DrawerPage extends StatelessWidget{
   }
 
   Widget _lastEntryWidget(String lastEntry){
+    String greetingsText = '';
+    final DateTime now = DateTime.now();
+    if(now.hour < 12){
+      greetingsText = 'Buenos días,';
+    }else if(now.hour < 20 && now.hour > 12){
+      greetingsText = 'Buenas tardes,';
+    }else{
+      greetingsText = 'Buenas noches,';
+    }
     return Container(
       padding: EdgeInsets.all(7),
       height: 90,
@@ -65,7 +73,7 @@ class DrawerPage extends StatelessWidget{
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Hola Derick,",textAlign: TextAlign.left,
+          Text(greetingsText,textAlign: TextAlign.left,
             style: TextStyle(
                 fontWeight: FontWeight.bold,fontSize: 23,color: Colors.cyanAccent
             ),),
