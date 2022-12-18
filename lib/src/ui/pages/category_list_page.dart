@@ -111,7 +111,7 @@ class CategoryListPage extends StatelessWidget{
               Navigator.pushNamed(context, Constants.routes.newCategory);
             },
             child: Text("Añadir categoria",style:
-            TextStyle(color: Colors.black54),),
+            TextStyle(color: Colors.black87),),
           style: TextButton.styleFrom(backgroundColor: Colors.greenAccent),
         )
       ],

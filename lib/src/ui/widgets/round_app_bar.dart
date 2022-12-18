@@ -25,7 +25,8 @@ class RoundAppBar extends StatelessWidget with PreferredSizeWidget {
       leading: InkWell(
           child: const Icon(Icons.menu),
           onTap: () =>
-              Navigator.of(context).pushNamed(Constants.routes.drawerPage)),
+              Navigator.of(context).pushNamed(Constants.routes.drawerPage)
+      ),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           bottom: Radius.circular(60.0),

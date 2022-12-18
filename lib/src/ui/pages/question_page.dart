@@ -3,21 +3,28 @@ import 'package:flutter/material.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/ui/widgets/widgets.dart';
 
-class QuestionPage extends StatelessWidget{
+class QuestionPage extends StatelessWidget {
   const QuestionPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     Category category = ModalRoute.of(context)!.settings.arguments as Category;
-    //Category category = Category(id:1,description: 'dad',imageRoute: '');
     return Scaffold(
-        appBar: RoundAppBar(title: Text(category.description,style: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.w400,
+        appBar: RoundAppBar(
+          title: Text(
+            category.description,
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+          homePage: false,
         ),
-        ),homePage: false,),
         //[mixedMode] is false because this widget is used to display questions for each category
-      body: QuestionWidget(category: category,mixedMode: false,)
+        body: QuestionWidget(
+          category: category,
+          mixedMode: false,
+        )
     );
   }
 }

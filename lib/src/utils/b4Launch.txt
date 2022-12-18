@@ -16,7 +16,7 @@
                </intent>
     </queries> --also add for ios
 # Credits
-    -- https://unsplash.com/es -- Credit to Unsplash for free images
+    -- Splash screen and icon images - <a href="https://www.flaticon.com/free-icons/birthday-and-party" title="birthday and party icons">Birthday and party icons created by cah nggunung - Flaticon</a>
     https://www.mdzol.com/sociedad/2021/3/10/yo-nunca-70-ideas-de-preguntas-para-jugar-con-tus-amigos-144225.html --questions
     https://psycatgames.com/es/magazine/party-games/dirty-never-ever/
     https://psycatgames.com/es/magazine/party-games/never-ever/ -- they accepted

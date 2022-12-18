@@ -41,20 +41,6 @@ class CategorySearchDelegate extends SearchDelegate {
     );
   }
 
-  /* To modify the app bar
-  @override
-  ThemeData appBarTheme(BuildContext context) {
-    return Theme.of(context).copyWith(
-      scaffoldBackgroundColor: Colors.amber,
-      appBarTheme: const AppBarTheme( //to change appbar
-        color: Colors.white,
-
-        //toolbarTextStyle: , to change toolbar text style
-      ),
-    );
-  }
-  */
-
   @override
   Widget buildResults(BuildContext context) {
     // TODO: implement buildResults
@@ -156,16 +142,15 @@ class _CategoryDetailState extends State<CategoryDetail> {
             child: Card(
                 clipBehavior: Clip.antiAliasWithSaveLayer,
                 child: Image.asset(
-                  'assets/images/question.png',
-                  fit: BoxFit.fill,
+                  'assets/images/question2.png',
+                  fit: BoxFit.cover,
                 )),
           ),
         ),
-        Text(widget.category.description,style: TextStyle(fontSize: 25,color: Colors.black54),),
         SizedBox(height: 5,),
         ListTile(
             title: Text(
-              'Numero de preguntas :',
+              'Número de preguntas :',
               style: TextStyle(fontSize: 17, color: Colors.white),
             ),
             tileColor: Colors.black87,
@@ -186,7 +171,8 @@ class _CategoryDetailState extends State<CategoryDetail> {
           children: [
             TextButton(
               onPressed: () {
-                Navigator.popAndPushNamed(context, Constants.routes.questionsPage,arguments: widget.category);
+                Navigator.popAndPushNamed(context,
+                    Constants.routes.questionsPage,arguments: widget.category);
               },
               child: Text(
                 "Jugar",

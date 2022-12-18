@@ -34,7 +34,7 @@ class DefaultData {
     {
       'id': 2,
       'description': 'FIESTA',
-    'imageRoute' : 'assets/images/shots.jpg'
+      'imageRoute' : 'assets/images/shots.jpg'
     },
     {
       'id': 3,
@@ -53,7 +53,12 @@ class DefaultData {
   */
 
   final normalQuestions = [
-    {"id": 0, "categoryId": 1, "description": "Yo nunca he fingido estar enfermo para evitar ir a la escuela.", "isFavourite": 0},
+    {
+      "id": 0,
+      "categoryId": 1,
+      "description": "Yo nunca he fingido estar enfermo para evitar ir a la escuela.",
+      "isFavourite": 0
+    },
     {
       "id": 0,
       "categoryId": 1,
@@ -279,7 +284,7 @@ class DefaultData {
     {
       "id": 0,
       "categoryId": 1,
-      "description": "Yo nunca he cogido dinero de mis padres sin avisar",
+      "description": "Yo nunca he cogido dinero de mis padres sin avisar.",
       "isFavourite": 0
     }
   ];
@@ -562,7 +567,7 @@ class DefaultData {
       {
         "id": 0,
         "categoryId": 2,
-        "description": "Yo nunca he salido con alguien más joven que yo",
+        "description": "Yo nunca he salido con alguien más joven que yo.",
         "isFavourite": 0
       }
     ];
@@ -641,7 +646,7 @@ class DefaultData {
       {
         "id": 0,
         "categoryId": 3,
-        "description": "Yo nunca he sido preguntado por mis padres si era virgen",
+        "description": "Yo nunca he sido preguntado por mis padres si era virgen.",
         "isFavourite": 0
       },
       {
@@ -671,7 +676,7 @@ class DefaultData {
       {
         "id": 0,
         "categoryId": 3,
-        "description": "Yo nunca he tenido sexo estando con el periodo",
+        "description": "Yo nunca he tenido sexo estando con el periodo.",
         "isFavourite": 0
       },
       {
@@ -773,7 +778,7 @@ class DefaultData {
       {
         "id": 0,
         "categoryId": 3,
-        "description": "Yo nunca he recibido dinero por matener relaciones sexuales",
+        "description": "Yo nunca he recibido dinero por matener relaciones sexuales.",
         "isFavourite": 0
       },
       {
@@ -815,13 +820,13 @@ class DefaultData {
       {
         "id": 0,
         "categoryId": 3,
-        "description": "Yo nunca he revisado el Whatsapp de mi pareja",
+        "description": "Yo nunca he revisado el Whatsapp de mi pareja.",
         "isFavourite": 0
       },
       {
         "id": 0,
         "categoryId": 3,
-        "description": "Yo nunca he tirado fichas al novio de un amigo",
+        "description": "Yo nunca he tirado fichas al novio de un amigo.",
         "isFavourite": 0
       },
       {
@@ -845,7 +850,7 @@ class DefaultData {
       {
         "id": 0,
         "categoryId": 3,
-        "description": "Yo nunca he fantaseado con mi mejor amigo\\a",
+        "description": "Yo nunca he fantaseado con mi mejor amigo\\a.",
         "isFavourite": 0
       },
       {
@@ -3134,7 +3139,6 @@ class DefaultData {
         "description": "Yo nunca he tenido envidia de la pareja de un amigo/a.",
         "isFavourite": 0
       }
-
 
     ];
 }
