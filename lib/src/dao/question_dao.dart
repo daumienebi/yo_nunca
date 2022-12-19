@@ -8,7 +8,7 @@ class QuestionDao {
   final String questionTable = 'question';
   final databaseProvider = DatabaseProvider.instance;
 
-  //Add a new [question]
+  /// Add a new [question]
   addQuestion(Question question) async {
     final database = await databaseProvider.database;
     int row = 0;
@@ -20,19 +20,17 @@ class QuestionDao {
     return row;
   }
 
+  /// Add a various [questions] to the database with the [Batch] insert method
   addQuestions(List<Question> questions) async {
     final database = await databaseProvider.database;
     Batch batch = database.batch();
     List<Object?> operations = [];
     int count = 0;
     try {
-      //row = await database.insert(questionTable, question.toMap());
       for(var question in questions){
         batch.insert(questionTable, question.toMap());
-        dev.log(question.toString() + 'dao');
       }
       operations = await batch.commit();
-      dev.log('Commited, no error');
     } on DatabaseException catch (ex) {
       dev.log(ex.toString());
     }
@@ -42,7 +40,7 @@ class QuestionDao {
     return count;
   }
 
-  //Delete a [question]
+  /// Delete a [question]
   deleteQuestion(Question question) async{
     final database = await databaseProvider.database;
     final id = await database.delete(questionTable,where: '${QuestionFields.id} = ?',
@@ -50,7 +48,7 @@ class QuestionDao {
     return id;
   }
 
-  //Modify a [question]
+  /// Modify a [question]
   modifyQuestion(Question question) async{
     final database = await databaseProvider.database;
     final id = await database.update(questionTable,question.toMap(),
@@ -58,21 +56,21 @@ class QuestionDao {
     return id;
   }
 
-  //Return all the available questions, for MIXED MODE
+  /// Return all the available questions, for MIXED MODE
   getAllQuestions() async{
     final database = await databaseProvider.database;
-    String orderBy = '';
     final result = await database.query(questionTable);
     return result.map((e) => Question.fromMap(e)).toList();
   }
 
-  //Fetch the favourite questions
+  /// Fetch the favourite questions
   getFavouriteQuestions() async{
     final database = await databaseProvider.database;
     final result = await database.query(questionTable,where:'${QuestionFields.isFavourite} = 1');
     return result.map((e) => Question.fromMap(e)).toList();//Favourite questions
   }
 
+  /// Get the questions for each [Category]
   getQuestionsPerCategory(int categoryId) async{
     final database = await databaseProvider.database;
     final result = await database.query(questionTable,where: '${QuestionFields.categoryId} = ?',
@@ -81,7 +79,6 @@ class QuestionDao {
   }
 
   countQuestionsPerCategory(int categoryId) async{
-    //dev.log("Entering to count");
     int count = 0;
     final database = await databaseProvider.database;
     count = Sqflite.firstIntValue(await database.rawQuery('SELECT COUNT(*) from $questionTable'
@@ -90,7 +87,6 @@ class QuestionDao {
   }
 
   addToFavourites(Question question) async{
-    //dev.log("Adding question to favourites");
     final database = await databaseProvider.database;
     int rows = 0;
     try {
@@ -103,7 +99,6 @@ class QuestionDao {
   }
 
   removeFromFavourites(Question question) async{
-    dev.log("Removing from favourites");
     final database = await databaseProvider.database;
     final rows = await database.update(questionTable,question.toMap(),
         where: '${QuestionFields.id} = ?',whereArgs: [question.id]);

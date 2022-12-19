@@ -4,7 +4,6 @@ import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/models/question.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
 import 'dart:developer' as dev;
-
 import 'package:yo_nunca/src/utils/constants.dart';
 // ignore_for_file: prefer_const_constructors
 
@@ -72,8 +71,8 @@ class CategorySearchDelegate extends SearchDelegate {
         future: provider.getCategories(),
         builder: (_, AsyncSnapshot data) {
           return ListView.separated(
-              itemBuilder: (_, pos) {
-                final suggestion = suggestions[pos];
+              itemBuilder: (BuildContext context,int index) {
+                final suggestion = suggestions[index];
                 return ListTile(
                   leading: Icon(
                     Icons.category,
@@ -87,7 +86,7 @@ class CategorySearchDelegate extends SearchDelegate {
                   },
                 );
               },
-              separatorBuilder: (_, int pos) => Divider(height: 20),
+              separatorBuilder: (context, index) => Divider(height: 20),
               itemCount: suggestions.length);
         });
   }

@@ -26,6 +26,7 @@ class CategoriesCardSwiper extends StatelessWidget {
                 //Constants.routes.questionsPage, arguments: categories[index]),
                 onTap: () async {
                   //The idea is to save the date the user enters a category
+                  // to view the questions
                   await _setPrefsData();
                   Navigator.of(context)
                       .push(_createRoute(arguments: categories[index]));
@@ -44,7 +45,7 @@ class CategoriesCardSwiper extends StatelessWidget {
                       //Try the child with a future builder to simulate a fake
                       //load
                       child: MyDecorations.homePageBoxText(
-                          categories[index].description, Colors.black87)),
+                          categories[index].description, Colors.cyan)),
                 ));
           },
           itemCount: categories.length,
@@ -56,12 +57,6 @@ class CategoriesCardSwiper extends StatelessWidget {
       ),
     ]);
   }
-
-  /*
-  Future<List<Category>> categoriesFuture() async {
-    return Future.delayed(const Duration(seconds: 1), () => categories);
-  }
-  */
 
   Future<void> _setPrefsData() async {
     final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();

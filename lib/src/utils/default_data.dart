@@ -13,13 +13,16 @@ class DefaultData {
   List<Question> get getHotQuestionsList => _getHotQuestions();
 
   _getNormalQuestions() {
-    return _normalQuestionsList = normalQuestions.map((e) => Question.fromMap(e)).toList();
+    return _normalQuestionsList = normalQuestions.map((e) =>
+        Question.fromMap(e)).toList();
   }
   _getIntermediateQuestions() {
-    return _intermediateQuestionsList = intermediateQuestions.map((e) => Question.fromMap(e)).toList();
+    return _intermediateQuestionsList = intermediateQuestions.map((e) =>
+        Question.fromMap(e)).toList();
   }
   _getHotQuestions() {
-    return _hotQuestionsList = hotQuestions.map((e) => Question.fromMap(e)).toList();
+    return _hotQuestionsList = hotQuestions.map((e) =>
+        Question.fromMap(e)).toList();
   }
   _getCategories() {
     return _categoriesList = categories.map((e) => Category.fromMap(e)).toList();
@@ -42,15 +45,6 @@ class DefaultData {
       'imageRoute' : 'assets/images/smirk_face.png'
     },
   ];
-
-  /*
-     _   _  ____  _____  __  __          _
-  | \ | |/ __ \|  __ \|  \/  |   /\   | |
-  |  \| | |  | | |__) | \  / |  /  \  | |
-  | . ` | |  | |  _  /| |\/| | / /\ \ | |
-  | |\  | |__| | | \ \| |  | |/ ____ \| |____
-  |_| \_|\____/|_|  \_\_|  |_/_/    \_\______|
-  */
 
   final normalQuestions = [
     {
@@ -289,15 +283,6 @@ class DefaultData {
     }
   ];
 
-
-  /*
-  _____ _   _ _______ ______ _____  __  __ ______ _____ _____       _______ ______
- |_   _| \ | |__   __|  ____|  __ \|  \/  |  ____|  __ \_   _|   /\|__   __|  ____|
-   | | |  \| |  | |  | |__  | |__) | \  / | |__  | |  | || |    /  \  | |  | |__
-   | | | . ` |  | |  |  __| |  _  /| |\/| |  __| | |  | || |   / /\ \ | |  |  __|
-  _| |_| |\  |  | |  | |____| | \ \| |  | | |____| |__| || |_ / ____ \| |  | |____
- |_____|_| \_|  |_|  |______|_|  \_\_|  |_|______|_____/_____/_/    \_\_|  |______|
-*/
   final intermediateQuestions =
     [
       {
@@ -572,15 +557,6 @@ class DefaultData {
       }
     ];
 
-  /*
-      _    _  ____ _______
- | |  | |/ __ \__   __|
- | |__| | |  | | | |
- |  __  | |  | | | |
- | |  | | |__| | | |
- |_|  |_|\____/  |_|
-
-  */
   final hotQuestions =
     [
       {

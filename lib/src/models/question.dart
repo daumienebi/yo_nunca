@@ -5,7 +5,7 @@ class QuestionFields{
   static const String description = 'description';
   static const String isFavourite = 'isFavourite';
 
-  //Static list with the name values to easily retrieve fields values from the DB
+  //Static list with the name values to easily retrieve fields names from the DB
   static final List <String> values =[id,categoryId,description,isFavourite];
 }
 
@@ -15,7 +15,8 @@ class Question{
   String description;
   bool isFavourite;
 
-  Question({this.id,required this.categoryId,required this.description,required this.isFavourite});
+  Question({this.id,required this.categoryId,required this.description,
+    required this.isFavourite});
 
   factory Question.fromMap(Map<String,dynamic> value) =>
       Question(
@@ -29,16 +30,19 @@ class Question{
     //QuestionFields.id: id!,
     QuestionFields.categoryId: categoryId,
     QuestionFields.description: description,
-    QuestionFields.isFavourite: isFavourite == true ? 1 : 0, // the field is an INTEGER in the Database
+    // the field is an INTEGER in the Database
+    QuestionFields.isFavourite: isFavourite == true ? 1 : 0,
   };
 
   factory Question.fromJson(dynamic json) {
     return
-      Question(id: json['id'],categoryId: json['categoryId'], description: json['description'], isFavourite: json['isFavourite']);
+      Question(id: json['id'],categoryId: json['categoryId'],
+          description: json['description'], isFavourite: json['isFavourite']);
   }
 
   @override
   String toString(){
-    return 'Question{id : $id,description : $description,category : $categoryId, Favourite : $isFavourite}';
+    return 'Question{id : $id,description : $description,category : $categoryId,'
+        ' Favourite : $isFavourite}';
   }
 }

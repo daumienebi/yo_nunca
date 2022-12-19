@@ -1,20 +1,22 @@
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
 import 'package:yo_nunca/src/ui/pages/mixed_mode_page.dart';
+import 'package:yo_nunca/src/ui/pages/pages.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
 import 'package:yo_nunca/src/ui/widgets/widgets.dart';
 
 ///Create an enum for the possible social medias where the app can be shared
-enum SocialMedia { facebook, twitter, instagram, whatsapp}
+enum SocialMedia { facebook, twitter, instagram, whatsapp,enlace}
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
-  static const _actionTitles = ['Valor la app en la Playstore'];
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +45,7 @@ class HomePage extends StatelessWidget {
                             Text(
                               'Compartir',textAlign: TextAlign.left,
                               style: TextStyle(
-                                  color: Colors.blueGrey, fontSize: 20),
+                                  color: Colors.black87, fontSize: 20),
                             ),
                             SizedBox(height: 5,),
                             Expanded(
@@ -76,7 +78,9 @@ class HomePage extends StatelessWidget {
                   margin: EdgeInsets.only(top: 50),
                   child: Column(children: [
                     Text(
-                      "Desliza para ver las categorias...",
+                      "Desliza para ver las categorias y pulsa "
+                          "\n para seleccionar ...",
+                      textAlign: TextAlign.center,
                       style: TextStyle(color: Colors.black54, fontSize: 15),
                     ),
                     CategoriesCardSwiper(categories: categories),
@@ -90,12 +94,24 @@ class HomePage extends StatelessWidget {
     );
   }
 
+  Future<void> _setPrefsData() async {
+    final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+    final SharedPreferences prefs = await _prefs;
+    String data = '';
+    int year = DateTime.now().year;
+    int day = DateTime.now().day;
+    int month = DateTime.now().month;
+    var months = Constants.monthsInSpanish;
+    data = '$day de ${months.elementAt(month - 1)} del $year';
+    prefs.setString('lastEntry', data);
+  }
+
   List<Widget> socialMediaButtons(context) {
     //Very shitty work around
     // TODO : change it later on
     List<Widget> items = [];
     items.add(SizedBox(
-      width: 15,
+      width: 10,
     ));
     items.add(socialButton(
         socialMedia: SocialMedia.whatsapp,
@@ -105,17 +121,6 @@ class HomePage extends StatelessWidget {
           size: 40,
         ),
         onClicked: () => share(SocialMedia.whatsapp)));
-    items.add(SizedBox(
-      width: 15,
-    ));
-    items.add(socialButton(
-        socialMedia: SocialMedia.instagram,
-        icon: Icon(
-          FontAwesomeIcons.instagram,
-          color: Colors.pink,
-          size: 40,
-        ),
-        onClicked: () => share(SocialMedia.instagram)));
     items.add(SizedBox(
       width: 15,
     ));
@@ -138,6 +143,22 @@ class HomePage extends StatelessWidget {
           size: 40,
         ),
         onClicked: () => share(SocialMedia.facebook)));
+    items.add(SizedBox(
+      width: 15,
+    ));
+    items.add(
+        socialButton(
+        socialMedia: SocialMedia.enlace,
+        icon: Icon(
+          Icons.copy,
+          color: Colors.grey,
+          size: 40,
+        ),
+        onClicked: () async{
+          await Clipboard.setData(ClipboardData(text:'playstoreurlwithappid'));
+        }
+      )
+    );
     return items;
   }
 
@@ -188,15 +209,18 @@ class HomePage extends StatelessWidget {
                     blurRadius: 10,
                     offset: Offset(0, 3))
               ]),
-          child: Column(children: const [
+          child: Column(
+              children: const [
             Text("Dudas con que categoria elegir ?  👀 ",
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.black45, fontSize: 16)),
           ]),
         ),
         ElevatedButton(
-          onPressed: () {
-            //The page receives a category with id : 0, because it is only going
+          onPressed: () async{
+            //Set the date the user enters to view the questions
+            _setPrefsData();
+            //The page receives a category with id : 0,because it is only going
             //to be used for this mode
             Navigator.of(context).push(_createRoute(arguments:
             Category(id: 0, description: 'MODO MIXTO', imageRoute: '')));
@@ -216,8 +240,8 @@ class HomePage extends StatelessWidget {
   }
 
   Future share(SocialMedia platform) async {
-    const text = 'Descarga y prueba esta app de YO NUNCA personalizable desde'
-        'la Playstore';
+    const text = 'Descarga esta aplicación de Yo Nunca personalizable para jugar'
+        ' de fiesta con los amigos';
     final urlShare = Uri.encodeComponent(Constants.playStoreUrl);
 
     final urls = {

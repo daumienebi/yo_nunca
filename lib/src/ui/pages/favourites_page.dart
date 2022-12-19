@@ -59,8 +59,8 @@ class _FavouritesPageState extends State<FavouritesPage> {
                                 scale: 7,
                               ),
                               Text(
-                                "Todavía no has añadido preguntas favoritas."
-                                "Pulsa el icono del corazon de una pregunta "
+                                "Todavía no hay preguntas favoritas."
+                                "Pulsa el icono del corazón de una pregunta "
                                 "para añadirlo a los favoritos.",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
@@ -129,7 +129,6 @@ class _FavouritesPageState extends State<FavouritesPage> {
         backgroundColor: Colors.greenAccent);
     return ElevatedButton(
       onPressed: () {
-        //Navigator.push(context, MaterialPageRoute(builder: (context)=>FavouriteQuestionPage())); //just to remember the other way
         Navigator.pushNamed(context, Constants.routes.favouriteQuestionPage);
       },
       child: Text(

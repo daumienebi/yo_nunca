@@ -35,7 +35,8 @@ class MyApp extends StatelessWidget {
         Constants.routes.mixedModePage : (_) => const MixedModePage(),
         Constants.routes.categoryManagementPage : (_) => const CategoryManagementPage(),
         Constants.routes.categoryListPage : (_) => const CategoryListPage(),
-        Constants.routes.drawerPage : (_) => const DrawerPage()
+        Constants.routes.drawerPage : (_) => const DrawerPage(),
+        Constants.routes.creditsPage : (_) => const CreditsPage(),
       },
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.orange[50],

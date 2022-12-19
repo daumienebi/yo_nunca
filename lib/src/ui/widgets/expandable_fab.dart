@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 ///Check it out later on. Taken from the official Flutter example
 ///https://docs.flutter.dev/cookbook/effects/expandable-fab
 
@@ -136,7 +138,7 @@ class _ExpandableFabState extends State<ExpandableFab>
           duration: const Duration(milliseconds: 250),
           child: FloatingActionButton(
             onPressed: _toggle,
-            child: const Icon(Icons.unfold_more_sharp),
+            child: const Icon(Icons.menu),
           ),
         ),
       ),

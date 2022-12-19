@@ -25,15 +25,16 @@ class CategoryDao{
   ///Deletes a [category] that already exists
   deleteCategory(Category category) async{
     final database = await databaseProvider.database;
-    final id = await database.delete(categoryTable,where: '${CategoryFields.id} = ?',whereArgs: [category.id]);
+    final id = await database.delete(categoryTable,where:
+    '${CategoryFields.id} = ?',whereArgs: [category.id]);
     return id; //return the deleted id
   }
 
   ///Find a category by its [id]
   getCategory(int id) async{
     final database = await databaseProvider.database;
-    final category  = await database.query(categoryTable,columns: CategoryFields.values,
-        where: '${CategoryFields.id} = ?', whereArgs: [id]);
+    final category  = await database.query(categoryTable,columns:
+    CategoryFields.values,where: '${CategoryFields.id} = ?', whereArgs: [id]);
 
     if(category.isNotEmpty){
       return Category.fromMap(category.first);
@@ -52,17 +53,17 @@ class CategoryDao{
 
   getDefaultCategories() async{
     final database = await databaseProvider.database;
-    final result = await database.query(categoryTable,where: '${CategoryFields.id} IN (?,?,?)',
-        whereArgs: [1,2,3]);
+    final result = await database.query(categoryTable,where:
+    '${CategoryFields.id} IN (?,?,?)',whereArgs: [1,2,3]);
     return result.map((e) => Category.fromMap(e)).toList();
   }
 
   ///Returns the categories added by the user, the first 3 were inserted on
-  ///creating the DB
+  ///creating the DB, id: 1,2 & 3
   getNewCategories() async{
     final database = await databaseProvider.database;
-    final result = await database.query(categoryTable,where: '${CategoryFields.id} NOT IN (?,?,?)',
-        whereArgs: [1,2,3]);
+    final result = await database.query(categoryTable,where:
+    '${CategoryFields.id} NOT IN (?,?,?)',whereArgs: [1,2,3]);
     return result.map((e) => Category.fromMap(e)).toList();
   }
 

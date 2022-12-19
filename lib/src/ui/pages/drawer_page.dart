@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:yo_nunca/src/ui/pages/category_list_page.dart';
+import 'package:yo_nunca/src/ui/pages/credits_page.dart';
 import 'package:yo_nunca/src/ui/pages/favourites_page.dart';
 import 'package:yo_nunca/src/ui/widgets/round_app_bar.dart';
 // ignore_for_file: prefer_const_constructors
@@ -162,6 +163,14 @@ class DrawerPage extends StatelessWidget{
         subtitle: Text("Calificar o sugerir mejoras de la app", style: subTitleStyle,),
         leading: Icon(FontAwesomeIcons.googlePlay,),
         trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
+
+    ));
+    widgets.add(ListTile(
+      title: Text("Creditos"),
+      subtitle: Text("Aportaciones al proyecto", style: subTitleStyle,),
+      leading: Icon(Icons.people_outline,),
+      trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
+      onTap: ()=> Navigator.push(context, _createRoute(page: CreditsPage())),
 
     ));
     return widgets;

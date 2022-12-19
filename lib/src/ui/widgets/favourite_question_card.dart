@@ -1,13 +1,9 @@
-import 'dart:developer' as dev;
 import 'package:appinio_swiper/appinio_swiper.dart';
-import 'dart:math';
-import 'package:flutter/cupertino.dart';
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:yo_nunca/src/models/question.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
-import 'package:yo_nunca/src/utils/constants.dart';
 import 'package:yo_nunca/src/utils/messages.dart';
 
 class FavouriteQuestionCard extends StatefulWidget {
@@ -64,8 +60,8 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
   }
 
   Widget _questionAppinioSwiper() {
-    //Added the future just to fake a loading screen, data will always be available in
-    // the favourite list to create the new game
+    //Added the future just to fake a loading screen, data will always be
+    // available in the favourite list to create the new game
     final AppinioSwiperController controller = AppinioSwiperController();
     return FutureBuilder(
         future: _getData(),
@@ -159,7 +155,7 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
             _loadCards();
           });
         }
-        //hide the Restart button after reloading the cards
+        //Hide the Restart button after reloading the cards
         setState(() {
           visible = false;
         });
