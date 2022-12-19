@@ -58,7 +58,7 @@ class CreditsPage extends StatelessWidget{
     widgets.add(
         creditTile(
             title: 'Fran Visconti',
-            url: 'https://https://www.instagram.com/franvisconti',
+            url: 'https://www.instagram.com/franvisconti',
             subtitle: 'Contribuidor de una lista con mas de 350 preguntas. '
                 '\nInstagram: @franvisconti',
           imageAsset: ''
@@ -69,7 +69,7 @@ class CreditsPage extends StatelessWidget{
     widgets.add(
         creditTile(
             title: 'Flaticon',
-            url: 'https://https://www.flaticons.com/',
+            url: 'https://www.flaticon.com/',
             subtitle: 'Una plataforma con una variedad que iconos.',
             imageAsset: 'assets/images/flaticon.png'
         )

@@ -249,11 +249,9 @@ class HomePage extends StatelessWidget {
           'https://www.facebook.com/sharer/sharer.php?u=$urlShare&t=$text',
       SocialMedia.twitter:
           'https://twitter.com/intent/tweet?url=$urlShare&text=$text',
-      SocialMedia.whatsapp: 'https:/api.whatsapp.com/send?text=$text$urlShare',
+      SocialMedia.whatsapp: 'https://api.whatsapp.com/send?text=$text$urlShare',
     };
     final url = Uri.parse(urls[platform]!);
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url);
-    }
+      await launchUrl(url,mode: LaunchMode.externalApplication);
   }
 }

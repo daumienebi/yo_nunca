@@ -145,13 +145,6 @@ class DrawerPage extends StatelessWidget{
     ));
 
     widgets.add(ListTile(
-        title: Text("Ayuda"),
-        subtitle: Text("Como jugar, gestionar categorias etc ...",style: subTitleStyle,),
-        leading: Icon(Icons.help),
-        trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
-    ));
-
-    widgets.add(ListTile(
       title: Text("Privacidad"),
       subtitle: Text("Gestion de tus datos etc...",style: subTitleStyle,),
       leading: Icon(Icons.privacy_tip_outlined),
