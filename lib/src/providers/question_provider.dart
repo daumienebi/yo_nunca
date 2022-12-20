@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/models/question.dart';
 import 'package:yo_nunca/src/repository/category_repository.dart';
 import 'package:yo_nunca/src/repository/question_repository.dart';
-import 'dart:developer' as dev;
 
 class QuestionProvider with ChangeNotifier{
 

@@ -54,7 +54,7 @@ class CreditsPage extends StatelessWidget{
             title: 'Psycat Games',
             url: 'https://psycatgames.com',
             subtitle: 'Aportando una enorme lista de preguntas. '
-                'Visita su página web para mas juegos.',
+                'Visita la página web para mas juegos.',
             imageAsset:'assets/images/psycatgames.png')
     );
 
@@ -74,7 +74,7 @@ class CreditsPage extends StatelessWidget{
         creditTile(
             title: 'Flaticon',
             url: 'https://www.flaticon.com/',
-            subtitle: 'Una plataforma con una variedad de iconos.',
+            subtitle: 'Plataforma con distintos tipos de iconos.',
             imageAsset: 'assets/images/flaticon.png'
         )
     );

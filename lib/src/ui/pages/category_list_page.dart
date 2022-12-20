@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
-import 'dart:developer' as dev;
 // ignore_for_file: prefer_const_constructors
 
 class CategoryListPage extends StatelessWidget{

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 ///Check it out later on. Taken from the official Flutter example
 ///https://docs.flutter.dev/cookbook/effects/expandable-fab
 

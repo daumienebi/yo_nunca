@@ -240,10 +240,10 @@ class HomePage extends StatelessWidget {
   }
 
   Future share(SocialMedia platform) async {
-    const text = 'Descarga esta aplicación de Yo Nunca personalizable para jugar'
-        ' de fiesta con los amigos';
+    const text ='Descarga y prueba esta aplicación de Yo Nunca personalizable '
+        'para jugar de fiesta con los amigos. ¡Juega con preguntas por defecto o'
+        ' crea las tuyas!';
     final urlShare = Uri.encodeComponent(Constants.playStoreUrl);
-
     final urls = {
       SocialMedia.facebook:
           'https://www.facebook.com/sharer/sharer.php?u=$urlShare&t=$text',

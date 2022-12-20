@@ -60,7 +60,7 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
   }
 
   Widget _questionAppinioSwiper() {
-    //Added the future just to fake a loading screen, data will always be
+    // Added the future just to fake a loading screen, data will always be
     // available in the favourite list to create the new game
     final AppinioSwiperController controller = AppinioSwiperController();
     return FutureBuilder(
