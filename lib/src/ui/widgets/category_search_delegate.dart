@@ -31,7 +31,6 @@ class CategorySearchDelegate extends SearchDelegate {
 
   @override
   Widget? buildLeading(BuildContext context) {
-    // TODO: implement buildLeading
     return IconButton(
       icon: Icon(Icons.arrow_back),
       onPressed: () {
@@ -42,17 +41,23 @@ class CategorySearchDelegate extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    // TODO: implement buildResults
     CategoryProvider provider =
         Provider.of<CategoryProvider>(context, listen: true);
     //get the category names from the database
     List<Category> suggestions = provider.categories;
+    late Category category;
     final suggestionList = query.isEmpty
         ? []
         : suggestions
             .where((category) => category.description.contains(query))
             .toList();
-    Category category = suggestionList[0];
+    if(suggestionList.isNotEmpty){
+      category = suggestionList[0];
+    }else{
+      //To avoid an error that showed up whe trying to close the detail page
+      category = Category(id:0,description: '',imageRoute: '');
+    }
+
     return SingleChildScrollView(child: CategoryDetail(category: category));
   }
 
@@ -93,7 +98,7 @@ class CategorySearchDelegate extends SearchDelegate {
 }
 
 class CategoryDetail extends StatefulWidget {
-  final Category category;
+  final Category? category;
   const CategoryDetail({Key? key, required this.category}) : super(key: key);
 
   @override
@@ -105,7 +110,7 @@ class _CategoryDetailState extends State<CategoryDetail> {
 
   Future<void> getCount() async {
     QuestionProvider provider = Provider.of<QuestionProvider>(context,listen: false);
-    List<Question> questionsPerCategory = await provider.getQuestionsPerCategory(widget.category.id!);
+    List<Question> questionsPerCategory = await provider.getQuestionsPerCategory(widget.category!.id!);
     int count = questionsPerCategory.length;
     _questionsCount = count;
     dev.log('category :' + widget.category.toString());
