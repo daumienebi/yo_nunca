@@ -7,7 +7,7 @@ Flutter mobile app to create a simple question game.
 - [Birthday and party icons created by cah nggunung - Flaticon] (https://www.flaticon.com/free-icons/birthday-and-party)
 
 - Heart icon :
-- [Heart icons created by Freepik - Flaticon] (https://www.flaticon.com/free-icons/heart)
+- - [Heart icons created by Freepik - Flaticon] (https://www.flaticon.com/free-icons/heart)
 
 - Question icon :
 - [Question icons created by Freepik - Flaticon] (https://www.flaticon.com/free-icons/question)
