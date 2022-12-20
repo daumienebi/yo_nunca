@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:yo_nunca/src/ui/pages/pages.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
 
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  var lastEntry = prefs.getString("lastEntry");
-
 
   ///The landscape idea for the app has been scrapped for now, some classes still
   ///have the code for landscape mode like [QuestionWidget], for future purposes
@@ -23,7 +19,7 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return                                                                                                                                  MaterialApp(
       initialRoute: Constants.routes.homepage,
       debugShowCheckedModeBanner: false,
       routes: {

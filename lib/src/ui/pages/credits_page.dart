@@ -14,21 +14,25 @@ class CreditsPage extends StatelessWidget{
         title: Text('Creditos'),
         homePage: false,
       ),
-      body: ListView(
-        children: creditsList(),
+      body: Container(
+        margin: EdgeInsets.all(5),
+        child: ListView(
+          children: creditsList(),
+        ),
       )
     );
   }
 
   ListTile creditTile({required String title,required String url,
     String? subtitle,String? imageAsset}){
+    final titleStyle = TextStyle(color: Colors.teal);
     return ListTile(
       leading:imageAsset!.isNotEmpty ? Image.asset(imageAsset) :
-      Icon(Icons.people_outline,size: 60,),
-      title: Text(title),
+      Icon(Icons.people_outline,size: 55,),
+      title: Text(title,style: titleStyle),
       subtitle: Text(subtitle!),
       trailing: InkWell(
-        child: Icon(Icons.arrow_forward),
+        child: Icon(Icons.info,color: Colors.lightBlueAccent,),
         onTap: () async{
           final parsedUrl = Uri.parse(url);
           await _launchUrl(parsedUrl);
@@ -70,7 +74,7 @@ class CreditsPage extends StatelessWidget{
         creditTile(
             title: 'Flaticon',
             url: 'https://www.flaticon.com/',
-            subtitle: 'Una plataforma con una variedad que iconos.',
+            subtitle: 'Una plataforma con una variedad de iconos.',
             imageAsset: 'assets/images/flaticon.png'
         )
     );
