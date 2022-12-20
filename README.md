@@ -15,3 +15,4 @@ Flutter mobile app to create a simple question game.
 - Questions:
   - [Mzdol](https://www.mdzol.com/sociedad/2021/3/10/yo-nunca-70-ideas-de-preguntas-para-jugar-con-tus-amigos-144225.html)
   - [Psycatgames](https://psycatgames.com/es/magazine/party-games/never-ever/)
+  - [Fran Visconti](https://www.instagram.com/franvisconti)
