@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/models/question.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
-import 'package:yo_nunca/src/ui/widgets/round_app_bar.dart';
+import 'package:yo_nunca/src/ui/widgets/widgets.dart';
 import 'package:yo_nunca/src/utils/my_decorations.dart';
 import 'dart:developer' as dev;
 

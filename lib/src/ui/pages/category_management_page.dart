@@ -202,17 +202,20 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
   Widget _questionTile(Question question) {
     return ListTile(
       title: Text(question.description, overflow: TextOverflow.ellipsis),
-      trailing: InkWell(
-        onTap: () {
-          setState(() {
-            questions.remove(question);
-          });
+      trailing: Consumer(
+        builder: (BuildContext context,QuestionProvider provider,_){
+          return InkWell(
+            onTap: () async{
+              await provider.deleteQuestion(question);
+              setState(() {});
+            },
+            child: Icon(
+              Icons.delete_forever_rounded,
+              color: Colors.red,
+              size: 30,
+            ),
+          );
         },
-        child: Icon(
-          Icons.delete_forever_rounded,
-          color: Colors.red,
-          size: 30,
-        ),
       ),
       onTap: () {
         _popUpForm(question,null, true);

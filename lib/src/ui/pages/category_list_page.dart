@@ -130,27 +130,24 @@ class CategoryTile extends StatefulWidget{
 }
 
 class _CategoryTileState extends State<CategoryTile> {
-  int _count = 0;
+  late Future<int?> countFuture;
 
-  Future<void> getCount() async {
+  Future<int?> getCount() async {
     QuestionProvider provider = Provider.of<QuestionProvider>(context,listen: false);
     int count = await provider.countQuestionsPerCategory(widget.category.id!);
-    _count = count;
+    return count;
   }
 
   @override
   void initState(){
-    getCount();
+    countFuture = getCount();
     super.initState();
   }
 
   @override
   void didChangeDependencies(){
     //rebuild the widget in case a change was made
-    //no need to call the [getCount] method again, it rebuilds the widget
-    //unnecessarily.
-    //finally had to call it.....dunno right now
-    getCount();
+    countFuture = getCount();
     super.didChangeDependencies();
 }
 
@@ -180,8 +177,30 @@ class _CategoryTileState extends State<CategoryTile> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(widget.category.description,style: mainTxtStyle,textAlign: TextAlign.left,),
-              RichText(text: TextSpan(text: _count > 0 ? '$_count preguntas' :
-                  'sin preguntas',style: countTxtStyle)),
+              FutureBuilder<int?>(
+                  future: countFuture,
+                  builder: (BuildContext context,AsyncSnapshot snapshot){
+                    if(snapshot.hasData){
+                      String text = '';
+                      bool plural = snapshot.data > 1;
+                      text = plural ? 'preguntas' : 'pregunta';
+                      return
+                        RichText(
+                            text: TextSpan(text:snapshot.data > 0 ?
+                            '${snapshot.data} $text' : 'sin preguntas',
+                                style: countTxtStyle)
+                        );
+                    }else{
+                      return RichText(
+                          text: TextSpan(text:'cargando...' ,
+                              style: TextStyle(
+                                  color: Colors.lightGreen[100],
+                                  fontSize: 16)
+                          )
+                      );
+                    }
+                  }
+              ),
               Center(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -190,7 +209,10 @@ class _CategoryTileState extends State<CategoryTile> {
                         visible: widget.defaultCategory,
                         child: ElevatedButton(
                           onPressed: (){
-                            Navigator.pushNamed(context, Constants.routes.categoryManagementPage,arguments: widget.category);//send the category to be edited to the next page
+                            Navigator.pushNamed(context,
+                                Constants.routes.categoryManagementPage,
+                                arguments: widget.category
+                            );//send the category to be edited to the next page
                           },
                           child: Text(
                             'Editar',

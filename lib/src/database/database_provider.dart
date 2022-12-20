@@ -3,7 +3,6 @@ import 'package:sqflite/sqflite.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/models/question.dart';
 import 'dart:developer' as dev;
-
 import 'package:yo_nunca/src/utils/default_data.dart';
 
 ///Create the singleton pattern to ensure that the class only has one instance
@@ -32,16 +31,23 @@ class DatabaseProvider {
   Future<Database> _initializeDatabase() async {
     final dbPath = await getDatabasesPath();
     final route = join(dbPath, dbName);
-    return await openDatabase(route, version: dbVersion,onCreate: _createDb,onUpgrade: _onUpgrade);
+    return await openDatabase(
+        route,
+        version: dbVersion,
+        onCreate: _createDb,
+        onUpgrade: _onUpgrade
+    );
   }
   Future _onUpgrade(Database database,int oldVersion, int newVersion) async{
-    //Maybe update the questions
+    // Add new questions or categories in the next update.
+    // Add the new questions to the default one and don't forget to filter with
+    // the names of the categories in the [CategoryDao], to get the default ones
+    // instead of using 1,2 & 3 because the user might have added newer
+    // categories.
   }
 
   Future _createDb(Database database,int version) async{
-    //The category table id's will not be AUTOINCREMENT because id[1,2,3]
-    //are already used in the default category.json file
-    //The first categoryId added will be [4]
+    //The first 3 default categories will have id[1,2 & 3]
     String categorySql = '''
       CREATE TABLE "category" (
 	      "id"	INTEGER NOT NULL,
@@ -61,7 +67,7 @@ class DatabaseProvider {
       );
     ''';
 
-    //execute the sql sentences
+    //Execute the sql sentences
     try{
       Batch batch = database.batch();
       dev.log("---------------CREATING TABLES-----------------");
@@ -72,7 +78,7 @@ class DatabaseProvider {
       await database.execute(questionSql);
       dev.log("Question table created");
       dev.log("Inserting data into category table...");
-      dev.log("---------------ALL TABLES CREATED--------------------");
+      dev.log("---------------ALL TABLES CREATED---------------");
 
       //Insert default values
       await _insertDefaultValuesInBatch(batch);
@@ -82,9 +88,9 @@ class DatabaseProvider {
     }
   }
 
+  /// Inserts the default categories and questions from the [DefaultData] class
   _insertDefaultValuesInBatch(Batch batch) async{
-    //INSERT DEFAULT VALUES
-    //apparently there is no need to commit the batch here because the onCreate
+    // Apparently there is no need to commit the batch here because the onCreate
     // method is already in a transaction
     List<Category> categories = defaultData.getCategoriesList;
     List<Question> normalQuestions = defaultData.getNormalQuestionsList;

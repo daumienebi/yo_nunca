@@ -1,4 +1,3 @@
-import 'dart:developer' as dev;
 import 'package:flutter/cupertino.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/repository/category_repository.dart';
@@ -28,10 +27,8 @@ class CategoryProvider with ChangeNotifier{
 
   _setCategories(List<Category> dbCategories){
     _categories = dbCategories;
-    //dev.log('${_categories.length} categories in setCategories');
     notifyListeners();
   }
-  int categoriesCount() => categories.length;
 
   //From DB
   addCategory (Category category) async{
@@ -76,13 +73,11 @@ class CategoryProvider with ChangeNotifier{
     return exists;
   }
 
-
   ///Fetch the list of all categories
   Future<List<Category>>getCategories() async{
     var dbCategories = await _categoryRepository.getAllCategories();
     _setCategories(dbCategories);
     return dbCategories;
-    //dev.log('${_categories.length} categories in getCategories');
   }
 
 }
