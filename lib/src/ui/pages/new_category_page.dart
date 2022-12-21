@@ -199,14 +199,13 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
               _category = categoryNameController.text.toUpperCase();
               Category newCategory = Category(
                   description: _category,
-                  imageRoute: "assets/images/newCategoryImage.jpg");
+                  imageRoute: '');
               bool categoryExists = await provider.categoryExists(_category);
               int categoryId = 0;
               //If the new category was inserted correctly, set the questions
               //category to the new one
               if (!categoryExists) {
                 categoryId = await provider.addCategory(newCategory);
-                dev.log(categoryId.toString() + 'is the new category id');
                 if (categoryId > 0) {
                   for (Question question in newQuestions) {
                     question.categoryId = categoryId;

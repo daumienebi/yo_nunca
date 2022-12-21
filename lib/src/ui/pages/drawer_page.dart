@@ -56,7 +56,12 @@ class DrawerPage extends StatelessWidget{
 
   Widget _lastEntryWidget(String lastEntry){
     String greetingsText = '';
+    //check if the user ¡has 24 or 12 hours time format
+
     final DateTime now = DateTime.now();
+    final utcTime =DateTime.utc(now.year,now.month,now.day,now.hour,now.minute,
+        now.second,now.millisecond,now.microsecond);
+    //TODO: use the utc time
     if(now.hour < 12){
       greetingsText = 'Buenos días,';
     }else if(now.hour < 20 && now.hour > 12){
@@ -80,7 +85,7 @@ class DrawerPage extends StatelessWidget{
             ),),
           SizedBox(height: 10),
           Text(lastEntry.isNotEmpty ? "Jugaste por ultima vez el $lastEntry."
-            :"Todavía no jugaste ninguna partida",//empty space ;)
+            :"Todavía no jugaste ninguna partida.",//empty space ;)
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 14,color: Colors.white
             ),)

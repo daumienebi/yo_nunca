@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 
 class MyDecorations{
 
-  static BoxDecoration homePageBoxDecoration (String imgRoute){
-    return BoxDecoration(
+  /// Returns a [BoxDecoration] with the category image if it has an image.
+  /// If the category has no image, it returns a different [BoxDecoration].
+  static BoxDecoration homePageBoxDecoration (String? imgRoute){
+
+    return imgRoute!.isNotEmpty ? BoxDecoration(
       image: DecorationImage(
-          image: AssetImage(imgRoute),
+          image: AssetImage(imgRoute!),
           colorFilter: ColorFilter.mode(Colors.white.withOpacity(0.2), BlendMode.saturation),
-          fit: BoxFit.fill,
+          fit: BoxFit.scaleDown,
       ),
       color: Colors.white,
       borderRadius: const BorderRadius.all(Radius.circular(15)),
@@ -19,7 +22,21 @@ class MyDecorations{
           offset: Offset(0, 3), // changes position of shadow
         ),
       ],
+    ) : BoxDecoration(
+      //color: Colors.lightGreen[100],
+      color: Colors.green[100],
+      //color: Colors.yellow[100],
+      borderRadius: const BorderRadius.all(Radius.circular(15)),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black87,
+          spreadRadius: 0.5,
+          blurRadius: 0.5,
+          //offset: Offset(0, 0), // changes position of shadow
+        ),
+      ],
     );
+
   }
 
   static BoxDecoration homePageBoxDecorationWithoutImage_
@@ -54,12 +71,11 @@ class MyDecorations{
         BoxShadow(
           spreadRadius: 0.5,
           blurRadius: 0.5,
+          color: Colors.black54
           //offset: Offset(0, 0), // changes position of shadow
         ),
-
       ],
       color: Colors.white,
-      //color: Colors.white
     );
   }
 

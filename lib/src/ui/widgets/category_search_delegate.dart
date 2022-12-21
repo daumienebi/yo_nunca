@@ -143,12 +143,23 @@ class _CategoryDetailState extends State<CategoryDetail> {
           width: 200,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(25),
-            child: Card(
+            child:
+            //use the category image if it has one,if not then use the default
+            //one
+            widget.category!.imageRoute.isNotEmpty ?
+            Card(
+                color: Theme.of(context).backgroundColor,
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                child: Image.asset(widget.category!.imageRoute,
+                  fit: BoxFit.cover,
+                )
+            ) : Card(
                 clipBehavior: Clip.antiAliasWithSaveLayer,
                 child: Image.asset(
                   'assets/images/question2.png',
                   fit: BoxFit.cover,
-                )),
+                )
+            ),
           ),
         ),
         SizedBox(height: 5,),

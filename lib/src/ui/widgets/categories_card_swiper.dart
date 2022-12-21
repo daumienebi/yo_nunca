@@ -20,7 +20,6 @@ class CategoriesCardSwiper extends StatelessWidget {
         height: size.height * 0.45,
         child: Swiper(
           itemBuilder: (BuildContext context, int index) {
-            //Generate a unique id for each Hero because they have to be different
             return GestureDetector(
                 //onTap: () => Navigator.of(context).pushNamed(
                 //Constants.routes.questionsPage, arguments: categories[index]),
@@ -39,13 +38,15 @@ class CategoriesCardSwiper extends StatelessWidget {
                       //decoration: MyDecorations.homePageBoxDecoration(
                       //categories[index].imageRoute),
                       decoration:
-                          MyDecorations.homePageBoxDecorationWithoutImage(),
+                          MyDecorations.homePageBoxDecoration(
+                            categories[index].imageRoute
+                          ),
                       height: Constants.homePageWidgetHeight,
                       width: 300,
                       //Try the child with a future builder to simulate a fake
                       //load
                       child: MyDecorations.homePageBoxText(
-                          categories[index].description, Colors.cyan)),
+                          categories[index].description, Colors.blueGrey)),
                 ));
           },
           itemCount: categories.length,

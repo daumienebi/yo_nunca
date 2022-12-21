@@ -32,17 +32,17 @@ class DefaultData {
     {
       'id': 1,
       'description': 'NORMAL',
-      'imageRoute' : 'assets/images/wine.jpg'
+      'imageRoute' : 'assets/images/smile.png'
     },
     {
       'id': 2,
-      'description': 'FIESTA',
-      'imageRoute' : 'assets/images/shots.jpg'
+      'description': 'DE FIESTA',
+      'imageRoute' : 'assets/images/drunk.png'
     },
     {
       'id': 3,
-      'description': 'PICANTE',
-      'imageRoute' : 'assets/images/smirk_face.png'
+      'description': 'TRAVIESOS',
+      'imageRoute' : 'assets/images/naughty.png'
     },
   ];
 
