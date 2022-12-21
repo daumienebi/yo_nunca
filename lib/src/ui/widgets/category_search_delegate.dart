@@ -148,7 +148,8 @@ class _CategoryDetailState extends State<CategoryDetail> {
             //one
             widget.category!.imageRoute.isNotEmpty ?
             Card(
-                color: Theme.of(context).backgroundColor,
+                //color: Theme.of(context).scaffoldBackgroundColor,
+                color: Colors.white,
                 clipBehavior: Clip.antiAliasWithSaveLayer,
                 child: Image.asset(widget.category!.imageRoute,
                   fit: BoxFit.cover,

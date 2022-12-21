@@ -95,7 +95,7 @@ class _FavouritesPageState extends State<FavouritesPage> {
             ),
           ),
         ),
-        _newGameBtn(),
+        createGameButton(),
         Text("Se creará un juego con solo las preguntas favoritas",
             style: TextStyle(color: Colors.blue)),
         SizedBox(
@@ -123,7 +123,7 @@ class _FavouritesPageState extends State<FavouritesPage> {
     );
   }
 
-  Widget _newGameBtn() {
+  Widget createGameButton() {
     final btnStyle = TextButton.styleFrom(
         textStyle: TextStyle(color: Colors.blue, fontSize: 17),
         backgroundColor: Colors.greenAccent);

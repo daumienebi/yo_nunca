@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:yo_nunca/src/ui/widgets/widgets.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
 
+import '../pages/pages.dart';
+
 class RoundAppBar extends StatelessWidget with PreferredSizeWidget {
   final double barHeight = 10;
   final Text? title;
@@ -25,7 +27,8 @@ class RoundAppBar extends StatelessWidget with PreferredSizeWidget {
       leading: InkWell(
           child: const Icon(Icons.menu),
           onTap: () =>
-              Navigator.of(context).pushNamed(Constants.routes.drawerPage)
+          Navigator.of(context).push(createRouteWithSlideAnimation())
+        //Navigator.of(context).pushNamed(Constants.routes.drawerPage)
       ),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
@@ -61,7 +64,7 @@ class RoundAppBar extends StatelessWidget with PreferredSizeWidget {
   AppBar normalAppBar(context) {
     return AppBar(
       centerTitle: true,
-      title: _appBarTitle(title!),
+      title: appBarTitle(title!),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           bottom: Radius.circular(60.0),
@@ -72,10 +75,28 @@ class RoundAppBar extends StatelessWidget with PreferredSizeWidget {
     );
   }
 
-  _appBarTitle(Text title) {
+  appBarTitle(Text title) {
     return Container(
       alignment: Alignment.topLeft,
       child: title,
+    );
+  }
+
+  Route createRouteWithSlideAnimation() {
+    return PageRouteBuilder(
+      settings: RouteSettings(name: Constants.routes.drawerPage,),
+      pageBuilder: (context, animation, secondaryAnimation) => const DrawerPage(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        const begin = Offset(-1.5, 1);
+        const end = Offset.zero;
+        final tween = Tween(begin: begin, end: end);
+        final offsetAnimation = animation.drive(tween);
+
+        return SlideTransition(
+          position: offsetAnimation,
+          child: child,
+        );
+      },
     );
   }
 }

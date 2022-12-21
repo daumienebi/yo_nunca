@@ -10,7 +10,8 @@ import 'package:yo_nunca/src/utils/my_decorations.dart';
 // ignore_for_file: prefer_const_constructors
 
 class CategoryManagementPage extends StatefulWidget {
-  const CategoryManagementPage({Key? key}) : super(key: key);
+  final VoidCallback? onClose;
+  const CategoryManagementPage({Key? key,this.onClose}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -38,6 +39,7 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
   @override
   Widget build(BuildContext context) {
     final Category category = ModalRoute.of(context)!.settings.arguments as Category;
+
     categoryNameController.text = category.description;
     return Scaffold(
         appBar: RoundAppBar(title: Text('Editar Categoría'),homePage: false,),
@@ -280,6 +282,7 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
       );
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
       Navigator.pop(context);
+      widget.onClose!();
     }
   }
 }

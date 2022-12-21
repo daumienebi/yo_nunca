@@ -213,7 +213,6 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
                   await questionProvider.addQuestions(newQuestions);
                 }
               }
-              dev.log(newCategory.toString());
               _showSnackBar(categoryId, categoryExists);
             }
           },

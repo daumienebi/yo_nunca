@@ -48,6 +48,12 @@ class DefaultData {
 
   final normalQuestions = [
     {
+      "id" : 0,
+      "categoryId": 3,
+      "description": "Yo nunca me he arrepentido de un tatuaje.",
+      "isFavourite": 0
+    },
+    {
       "id": 0,
       "categoryId": 1,
       "description": "Yo nunca he fingido estar enfermo para evitar ir a la escuela.",
@@ -1126,7 +1132,7 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId": 3,
-        "description": "Yo nunca me he liado/tirado a alguien que tenia minimo años mas que yo.",
+        "description": "Yo nunca me he liado/tirado a alguien que tenia menos años que yo.",
         "isFavourite": 0
       },
       {
@@ -1462,7 +1468,7 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId": 3,
-        "description": "Yo nunca he metido/me han metido mas de dedos.",
+        "description": "Yo nunca he metido/me han metido mas de dos dedos.",
         "isFavourite": 0
       },
       {
@@ -1570,7 +1576,7 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId": 3,
-        "description": "A mi nunca me ha puesto alguien sin saber en su momento que esa persona tenia minimo años menos que yo.",
+        "description": "A mi nunca me ha puesto alguien sin saber en su momento que esa persona tenia menos años que yo.",
         "isFavourite": 0
       },
       {
@@ -1708,7 +1714,7 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId": 3,
-        "description": "Yo nunca lo he hecho mas de veces en un dia.",
+        "description": "Yo nunca lo he hecho mas de 3 veces en un dia.",
         "isFavourite": 0
       },
       {
@@ -1721,12 +1727,6 @@ class DefaultData {
         "id" : 0,
         "categoryId": 3,
         "description": "A mi nunca me han hecho una cobra de verdad.",
-        "isFavourite": 0
-      },
-      {
-        "id" : 0,
-        "categoryId": 3,
-        "description": "Yo nunca me he arrepentido de un tatuaje.",
         "isFavourite": 0
       },
       {
@@ -2482,7 +2482,7 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId": 3,
-        "description": "Yo nunca he negado masturbarme.",
+        "description": "Yo nunca he negado a masturbarme.",
         "isFavourite": 0
       },
       {
@@ -2602,7 +2602,7 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId": 3,
-        "description": "Yo nunca he dejado un mancha en la ropa o en la cama.",
+        "description": "Yo nunca he dejado un mancha en la ropa o en la cama despues de follar.",
         "isFavourite": 0
       },
       {
@@ -2633,6 +2633,18 @@ class DefaultData {
         "id" : 0,
         "categoryId": 3,
         "description": "Yo nunca lo he hecho en el suelo.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId": 3,
+        "description": "Yo nunca lo he hecho encima de un arbol.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId": 3,
+        "description": "Yo nunca lo he hecho con persona mirando.",
         "isFavourite": 0
       },
       {
@@ -2711,6 +2723,12 @@ class DefaultData {
         "id" : 0,
         "categoryId": 3,
         "description": "Yo nunca me he liado con alguien solo porque un amigo/a me ayudo.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId": 3,
+        "description": "Yo nunca he pensado en hacer un trio con 2 de los presentes.",
         "isFavourite": 0
       },
       {
