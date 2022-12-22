@@ -36,12 +36,12 @@ class DefaultData {
     },
     {
       'id': 2,
-      'description': 'DE FIESTA',
+      'description': 'FIESTA',
       'imageRoute' : 'assets/images/drunk.png'
     },
     {
       'id': 3,
-      'description': 'TRAVIESOS',
+      'description': 'TRAVIESO',
       'imageRoute' : 'assets/images/naughty.png'
     },
   ];

@@ -46,7 +46,7 @@ class CategoriesCardSwiper extends StatelessWidget {
                       //Try the child with a future builder to simulate a fake
                       //load
                       child: MyDecorations.homePageBoxText(
-                          categories[index].description, Colors.red)),
+                          categories[index].description, Colors.blueGrey)),
                 ));
           },
           itemCount: categories.length,

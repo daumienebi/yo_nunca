@@ -223,7 +223,6 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
   ///Displays a snack bar depending on if the category was added or not
   void _showSnackBar(int id, bool categoryExists) {
     SnackBar snackBar;
-    dev.log(id.toString());
     //If the category was not inserted, the id is 0, unlikely to happen
     if (id == 0 && !categoryExists) {
       snackBar = SnackBar(

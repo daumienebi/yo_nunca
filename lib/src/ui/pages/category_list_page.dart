@@ -166,15 +166,6 @@ class _CategoryTileState extends State<CategoryTile> {
     super.initState();
   }
 
-  /*
-  @override
-  void didChangeDependencies() {
-    //rebuild the widget in case a change was made
-    //countFuture = getCount();
-    super.didChangeDependencies();
-  }
-   */
-
   @override
   Widget build(BuildContext context) {
     final mainTxtStyle = TextStyle(
