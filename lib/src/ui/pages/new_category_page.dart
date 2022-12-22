@@ -6,7 +6,6 @@ import 'package:yo_nunca/src/models/question.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
 import 'package:yo_nunca/src/ui/widgets/widgets.dart';
 import 'package:yo_nunca/src/utils/my_decorations.dart';
-import 'dart:developer' as dev;
 
 class NewCategoryPage extends StatefulWidget {
   const NewCategoryPage({Key? key}) : super(key: key);
@@ -76,7 +75,7 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
               maxLength: 25,
               validator: (String? value) {
                 if (value == null || value.isEmpty) {
-                  return "Por favor, introduce un nombre de categoria valída";
+                  return "Por favor, introduce un nombre de categoría valída";
                 }
                 return null;
               }),
@@ -119,7 +118,7 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: Text('Cancel'),
+                child: Text('Cancelar'),
               ),
               TextButton(
                 onPressed: () async {
@@ -241,7 +240,7 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
     //When the category gets inserted
     if (id > 0 && !categoryExists) {
       snackBar = SnackBar(
-          duration: Duration(seconds: 1), content: Text('Categoría añadida'));
+          duration: Duration(seconds: 1), content: Text('Categoría añadida.'));
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
       Navigator.pop(context);
     }

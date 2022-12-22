@@ -90,7 +90,7 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
                   suffixIcon: Icon(Icons.category)),
               validator: (String? value) {
                 if (value == null || value.isEmpty) {
-                  return 'Por favor, introduce un nombre de categoria valída';
+                  return 'Por favor, introduce un nombre de categoría valída';
                 }
                 return null;
               }),
@@ -137,7 +137,7 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: Text('Cancel'),
+                child: Text('Cancelar'),
               ),
               TextButton(
                 onPressed: () async {
@@ -270,7 +270,7 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
     if(categoryExists && oldName != newName){
       snackBar = SnackBar(
           duration: Duration(seconds: 1),
-          content: Text('Ya existe una cateforía con ese nombre')
+          content: Text('Ya existe una categoría con ese nombre')
       );
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
@@ -278,7 +278,7 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
     if(count > 0 && (!categoryExists || oldName == newName)){
       snackBar = SnackBar(
           duration: Duration(seconds: 1),
-          content: Text('Categoría modificada')
+          content: Text('Categoría modificada.')
       );
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
       Navigator.pop(context);

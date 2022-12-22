@@ -4,7 +4,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:yo_nunca/src/ui/pages/pages.dart';
 import 'package:yo_nunca/src/ui/widgets/round_app_bar.dart';
-import 'package:yo_nunca/src/utils/constants.dart';
 // ignore_for_file: prefer_const_constructors
 
 class DrawerPage extends StatelessWidget{
@@ -30,10 +29,13 @@ class DrawerPage extends StatelessWidget{
           _buildLastEntryWidget(),
           SizedBox(height: 10),
           _optionsWidgets(context),
-          TextButton(onPressed: (){
-            Navigator.of(context).pop();
-          },
-              child: Text("Cerrar", style: TextStyle(color: Colors.red),))
+          TextButton(
+              onPressed: ()=> Navigator.of(context).pop(),
+              style: TextButton.styleFrom(backgroundColor: Colors.redAccent),
+              child: Text(
+                "Cerrar",
+                style: TextStyle(color: Colors.white,),)
+          )
         ],
       ),decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
@@ -56,7 +58,7 @@ class DrawerPage extends StatelessWidget{
 
   Widget _lastEntryWidget(String lastEntry){
     String greetingsText = '';
-    //check if the user ¡has 24 or 12 hours time format
+    //check if the user has 24 or 12 hours time format
 
     final DateTime now = DateTime.now();
     final utcTime =DateTime.utc(now.year,now.month,now.day,now.hour,now.minute,
@@ -130,8 +132,8 @@ class DrawerPage extends StatelessWidget{
 
     widgets.add(InkWell(
       child: ListTile(
-        title: Text("Mis Categorias"),
-        subtitle: Text("Las categorias con las preguntas añadidas",
+        title: Text("Mis Categorías"),
+        subtitle: Text("Las categorias con las preguntas añadidas.",
           style: subTitleStyle,),
         leading: Icon(Icons.category),
         trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
@@ -142,7 +144,7 @@ class DrawerPage extends StatelessWidget{
 
     widgets.add(ListTile(
         title: Text("Favoritos"),
-        subtitle: Text("Todas las preguntas favoritas",style: subTitleStyle,),
+        subtitle: Text("Lista de tus preguntas destacadas",style: subTitleStyle,),
         leading: Icon(Icons.favorite,color: Colors.red,),
         trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
         onTap: ()=>Navigator.of(context).push(
@@ -159,22 +161,37 @@ class DrawerPage extends StatelessWidget{
             '-0bca473a6fe0');
         _launchUrl(url);
       },
-
     ));
 
     widgets.add(ListTile(
         title: Text("Valorar"),
-        subtitle: Text("Calificar o sugerir mejoras de la app", style: subTitleStyle,),
+        subtitle: Text("Calificar,sugerir mejoras o mas funciones.", style: subTitleStyle,),
         leading: Icon(FontAwesomeIcons.googlePlay,),
         trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
 
     ));
     widgets.add(ListTile(
-      title: Text("Creditos"),
+      title: Text("Créditos"),
       subtitle: Text("Aportaciones al proyecto", style: subTitleStyle,),
       leading: Icon(Icons.people_outline,),
       trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
       onTap: ()=> Navigator.push(context, _createRoute(page: CreditsPage())),
+
+    ));
+
+    widgets.add(ListTile(
+      title: Text("Contactar con el desarrollador"),
+      subtitle: Text("Comentar sobre cualquier error/duda en especifico"
+          " o acerca de la app en general.",
+        style: subTitleStyle,
+      ),
+      leading: Icon(Icons.contact_mail_outlined,),
+      trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
+      onTap: ()async{
+        String subject = 'Contacto desde la app: YO NUNCA';
+        String mailUrl = 'mailto:?subject=$subject';
+        await _launchUrl(Uri.parse(mailUrl));
+      },
 
     ));
     return widgets;

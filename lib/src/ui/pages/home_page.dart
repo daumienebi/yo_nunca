@@ -120,7 +120,10 @@ class HomePage extends StatelessWidget {
           color: Colors.green,
           size: 40,
         ),
-        onClicked: () => share(SocialMedia.whatsapp)));
+        onClicked: (){
+          Navigator.pop(context);
+          share(SocialMedia.whatsapp);
+        }));
     items.add(SizedBox(
       width: 15,
     ));
@@ -131,7 +134,10 @@ class HomePage extends StatelessWidget {
           color: Colors.lightBlueAccent,
           size: 40,
         ),
-        onClicked: () => share(SocialMedia.twitter)));
+        onClicked: (){
+          Navigator.pop(context);
+          share(SocialMedia.twitter);
+        }));
     items.add(SizedBox(
       width: 15,
     ));
@@ -142,7 +148,10 @@ class HomePage extends StatelessWidget {
           color: Colors.indigo,
           size: 40,
         ),
-        onClicked: () => share(SocialMedia.facebook)));
+        onClicked: (){
+          Navigator.pop(context);
+          share(SocialMedia.facebook);
+        }));
     items.add(SizedBox(
       width: 15,
     ));
@@ -156,6 +165,12 @@ class HomePage extends StatelessWidget {
         ),
         onClicked: () async{
           await Clipboard.setData(ClipboardData(text:'playstoreurlwithappid'));
+          Navigator.pop(context);
+          ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text('Enlace copiado'),duration: Duration(
+                seconds: 2
+              ),)
+          );
         }
       )
     );
@@ -229,7 +244,7 @@ class HomePage extends StatelessWidget {
               ]),
           child: Column(
               children: const [
-            Text("Dudas con que categoria elegir ?  👀 ",
+            Text("Dudas con que categoría elegir ?  👀 ",
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.black45, fontSize: 16)),
           ]),

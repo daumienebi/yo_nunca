@@ -42,7 +42,9 @@ class _QuestionWidgetState extends State<QuestionWidget> {
       await provider.getAllQuestions();
       questions = provider.questions;
       _generateGameOrder(questions);
-      return Future.delayed(Duration(seconds: 2), () => questions);
+      //3 seconds as wait time so that the user can read the loading screen
+      //to see that questions from all categories will be loaded.
+      return Future.delayed(Duration(seconds: 3), () => questions);
     } else {
       questions = await provider.getQuestionsPerCategory(widget.category.id!);
       _generateGameOrder(questions);
@@ -85,7 +87,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
                 } else {
                   futureWidgets = <Widget>[
                     Messages.circularLoadingWidget(widget.mixedMode ?
-                    'Cargando preguntas de todas las categorias...' :
+                    'Cargando preguntas de todas las categorías...' :
                     'Cargando preguntas ...'),
                   ];
                 }
@@ -126,7 +128,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
   /// no questions
   _noQuestionWidget() {
     String part1 = 'No hay preguntas disponibles para la categoría ';
-    String part2 = ', ve a las categorias para añadirlas.';
+    String part2 = ', ve a las categorías para añadirlas.';
     final textStyle = TextStyle(color: Colors.black54,fontSize: 17);
     return <Widget>[
       Padding(
@@ -162,7 +164,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
         onPressed: () {
           Navigator.pushNamed(context, Constants.routes.categoryListPage);
         },
-        child: Text('Ir a Categorias',style: TextStyle(color: Colors.black87),
+        child: Text('Ir a Categorías',style: TextStyle(color: Colors.black87),
         ),
         style: TextButton.styleFrom(backgroundColor: Colors.greenAccent),
       )
@@ -266,8 +268,6 @@ class _QuestionWidgetState extends State<QuestionWidget> {
         textStyle: TextStyle(color: Colors.blue, fontSize: 17));
     return ElevatedButton(
       onPressed: (){
-        dev.log('current index : $_currentIndex');
-        dev.log('list length : $listLength');
         if(_currentIndex < listLength - 1){
           setState((){
             _currentIndex ++;

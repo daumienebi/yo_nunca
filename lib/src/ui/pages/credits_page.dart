@@ -11,7 +11,7 @@ class CreditsPage extends StatelessWidget{
     final txtStyle = TextStyle(color: Colors.green,fontSize: 20);
     return Scaffold(
       appBar: RoundAppBar(
-        title: Text('Creditos'),
+        title: Text('Créditos'),
         homePage: false,
       ),
       body: Container(
