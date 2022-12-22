@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:yo_nunca/src/ui/pages/category_list_page.dart';
-import 'package:yo_nunca/src/ui/pages/credits_page.dart';
-import 'package:yo_nunca/src/ui/pages/favourites_page.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:yo_nunca/src/ui/pages/pages.dart';
 import 'package:yo_nunca/src/ui/widgets/round_app_bar.dart';
+import 'package:yo_nunca/src/utils/constants.dart';
 // ignore_for_file: prefer_const_constructors
 
 class DrawerPage extends StatelessWidget{
@@ -154,6 +154,12 @@ class DrawerPage extends StatelessWidget{
       subtitle: Text("Gestion de tus datos etc...",style: subTitleStyle,),
       leading: Icon(Icons.privacy_tip_outlined),
       trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
+      onTap: (){
+        final url = Uri.parse('https://www.termsfeed.com/live/df65fce0-9b00-48db-b48b'
+            '-0bca473a6fe0');
+        _launchUrl(url);
+      },
+
     ));
 
     widgets.add(ListTile(
@@ -173,4 +179,9 @@ class DrawerPage extends StatelessWidget{
     ));
     return widgets;
   }
+
+  _launchUrl(Uri url) async{
+    await launchUrl(url,mode:LaunchMode.externalApplication);
+  }
+
 }

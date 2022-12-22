@@ -35,16 +35,17 @@ class HomePage extends StatelessWidget {
             onPressed: () {
               showModalBottomSheet(
                   context: context,
-                  builder: (BuildContext ctx) {
+                  builder: (BuildContext context) {
                     return Container(
                       height: 110,
+                      color: Colors.cyan[50],
                       child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Text(
-                              'Compartir',textAlign: TextAlign.left,
+                              'Compartir la app',textAlign: TextAlign.left,
                               style: TextStyle(
-                                  color: Colors.black87, fontSize: 20),
+                                  color: Colors.black54, fontSize: 20),
                             ),
                             SizedBox(height: 5,),
                             Expanded(

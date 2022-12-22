@@ -4,15 +4,30 @@ class Constants {
   static Routes routes = const Routes();
   static double homePageWidgetHeight = 200;
   static String playStoreUrl = "https://www.youtube.com";
-  static List<Color>   randomColours = [
-    Colors.greenAccent, Colors.black87, Colors.deepOrange, Colors.blueGrey,
-    Colors.amber, Colors.cyan, Colors.teal, Colors.brown,
+  static List<Color> randomColours = [
+    Colors.greenAccent,
+    Colors.black87,
+    Colors.deepOrange,
+    Colors.blueGrey,
+    Colors.amber,
+    Colors.cyan,
+    Colors.teal,
+    Colors.brown,
   ];
-  static List<String> monthsInSpanish =
-   ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto',
-    'Septiembre', 'Octubre', 'Noviembre', 'Diciembre',
+  static List<String> monthsInSpanish = [
+    'Enero',
+    'Febrero',
+    'Marzo',
+    'Abril',
+    'Mayo',
+    'Junio',
+    'Julio',
+    'Agosto',
+    'Septiembre',
+    'Octubre',
+    'Noviembre',
+    'Diciembre',
   ];
-
 }
 
 /// Class to map all the pages in the app
@@ -28,6 +43,5 @@ class Routes {
   String get categoryListPage => 'categorylistpage';
   String get drawerPage => 'drawerpage';
   String get creditsPage => 'creditspage';
+  String get policyPage => 'policypage';
 }
-
-
