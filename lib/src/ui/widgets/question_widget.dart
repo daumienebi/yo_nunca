@@ -249,6 +249,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
     final btnStyle = ElevatedButton.styleFrom(
         textStyle: TextStyle(color: Colors.blue, fontSize: 17));
     return ElevatedButton(
+      key: Key('previousButton'),
       onPressed: () {
         //Only go back to the previous question if it's not the first one
         if(_currentIndex > 0){
@@ -267,6 +268,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
     final btnStyle = ElevatedButton.styleFrom(
         textStyle: TextStyle(color: Colors.blue, fontSize: 17));
     return ElevatedButton(
+      key: Key('nextButton'),
       onPressed: (){
         if(_currentIndex < listLength - 1){
           setState((){
