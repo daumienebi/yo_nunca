@@ -56,8 +56,13 @@ class _QuestionWidgetState extends State<QuestionWidget> {
   /// Generate a random order in which the questions will be shown
   /// [questions] is the list of questions to be shown
   void _generateGameOrder(List<Question> questions){
+    late int randomNumber;
     while(gameOrder.length != questions.length){
-      gameOrder.add(Random().nextInt(questions.length));
+      randomNumber = Random().nextInt(questions.length);
+      //make sure the game order does not have repeated number
+      if(!gameOrder.contains(randomNumber)){
+        gameOrder.add(randomNumber);
+      }
     }
     dev.log('game order :' + gameOrder.toString());
   }
