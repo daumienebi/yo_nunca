@@ -78,6 +78,7 @@ class QuestionDao {
     return result.map((e) => Question.fromMap(e)).toList();
   }
 
+  /// Return the number of questions a category has
   countQuestionsPerCategory(int categoryId) async{
     int count = 0;
     final database = await databaseProvider.database;
@@ -86,6 +87,7 @@ class QuestionDao {
     return count;
   }
 
+  /// Set a [question] as favourite
   addToFavourites(Question question) async{
     final database = await databaseProvider.database;
     int rows = 0;
@@ -98,6 +100,7 @@ class QuestionDao {
     return rows;
   }
 
+  /// Set a [question] as non-favourite
   removeFromFavourites(Question question) async{
     final database = await databaseProvider.database;
     final rows = await database.update(questionTable,question.toMap(),

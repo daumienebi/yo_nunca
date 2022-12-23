@@ -435,7 +435,7 @@ class DefaultData {
       {
         "id": 0,
         "categoryId": 2,
-        "description": "Yo nunca he intentado esconder un chupetón.",
+        "description": "Yo nunca he intentado esconder un chupetón que me hicieron de fiesta.",
         "isFavourite": 0
       },
       {

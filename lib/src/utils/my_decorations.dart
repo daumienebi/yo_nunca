@@ -8,17 +8,18 @@ class MyDecorations{
 
     return imgRoute!.isNotEmpty ? BoxDecoration(
       image: DecorationImage(
-          image: AssetImage(imgRoute!),
+          image: AssetImage(imgRoute),
           colorFilter: ColorFilter.mode(Colors.white.withOpacity(0.2), BlendMode.saturation),
           fit: BoxFit.scaleDown,
       ),
+      //color: Colors.amberAccent[100],
       color: Colors.white,
       borderRadius: const BorderRadius.all(Radius.circular(15)),
       boxShadow: [
         BoxShadow(
           color: Colors.grey.withOpacity(0.5),
-          spreadRadius: 5,
-          blurRadius: 7,
+          spreadRadius: 2,
+          blurRadius: 3,
           offset: Offset(0, 3), // changes position of shadow
         ),
       ],
@@ -29,9 +30,9 @@ class MyDecorations{
       borderRadius: const BorderRadius.all(Radius.circular(15)),
       boxShadow: [
         BoxShadow(
-          color: Colors.black87,
+          color: Colors.black54,
           spreadRadius: 0.5,
-          blurRadius: 0.5,
+          blurRadius:3,
           //offset: Offset(0, 0), // changes position of shadow
         ),
       ],

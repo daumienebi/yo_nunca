@@ -30,24 +30,23 @@ class CategoryListPage extends StatelessWidget {
               indicatorColor: Colors.cyan,
               tabs: [
                 Tab(
-                  child: _categoriesCountWidget(
-                      _defaultCategories.length, 'Por Defecto'),
+                  child: categoryTabHeader(_categories.length, 'Agregados'),
                 ),
                 Tab(
-                  child:
-                      _categoriesCountWidget(_categories.length, 'Agregados'),
+                  child: categoryTabHeader(
+                      _defaultCategories.length, 'Por Defecto'),
                 ),
               ],
             ),
           ),
           body: TabBarView(children: [
-            _defaultCategoryContents(_defaultCategories),
-            _userCategoryContents(_categories, context)
+            userCategoryContents(_categories, context),
+            defaultCategoryContents(_defaultCategories)
           ])),
     );
   }
 
-  _categoriesCountWidget(int number, String tabName) {
+  categoryTabHeader(int number, String tabName) {
     return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
       Text(tabName),
       SizedBox(
@@ -61,7 +60,7 @@ class CategoryListPage extends StatelessWidget {
           style: TextStyle(color: Colors.white),
         )),
         decoration: BoxDecoration(
-          color: Colors.black,
+          color: Colors.black54,
           borderRadius: BorderRadius.circular(15),
         ),
         height: 30,
@@ -70,7 +69,7 @@ class CategoryListPage extends StatelessWidget {
     ]);
   }
 
-  Widget _defaultCategoryContents(List<Category> categories) {
+  Widget defaultCategoryContents(List<Category> categories) {
     return Container(
       margin: EdgeInsets.only(top: 7),
       child: Column(children: [
@@ -93,10 +92,9 @@ class CategoryListPage extends StatelessWidget {
     );
   }
 
-  Widget _userCategoryContents(
-      List<Category> categories, BuildContext context) {
+  Widget userCategoryContents(List<Category> categories, BuildContext context) {
     return categories.isEmpty
-        ? _noCategoryWidget(context)
+        ? noCategoryWidget(context)
         : Container(
             margin: EdgeInsets.only(top: 7),
             child: Column(children: [
@@ -115,7 +113,7 @@ class CategoryListPage extends StatelessWidget {
           );
   }
 
-  Widget _noCategoryWidget(BuildContext context) {
+  Widget noCategoryWidget(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -182,21 +180,21 @@ class _CategoryTileState extends State<CategoryTile> {
     // TODO: implement build
     return Center(
         child: Container(
-          padding: EdgeInsets.all(7),
-          margin: EdgeInsets.all(10),
-          height: 120,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            color: Colors.black87, borderRadius: BorderRadius.circular(15)),
-            child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-              widget.category.description,
-              style: mainTxtStyle,
-              textAlign: TextAlign.left,
-              ),
-              FutureBuilder<int>(
+      padding: EdgeInsets.all(7),
+      margin: EdgeInsets.all(10),
+      height: 120,
+      width: double.infinity,
+      decoration: BoxDecoration(
+          color: Colors.black87, borderRadius: BorderRadius.circular(15)),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            widget.category.description,
+            style: mainTxtStyle,
+            textAlign: TextAlign.left,
+          ),
+          FutureBuilder<int>(
               future: countFuture,
               builder: (BuildContext context, AsyncSnapshot snapshot) {
                 if (snapshot.hasData) {
@@ -217,10 +215,10 @@ class _CategoryTileState extends State<CategoryTile> {
                               color: Colors.lightGreen[100], fontSize: 16)));
                 }
               }),
-            Center(
+          Center(
               child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
               Visibility(
                 visible: widget.defaultCategory,
                 child: ElevatedButton(
@@ -230,8 +228,7 @@ class _CategoryTileState extends State<CategoryTile> {
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => CategoryManagementPage(
-                              onClose: () => countFuture = getCount()
-                            ),
+                            onClose: () => countFuture = getCount()),
                         settings: RouteSettings(arguments: widget.category)));
                   },
                   child: Text(

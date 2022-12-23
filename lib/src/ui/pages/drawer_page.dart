@@ -188,8 +188,8 @@ class DrawerPage extends StatelessWidget{
       leading: Icon(Icons.contact_mail_outlined,),
       trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
       onTap: ()async{
-        String subject = 'Contacto desde la app: YO NUNCA';
-        String mailUrl = 'mailto:?subject=$subject';
+        String subject = 'Usuario desde la app: Yo Nunca';
+        String mailUrl = 'mailto:devdaumienebi@gmail.com?subject=$subject';
         await _launchUrl(Uri.parse(mailUrl));
       },
 

@@ -38,12 +38,16 @@ class DatabaseProvider {
         onUpgrade: _onUpgrade
     );
   }
+
   Future _onUpgrade(Database database,int oldVersion, int newVersion) async{
-    // Add new questions or categories in the next update.
-    // Add the new questions to the default one and don't forget to filter with
-    // the names of the categories in the [CategoryDao], to get the default ones
-    // instead of using 1,2 & 3 because the user might have added newer
-    // categories.
+    // TO add new questions or categories in the next update, add them to the
+    // [DefaultData] class in the right list so that newer users can get them
+    //  too.
+
+    //Changes in the Database queries :
+    // Filter with the names of the default & newer Categories in the
+    // [CategoryDao], to get the default ones instead of using 1,2,3 & 4 because
+    // the user might have added newer categories.
   }
 
   Future _createDb(Database database,int version) async{

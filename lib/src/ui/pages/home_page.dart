@@ -11,7 +11,7 @@ import 'package:yo_nunca/src/ui/pages/pages.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
 import 'package:yo_nunca/src/ui/widgets/widgets.dart';
 
-///Create an enum for the possible social medias where the app can be shared
+///Enum for the possible social medias where the app can be shared
 enum SocialMedia { facebook, twitter, instagram, whatsapp,enlace}
 
 class HomePage extends StatelessWidget {
@@ -38,7 +38,7 @@ class HomePage extends StatelessWidget {
                   builder: (BuildContext context) {
                     return Container(
                       height: 110,
-                      color: Colors.cyan[50],
+                      color: Colors.white,
                       child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
@@ -87,13 +87,15 @@ class HomePage extends StatelessWidget {
                     SizedBox(
                       height: 15,
                     ),
-                    _mixedModeWidget(context),
+                    mixedModeWidget(context),
                   ]))),
         ),
       ),
     );
   }
 
+  /// Get the date the user enters a category to view the question and save it
+  /// in the [SharedPreferences]
   Future<void> _setPrefsData() async {
     final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
     final SharedPreferences prefs = await _prefs;
@@ -193,24 +195,6 @@ class HomePage extends StatelessWidget {
     );
   }
 
-
-  Route _createRouteWithSlideAnimation() {
-    return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => const DrawerPage(),
-      transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        const begin = Offset(0.0, 1.0);
-        const end = Offset.zero;
-        final tween = Tween(begin: begin, end: end);
-        final offsetAnimation = animation.drive(tween);
-
-        return SlideTransition(
-          position: offsetAnimation,
-          child: child,
-        );
-      },
-    );
-  }
-
   Route _createRoute({required Object? arguments}) {
     return PageRouteBuilder(
       settings: RouteSettings(name: Constants.routes.mixedModePage,
@@ -225,7 +209,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _mixedModeWidget(BuildContext context) {
+  Widget mixedModeWidget(BuildContext context) {
     //guess its not advisable to pass the context like this
     return Column(
       children: [
@@ -272,6 +256,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
+  /// Method to launch each share option for the [SocialMedia]
   Future share(SocialMedia platform) async {
     const text ='Descarga y prueba esta aplicación de Yo Nunca personalizable '
         'para jugar de fiesta con los amigos. ¡Juega con preguntas por defecto o'
