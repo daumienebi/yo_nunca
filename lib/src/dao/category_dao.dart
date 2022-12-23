@@ -54,16 +54,16 @@ class CategoryDao{
   getDefaultCategories() async{
     final database = await databaseProvider.database;
     final result = await database.query(categoryTable,where:
-    '${CategoryFields.id} IN (?,?,?)',whereArgs: [1,2,3]);
+    '${CategoryFields.id} IN (?,?,?,?)',whereArgs: [1,2,3,4]);
     return result.map((e) => Category.fromMap(e)).toList();
   }
 
-  ///Returns the categories added by the user, the first 3 were inserted on
-  ///creating the DB, id: 1,2 & 3
+  ///Returns the categories added by the user, the first 4 were inserted on
+  ///creating the DB, id: 1,2,3 & 4
   getNewCategories() async{
     final database = await databaseProvider.database;
     final result = await database.query(categoryTable,where:
-    '${CategoryFields.id} NOT IN (?,?,?)',whereArgs: [1,2,3]);
+    '${CategoryFields.id} NOT IN (?,?,?,?)',whereArgs: [1,2,3,4]);
     return result.map((e) => Category.fromMap(e)).toList();
   }
 

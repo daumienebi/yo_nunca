@@ -94,8 +94,9 @@ class DatabaseProvider {
     // method is already in a transaction
     List<Category> categories = defaultData.getCategoriesList;
     List<Question> normalQuestions = defaultData.getNormalQuestionsList;
-    List<Question>  intermediateQuestions = defaultData.getIntermediateQuestionsList;
-    List<Question>  hotQuestions = defaultData.getHotQuestionsList;
+    List<Question> intermediateQuestions = defaultData.getIntermediateQuestionsList;
+    List<Question> coupleQuestions = defaultData.getCoupleQuestionsList;
+    List<Question> hotQuestions = defaultData.getHotQuestionsList;
 
     dev.log("Inserting data into category table...");
     for (var element in categories) {
@@ -107,6 +108,9 @@ class DatabaseProvider {
       batch.insert('question', element.toMap());
     }
     for (var element in intermediateQuestions) {
+      batch.insert('question', element.toMap());
+    }
+    for (var element in coupleQuestions) {
       batch.insert('question', element.toMap());
     }
     for (var element in hotQuestions) {

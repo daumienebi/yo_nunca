@@ -12,6 +12,7 @@ Flutter mobile app to create a simple question game.
   - [Smile icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/smile)
   - [Sexy icons created by iconixar - Flaticon](https://www.flaticon.com/free-icons/sexy)
   - [Drunk icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/drunk)
+  - [Couple icons created by Victoruler - Flaticon](https://www.flaticon.com/free-icons/couple)
 
 - Questions:
   - [Mzdol](https://www.mdzol.com/sociedad/2021/3/10/yo-nunca-70-ideas-de-preguntas-para-jugar-con-tus-amigos-144225.html)

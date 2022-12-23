@@ -181,7 +181,7 @@ class DrawerPage extends StatelessWidget{
 
     widgets.add(ListTile(
       title: Text("Contactar con el desarrollador"),
-      subtitle: Text("Comentar sobre cualquier error/duda en especifico"
+      subtitle: Text("Sobre cualquier error/duda en especifico"
           " o acerca de la app en general.",
         style: subTitleStyle,
       ),

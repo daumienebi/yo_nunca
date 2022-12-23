@@ -4,12 +4,14 @@ import 'package:yo_nunca/src/models/question.dart';
 class DefaultData {
   List<Question> _normalQuestionsList = [];
   List<Question> _intermediateQuestionsList = [];
+  List<Question> _coupleQuestionsList = [];
   List<Question> _hotQuestionsList = [];
   List<Category> _categoriesList = [];
 
   List<Category> get getCategoriesList => _getCategories();
   List<Question> get getNormalQuestionsList => _getNormalQuestions();
   List<Question> get getIntermediateQuestionsList => _getIntermediateQuestions();
+  List<Question> get getCoupleQuestionsList => _getCoupleQuestions();
   List<Question> get getHotQuestionsList => _getHotQuestions();
 
   _getNormalQuestions() {
@@ -22,6 +24,10 @@ class DefaultData {
   }
   _getHotQuestions() {
     return _hotQuestionsList = hotQuestions.map((e) =>
+        Question.fromMap(e)).toList();
+  }
+  _getCoupleQuestions() {
+    return _coupleQuestionsList = coupleQuestions.map((e) =>
         Question.fromMap(e)).toList();
   }
   _getCategories() {
@@ -44,6 +50,105 @@ class DefaultData {
       'description': 'TRAVIESO',
       'imageRoute' : 'assets/images/naughty.png'
     },
+    {
+      'id': 4,
+      'description': 'PAREJAS',
+      'imageRoute' : 'assets/images/couple.png'
+    },
+  ];
+
+  final coupleQuestions = [
+    {
+      "id": 0,
+      "categoryId": 4,
+      "description": "Yo nunca he mentido diciendo que me gustaba lo que había cocinado una amistad o mi pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id": 0,
+      "categoryId": 4,
+      "description": "Yo nunca he tenido una pelea de pareja en público.",
+      "isFavourite": 0
+    },
+    {
+      "id": 0,
+      "categoryId": 4,
+      "description": "Yo nunca he cotilleado a quién daba like mi pareja o exparejas.",
+      "isFavourite": 0
+    },
+    {
+      "id": 0,
+      "categoryId": 4,
+      "description": "Yo nunca he preferido no estar con mi pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id": 0,
+      "categoryId": 4,
+      "description": "Yo nunca he mirado el teléfono de mi pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId": 4,
+      "description": "Yo nunca he borrado conversaciones subidas de tono para que mi pareja no me pillase.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId": 4,
+      "description": "Yo nunca le he roto la ropa a mi pareja al quitarsela.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId": 4,
+      "description": "Yo nunca he pensado que me casaria con un ex o actual pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId": 4,
+      "description": "Yo nunca le he hecho un baile sensual a mi pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId": 4,
+      "description": "Yo nunca me he encarado con alguien que estuviese mirando o molestando a mi pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId": 4,
+      "description": "Yo nunca he estado un mes sin hacerlo teniendo pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId": 4,
+      "description": "Yo nunca he archivado un chat porque no queria que mi pareja lo viera pero tampoco queria borrarlo.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId": 4,
+      "description": "Yo nunca me he puesto celoso al ver a mi pareja hablar con su ex.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId": 4,
+      "description": "Yo nunca he tenido envidia de la pareja de un amigo/a.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId": 4,
+      "description": "Yo nunca he intentado/querido que una pareja rompiese.",
+      "isFavourite": 0
+    },
+
   ];
 
   final normalQuestions = [
@@ -260,12 +365,6 @@ class DefaultData {
     {
       "id": 0,
       "categoryId": 1,
-      "description": "Yo nunca he mentido diciendo que me gustaba lo que había cocinado una amistad o mi pareja.",
-      "isFavourite": 0
-    },
-    {
-      "id": 0,
-      "categoryId": 1,
       "description": "Yo nunca le he hecho ghosting a nadie.",
       "isFavourite": 0
     },
@@ -343,12 +442,6 @@ class DefaultData {
         "id": 0,
         "categoryId": 2,
         "description": "Yo nunca he tenido tanta resaca que juré no volver a beber nunca más.",
-        "isFavourite": 0
-      },
-      {
-        "id": 0,
-        "categoryId": 2,
-        "description": "Yo nunca he tenido una pelea de pareja en público.",
         "isFavourite": 0
       },
       {
@@ -444,19 +537,7 @@ class DefaultData {
       {
         "id": 0,
         "categoryId": 2,
-        "description": "Yo nunca he cotilleado a quién daba like mi pareja o exparejas.",
-        "isFavourite": 0
-      },
-      {
-        "id": 0,
-        "categoryId": 2,
         "description": "Nunca he tenido una relación abierta.",
-        "isFavourite": 0
-      },
-      {
-        "id": 0,
-        "categoryId": 2,
-        "description": "Yo nunca he preferido no estar con mi pareja.",
         "isFavourite": 0
       },
       {
@@ -535,12 +616,6 @@ class DefaultData {
         "id": 0,
         "categoryId": 2,
         "description": "Yo nunca he comido las sobras de otra mesa en un restaurante.",
-        "isFavourite": 0
-      },
-      {
-        "id": 0,
-        "categoryId": 2,
-        "description": "Yo nunca he mirado el teléfono de mi pareja.",
         "isFavourite": 0
       },
       {
@@ -797,12 +872,6 @@ class DefaultData {
         "id": 0,
         "categoryId": 3,
         "description": "Yo nunca he tirado fichas al novio\\a de un amigo\\a.",
-        "isFavourite": 0
-      },
-      {
-        "id": 0,
-        "categoryId": 3,
-        "description": "Yo nunca he revisado el Whatsapp de mi pareja.",
         "isFavourite": 0
       },
       {
@@ -1348,12 +1417,6 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId": 3,
-        "description": "Yo nunca he borrado conversaciones subidas de tono para que mi pareja no me pillase.",
-        "isFavourite": 0
-      },
-      {
-        "id" : 0,
-        "categoryId": 3,
         "description": "Yo nunca me he liado/ tirado a alguien que no me parecia atractivo/a solo porque estaba desesperado/a.",
         "isFavourite": 0
       },
@@ -1438,13 +1501,7 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId": 3,
-        "description": "Yo nunca le he roto la ropa a mi pareja al quitarsela.",
-        "isFavourite": 0
-      },
-      {
-        "id" : 0,
-        "categoryId": 3,
-        "description": "Yo nunca he intentado/querido que una pareja rompiese.",
+        "description": "Yo nunca le he roto la ropa interior a alguien al quitarsela.",
         "isFavourite": 0
       },
       {
@@ -1936,12 +1993,6 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId": 3,
-        "description": "Yo nunca he pensado que me casaria con un ex o actual pareja.",
-        "isFavourite": 0
-      },
-      {
-        "id" : 0,
-        "categoryId": 3,
         "description": "Yo nunca he soñado que me liaba/tiraba a alguien y me he decepcionado al despertarme.",
         "isFavourite": 0
       },
@@ -2350,18 +2401,6 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId": 3,
-        "description": "Yo nunca le he hecho un baile sensual a mi pareja.",
-        "isFavourite": 0
-      },
-      {
-        "id" : 0,
-        "categoryId": 3,
-        "description": "Yo nunca me he encarado con alguien que estuviese mirando o molestando a mi pareja.",
-        "isFavourite": 0
-      },
-      {
-        "id" : 0,
-        "categoryId": 3,
         "description": "A mi nunca me han retado a liarme con alguien.",
         "isFavourite": 0
       },
@@ -2434,12 +2473,6 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId": 3,
-        "description": "Yo nunca he estado un mes sin hacerlo teniendo pareja.",
-        "isFavourite": 0
-      },
-      {
-        "id" : 0,
-        "categoryId": 3,
         "description": "Yo nunca he acabado encima de mi propio cuerpo sin querer.",
         "isFavourite": 0
       },
@@ -2471,12 +2504,6 @@ class DefaultData {
         "id" : 0,
         "categoryId": 3,
         "description": "A mi nunca me han propuesto un trio seriamente.",
-        "isFavourite": 0
-      },
-      {
-        "id" : 0,
-        "categoryId": 3,
-        "description": "Yo nunca he archivado un chat porque no queria que mi pareja lo viera pero tampoco queria borrarlo.",
         "isFavourite": 0
       },
       {
@@ -2872,12 +2899,6 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId": 3,
-        "description": "Yo nunca me he puesto celoso al ver a mi pareja hablar con su ex.",
-        "isFavourite": 0
-      },
-      {
-        "id" : 0,
-        "categoryId": 3,
         "description": "Yo nunca he sido sumiso/a.",
         "isFavourite": 0
       },
@@ -3127,12 +3148,6 @@ class DefaultData {
         "description": "Yo nunca le he seguido el rollo a un profesor/a que me estuviese tirando.",
         "isFavourite": 0
       },
-      {
-        "id" : 0,
-        "categoryId": 3,
-        "description": "Yo nunca he tenido envidia de la pareja de un amigo/a.",
-        "isFavourite": 0
-      }
 
     ];
 }

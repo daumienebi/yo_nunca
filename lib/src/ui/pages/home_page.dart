@@ -62,7 +62,7 @@ class HomePage extends StatelessWidget {
           ),
           ActionButton(
             onPressed: () => print('Datetime :' + DateTime.now().toString()),
-            icon: const Icon(Icons.star_border),
+            icon: const Icon(Icons.star),
           ),
           ActionButton(
             onPressed: () =>
@@ -282,7 +282,7 @@ class HomePage extends StatelessWidget {
           'https://www.facebook.com/sharer/sharer.php?u=$urlShare&t=$text',
       SocialMedia.twitter:
           'https://twitter.com/intent/tweet?url=$urlShare&text=$text',
-      SocialMedia.whatsapp: 'https://api.whatsapp.com/send?text=$text$urlShare',
+      SocialMedia.whatsapp: 'https://api.whatsapp.com/send?text=$text $urlShare',
     };
     final url = Uri.parse(urls[platform]!);
       await launchUrl(url,mode: LaunchMode.externalApplication);
