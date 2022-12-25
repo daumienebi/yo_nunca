@@ -20,25 +20,25 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: Constants.routes.homepage,
-      debugShowCheckedModeBanner: false,
-      routes: {
-        Constants.routes.homepage : (_) => const HomePage(),
-        Constants.routes.questionsPage : (_) => const QuestionPage(),
-        Constants.routes.favouritesPage : (_) => const FavouritesPage(),
-        Constants.routes.newCategory : (_) => const NewCategoryPage(),
-        Constants.routes.favouriteQuestionPage : (_) => const FavouriteQuestionPage(),
-        Constants.routes.mixedModePage : (_) => const MixedModePage(),
-        Constants.routes.categoryManagementPage : (_) => const CategoryManagementPage(),
-        Constants.routes.categoryListPage : (_) => const CategoryListPage(),
-        Constants.routes.drawerPage : (_) => const DrawerPage(),
-        Constants.routes.creditsPage : (_) => const CreditsPage(),
-      },
-      theme: ThemeData(
-        scaffoldBackgroundColor: Colors.orange[50],
-        primaryColor: Colors.red,
-        primarySwatch: Colors.red,
-      ),
+        initialRoute: Constants.routes.homepage,
+        debugShowCheckedModeBanner: false,
+        routes: {
+          Constants.routes.homepage : (_) => const HomePage(),
+          Constants.routes.questionsPage : (_) => const QuestionPage(),
+          Constants.routes.favouritesPage : (_) => const FavouritesPage(),
+          Constants.routes.newCategory : (_) => const NewCategoryPage(),
+          Constants.routes.favouriteQuestionPage : (_) => const FavouriteQuestionPage(),
+          Constants.routes.mixedModePage : (_) => const MixedModePage(),
+          Constants.routes.categoryManagementPage : (_) => const CategoryManagementPage(),
+          Constants.routes.categoryListPage : (_) => const CategoryListPage(),
+          Constants.routes.drawerPage : (_) => const DrawerPage(),
+          Constants.routes.creditsPage : (_) => const CreditsPage(),
+        },
+        theme: ThemeData(
+          scaffoldBackgroundColor: Colors.orange[50],
+          primaryColor: Colors.red,
+          primarySwatch: Colors.red,
+        ),
     );
   }
 }

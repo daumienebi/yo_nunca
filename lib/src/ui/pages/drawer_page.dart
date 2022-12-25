@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:yo_nunca/src/ui/pages/pages.dart';
@@ -58,19 +59,18 @@ class DrawerPage extends StatelessWidget{
 
   Widget _lastEntryWidget(String lastEntry){
     String greetingsText = '';
-    //check if the user has 24 or 12 hours time format
-
     final DateTime now = DateTime.now();
-    final utcTime =DateTime.utc(now.year,now.month,now.day,now.hour,now.minute,
-        now.second,now.millisecond,now.microsecond);
-    //TODO: use the utc time
-    if(now.hour < 12){
+    final format = DateFormat.jm();
+    String formattedString = format.format(now);
+
+    if(formattedString.endsWith('AM')){
       greetingsText = 'Buenos días,';
-    }else if(now.hour < 20 && now.hour > 12){
-      greetingsText = 'Buenas tardes,';
-    }else{
+    }else if(formattedString.endsWith('PM') && now.hour > 8){
       greetingsText = 'Buenas noches,';
+    }else{
+      greetingsText = 'Buenas tardes,';
     }
+
     return Container(
       padding: EdgeInsets.all(7),
       height: 90,

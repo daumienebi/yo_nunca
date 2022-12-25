@@ -25,29 +25,29 @@ class QuestionWidget extends StatefulWidget {
 class _QuestionWidgetState extends State<QuestionWidget> {
   List<Widget> questionWidgets = [];
   List<Question> questions = []; //The questions for each category
-  int _currentIndex = 0; //the current question index
+  int currentIndex = 0; //the current question index
 
   /// [gameOrder] creates a list of random numbers for each question which will
-  /// be used as the [_currentIndex] to iterate through the [questions].
+  /// be used as the [currentIndex] to iterate through the [questions].
   /// The game order changes each time the user selects a [Category].
   /// This makes almost every game unique and helps to avoid repeated questions.
   List<int> gameOrder = [];
 
   final ValueNotifier<bool> isPotrait = ValueNotifier<bool>(true);
 
-  Future<List<Question>> _getQuestions() async{
+  Future<List<Question>> getQuestionsFuture() async{
     QuestionProvider provider =
         Provider.of<QuestionProvider>(context, listen: true);
     if (widget.mixedMode) {
       await provider.getAllQuestions();
       questions = provider.questions;
-      _generateGameOrder(questions);
+      generateGameOrder(questions);
       //3 seconds as wait time so that the user can read the loading screen
       //to see that questions from all categories will be loaded.
       return Future.delayed(Duration(seconds: 3), () => questions);
     } else {
       questions = await provider.getQuestionsPerCategory(widget.category.id!);
-      _generateGameOrder(questions);
+      generateGameOrder(questions);
       return Future<List<Question>>.delayed(
           const Duration(seconds: 1), () => questions);
     }
@@ -55,7 +55,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
 
   /// Generate a random order in which the questions will be shown
   /// [questions] is the list of questions to be shown
-  void _generateGameOrder(List<Question> questions){
+  void generateGameOrder(List<Question> questions){
     late int randomNumber;
     while(gameOrder.length != questions.length){
       randomNumber = Random().nextInt(questions.length);
@@ -74,7 +74,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
         isPotrait.value = orientation == Orientation.portrait;
         return Center(
           child: FutureBuilder(
-              future: _getQuestions(),
+              future: getQuestionsFuture(),
               builder: (_, AsyncSnapshot snapshot) {
                 List<Widget> futureWidgets = [];
                 if (snapshot.hasData) {
@@ -115,7 +115,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
     //displays this widget when data is received
     return <Widget>[
       Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        _questionTextWidget(snapshot.data[gameOrder[_currentIndex]]),
+        _questionTextWidget(snapshot.data[gameOrder[currentIndex]]),
         SizedBox(height: 10),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -257,9 +257,9 @@ class _QuestionWidgetState extends State<QuestionWidget> {
       key: Key('previousButton'),
       onPressed: () {
         //Only go back to the previous question if it's not the first one
-        if(_currentIndex > 0){
+        if(currentIndex > 0){
           setState(() {
-            _currentIndex --;
+            currentIndex --;
           });
         }
       },
@@ -275,9 +275,9 @@ class _QuestionWidgetState extends State<QuestionWidget> {
     return ElevatedButton(
       key: Key('nextButton'),
       onPressed: (){
-        if(_currentIndex < listLength - 1){
+        if(currentIndex < listLength - 1){
           setState((){
-            _currentIndex ++;
+            currentIndex ++;
           });
         }
       },

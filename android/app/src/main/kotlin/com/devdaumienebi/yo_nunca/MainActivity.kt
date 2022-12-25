@@ -1,4 +1,4 @@
-package com.losdamianes.yo_nunca.yo_nunca
+package com.devdaumienebi.yo_nunca
 
 import io.flutter.embedding.android.FlutterActivity
 

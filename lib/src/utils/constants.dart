@@ -2,6 +2,9 @@ class Constants {
   static Routes routes = const Routes();
   static double homePageWidgetHeight = 200;
   static String playStoreUrl = "https://www.youtube.com";
+  static String playStoreId = 'com.android.chrome';
+  static String appleStoreUrl = '';
+  static String appleStoreId = '';
   static List<String> monthsInSpanish = [
     'Enero',
     'Febrero',
