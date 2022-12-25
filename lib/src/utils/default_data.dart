@@ -3,14 +3,14 @@ import 'package:yo_nunca/src/models/question.dart';
 
 class DefaultData {
   List<Question> _normalQuestionsList = [];
-  List<Question> _intermediateQuestionsList = [];
+  List<Question> _partyQuestionsList = [];
   List<Question> _coupleQuestionsList = [];
   List<Question> _hotQuestionsList = [];
   List<Category> _categoriesList = [];
 
   List<Category> get getCategoriesList => _getCategories();
   List<Question> get getNormalQuestionsList => _getNormalQuestions();
-  List<Question> get getIntermediateQuestionsList => _getIntermediateQuestions();
+  List<Question> get getPartyQuestionsList => _getPartyQuestions();
   List<Question> get getCoupleQuestionsList => _getCoupleQuestions();
   List<Question> get getHotQuestionsList => _getHotQuestions();
 
@@ -18,8 +18,8 @@ class DefaultData {
     return _normalQuestionsList = normalQuestions.map((e) =>
         Question.fromMap(e)).toList();
   }
-  _getIntermediateQuestions() {
-    return _intermediateQuestionsList = intermediateQuestions.map((e) =>
+  _getPartyQuestions() {
+    return _partyQuestionsList = partyQuestions.map((e) =>
         Question.fromMap(e)).toList();
   }
   _getHotQuestions() {
@@ -153,15 +153,99 @@ class DefaultData {
 
   final normalQuestions = [
     {
+      "id": 0,
+      "categoryId": 1,
+      "description": "Yo nunca he dejado plantado a alguien en una cita.",
+      "isFavourite": 0
+    },
+    {
+      "id": 0,
+      "categoryId": 1,
+      "description": "Yo nunca he dicho que me gustaba mucho un regalo y luego lo he devuelto.",
+      "isFavourite": 0
+    },
+    {
+      "id": 0,
+      "categoryId": 1,
+      "description": "Yo nunca he probado una aplicación de citas.",
+      "isFavourite": 0
+    },
+    {
+      "id": 0,
+      "categoryId": 1,
+      "description": "Yo nunca he robado en una tienda.",
+      "isFavourite": 0
+    },
+    {
+      "id": 0,
+      "categoryId": 1,
+      "description": "Yo nunca he respondido \"gracias\" cuando me han dicho \"te quiero\".",
+      "isFavourite": 0
+    },
+    {
+      "id": 0,
+      "categoryId": 1,
+      "description": "Yo nunca he comido las sobras de otra mesa en un restaurante.",
+      "isFavourite": 0
+    },
+    {
+      "id": 0,
+      "categoryId": 1,
+      "description": "Yo nunca he usado el cepillo de dientes de otra persona.",
+      "isFavourite": 0
+    },
+    {
+      "id": 0,
+      "categoryId": 1,
+      "description": "Yo nunca he tenido celos de mis amigos.",
+      "isFavourite": 0
+    },
+    {
+      "id": 0,
+      "categoryId": 1,
+      "description": "Yo nunca he salido con alguien más joven que yo.",
+      "isFavourite": 0
+    },
+    {
+      "id": 0,
+      "categoryId": 1,
+      "description": "Yo nunca me he roto un hueso.",
+      "isFavourite": 0
+    },
+    {
+      "id": 0,
+      "categoryId": 1,
+      "description": "Nunca he rechazado un beso.",
+      "isFavourite": 0
+    },
+    {
+      "id": 0,
+      "categoryId": 1,
+      "description": "Yo nunca he fingido que me llamaban para escapar de una cita.",
+      "isFavourite": 0
+    },
+    {
       "id" : 0,
-      "categoryId": 3,
+      "categoryId": 1,
       "description": "Yo nunca me he arrepentido de un tatuaje.",
       "isFavourite": 0
     },
     {
       "id": 0,
       "categoryId": 1,
+      "description": "Yo nunca me he tirado un pedo y he dicho “que mal huele” para despistar.",
+      "isFavourite": 0
+    },
+    {
+      "id": 0,
+      "categoryId": 1,
       "description": "Yo nunca he fingido estar enfermo para evitar ir a la escuela.",
+      "isFavourite": 0
+    },
+    {
+      "id": 0,
+      "categoryId": 1,
+      "description": "Yo nunca he usado ropa interior de otra persona.",
       "isFavourite": 0
     },
     {
@@ -215,7 +299,7 @@ class DefaultData {
     {
       "id": 0,
       "categoryId": 1,
-      "description": "Yo nunca he intentado impresionar al que me gustaba pareciendo estar informada.",
+      "description": "Yo nunca he intentado impresionar al que me gustaba pareciendo estar informado/a.",
       "isFavourite": 0
     },
     {
@@ -329,12 +413,6 @@ class DefaultData {
     {
       "id": 0,
       "categoryId": 1,
-      "description": "Yo nunca he entrado a una fiesta sin que me hayan invitado.",
-      "isFavourite": 0
-    },
-    {
-      "id": 0,
-      "categoryId": 1,
       "description": "Yo nunca he recibido una bofetada en público.",
       "isFavourite": 0
     },
@@ -348,6 +426,18 @@ class DefaultData {
       "id": 0,
       "categoryId": 1,
       "description": "Yo nunca he tenido una época vegetariana o vegana.",
+      "isFavourite": 0
+    },
+    {
+      "id": 0,
+      "categoryId": 1,
+      "description": "Yo nunca he dejado caer mi móvil al WC.",
+      "isFavourite": 0
+    },
+    {
+      "id": 0,
+      "categoryId": 1,
+      "description": "Yo nunca me he quedado paralizado en una presentación en público.",
       "isFavourite": 0
     },
     {
@@ -385,10 +475,29 @@ class DefaultData {
       "categoryId": 1,
       "description": "Yo nunca he cogido dinero de mis padres sin avisar.",
       "isFavourite": 0
-    }
+    },
+    {
+      "id": 0,
+      "categoryId": 1,
+      "description": "Yo nunca he robado dinero.",
+      "isFavourite": 0
+    },
+    {
+      "id": 0,
+      "categoryId": 1,
+      "description": "Yo nunca he sido arrestado porque me uní a una protesta.",
+      "isFavourite": 0
+    },
+    {
+      "id": 0,
+      "categoryId": 1,
+      "description": "Yo nunca he olido mi propia ropa interior para ver si está limpia o sucia.",
+      "isFavourite": 0
+    },
   ];
 
-  final intermediateQuestions =
+  //Fiesta
+  final partyQuestions =
     [
       {
         "id": 0,
@@ -400,6 +509,12 @@ class DefaultData {
         "id": 0,
         "categoryId": 2,
         "description": "Yo nunca he dormido en la calle por estar borracho.",
+        "isFavourite": 0
+      },
+      {
+        "id": 0,
+        "categoryId": 2,
+        "description": "Yo nunca he entrado a una fiesta sin que me hayan invitado.",
         "isFavourite": 0
       },
       {
@@ -447,109 +562,7 @@ class DefaultData {
       {
         "id": 0,
         "categoryId": 2,
-        "description": "Yo nunca he usado ropa interior de otra persona.",
-        "isFavourite": 0
-      },
-      {
-        "id": 0,
-        "categoryId": 2,
-        "description": "Yo nunca he sido arrestado porque me uní a una protesta.",
-        "isFavourite": 0
-      },
-      {
-        "id": 0,
-        "categoryId": 2,
         "description": "Yo nunca he estado de fiesta sin parar durante más de veinticuatro horas.",
-        "isFavourite": 0
-      },
-      {
-        "id": 0,
-        "categoryId": 2,
-        "description": "Yo nunca he probado una aplicación de citas.",
-        "isFavourite": 0
-      },
-      {
-        "id": 0,
-        "categoryId": 2,
-        "description": "Yo nunca he robado en una tienda.",
-        "isFavourite": 0
-      },
-      {
-        "id": 0,
-        "categoryId": 2,
-        "description": "Yo nunca he respondido \"gracias\" cuando me han dicho \"te quiero\".",
-        "isFavourite": 0
-      },
-      {
-        "id": 0,
-        "categoryId": 2,
-        "description": "Yo nunca me he tirado un pedo y he dicho “que mal huele” para despistar.",
-        "isFavourite": 0
-      },
-      {
-        "id": 0,
-        "categoryId": 2,
-        "description": "Yo nunca me he accidentado al tratar de impresionar un chico o una chica que me gustara.",
-        "isFavourite": 0
-      },
-      {
-        "id": 0,
-        "categoryId": 2,
-        "description": "Yo nunca he dejado caer mi móvil al WC.",
-        "isFavourite": 0
-      },
-      {
-        "id": 0,
-        "categoryId": 2,
-        "description": "Yo nunca me he quedado paralizado en una presentación en público.",
-        "isFavourite": 0
-      },
-      {
-        "id": 0,
-        "categoryId": 2,
-        "description": "Yo nunca me he roto un hueso.",
-        "isFavourite": 0
-      },
-      {
-        "id": 0,
-        "categoryId": 2,
-        "description": "Nunca he rechazado un beso.",
-        "isFavourite": 0
-      },
-      {
-        "id": 0,
-        "categoryId": 2,
-        "description": "Yo nunca he fingido que me llamaban para escapar de una cita.",
-        "isFavourite": 0
-      },
-      {
-        "id": 0,
-        "categoryId": 2,
-        "description": "Nunca me he hecho fotos en ropa interior.",
-        "isFavourite": 0
-      },
-      {
-        "id": 0,
-        "categoryId": 2,
-        "description": "Yo nunca he vuelto con mi ex.",
-        "isFavourite": 0
-      },
-      {
-        "id": 0,
-        "categoryId": 2,
-        "description": "Nunca he tenido una relación abierta.",
-        "isFavourite": 0
-      },
-      {
-        "id": 0,
-        "categoryId": 2,
-        "description": "Yo nunca he sido infiel.",
-        "isFavourite": 0
-      },
-      {
-        "id": 0,
-        "categoryId": 2,
-        "description": "Yo nunca he dudado de mi orientación sexual.",
         "isFavourite": 0
       },
       {
@@ -561,19 +574,13 @@ class DefaultData {
       {
         "id": 0,
         "categoryId": 2,
-        "description": "Yo nunca he perdido el conocimiento.",
+        "description": "Yo nunca he bebido hasta perder el conocimiento.",
         "isFavourite": 0
       },
       {
         "id": 0,
         "categoryId": 2,
-        "description": "Yo nunca he robado dinero.",
-        "isFavourite": 0
-      },
-      {
-        "id": 0,
-        "categoryId": 2,
-        "description": "Yo nunca he exagerado mis logros para intentar ligar.",
+        "description": "Yo nunca he exagerado mis logros para intentar ligar de fiesta.",
         "isFavourite": 0
       },
       {
@@ -585,61 +592,51 @@ class DefaultData {
       {
         "id": 0,
         "categoryId": 2,
-        "description": "Yo nunca he olido mi propia ropa interior para ver si está limpia o sucia.",
-        "isFavourite": 0
-      },
-      {
-        "id": 0,
-        "categoryId": 2,
-        "description": "Yo nunca he dejado plantado a alguien en una cita.",
-        "isFavourite": 0
-      },
-      {
-        "id": 0,
-        "categoryId": 2,
         "description": "Yo nunca he gastado más de 200 euros en una noche de fiesta.",
         "isFavourite": 0
       },
       {
         "id": 0,
         "categoryId": 2,
-        "description": "Yo nunca he enviado un mensaje a un ex sin venir a cuento.",
+        "description": "Yo nunca he enviado un mensaje a un ex de fiesta sin venir a cuento.",
         "isFavourite": 0
       },
-      {
-        "id": 0,
-        "categoryId": 2,
-        "description": "Yo nunca he dicho que me gustaba mucho un regalo y luego lo he devuelto.",
-        "isFavourite": 0
-      },
-      {
-        "id": 0,
-        "categoryId": 2,
-        "description": "Yo nunca he comido las sobras de otra mesa en un restaurante.",
-        "isFavourite": 0
-      },
-      {
-        "id": 0,
-        "categoryId": 2,
-        "description": "Yo nunca he usado el cepillo de dientes de otra persona.",
-        "isFavourite": 0
-      },
-      {
-        "id": 0,
-        "categoryId": 2,
-        "description": "Yo nunca he tenido celos de mis amigos.",
-        "isFavourite": 0
-      },
-      {
-        "id": 0,
-        "categoryId": 2,
-        "description": "Yo nunca he salido con alguien más joven que yo.",
-        "isFavourite": 0
-      }
     ];
 
+
+  //Traviesos
   final hotQuestions =
     [
+      {
+        "id": 0,
+        "categoryId": 3,
+        "description": "Yo nunca he vuelto con mi ex.",
+        "isFavourite": 0
+      },
+      {
+        "id": 0,
+        "categoryId": 3,
+        "description": "Nunca he tenido una relación abierta.",
+        "isFavourite": 0
+      },
+      {
+        "id": 0,
+        "categoryId": 3,
+        "description": "Yo nunca he sido infiel.",
+        "isFavourite": 0
+      },
+      {
+        "id": 0,
+        "categoryId": 3,
+        "description": "Yo nunca he dudado de mi orientación sexual.",
+        "isFavourite": 0
+      },
+      {
+        "id": 0,
+        "categoryId": 3,
+        "description": "Yo nunca me he accidentado al tratar de impresionar un chico o una chica que me gustara.",
+        "isFavourite": 0
+      },
       {
         "id": 0,
         "categoryId": 3,
@@ -884,6 +881,12 @@ class DefaultData {
         "id": 0,
         "categoryId": 3,
         "description": "Yo nunca me he sentido atraído por alguien del mismo sexo.",
+        "isFavourite": 0
+      },
+      {
+        "id": 0,
+        "categoryId": 3,
+        "description": "Nunca me he hecho fotos en ropa interior.",
         "isFavourite": 0
       },
       {
@@ -3148,6 +3151,5 @@ class DefaultData {
         "description": "Yo nunca le he seguido el rollo a un profesor/a que me estuviese tirando.",
         "isFavourite": 0
       },
-
     ];
 }

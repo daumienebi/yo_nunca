@@ -98,7 +98,7 @@ class DatabaseProvider {
     // method is already in a transaction
     List<Category> categories = defaultData.getCategoriesList;
     List<Question> normalQuestions = defaultData.getNormalQuestionsList;
-    List<Question> intermediateQuestions = defaultData.getIntermediateQuestionsList;
+    List<Question> intermediateQuestions = defaultData.getPartyQuestionsList;
     List<Question> coupleQuestions = defaultData.getCoupleQuestionsList;
     List<Question> hotQuestions = defaultData.getHotQuestionsList;
 
