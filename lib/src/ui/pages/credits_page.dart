@@ -28,7 +28,7 @@ class CreditsPage extends StatelessWidget{
     final titleStyle = TextStyle(color: Colors.teal);
     return ListTile(
       leading:imageAsset!.isNotEmpty ? Image.asset(imageAsset) :
-      Icon(Icons.people_outline,size: 55,),
+      Icon(Icons.person,size: 55,),
       title: Text(title,style: titleStyle),
       subtitle: Text(subtitle!),
       trailing: InkWell(
@@ -85,8 +85,28 @@ class CreditsPage extends StatelessWidget{
             title: 'Mzdol',
             url: 'https://www.mdzol.com/sociedad/2021/3/10/yo-nunca-70-ideas-de-'
                 'preguntas-para-jugar-con-tus-amigos-144225.html',
-            subtitle: '',
+            subtitle: 'Algunas preguntas fueron recogidas de la página.',
             imageAsset: 'assets/images/mzdol.png'
+        )
+    );
+
+    //Psicologia y Mente
+    widgets.add(
+        creditTile(
+            title: 'Psicología y Mente',
+            url: 'https://psicologiaymente.com/miscelanea/preguntas-yo-nunca',
+            subtitle: 'Varias preguntas fueron recogidas de la página',
+            imageAsset: 'assets/images/psicologiaymente.png'
+        )
+    );
+
+    //Business insider
+    widgets.add(
+        creditTile(
+            title: 'Business Insider',
+            url: 'https://www.businessinsider.es/67-preguntas-picantes-hacerle-novio-novia-1076687',
+            subtitle: 'Algunas preguntas fueron recogidas de la página.',
+            imageAsset: ''
         )
     );
 

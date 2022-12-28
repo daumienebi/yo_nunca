@@ -192,7 +192,7 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
               return _questionTile(questions[index]);
             },
             separatorBuilder: (ctx, index) => Divider(
-              color: Colors.black87,
+              color: Colors.black54,
               height: 5,
             ),
             itemCount: questions.length,
@@ -212,7 +212,7 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
               setState(() {});
             },
             child: Icon(
-              Icons.delete_forever_rounded,
+              Icons.delete,
               color: Colors.red,
               size: 30,
             ),
@@ -222,7 +222,7 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
       onTap: () {
         _popUpForm(question,null, true);
       },
-      shape: Border.all(color: Colors.white),
+      shape: Border.all(color: Colors.black26),
     );
   }
 

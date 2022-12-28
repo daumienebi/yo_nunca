@@ -158,7 +158,7 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
       },
       itemCount: newQuestions.length,
       separatorBuilder: (BuildContext context, int index){
-        return Divider(color: Colors.black87,);
+        return Divider(color: Colors.black54,);
       },
     );
   }
@@ -173,7 +173,7 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
           });
         },
         child: Icon(
-          Icons.delete_forever_rounded,
+          Icons.delete,
           color: Colors.red,
           size: 30,
         ),
@@ -181,7 +181,7 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
       onTap: () {
         _popUpForm(question: question, isEditMode: true);
       },
-      shape: Border.all(color: Colors.white),
+      shape: Border.all(color: Colors.black26),
     );
   }
 
