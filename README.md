@@ -18,3 +18,5 @@ Flutter mobile app to create a simple question game.
   - [Mzdol](https://www.mdzol.com/sociedad/2021/3/10/yo-nunca-70-ideas-de-preguntas-para-jugar-con-tus-amigos-144225.html)
   - [Psycatgames](https://psycatgames.com/es/magazine/party-games/never-ever/)
   - [Fran Visconti](https://www.instagram.com/franvisconti)
+  - [Psicología y Mente](https://psicologiaymente.com/miscelanea/preguntas-yo-nunca)
+  - [Business Insider](https://www.businessinsider.es/67-preguntas-picantes-hacerle-novio-novia-1076687)
