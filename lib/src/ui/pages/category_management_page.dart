@@ -137,7 +137,7 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: Text('Cancelar'),
+                child: Text('Cancelar',style: TextStyle(color: Colors.red),),
               ),
               TextButton(
                 onPressed: () async {
@@ -192,7 +192,7 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
               return _questionTile(questions[index]);
             },
             separatorBuilder: (ctx, index) => Divider(
-              color: Colors.black54,
+              color: Colors.orange[50],//same as the background color
               height: 5,
             ),
             itemCount: questions.length,

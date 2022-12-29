@@ -118,7 +118,7 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: Text('Cancelar'),
+                child: Text('Cancelar',style: TextStyle(color: Colors.red)),
               ),
               TextButton(
                 onPressed: () async {
@@ -158,7 +158,7 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
       },
       itemCount: newQuestions.length,
       separatorBuilder: (BuildContext context, int index){
-        return Divider(color: Colors.black54,);
+        return Divider(color: Colors.orange[50],);
       },
     );
   }

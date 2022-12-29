@@ -1391,11 +1391,137 @@ class DefaultData {
         "description": "Yo nunca he enviado un mensaje a un ex de fiesta sin venir a cuento.",
         "isFavourite": 0
       },
+      {
+        "id": 0,
+        "categoryId": 2,
+        "description": "Yo nunca me he colado en un reservado.",
+        "isFavourite": 0
+      },
+      {
+        "id": 0,
+        "categoryId": 2,
+        "description": "Yo nunca he sido echado de un reservado.",
+        "isFavourite": 0
+      },
+      {
+        "id": 0,
+        "categoryId": 2,
+        "description": "Yo nunca me he ido de fiesta con auriculares.",
+        "isFavourite": 0
+      },
+      {
+        "id": 0,
+        "categoryId": 2,
+        "description": "Yo nunca he perdido las llaves del coche de fiesta.",
+        "isFavourite": 0
+      },
+      {
+        "id": 0,
+        "categoryId": 2,
+        "description": "Yo nunca he encontrado a mis padres mas borrachos que yo en una fiesta.",
+        "isFavourite": 0
+      },
+      {
+        "id": 0,
+        "categoryId": 2,
+        "description": "Yo nunca he pedido el número de teléfono a un portero de una discoteca.",
+        "isFavourite": 0
+      },
+      {
+        "id": 0,
+        "categoryId": 2,
+        "description": "A mi nunca me ha pedido el número de teléfono un portero de una discoteca.",
+        "isFavourite": 0
+      },
+      {
+        "id": 0,
+        "categoryId": 2,
+        "description": "Yo nunca he llevado una petaca a un pub/discoteca.",
+        "isFavourite": 0
+      },
+      {
+        "id": 0,
+        "categoryId": 2,
+        "description": "Yo nunca he robado vasos de cristal/cartón de una discoteca/pub.",
+        "isFavourite": 0
+      },
+      {
+        "id": 0,
+        "categoryId": 2,
+        "description": "Yo nunca he falsificado un DNI para ir a una fiesta.",
+        "isFavourite": 0
+      },
+      {
+        "id": 0,
+        "categoryId": 2,
+        "description": "Yo nunca he estado perreando a alguien de fiesta y resulta ser alguien del sexo opuesto.",
+        "isFavourite": 0
+      },
+      {
+        "id": 0,
+        "categoryId": 2,
+        "description": "A mi nunca me han pedido sacar los pasos prohibidos de fiesta.",
+        "isFavourite": 0
+      },
+      {
+        "id": 0,
+        "categoryId": 2,
+        "description": "Yo nunca he estado/visto a alguien estudiando en una discoteca/pub.(Los que beben tienen que dar contexto)",
+        "isFavourite": 0
+      },
+      {
+        "id": 0,
+        "categoryId": 2,
+        "description": "Yo nunca he ofrecido droga a alguien en una fiesta.",
+        "isFavourite": 0
+      },
+      {
+        "id": 0,
+        "categoryId": 2,
+        "description": "A mi nunca me han ofrecido droga en una fiesta.",
+        "isFavourite": 0
+      },
+      {
+        "id": 0,
+        "categoryId": 2,
+        "description": "Yo nunca he pillado a 2 o mas personas manteniendo relaciones en los baños de una discoteca/pub.",
+        "isFavourite": 0
+      },
+      {
+        "id": 0,
+        "categoryId": 2,
+        "description": "Yo nunca he pillado a alguien masturbándose en los baños de una discoteca/pub.",
+        "isFavourite": 0
+      },
+      {
+        "id": 0,
+        "categoryId": 2,
+        "description": "Yo nunca he cantado borracho en un karaoke.",
+        "isFavourite": 0
+      },
+      {
+        "id": 0,
+        "categoryId": 2,
+        "description": "Yo nunca he tirado la bebida encima de alguien de fiesta.",
+        "isFavourite": 0
+      },
+      {
+        "id": 0,
+        "categoryId": 2,
+        "description": "A mi nunca me han puesto la copa con la bebida que quiero en una discoteca sin que yo dijera nada.",
+        "isFavourite": 0
+      },
     ];
 
   //Traviesos
   final hotQuestions =
     [
+      {
+        "id": 0,
+        "categoryId": 3,
+        "description": "Yo nunca he follado en los baños de una discoteca/pub",
+        "isFavourite": 0
+      },
       {
         "id": 0,
         "categoryId": 3,
@@ -2119,7 +2245,7 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId": 3,
-        "description": "Yo nunca he tenido sexo por telefono.",
+        "description": "Yo nunca he tenido sexo por teléfono.",
         "isFavourite": 0
       },
       {
@@ -4554,6 +4680,276 @@ class DefaultData {
       "id" : 0,
       "categoryId":4,
       "description": "Yo nunca he tenido que separar a mi pareja en una pelea.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he sugerido un trio a mi pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he visto pornografía con mi pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he participado en una orgía con mi pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca me he negado a visitar a mis suegros.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he sido rechazado por mis suegros.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he discutido con mis suegros.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he llegado tarde a una comida/cena con mis suegros.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "A mi nunca me ha puesto mi suegro/a.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he pillado a mis suegros manteniendo relaciones sexuales.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he viajado a otro continente con mi pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he viajado a otro país con mi pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he tenido que llevar mi pareja a casa porque estaba demasiado borracho/a.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he visto a mi pareja rechazar a otra persona.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he deseado no estar con mi pareja/ex-pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he regalado un anillo a mi pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he pensado que el precio del anillo regalado por mi pareja importa.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he planteado dejar a mi pareja por una pequeña discusión.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he pensado que duraría poco con mi ex/actual pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca me he imaginado a mi pareja manteniendo relaciones con otra persona.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca me he sentido inseguro al ver al ex de mi pareja/ex-pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca haría un trio con mi pareja y ex pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he fingido no conocer a mi pareja en público.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca me he negado a dormir con mi pareja por una discusión.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he llevado un susto porque pensaba que mi novia estaba embarazada.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca me he planteado tener hijos con mi pareja/ex-pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "A mi nunca me ha puesto el hermano/a de mi pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca me he peleado con el hermano/a de mi pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca tendría un trío con mi pareja y su hermano/a.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he fallado en el NNN(No-Nut-November) por culpa de mi pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca me he mudado a otro país o ciudad para estar con mi pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he cotilleado con mi pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he querido ver a mi pareja con la cabeza rapada.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he intentado convencer a mi paraja para hacer algo que él/ella no quería hacer.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he pasado mas de un día sin hablar con mi pareja/ex-pareja por una discusión.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he pasado mas de 3 días sin hablar con mi pareja/ex-pareja por una discusión.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he pasado mas de 1 semana sin hablar con mi pareja/ex-pareja por una discusión.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he hecho un baile sensual a mi pareja para seducirle/a.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he pensado que mi pareja/ex-pareja me odiaba.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he desconfiado en mi pareja/ex-pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he preguntado a mi pareja sobre sus relaciones anteriores.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca me he llevado bien con algún/os de los exes de mi actual pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca trabajaría en la misma empresa que mi pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca trabajaría en la misma empresa que mi pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca me he arrepentido de haber presentado mi pareja a mis padres.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he estado nervioso al estar con mis suegros.",
       "isFavourite": 0
     },
   ];

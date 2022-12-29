@@ -60,7 +60,7 @@ class CategoryListPage extends StatelessWidget {
           style: TextStyle(color: Colors.white),
         )),
         decoration: BoxDecoration(
-          color: Colors.black54,
+          color: Colors.red[500],
           borderRadius: BorderRadius.circular(15),
         ),
         height: 30,

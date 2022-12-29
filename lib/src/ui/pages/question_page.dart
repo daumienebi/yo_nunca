@@ -14,7 +14,6 @@ class QuestionPage extends StatelessWidget {
           title: Text(
             category.description,
             style: TextStyle(
-              color: Colors.white,
               fontWeight: FontWeight.w400,
             ),
           ),

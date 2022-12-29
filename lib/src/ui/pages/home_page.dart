@@ -58,16 +58,16 @@ class HomePage extends StatelessWidget {
                     );
                   });
             },
-            icon: const Icon(Icons.share_sharp),
+            icon: const Icon(Icons.share_sharp,color: Colors.black54,),
           ),
           ActionButton(
             onPressed: () => print('Datetime :' + DateTime.now().toString()),
-            icon: const Icon(Icons.star),
+            icon: const Icon(Icons.star,color: Colors.black54,),
           ),
           ActionButton(
             onPressed: () =>
                 {Navigator.pushNamed(context, Constants.routes.newCategory)},
-            icon: const Icon(Icons.add),
+            icon: const Icon(Icons.add,color: Colors.black54,),
           ),
         ],
       ),

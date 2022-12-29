@@ -5,7 +5,10 @@ class MyDecorations{
   /// Returns a [BoxDecoration] with the category image if it has an image.
   /// If the category has no image, it returns a different [BoxDecoration].
   static BoxDecoration homePageBoxDecoration (String? imgRoute){
-
+    const double fillPercent = 56.23; // fills 56.23% for container from bottom
+    const double fillStop = (100 - fillPercent) / 100;
+    final List<double> stops = [0.3, 0.5];
+    List<Color> colors = [Colors.white,Colors.orangeAccent];
     return imgRoute!.isNotEmpty ? BoxDecoration(
       image: DecorationImage(
           image: AssetImage(imgRoute),
@@ -24,29 +27,6 @@ class MyDecorations{
         ),
       ],
     ) : BoxDecoration(
-      //color: Colors.lightGreen[100],
-      color: Colors.orange[100],
-      //color: Colors.yellow[100],
-      borderRadius: const BorderRadius.all(Radius.circular(15)),
-      boxShadow: [
-        BoxShadow(
-          color: Colors.black54,
-          spreadRadius: 0.5,
-          blurRadius:3,
-          //offset: Offset(0, 0), // changes position of shadow
-        ),
-      ],
-    );
-
-  }
-
-  static BoxDecoration homePageBoxDecorationWithoutImage_
-      (){
-    const double fillPercent = 56.23; // fills 56.23% for container from bottom
-    const double fillStop = (100 - fillPercent) / 100;
-    final List<double> stops = [0.5, 0.5];
-    List<Color> colors = [Colors.white,Colors.red];
-    return BoxDecoration(
       borderRadius: const BorderRadius.all(Radius.circular(15)),
       boxShadow: [
         BoxShadow(

@@ -25,7 +25,7 @@ class RoundAppBar extends StatelessWidget with PreferredSizeWidget {
       centerTitle: true,
       title: Center(child: title),
       leading: InkWell(
-          child: const Icon(Icons.menu),
+          child: const Icon(Icons.menu,color: Colors.black54,),
           onTap: () =>
           Navigator.of(context).push(createRouteWithSlideAnimation())
         //Navigator.of(context).pushNamed(Constants.routes.drawerPage)
@@ -46,7 +46,7 @@ class RoundAppBar extends StatelessWidget with PreferredSizeWidget {
               child:  Icon(
                 Icons.search,
                 size: 27,
-                color: Colors.white,
+                color: Colors.black54,
               ),
             ),
           style: TextButton.styleFrom(

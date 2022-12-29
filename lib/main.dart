@@ -36,8 +36,8 @@ class MyApp extends StatelessWidget {
         },
         theme: ThemeData(
           scaffoldBackgroundColor: Colors.orange[50],
-          primaryColor: Colors.red,
-          primarySwatch: Colors.red,
+          primaryColor: Colors.orange,
+          primarySwatch: Colors.orange,
         ),
     );
   }
