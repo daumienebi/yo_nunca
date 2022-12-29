@@ -114,7 +114,6 @@ class CreditsPage extends StatelessWidget{
   }
 
   _launchUrl(Uri url) async{
-
     await launchUrl(url,mode:LaunchMode.externalApplication);
   }
 }

@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:yo_nunca/src/ui/pages/pages.dart';
 import 'package:yo_nunca/src/ui/widgets/round_app_bar.dart';
+import 'package:yo_nunca/src/utils/constants.dart';
 // ignore_for_file: prefer_const_constructors
 
 class DrawerPage extends StatelessWidget{
@@ -168,6 +169,11 @@ class DrawerPage extends StatelessWidget{
         subtitle: Text("Calificar,sugerir mejoras o mas funciones.", style: subTitleStyle,),
         leading: Icon(FontAwesomeIcons.googlePlay,),
         trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
+        onTap: () async{
+          String appId = Constants.playStoreId;
+          final url = Uri.parse('https://play.google.com/store/apps/details?id=$appId');
+          await launchUrl(url,mode: LaunchMode.externalApplication);
+        },
 
     ));
     widgets.add(ListTile(

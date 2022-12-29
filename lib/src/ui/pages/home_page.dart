@@ -61,7 +61,11 @@ class HomePage extends StatelessWidget {
             icon: const Icon(Icons.share_sharp,color: Colors.black54,),
           ),
           ActionButton(
-            onPressed: () => print('Datetime :' + DateTime.now().toString()),
+            onPressed: () async{
+              String appId = Constants.playStoreId;
+              final url = Uri.parse('https://play.google.com/store/apps/details?id=$appId');
+              await launchUrl(url,mode: LaunchMode.externalApplication);
+            },
             icon: const Icon(Icons.star,color: Colors.black54,),
           ),
           ActionButton(
@@ -166,7 +170,9 @@ class HomePage extends StatelessWidget {
           size: 40,
         ),
         onClicked: () async{
-          await Clipboard.setData(ClipboardData(text:'playstoreurlwithappid'));
+          String appId = Constants.playStoreId;
+          final urlString = 'https://play.google.com/store/apps/details?id=$appId';
+          await Clipboard.setData(ClipboardData(text:urlString));
           Navigator.pop(context);
           ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text('Enlace copiado'),duration: Duration(
@@ -261,7 +267,9 @@ class HomePage extends StatelessWidget {
     const text ='Descarga y prueba esta aplicación de Yo Nunca personalizable '
         'para jugar de fiesta con los amigos. ¡Juega con preguntas por defecto o'
         ' crea las tuyas!';
-    final urlShare = Uri.encodeComponent(Constants.playStoreUrl);
+    String appId = Constants.playStoreId;
+    final urlString = 'https://play.google.com/store/apps/details?id=$appId';
+    final urlShare = Uri.encodeComponent(urlString);
     final urls = {
       SocialMedia.facebook:
           'https://www.facebook.com/sharer/sharer.php?u=$urlShare&t=$text',
