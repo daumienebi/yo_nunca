@@ -129,7 +129,7 @@ class DrawerPage extends StatelessWidget{
 
   List<Widget> _optionsList(context){
     List<Widget> widgets = [];
-    final subTitleStyle = TextStyle(fontSize: 12);
+    final subTitleStyle = TextStyle(fontSize: 13);
 
     widgets.add(InkWell(
       child: ListTile(
@@ -166,7 +166,7 @@ class DrawerPage extends StatelessWidget{
 
     widgets.add(ListTile(
         title: Text("Valorar"),
-        subtitle: Text("Si te gustó la app,puedes calificar,sugerir mejoras o mas funciones.", style: subTitleStyle,),
+        subtitle: Text("Si te gustó la app,puedes calificarlo o sugerir mejoras.", style: subTitleStyle,),
         leading: Icon(FontAwesomeIcons.googlePlay,),
         trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
         onTap: () async{

@@ -33,6 +33,8 @@ class _QuestionWidgetState extends State<QuestionWidget> {
   /// This makes almost every game unique and helps to avoid repeated questions.
   List<int> gameOrder = [];
 
+  late int numberOfQuestions;
+
   final ValueNotifier<bool> isPotrait = ValueNotifier<bool>(true);
 
   Future<List<Question>> getQuestionsFuture() async{
@@ -42,12 +44,14 @@ class _QuestionWidgetState extends State<QuestionWidget> {
       await provider.getAllQuestions();
       questions = provider.questions;
       generateGameOrder(questions);
+      numberOfQuestions = questions.length;
       //3 seconds as wait time so that the user can read the loading screen
       //to see that questions from all categories will be loaded.
       return Future.delayed(Duration(seconds: 3), () => questions);
     } else {
       questions = await provider.getQuestionsPerCategory(widget.category.id!);
       generateGameOrder(questions);
+      numberOfQuestions = questions.length;
       return Future<List<Question>>.delayed(
           const Duration(seconds: 1), () => questions);
     }
@@ -195,7 +199,6 @@ class _QuestionWidgetState extends State<QuestionWidget> {
             if (question.isFavourite) {
               question.isFavourite = false;
               await provider.removeFromFavourites(question);
-              dev.log(question.isFavourite.toString());
               snackBar = SnackBar(
                 duration: Duration(seconds: 1),
                 content: const Text('Pregunta eliminada de favoritos'),
@@ -209,12 +212,23 @@ class _QuestionWidgetState extends State<QuestionWidget> {
                 duration: Duration(seconds: 1),
                 content: const Text('Pregunta añadida a favoritos'),
               );
-              //dev.log(question.isFavourite.toString());
               ScaffoldMessenger.of(context).showSnackBar(snackBar);
             }
             setState(() {});//to rebuild the widget
           },
           child: question.isFavourite ? likedIcon : unLikedIcon,
+        ),
+        // (currentIndex + 1) because the index starts at "0" but we want the
+        // user to see "1"
+        Padding(
+          padding: EdgeInsets.all(5),
+            child: Text('${currentIndex + 1} / $numberOfQuestions',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: 'OoohBaby',
+                  fontSize: 18,
+              ),
+            )
         ),
         //question description
         ValueListenableBuilder(
