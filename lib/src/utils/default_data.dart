@@ -85,7 +85,13 @@ class DefaultData {
     {
       "id" : 0,
       "categoryId":1,
-      "description": "Yo nunca he intentado ver cuántos dulces me caben en la boca.",
+      "description": "Yo nunca he intentado comprobar cuántos chicles me caben en la boca.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he intentado comprobar cuántos caramemlos me caben en la boca.",
       "isFavourite": 0
     },
     {
@@ -5060,6 +5066,150 @@ class DefaultData {
         "id" : 0,
         "categoryId":3,
         "description": "Yo nunca he grabado a otras personas manteniendo relaciones sexuales.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca he tenido más de una polla en la boca a la vez.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca me he negado a tener relaciones sexuales con otra persona porque esa persona no estaba depilado/a.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca he ido a un puticlub.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca me he negado a tener relaciones sexuales con otra persona por no estar depilado/a.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca me he corrido en el pelo de alguien.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "A mi nunca me han corrido en el pelo.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "A mi nunca me han escupido manteniendo relaciones sexuales.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca he escupido a alguien manteniendo relaciones sexuales.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "A mi nunca me han puesto cachondo los pies de alguien.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "A mi nunca me han puesto cachondo los pies de alguien presente.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca he vomitado mientras me estaba liando con alguien.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca he vomitado mientras hacía el oral a alguien.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca he cagado en el pecho a alguien.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "A mi nunca me ha puesto que me chupen los pies.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca he creado una cuenta en una página porno.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca he pagado la suscripción Premium de Pornhub.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca he pagado la suscripción Premium de cualquier página porno.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca he pensado en crear un Onlyfans.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca he pagado una suscripción en Onlyfans.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca rechazaría a algunos de los presentes aunque me ofrecieran 1 millón de euros.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "A mi nunca me ha entrado el hambre manteniendo relaciones sexuales.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca me he aburrido estando en el acto.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca he llamado un número sin querer estando en el acto.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca he llamado a mi ex estando en el acto para darle celos.",
         "isFavourite": 0
       },
     ];

@@ -158,6 +158,7 @@ class DrawerPage extends StatelessWidget{
       leading: Icon(Icons.privacy_tip_outlined),
       trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
       onTap: (){
+        //original url: https://www.termsfeed.com/live/df65fce0-9b00-48db-b48b-0bca473a6fe0
         final url = Uri.parse('https://daumienebi.github.io/yo_nunca/');
         _launchUrl(url);
       },
@@ -165,7 +166,7 @@ class DrawerPage extends StatelessWidget{
 
     widgets.add(ListTile(
         title: Text("Valorar"),
-        subtitle: Text("Calificar,sugerir mejoras o mas funciones.", style: subTitleStyle,),
+        subtitle: Text("Si te gustó la app,puedes calificar,sugerir mejoras o mas funciones.", style: subTitleStyle,),
         leading: Icon(FontAwesomeIcons.googlePlay,),
         trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
         onTap: () async{
