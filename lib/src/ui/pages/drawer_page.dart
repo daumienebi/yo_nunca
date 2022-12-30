@@ -158,8 +158,7 @@ class DrawerPage extends StatelessWidget{
       leading: Icon(Icons.privacy_tip_outlined),
       trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
       onTap: (){
-        final url = Uri.parse('https://www.termsfeed.com/live/df65fce0-9b00-48db-b48b'
-            '-0bca473a6fe0');
+        final url = Uri.parse('https://daumienebi.github.io/yo_nunca/');
         _launchUrl(url);
       },
     ));
@@ -178,7 +177,7 @@ class DrawerPage extends StatelessWidget{
     ));
     widgets.add(ListTile(
       title: Text("Créditos"),
-      subtitle: Text("Aportaciones al proyecto", style: subTitleStyle,),
+      subtitle: Text("Aportaciones al proyecto.", style: subTitleStyle,),
       leading: Icon(Icons.people_outline,),
       trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
       onTap: ()=> Navigator.push(context, _createRoute(page: CreditsPage())),
