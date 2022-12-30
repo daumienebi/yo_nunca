@@ -47,7 +47,7 @@ class DefaultData {
     },
     {
       'id': 3,
-      'description': 'TRAVIESO',
+      'description': 'TRAVIESOS',
       'imageRoute' : 'assets/images/naughty.png'
     },
     {
@@ -964,12 +964,345 @@ class DefaultData {
       "description": "Yo nunca me he cagado encima.",
       "isFavourite": 0
     },
+    //s
+
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he preferido comer comida rápida antes de comida casera.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he pensado que ducharse era una perdida de tiempo.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he pensado que lavarse los dientes era una perdida de tiempo.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he pensado he defendido a alguien de algo y finalmente resultó ser culpable.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he escapado de la guardia civil o Policía.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he superado la cantidad de alcohol permitida en un test de alcoholemia.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he escapado de un test de alcoholemia.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he suplicado a mis padres para tener una mascota.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he insultado a mis padres.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he cotilleado con mis padres.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca me he negado a salir de casa con mis padres.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he pedido comida a domicilio y finalmente no llegó.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he pedido un paquete que jamás llegó.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he hecho un simpa en una entrega a domicilio.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he pedido comida mas de tres veces a domicilio en un mismo día.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca me he estado alimentando a base de comida rápida por más de 3 días seguidos.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he pagado la membresía del gimnasio y acabar no yendo.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he ido al gimnasio para ligar.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he acabado más de tres películas en un día.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he acabado más de una serie en un día.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he acabado más de cinco pelÃ­culas en un día.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca me he negado a vacunar del COVID .",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he pillado el COVID más de una vez.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he pillado el COVID más de dos veces.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he pillado el COVID más de tres veces.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca me he saltado el confinamiento.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he estado confinado.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he pensado que la pandemia del COVID fue planeada.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he discutido con mis padres sobre política.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he discutido con mis amigos sobre política.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he sido mordido por mi propia mascota.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca me he quemado en la cocina.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he intentado escapar de casa de pequeño.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he intentado escapar de casa de mayor.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he quedado encerrado en un ascensor.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca me he quedado dormido en un ascensor.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca me he quedado dormido conduciendo.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca me he quedado dormido bajo la lluvia.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca me he tropiezado por estar mirando el móvil.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca me he ido a Londres.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca me he ido a Paris",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca me he pensado que África es un país.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca me he sentido odio hacia un país en específico.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca me he sentido odio real hacia una persona.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca me he resbalado en el baño.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca me he ido a una piscina pública.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca me he jugado a la Playstation.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca me he jugado a la Xbox.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca me he jugado a la Nintendo.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca me he jugado a la Wii.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca me he discutido con alguien de Atención Cliente.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he contestado mal a mi Jefe.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca me he encontrado con un animal salvaje.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca me he deseado tener un animal salvaje como mascota.",
+      "isFavourite": 0
+    },
+    // e
   ];
 
   //Fiesta
   final partyQuestions =
     [
       //s
+      {
+        "id" : 0,
+        "categoryId":2,
+        "description": "Yo nunca he estado de fiesta 24 horas seguidas.",
+        "isFavourite": 0
+      },
       {
         "id" : 0,
         "categoryId":2,
@@ -1511,6 +1844,182 @@ class DefaultData {
         "description": "A mi nunca me han puesto la copa con la bebida que quiero en una discoteca sin que yo dijera nada.",
         "isFavourite": 0
       },
+      //s
+      {
+        "id" : 0,
+        "categoryId":2,
+        "description": "Yo nunca he discutido sobre política de fiesta.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":2,
+        "description": "Yo nunca he bebido mas de 3 tipos de bebidas distintas en una noche.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":2,
+        "description": "Yo nunca he ido a una fiesta ilegal durante la pandemia.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":2,
+        "description": "Yo nunca he salido de fiesta sin mascarilla cuando era obligatorio.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":2,
+        "description": "Yo nunca me he liado con alguien de fiesta sabiendo que tiene el COVID.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":2,
+        "description": "A mi nunca me han pasado el COVID de fiesta.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":2,
+        "description": "Yo nunca he decidido no ir a una fiesta porque también iba mi ex-pareja.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":2,
+        "description": "Yo nunca he buscado una pelea de fiesta.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":2,
+        "description": "A mi nunca me han tocado el culo de fiesta.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":2,
+        "description": "Yo nunca he bebido un agua entre cada copa para no tener resaca.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":2,
+        "description": "Yo nunca he discutido con un DJ de fiesta.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":2,
+        "description": "Yo nunca le he tirado la mesa a un DJ(queriendo o sin querer).",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":2,
+        "description": "Yo nunca he invitado a un/a camarero/a a una copa.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":2,
+        "description": "Yo nunca he invitado a un/a camarero/a a un chupito.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":2,
+        "description": "Yo nunca he pagado la ronda a todos en un bar/discoteca/pub.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":2,
+        "description": "Yo nunca me he quedado dormido en la barra de una discoteca/pub.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":2,
+        "description": "Yo nunca he perdido la cartera de fiesta.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":2,
+        "description": "Yo nunca he perdido las llaves de casa en una fiesta.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":2,
+        "description": "Yo nunca he tenido que llevar todos los amigos casa porque iban borrachos.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":2,
+        "description": "Yo nunca he tenido que llevar un amigo/a a casa porque iba borracho/a.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":2,
+        "description": "Yo nunca he salido de fiesta sin beber.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":2,
+        "description": "Yo nunca he intentado salir de fiesta sin beber.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":2,
+        "description": "Yo nunca he pretendido conocer a un/a borracho/a para hablar con el/ella.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":2,
+        "description": "Yo nunca he pretendido conocer al dueño de una discoteca/pub para intimidar al portero.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":2,
+        "description": "Yo nunca he perdido mi entrada a una discoteca/pub.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":2,
+        "description": "Yo nunca he perdido mi abrigo o chaqueta de fiesta.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":2,
+        "description": "Yo nunca he llegado a casa sin los calzados despues de una fiesta.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":2,
+        "description": "Yo nunca he llegado a casa sin la ropa interior despues de una fiesta.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":2,
+        "description": "Yo nunca he invitado a mis padres a una copa en una discoteca/pub.",
+        "isFavourite": 0
+      },
+      //e
     ];
 
   //Traviesos
@@ -4527,6 +5036,30 @@ class DefaultData {
         "id": 0,
         "categoryId": 3,
         "description": "Yo nunca lo he hecho en un campo de fútbol.",
+        "isFavourite": 0
+      },
+      {
+        "id": 0,
+        "categoryId": 3,
+        "description": "Yo nunca lo he hecho con dos preservativos a la vez.",
+        "isFavourite": 0
+      },
+      {
+        "id": 0,
+        "categoryId": 3,
+        "description": "Yo nunca he roto un preservativo a alguien.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca me he puesto un cronometro para ver cuánto duro.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca he grabado a otras personas manteniendo relaciones sexuales.",
         "isFavourite": 0
       },
     ];

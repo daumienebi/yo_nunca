@@ -68,6 +68,7 @@ class CategoryProvider with ChangeNotifier{
     notifyListeners();
   }
 
+  /// Checks if a category with the given name already exists
   categoryExists(String categoryName) async{
     bool exists = await _categoryRepository.categoryExists(categoryName);
     return exists;

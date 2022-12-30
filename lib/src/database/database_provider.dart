@@ -35,10 +35,17 @@ class DatabaseProvider {
         route,
         version: dbVersion,
         onCreate: _createDb,
-        onUpgrade: _onUpgrade
+        onUpgrade: _onUpgrade,
+        onConfigure: _onConfigure,
     );
   }
 
+  Future _onConfigure(Database db) async {
+    //Allow the foreign keys for the database
+    //So that all questions related to a category will also be deleted when
+    //a category gets deleted
+    await db.execute('PRAGMA foreign_keys = ON');
+  }
   Future _onUpgrade(Database database,int oldVersion, int newVersion) async{
     // TO add new questions or categories in the next update, add them to the
     // [DefaultData] class in the right list so that newer users can get them
