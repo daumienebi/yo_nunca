@@ -25,12 +25,12 @@ class CategoryListPage extends StatelessWidget {
               onPressed: () =>
                   Navigator.pushNamed(context, Constants.routes.newCategory)),
           appBar: AppBar(
-            title: Text('Mis Categorías'),
+            title: Text('Gestionar Categorías'),
             bottom: TabBar(
               indicatorColor: Colors.cyan,
               tabs: [
                 Tab(
-                  child: categoryTabHeader(_categories.length, 'Agregados'),
+                  child: categoryTabHeader(_categories.length, 'Mis Categorías'),
                 ),
                 Tab(
                   child: categoryTabHeader(

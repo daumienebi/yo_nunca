@@ -57,7 +57,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
     }
   }
 
-  /// Generate a random order in which the questions will be shown
+  /// Generate a random order in which the questions will be displayed
   /// [questions] is the list of questions to be shown
   void generateGameOrder(List<Question> questions){
     late int randomNumber;
@@ -155,7 +155,6 @@ class _QuestionWidgetState extends State<QuestionWidget> {
                   children: [
                     TextSpan(text : widget.category.description,
                       style: TextStyle(
-
                         fontSize: 17,
                         color: Colors.redAccent[200],
                         fontWeight: FontWeight.bold
@@ -224,9 +223,10 @@ class _QuestionWidgetState extends State<QuestionWidget> {
           padding: EdgeInsets.all(5),
             child: Text('${currentIndex + 1} / $numberOfQuestions',
               style: TextStyle(
-                  color: Colors.black,
+                  color: Colors.brown[300],
                   fontFamily: 'OoohBaby',
                   fontSize: 18,
+                  fontWeight: FontWeight.bold
               ),
             )
         ),

@@ -129,12 +129,12 @@ class DrawerPage extends StatelessWidget{
 
   List<Widget> _optionsList(context){
     List<Widget> widgets = [];
-    final subTitleStyle = TextStyle(fontSize: 13);
+    final subTitleStyle = TextStyle(fontSize: 12);
 
     widgets.add(InkWell(
       child: ListTile(
-        title: Text("Mis Categorías"),
-        subtitle: Text("Las categorias con las preguntas añadidas.",
+        title: Text("Gestionar Categorías"),
+        subtitle: Text("Todas las categorias con las preguntas añadidas.",
           style: subTitleStyle,),
         leading: Icon(Icons.category),
         trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
@@ -145,7 +145,7 @@ class DrawerPage extends StatelessWidget{
 
     widgets.add(ListTile(
         title: Text("Favoritos"),
-        subtitle: Text("Lista de tus preguntas destacadas",style: subTitleStyle,),
+        subtitle: Text("Lista de tus preguntas destacadas.",style: subTitleStyle,),
         leading: Icon(Icons.favorite,color: Colors.red,),
         trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
         onTap: ()=>Navigator.of(context).push(

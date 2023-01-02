@@ -115,7 +115,7 @@ class DefaultData {
     {
       "id" : 0,
       "categoryId":1,
-      "description": "Yo nunca he sido detenido.",
+      "description": "Yo nunca he sido detenido por las autoridades.",
       "isFavourite": 0
     },
     {
@@ -841,7 +841,7 @@ class DefaultData {
     {
       "id": 0,
       "categoryId": 1,
-      "description": "Yo nunca me he cambiado de acera al ver a alguien que no quiero saludar.",
+      "description": "Yo nunca me he cambiado de acera al ver a alguien que no quiería saludar.",
       "isFavourite": 0
     },
     {
@@ -1215,25 +1215,25 @@ class DefaultData {
     {
       "id" : 0,
       "categoryId":1,
-      "description": "Yo nunca me he ido a Paris",
+      "description": "Yo nunca me he ido a Paris.",
       "isFavourite": 0
     },
     {
       "id" : 0,
       "categoryId":1,
-      "description": "Yo nunca me he pensado que África es un país.",
+      "description": "Yo nunca he pensado que África es un país.",
       "isFavourite": 0
     },
     {
       "id" : 0,
       "categoryId":1,
-      "description": "Yo nunca me he sentido odio hacia un país en específico.",
+      "description": "Yo nunca he sentido odio hacia un país en específico.",
       "isFavourite": 0
     },
     {
       "id" : 0,
       "categoryId":1,
-      "description": "Yo nunca me he sentido odio real hacia una persona.",
+      "description": "Yo nunca he sentido odio real hacia una persona.",
       "isFavourite": 0
     },
     {
@@ -1251,31 +1251,31 @@ class DefaultData {
     {
       "id" : 0,
       "categoryId":1,
-      "description": "Yo nunca me he jugado a la Playstation.",
+      "description": "Yo nunca he jugado a la Playstation.",
       "isFavourite": 0
     },
     {
       "id" : 0,
       "categoryId":1,
-      "description": "Yo nunca me he jugado a la Xbox.",
+      "description": "Yo nunca he jugado a la Xbox.",
       "isFavourite": 0
     },
     {
       "id" : 0,
       "categoryId":1,
-      "description": "Yo nunca me he jugado a la Nintendo.",
+      "description": "Yo nunca he jugado a la Nintendo.",
       "isFavourite": 0
     },
     {
       "id" : 0,
       "categoryId":1,
-      "description": "Yo nunca me he jugado a la Wii.",
+      "description": "Yo nunca he jugado a la Wii.",
       "isFavourite": 0
     },
     {
       "id" : 0,
       "categoryId":1,
-      "description": "Yo nunca me he discutido con alguien de Atención Cliente.",
+      "description": "Yo nunca he discutido con alguien de Atención Cliente de un servicio(Telefonía,Internet etc...).",
       "isFavourite": 0
     },
     {
@@ -1293,10 +1293,33 @@ class DefaultData {
     {
       "id" : 0,
       "categoryId":1,
-      "description": "Yo nunca me he deseado tener un animal salvaje como mascota.",
+      "description": "Yo nunca he deseado tener un animal salvaje como mascota.",
       "isFavourite": 0
     },
-    // e
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he perdido las llaves del coche.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he pagado el Premium de Spotify.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he usado la cuenta de Netflix,HBO o Prime video de alguien sin su permiso.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca me he cansado del anuncio de Youtube premium.",
+      "isFavourite": 0
+    },
   ];
 
   //Fiesta
@@ -3468,7 +3491,7 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId": 3,
-        "description": "Yo nunca me he querido tirar/tirado a mi mejor amigo/a.",
+        "description": "Yo nunca he querido tirar/tirado a mi mejor amigo/a.",
         "isFavourite": 0
       },
       {
@@ -3564,7 +3587,7 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId": 3,
-        "description": "Yo nunca me he/nunca se han equivocado de agujero.",
+        "description": "Yo nunca me he equivocado de agujero.",
         "isFavourite": 0
       },
       {
@@ -3654,13 +3677,13 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId": 3,
-        "description": "Yo nunca he me hecho fotos sensuales desnudo/a para enviarselas a alguien.",
+        "description": "Yo nunca me he hecho fotos sensuales desnudo/a para enviarselas a alguien.",
         "isFavourite": 0
       },
       {
         "id" : 0,
         "categoryId": 3,
-        "description": "Yo nunca he me hecho fotos desnudo para enviarselas a un familiar.",
+        "description": "Yo nunca me he hecho fotos desnudo para enviarselas a un familiar.",
         "isFavourite": 0
       },
       {
@@ -3786,7 +3809,7 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId": 3,
-        "description": "Yo nunca me he liado o mas veces con alguien con quien no tenia nada.",
+        "description": "Yo nunca me he liado tres o mas veces con alguien con quien no tenia nada.",
         "isFavourite": 0
       },
       {
@@ -3876,7 +3899,7 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId": 3,
-        "description": "Yo nunca me he liado con alguien justo despues de potar.",
+        "description": "Yo nunca me he liado con alguien justo despues de vomitar.",
         "isFavourite": 0
       },
       {
@@ -3972,7 +3995,13 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId": 3,
-        "description": "Yo nunca he estado enamorado con mas de 2 personas.",
+        "description": "Yo nunca he estado enamorado de 2 personas.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId": 3,
+        "description": "Yo nunca he estado enamorado de mas de 3 personas.",
         "isFavourite": 0
       },
       {
@@ -5633,6 +5662,24 @@ class DefaultData {
       "id" : 0,
       "categoryId":4,
       "description": "Yo nunca he estado nervioso al estar con mis suegros.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he metido a mis ex-parejas en un grupo de whatsapp o cualquier red social para decirles algo.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he confrontado al ex de mi actual pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "A mi nunca me han preguntado si mi pareja era mi padre/madre.",
       "isFavourite": 0
     },
   ];

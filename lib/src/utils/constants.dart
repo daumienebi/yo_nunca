@@ -1,8 +1,8 @@
 class Constants {
   static Routes routes = const Routes();
   static double homePageWidgetHeight = 200;
-  static String playStoreId = 'com.android.chrome';
-  //static String playStoreId = 'com.devdaumienebi.yo_nunca'; //will be updated
+  //static String playStoreId = 'com.android.chrome';
+  static String playStoreId = 'com.devdaumienebi.yonunca'; //will be updated
   static List<String> monthsInSpanish = [
     'Enero',
     'Febrero',

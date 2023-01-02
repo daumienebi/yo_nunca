@@ -87,8 +87,8 @@ class _FavouritesPageState extends State<FavouritesPage> {
               itemBuilder: (_, int index) =>
                   _favListTile(favouriteQuestions[index]),
               separatorBuilder: (context, index) => Divider(
-                color: Colors.red[100],
-                height: 1,
+                color: Colors.transparent,
+                height: 2,
               ),
               itemCount: favouriteQuestions.length,
               scrollDirection: Axis.vertical,
@@ -96,7 +96,7 @@ class _FavouritesPageState extends State<FavouritesPage> {
           ),
         ),
         createGameButton(),
-        Text("Se creará un juego con solo las preguntas favoritas",
+        Text("Se creará un juego con solo las preguntas favoritas.",
             style: TextStyle(color: Colors.blue)),
         SizedBox(
           height: 20,
