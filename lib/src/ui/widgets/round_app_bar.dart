@@ -41,7 +41,7 @@ class RoundAppBar extends StatelessWidget with PreferredSizeWidget {
             onPressed: () => showSearch(
                 context: context,
                 delegate:
-                    CategorySearchDelegate(hintText: 'Buscar categorias')),
+                    CategorySearchDelegate(hintText: 'Buscar categorías')),
             child: const Center(
               child:  Icon(
                 Icons.search,

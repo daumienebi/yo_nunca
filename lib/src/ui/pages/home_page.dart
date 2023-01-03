@@ -82,7 +82,7 @@ class HomePage extends StatelessWidget {
                   margin: EdgeInsets.only(top: 50),
                   child: Column(children: [
                     Text(
-                      "Desliza para ver las categorias y pulsa "
+                      "Desliza para ver las categorías y pulsa "
                           "\n para seleccionar ...",
                       textAlign: TextAlign.center,
                       style: TextStyle(color: Colors.black54, fontSize: 15),

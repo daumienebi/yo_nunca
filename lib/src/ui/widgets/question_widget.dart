@@ -223,7 +223,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
           padding: EdgeInsets.all(5),
             child: Text('${currentIndex + 1} / $numberOfQuestions',
               style: TextStyle(
-                  color: Colors.brown[300],
+                  color: Colors.black87,
                   fontFamily: 'OoohBaby',
                   fontSize: 18,
                   fontWeight: FontWeight.bold

@@ -74,7 +74,7 @@ class CategoryListPage extends StatelessWidget {
       margin: EdgeInsets.only(top: 7),
       child: Column(children: [
         Text(
-          "Las siguientes categorias no se pueden modificar.",
+          "Las siguientes categorías no se pueden modificar.",
           style: TextStyle(color: Colors.black54, fontSize: 15),
         ),
         Expanded(
@@ -127,7 +127,7 @@ class CategoryListPage extends StatelessWidget {
             Navigator.pushNamed(context, Constants.routes.newCategory);
           },
           child: Text(
-            "Añadir categoria",
+            "Añadir categoría",
             style: TextStyle(color: Colors.black87),
           ),
           style: TextButton.styleFrom(backgroundColor: Colors.greenAccent),

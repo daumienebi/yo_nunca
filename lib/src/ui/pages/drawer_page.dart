@@ -134,7 +134,7 @@ class DrawerPage extends StatelessWidget{
     widgets.add(InkWell(
       child: ListTile(
         title: Text("Gestionar Categorías"),
-        subtitle: Text("Todas las categorias con las preguntas añadidas.",
+        subtitle: Text("Todas las categorías con las preguntas añadidas.",
           style: subTitleStyle,),
         leading: Icon(Icons.category),
         trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
