@@ -1,6 +1,6 @@
 # Yo Nunca (Never Have I Ever)
 
-Flutter mobile app to create a simple question game.
+Flutter mobile app to create a simple question game.The app UI and the questions are currently in spanish but the UI will be translated later on.
 
 # Credits
 - Splash screen and app icon :
@@ -20,3 +20,7 @@ Flutter mobile app to create a simple question game.
   - [Fran Visconti](https://www.instagram.com/franvisconti)
   - [Psicología y Mente](https://psicologiaymente.com/miscelanea/preguntas-yo-nunca)
   - [Business Insider](https://www.businessinsider.es/67-preguntas-picantes-hacerle-novio-novia-1076687)
+
+# Download the app
+  - The app will be available on the Google Play Store.(Currently in revision)
+  ![Google play](https://raw.githubusercontent.com/steverichey/google-play-badge-svg/master/img/en_get.svg)
