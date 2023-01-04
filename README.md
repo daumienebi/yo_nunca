@@ -22,6 +22,15 @@ Flutter mobile app to create a simple question game.The app UI and the questions
   - [Business Insider](https://www.businessinsider.es/67-preguntas-picantes-hacerle-novio-novia-1076687)
 
 # Download the app
+  ### Platform
+
+  | Android | iOS | MacOS | Web |
+  | :-----: | :-: | :---: | :-: |
+  |   ✅    | ✅  |  ❌   | ✅  |
+
+  <a href="https://play.google.com/store/apps/details?id=com.vocabhub.app" target="_blank">
+  <img src="assets/googleplay.png" height="60">
+  </a>
   - The app will be available on the Google Play Store.(Currently in revision)
   <a href='https://play.google.com/store/apps/details?id=com.devdaumienebi.yonunca'>
     <img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' 
