@@ -23,4 +23,4 @@ Flutter mobile app to create a simple question game.The app UI and the questions
 
 # Download the app
   - The app will be available on the Google Play Store.(Currently in revision)
-  ![Google play](https://raw.githubusercontent.com/steverichey/google-play-badge-svg/master/img/en_get.svg)
+  ![Google play](https://raw.githubusercontent.com/steverichey/google-play-badge-svg/master/img/en_get.svg)[flutter.dev]
