@@ -22,13 +22,9 @@ Flutter mobile app to create a simple question game.The app UI and the questions
   - [Business Insider](https://www.businessinsider.es/67-preguntas-picantes-hacerle-novio-novia-1076687)
 
 # Screenshots
-  Try out the available categories | Add & Manage your categories
-  |:--------------------------:|:-----------------------------:|
-  <img src="assets/images/github/image1.png" width="400"> | <img src="assets/images/github/image2.png" width="400">
-  
-  View your categories along with the existing ones | View questions from your categories
-  |:-----------------------------------------:|:----------------------------------:|
-  <img src="assets/images/github/image3.png" width="400"> | <img src="assets/images/github/image4.png" width="400">
+  Try out the available categories | Add & Manage your categories | View your categories along with the existing ones | View questions from your categories
+  |:--------------------------:|:-----------------------------:|:-----------------------------------------:|:----------------------------------:|
+  <img src="assets/images/github/image1.png" width="400"> | <img src="assets/images/github/image2.png" width="400"> | <img src="assets/images/github/image3.png" width="400"> | <img src="assets/images/github/image4.png" width="400">
 
 # Download the app
   The app will be available on the Google Play Store.(Currently in revision)
