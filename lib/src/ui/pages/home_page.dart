@@ -114,7 +114,7 @@ class HomePage extends StatelessWidget {
 
   List<Widget> socialMediaButtons(context) {
     //Very shitty work around
-    // TODO : change it later on
+    // TODO : Change it later on
     List<Widget> items = [];
     items.add(SizedBox(
       width: 10,

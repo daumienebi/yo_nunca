@@ -835,7 +835,7 @@ class DefaultData {
     {
       "id": 0,
       "categoryId": 1,
-      "description": "Yo nunca he robado dinero a tio/a.",
+      "description": "Yo nunca he robado dinero a mi tio/a.",
       "isFavourite": 0
     },
     {
@@ -970,7 +970,6 @@ class DefaultData {
       "description": "Yo nunca me he cagado encima.",
       "isFavourite": 0
     },
-    //s
 
     {
       "id" : 0,
@@ -1095,7 +1094,7 @@ class DefaultData {
     {
       "id" : 0,
       "categoryId":1,
-      "description": "Yo nunca he acabado más de cinco pelÃ­culas en un día.",
+      "description": "Yo nunca he acabado más de cinco pelíulas en un día.",
       "isFavourite": 0
     },
     {
@@ -1179,25 +1178,25 @@ class DefaultData {
     {
       "id" : 0,
       "categoryId":1,
-      "description": "Yo nunca he quedado encerrado en un ascensor.",
+      "description": "Yo nunca he quedado encerrado/a en un ascensor.",
       "isFavourite": 0
     },
     {
       "id" : 0,
       "categoryId":1,
-      "description": "Yo nunca me he quedado dormido en un ascensor.",
+      "description": "Yo nunca me he quedado dormido/a en un ascensor.",
       "isFavourite": 0
     },
     {
       "id" : 0,
       "categoryId":1,
-      "description": "Yo nunca me he quedado dormido conduciendo.",
+      "description": "Yo nunca me he quedado dormido/a conduciendo.",
       "isFavourite": 0
     },
     {
       "id" : 0,
       "categoryId":1,
-      "description": "Yo nunca me he quedado dormido bajo la lluvia.",
+      "description": "Yo nunca me he quedado dormido/a bajo la lluvia.",
       "isFavourite": 0
     },
     {
@@ -1239,7 +1238,7 @@ class DefaultData {
     {
       "id" : 0,
       "categoryId":1,
-      "description": "Yo nunca me he resbalado en el baño.",
+      "description": "Yo nunca me he resbalado en la bañera.",
       "isFavourite": 0
     },
     {
@@ -1320,6 +1319,72 @@ class DefaultData {
       "description": "Yo nunca me he cansado del anuncio de Youtube premium.",
       "isFavourite": 0
     },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he realizado más de 2 tests de antígenos.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he realizado más de 5 tests de antígenos.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he realizado más de 10 tests de antígenos.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he realizado más de 20 tests de antígenos.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he realizado más de 50 tests de antígenos (Los que beben tienen que acabar sus vasos).",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he suspendido el examen teórico de la autoescuela.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he suspendido el examen teórico de la autoescuela más de una vez.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he suspendido el examen práctico de la autoescuela.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he suspendido el examen práctico de la autoescuela más de una vez.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he suspendido el examen práctico de la autoescuela más de tres veces.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he suspendido el examen teórico de la autoescuela más de tres veces.",
+      "isFavourite": 0
+    },
   ];
 
   //Fiesta
@@ -1341,13 +1406,13 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId":2,
-        "description": "Yo nunca he peleado con un/a camarero/a",
+        "description": "Yo nunca he peleado con un/a camarero/a.",
         "isFavourite": 0
       },
       {
         "id" : 0,
         "categoryId":2,
-        "description": "Yo nunca me he equivocado pidiendo una copa que no quería",
+        "description": "Yo nunca me he equivocado pidiendo una copa que no quería.",
         "isFavourite": 0
       },
       {
@@ -1359,13 +1424,13 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId":2,
-        "description": "A mi nunca me invitaron a una copa de fiesta",
+        "description": "A mi nunca me invitaron a una copa de fiesta.",
         "isFavourite": 0
       },
       {
         "id" : 0,
         "categoryId":2,
-        "description": "Yo nunca he tomado mas de 2 chupitos seguidos",
+        "description": "Yo nunca he tomado mas de 2 chupitos seguidos.",
         "isFavourite": 0
       },
       {
@@ -1468,7 +1533,7 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId":2,
-        "description": "Yo nunca me he vomitado encima por ir borracho.",
+        "description": "Yo nunca me he vomitado encima por estar borracho.",
         "isFavourite": 0
       },
       {
@@ -1576,13 +1641,13 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId":2,
-        "description": "Yo nunca he acabado mas de 1 botella en 1 noche.",
+        "description": "Yo nunca he acabado mas de 1 botella en 1 noche de fiesta.",
         "isFavourite": 0
       },
       {
         "id" : 0,
         "categoryId":2,
-        "description": "Yo nunca he vomitado en el taxi de vuelta a casa.",
+        "description": "Yo nunca he vomitado en el taxi de vuelta a casa después de una fiesta.",
         "isFavourite": 0
       },
       {
@@ -1636,7 +1701,7 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId":2,
-        "description": "Yo nunca he llegado a casa sin los calzados despuse de una fiesta.",
+        "description": "Yo nunca he llegado a casa sin los calzados después de una fiesta.",
         "isFavourite": 0
       },
       {
@@ -1714,7 +1779,7 @@ class DefaultData {
       {
         "id": 0,
         "categoryId": 2,
-        "description": "Yo nunca he estado de fiesta sin parar durante más de veinticuatro horas.",
+        "description": "Yo nunca he estado de fiesta sin parar durante más de 72 horas.",
         "isFavourite": 0
       },
       {
@@ -1756,7 +1821,7 @@ class DefaultData {
       {
         "id": 0,
         "categoryId": 2,
-        "description": "Yo nunca me he colado en un reservado.",
+        "description": "Yo nunca me he colado en un reservado de una discoteca.",
         "isFavourite": 0
       },
       {
@@ -1810,7 +1875,7 @@ class DefaultData {
       {
         "id": 0,
         "categoryId": 2,
-        "description": "Yo nunca he falsificado un DNI para ir a una fiesta.",
+        "description": "Yo nunca he falsificado un DNI/NIE/Pasaporte para ir a una fiesta.",
         "isFavourite": 0
       },
       {
@@ -1846,7 +1911,7 @@ class DefaultData {
       {
         "id": 0,
         "categoryId": 2,
-        "description": "Yo nunca he pillado a 2 o mas personas manteniendo relaciones en los baños de una discoteca/pub.",
+        "description": "Yo nunca he pillado a 2 o mas personas manteniendo relaciones sexuales en los baños de una discoteca/pub.",
         "isFavourite": 0
       },
       {
@@ -1907,7 +1972,7 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId":2,
-        "description": "A mi nunca me han pasado el COVID de fiesta.",
+        "description": "Yo nunca me he contagiado del COVID en una fiesta.",
         "isFavourite": 0
       },
       {
@@ -1997,7 +2062,7 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId":2,
-        "description": "Yo nunca he salido de fiesta sin beber.",
+        "description": "Yo nunca he salido de fiesta sin beber alcohol.",
         "isFavourite": 0
       },
       {
@@ -2033,13 +2098,13 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId":2,
-        "description": "Yo nunca he llegado a casa sin los calzados despues de una fiesta.",
+        "description": "Yo nunca he llegado a casa sin los calzados después de una fiesta.",
         "isFavourite": 0
       },
       {
         "id" : 0,
         "categoryId":2,
-        "description": "Yo nunca he llegado a casa sin la ropa interior despues de una fiesta.",
+        "description": "Yo nunca he llegado a casa sin la ropa interior después de una fiesta.",
         "isFavourite": 0
       },
       {
@@ -2567,7 +2632,7 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId": 3,
-        "description": "Yo nunca me he liado con alguien y me he arrepentido inmediatamente despues.",
+        "description": "Yo nunca me he liado con alguien y me he arrepentido inmediatamente después.",
         "isFavourite": 0
       },
       {
@@ -2777,7 +2842,7 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId": 3,
-        "description": "Yo nunca me he tomado/he comprado la pastilla del dia despues.",
+        "description": "Yo nunca me he tomado/he comprado la pastilla del dia después.",
         "isFavourite": 0
       },
       {
@@ -3227,7 +3292,7 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId": 3,
-        "description": "Yo nunca me he guardado las fotos de mi ex desnudo/a despues de haber cortado con el/ella.",
+        "description": "Yo nunca me he guardado las fotos de mi ex desnudo/a después de haber cortado con el/ella.",
         "isFavourite": 0
       },
       {
@@ -3695,7 +3760,7 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId": 3,
-        "description": "Yo nunca me he liado con alguien que ha querido tener algo conmigo despues sin que yo quisiera.",
+        "description": "Yo nunca me he liado con alguien que ha querido tener algo conmigo después sin que yo quisiera.",
         "isFavourite": 0
       },
       {
@@ -3899,7 +3964,7 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId": 3,
-        "description": "Yo nunca me he liado con alguien justo despues de vomitar.",
+        "description": "Yo nunca me he liado con alguien justo después de vomitar.",
         "isFavourite": 0
       },
       {
@@ -4007,7 +4072,7 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId": 3,
-        "description": "Yo nunca he tenido un/una ex que se cambio de acera despues de dejarlo conmigo.",
+        "description": "Yo nunca he tenido un/una ex que se cambio de acera después de dejarlo conmigo.",
         "isFavourite": 0
       },
       {
@@ -4025,7 +4090,7 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId": 3,
-        "description": "Yo nunca lo he hecho justo despues de discutir para reconciliarnos.",
+        "description": "Yo nunca lo he hecho justo después de discutir para reconciliarnos.",
         "isFavourite": 0
       },
       {
@@ -4235,7 +4300,7 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId": 3,
-        "description": "Yo nunca he dejado un mancha en la ropa o en la cama despues de follar.",
+        "description": "Yo nunca he dejado un mancha en la ropa o en la cama después de follar.",
         "isFavourite": 0
       },
       {
@@ -4253,7 +4318,7 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId": 3,
-        "description": "Yo nunca le he contado a alguien que habia follado inmediatamente despues de hacerlo.",
+        "description": "Yo nunca le he contado a alguien que habia follado inmediatamente después de hacerlo.",
         "isFavourite": 0
       },
       {
@@ -4685,7 +4750,7 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId": 3,
-        "description": "Yo nunca he empezado a salir con alguien menos de un mes despues de dejarlo con mi ex.",
+        "description": "Yo nunca he empezado a salir con alguien menos de un mes después de dejarlo con mi ex.",
         "isFavourite": 0
       },
       {
@@ -4703,7 +4768,7 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId": 3,
-        "description": "Yo nunca he tenido agujetas despues del sexo.",
+        "description": "Yo nunca he tenido agujetas después del sexo.",
         "isFavourite": 0
       },
       {
@@ -5289,7 +5354,7 @@ class DefaultData {
     {
       "id" : 0,
       "categoryId": 4,
-      "description": "Yo nunca he pensado que me casaria con un ex o actual pareja.",
+      "description": "Yo nunca he pensado que me casaria con un ex o pareja actual.",
       "isFavourite": 0
     },
     {
@@ -5499,7 +5564,7 @@ class DefaultData {
     {
       "id" : 0,
       "categoryId":4,
-      "description": "Yo nunca he pensado que duraría poco con mi ex/actual pareja.",
+      "description": "Yo nunca he pensado que la relación duraría poco con mi ex o pareja actual.",
       "isFavourite": 0
     },
     {
@@ -5637,7 +5702,7 @@ class DefaultData {
     {
       "id" : 0,
       "categoryId":4,
-      "description": "Yo nunca me he llevado bien con algún/os de los exes de mi actual pareja.",
+      "description": "Yo nunca me he llevado bien con algún ex de mi pareja actual.",
       "isFavourite": 0
     },
     {
@@ -5673,13 +5738,19 @@ class DefaultData {
     {
       "id" : 0,
       "categoryId":4,
-      "description": "Yo nunca he confrontado al ex de mi actual pareja.",
+      "description": "Yo nunca he confrontado al ex de mi pareja actual.",
       "isFavourite": 0
     },
     {
       "id" : 0,
       "categoryId":4,
       "description": "A mi nunca me han preguntado si mi pareja era mi padre/madre.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "A mi nunca me han preguntado si mi pareja era mi abuelo/a.",
       "isFavourite": 0
     },
   ];
