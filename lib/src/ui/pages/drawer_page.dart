@@ -76,7 +76,7 @@ class DrawerPage extends StatelessWidget{
       padding: EdgeInsets.all(7),
       height: 90,
       decoration: BoxDecoration(
-        color: Colors.blueGrey,
+        color: Colors.black87,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
@@ -84,14 +84,15 @@ class DrawerPage extends StatelessWidget{
         children: [
           Text(greetingsText,textAlign: TextAlign.left,
             style: TextStyle(
-                fontWeight: FontWeight.bold,fontSize: 23,color: Colors.cyanAccent
+                fontWeight: FontWeight.bold,fontSize: 23,color: Colors.cyanAccent[400]
             ),),
-          SizedBox(height: 10),
-          Text(lastEntry.isNotEmpty ? "Jugaste por ultima vez el $lastEntry."
+          SizedBox(height: 5),
+          Text(lastEntry.isNotEmpty ? "Jugaste por última vez el $lastEntry."
             :"Todavía no jugaste ninguna partida.",//empty space ;)
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 14,color: Colors.white
-            ),)
+            style: TextStyle(fontSize: 15,color: Colors.white
+            ),
+          )
         ],
       ),
     );
@@ -129,14 +130,15 @@ class DrawerPage extends StatelessWidget{
 
   List<Widget> _optionsList(context){
     List<Widget> widgets = [];
-    final subTitleStyle = TextStyle(fontSize: 12);
+    final subTitleStyle = TextStyle(fontSize: 14);
+    final titleStyle = TextStyle(fontSize: 17);
 
     widgets.add(InkWell(
       child: ListTile(
-        title: Text("Gestionar Categorías"),
+        title: Text("Gestionar Categorías",style: titleStyle,),
         subtitle: Text("Todas las categorías con las preguntas añadidas.",
           style: subTitleStyle,),
-        leading: Icon(Icons.category),
+        leading: Icon(Icons.list_alt_outlined),
         trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
         onTap: ()=> Navigator.of(context).push(
             _createRoute(page: CategoryListPage()))
@@ -144,7 +146,7 @@ class DrawerPage extends StatelessWidget{
     ));
 
     widgets.add(ListTile(
-        title: Text("Favoritos"),
+        title: Text("Favoritos",style: titleStyle),
         subtitle: Text("Lista de tus preguntas destacadas.",style: subTitleStyle,),
         leading: Icon(Icons.favorite,color: Colors.red,),
         trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
@@ -153,7 +155,7 @@ class DrawerPage extends StatelessWidget{
     ));
 
     widgets.add(ListTile(
-      title: Text("Privacidad"),
+      title: Text("Privacidad",style: titleStyle),
       subtitle: Text("Gestion de tus datos etc...",style: subTitleStyle,),
       leading: Icon(Icons.privacy_tip_outlined),
       trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
@@ -165,8 +167,8 @@ class DrawerPage extends StatelessWidget{
     ));
 
     widgets.add(ListTile(
-        title: Text("Valorar"),
-        subtitle: Text("Si te gustó la app,puedes calificarlo o sugerir mejoras.", style: subTitleStyle,),
+        title: Text("Valorar",style: titleStyle),
+        subtitle: Text("Si te gustó la app,puedes calificarlo con 5 estrellas o sugerir mejoras.", style: subTitleStyle,),
         leading: Icon(FontAwesomeIcons.googlePlay,),
         trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
         onTap: () async{
@@ -177,7 +179,7 @@ class DrawerPage extends StatelessWidget{
 
     ));
     widgets.add(ListTile(
-      title: Text("Créditos"),
+      title: Text("Créditos",style: titleStyle),
       subtitle: Text("Aportaciones al proyecto.", style: subTitleStyle,),
       leading: Icon(Icons.people_outline,),
       trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
@@ -186,9 +188,8 @@ class DrawerPage extends StatelessWidget{
     ));
 
     widgets.add(ListTile(
-      title: Text("Contactar con el desarrollador"),
-      subtitle: Text("Sobre cualquier error/duda en especifico"
-          " o acerca de la app en general.",
+      title: Text("Contactar con el desarrollador",style: titleStyle),
+      subtitle: Text("Sobre cualquier error o duda acerca de la app.",
         style: subTitleStyle,
       ),
       leading: Icon(Icons.contact_mail_outlined,),

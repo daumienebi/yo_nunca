@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/models/question.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
-import 'dart:developer' as dev;
 import 'package:yo_nunca/src/utils/constants.dart';
 // ignore_for_file: prefer_const_constructors
 
@@ -24,7 +23,6 @@ class CategorySearchDelegate extends SearchDelegate {
         },
         icon: Icon(Icons.clear),
         tooltip: 'Cerrar',
-        highlightColor: Colors.redAccent,
       )
     ];
   }
@@ -75,24 +73,19 @@ class CategorySearchDelegate extends SearchDelegate {
     return FutureBuilder(
         future: provider.getCategories(),
         builder: (_, AsyncSnapshot data) {
-          return ListView.separated(
+          return ListView.builder(
               itemBuilder: (BuildContext context,int index) {
                 final suggestion = suggestions[index];
                 return ListTile(
-                  leading: Icon(
-                    Icons.category,
-                    color: Colors.amber,
-                    size: 35,
-                  ),
-                  title: Text(suggestion.description),
+                  title: Text(suggestion.description.toLowerCase()),
                   onTap: () {
                     query = suggestion.description;
                     showResults(context);
                   },
                 );
               },
-              separatorBuilder: (context, index) => Divider(height: 20),
-              itemCount: suggestions.length);
+              itemCount: suggestions.length
+          );
         });
   }
 }
@@ -113,10 +106,6 @@ class _CategoryDetailState extends State<CategoryDetail> {
     List<Question> questionsPerCategory = await provider.getQuestionsPerCategory(widget.category!.id!);
     int count = questionsPerCategory.length;
     _questionsCount = count;
-    dev.log('category :' + widget.category.toString());
-    dev.log('count :' + count.toString());
-    dev.log('_questionsCount :' + _questionsCount.toString());
-
   }
 
   @override
@@ -157,7 +146,7 @@ class _CategoryDetailState extends State<CategoryDetail> {
             ) : Card(
                 clipBehavior: Clip.antiAliasWithSaveLayer,
                 child: Image.asset(
-                  'assets/images/question2.png',
+                  'assets/images/card-games.png',
                   fit: BoxFit.cover,
                 )
             ),

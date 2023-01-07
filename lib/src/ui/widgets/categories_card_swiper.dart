@@ -46,14 +46,14 @@ class CategoriesCardSwiper extends StatelessWidget {
                       //Try the child with a future builder to simulate a fake
                       //load
                       child: MyDecorations.homePageBoxText(
-                          categories[index].description, Colors.black54)) ,
+                          categories[index].description, Colors.cyan)) ,
                 ));
             },
           itemCount: categories.length,
           itemHeight: size.height * 0.5,
-          itemWidth: size.width * 0.80,
-          //layout: SwiperLayout.TINDER,
-          layout: SwiperLayout.STACK,
+          itemWidth: size.width * 0.90,
+          layout: SwiperLayout.TINDER,
+          //layout: SwiperLayout.STACK,//strange behaviour sometimes on start
         ),
       ),
     ]);

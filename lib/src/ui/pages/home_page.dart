@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
         homePage: true,
       ),
       floatingActionButton: ExpandableFab(
-        distance: 112.0,
+        distance: 95.0,
         children: [
           ActionButton(
             onPressed: () {
@@ -58,7 +58,7 @@ class HomePage extends StatelessWidget {
                     );
                   });
             },
-            icon: const Icon(Icons.share_sharp,color: Colors.black54,),
+            icon: const Icon(Icons.share_sharp,color: Colors.white,),
           ),
           ActionButton(
             onPressed: () async{
@@ -66,12 +66,12 @@ class HomePage extends StatelessWidget {
               final url = Uri.parse('https://play.google.com/store/apps/details?id=$appId');
               await launchUrl(url,mode: LaunchMode.externalApplication);
             },
-            icon: const Icon(Icons.star,color: Colors.black54,),
+            icon: const Icon(Icons.star,color: Colors.white,),
           ),
           ActionButton(
             onPressed: () =>
                 {Navigator.pushNamed(context, Constants.routes.newCategory)},
-            icon: const Icon(Icons.add,color: Colors.black54,),
+            icon: const Icon(Icons.add,color: Colors.white,),
           ),
         ],
       ),
@@ -82,10 +82,10 @@ class HomePage extends StatelessWidget {
                   margin: EdgeInsets.only(top: 50),
                   child: Column(children: [
                     Text(
-                      "Desliza para ver las categorías y pulsa "
+                      "Desliza las cartas para ver las categorías y pulsa "
                           "\n para seleccionar ...",
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.black54, fontSize: 15),
+                      style: TextStyle(color: Colors.black54, fontSize: 16),
                     ),
                     CategoriesCardSwiper(categories: categories),
                     SizedBox(
@@ -216,7 +216,6 @@ class HomePage extends StatelessWidget {
   }
 
   Widget mixedModeWidget(BuildContext context) {
-    //guess its not advisable to pass the context like this
     return Column(
       children: [
         Container(
@@ -236,7 +235,7 @@ class HomePage extends StatelessWidget {
               children: const [
             Text("Dudas con que categoría elegir ?  👀 ",
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.black45, fontSize: 16)),
+                style: TextStyle(color: Colors.black54, fontSize: 16)),
           ]),
         ),
         ElevatedButton(
@@ -256,7 +255,7 @@ class HomePage extends StatelessWidget {
                 fontSize: 17,
                 color: Colors.black87),
           ),
-          style: TextButton.styleFrom(backgroundColor: Colors.greenAccent),
+          style: TextButton.styleFrom(backgroundColor: Colors.orangeAccent),
         )
       ],
     );
@@ -264,9 +263,9 @@ class HomePage extends StatelessWidget {
 
   /// Method to launch each share option for the [SocialMedia]
   Future share(SocialMedia platform) async {
-    const text ='Descarga y prueba esta aplicación de Yo Nunca personalizable '
-        'para jugar de fiesta con los amigos. ¡Juega con preguntas por defecto o'
-        ' crea las tuyas!';
+    const text ='Descarga esta aplicación de Yo Nunca personalizable '
+        'para jugar de fiesta con los amigos.¡Juega con preguntas por defecto o'
+        ' agrega las tuyas!.';
     String appId = Constants.playStoreId;
     final urlString = 'https://play.google.com/store/apps/details?id=$appId';
     final urlShare = Uri.encodeComponent(urlString);

@@ -25,14 +25,14 @@ class CreditsPage extends StatelessWidget{
 
   ListTile creditTile({required String title,required String url,
     String? subtitle,String? imageAsset}){
-    final titleStyle = TextStyle(color: Colors.teal);
+    final titleStyle = TextStyle(color: Colors.teal,fontSize: 18);
     return ListTile(
       leading:imageAsset!.isNotEmpty ? Image.asset(imageAsset) :
       Icon(Icons.person,size: 55,),
       title: Text(title,style: titleStyle),
       subtitle: Text(subtitle!),
       trailing: InkWell(
-        child: Icon(Icons.info,color: Colors.lightBlueAccent,),
+        child: Icon(Icons.info,color: Colors.lightBlue[300],),
         onTap: () async{
           final parsedUrl = Uri.parse(url);
           await _launchUrl(parsedUrl);
@@ -95,7 +95,7 @@ class CreditsPage extends StatelessWidget{
         creditTile(
             title: 'Psicología y Mente',
             url: 'https://psicologiaymente.com/miscelanea/preguntas-yo-nunca',
-            subtitle: 'Varias preguntas fueron recogidas de la página',
+            subtitle: 'Varias preguntas fueron recogidas de la página.',
             imageAsset: 'assets/images/psicologiaymente.png'
         )
     );
@@ -109,7 +109,6 @@ class CreditsPage extends StatelessWidget{
             imageAsset: ''
         )
     );
-
     return widgets;
   }
 

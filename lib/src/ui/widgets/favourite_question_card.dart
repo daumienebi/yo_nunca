@@ -110,7 +110,7 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
             borderRadius: BorderRadius.all(Radius.circular(30)),
             boxShadow: const [
               BoxShadow(
-                  color: Colors.blueGrey)
+                  color: Colors.black54)
             ],
           ),
           child: Column(children: [
@@ -123,7 +123,7 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
                   question,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize: 23,
+                      fontSize: 20,
                       color: Colors.white,
                       fontWeight: FontWeight.w800,
                       fontFamily: 'Abel'),

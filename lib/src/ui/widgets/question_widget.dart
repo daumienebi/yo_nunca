@@ -236,7 +236,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
           builder: (BuildContext context, _, Widget? child) {
             return Container(
               decoration: BoxDecoration(
-                color: Colors.teal[100],
+                color: Colors.teal[200],
                 borderRadius: BorderRadius.all(Radius.circular(25)),
                 boxShadow: [
                   BoxShadow(
@@ -246,14 +246,14 @@ class _QuestionWidgetState extends State<QuestionWidget> {
                       offset: Offset(0, 3))
                 ],
               ),
-              height: isPotrait.value == true ? 320 : 150,
+              height: isPotrait.value == true ? 350 : 150,
               width: isPotrait.value == true ? 320 : 420,
               child: Center(
                 child: Text(
                   question.description,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize: 20, color: Colors.black, fontFamily: 'Abel'),
+                      fontSize: 21, color: Colors.black87, fontFamily: 'Abel'),
                 ),
               ),
             );

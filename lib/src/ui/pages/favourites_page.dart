@@ -96,8 +96,10 @@ class _FavouritesPageState extends State<FavouritesPage> {
           ),
         ),
         createGameButton(),
-        Text("Se creará un juego con solo las preguntas favoritas.",
-            style: TextStyle(color: Colors.blue)),
+        Text("Se creará una lista de preguntas con solo las preguntas favoritas.",
+            style: TextStyle(color: Colors.blue),
+          textAlign: TextAlign.center,
+        ),
         SizedBox(
           height: 20,
         )

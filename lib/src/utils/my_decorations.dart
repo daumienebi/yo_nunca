@@ -7,7 +7,7 @@ class MyDecorations{
   static BoxDecoration homePageBoxDecoration (String? imgRoute){
     const double fillPercent = 56.23; // fills 56.23% for container from bottom
     const double fillStop = (100 - fillPercent) / 100;
-    final List<double> stops = [0.3, 0.5];
+    final List<double> stops = [0.3, 0.9];
     List<Color> colors = [Colors.white,Colors.orangeAccent];
     return imgRoute!.isNotEmpty ? BoxDecoration(
       image: DecorationImage(

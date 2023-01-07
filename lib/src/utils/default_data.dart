@@ -2620,7 +2620,7 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId": 3,
-        "description": "Yo nunca he dudado de mi orientacion sexual.",
+        "description": "Yo nunca he dudado de mi orientación sexual.",
         "isFavourite": 0
       },
       {

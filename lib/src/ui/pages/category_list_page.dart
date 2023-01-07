@@ -27,10 +27,11 @@ class CategoryListPage extends StatelessWidget {
           appBar: AppBar(
             title: Text('Gestionar Categorías'),
             bottom: TabBar(
-              indicatorColor: Colors.cyan,
+              indicatorColor: Colors.orange[50],
               tabs: [
                 Tab(
-                  child: categoryTabHeader(_categories.length, 'Mis Categorías'),
+                  child:
+                      categoryTabHeader(_categories.length, 'Mis Categorías'),
                 ),
                 Tab(
                   child: categoryTabHeader(
@@ -60,7 +61,7 @@ class CategoryListPage extends StatelessWidget {
           style: TextStyle(color: Colors.white),
         )),
         decoration: BoxDecoration(
-          color: Colors.red[500],
+          color: Colors.red[600],
           borderRadius: BorderRadius.circular(15),
         ),
         height: 30,
