@@ -6,7 +6,6 @@ import 'package:yo_nunca/src/models/question.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
 import 'package:yo_nunca/src/utils/messages.dart';
-import 'dart:developer' as dev;
 import 'dart:math';
 
 class QuestionWidget extends StatefulWidget {
@@ -68,7 +67,6 @@ class _QuestionWidgetState extends State<QuestionWidget> {
         gameOrder.add(randomNumber);
       }
     }
-    dev.log('game order :' + gameOrder.toString());
   }
 
   @override
@@ -206,7 +204,6 @@ class _QuestionWidgetState extends State<QuestionWidget> {
             } else {
               question.isFavourite = true;
               await provider.addToFavourites(question);
-              dev.log(question.isFavourite.toString());
               snackBar = SnackBar(
                 duration: Duration(seconds: 1),
                 content: const Text('Pregunta añadida a favoritos'),
@@ -236,7 +233,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
           builder: (BuildContext context, _, Widget? child) {
             return Container(
               decoration: BoxDecoration(
-                color: Colors.teal[200],
+                color: Colors.teal[100],
                 borderRadius: BorderRadius.all(Radius.circular(25)),
                 boxShadow: [
                   BoxShadow(

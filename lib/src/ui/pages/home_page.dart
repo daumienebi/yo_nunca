@@ -1,18 +1,18 @@
+import 'dart:io';
+
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:upgrader/upgrader.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
 import 'package:yo_nunca/src/ui/pages/pages.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
 import 'package:yo_nunca/src/ui/widgets/widgets.dart';
-
-///Enum for the possible social medias where the app can be shared
-enum SocialMedia { facebook, twitter, instagram, whatsapp,enlace}
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -75,24 +75,32 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Center(
-              child: Container(
-                  margin: EdgeInsets.only(top: 50),
-                  child: Column(children: [
-                    Text(
-                      "Desliza las cartas para ver las categorías y pulsa "
-                          "\n para seleccionar ...",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.black54, fontSize: 16),
-                    ),
-                    CategoriesCardSwiper(categories: categories),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    mixedModeWidget(context),
-                  ]))),
+      body: UpgradeAlert(
+        upgrader: Upgrader(
+          canDismissDialog: true,
+          durationUntilAlertAgain: const Duration(days: 1),
+          dialogStyle: Platform.isIOS ? UpgradeDialogStyle.cupertino :
+          UpgradeDialogStyle.material
+        ),
+        child: SafeArea(
+          child: SingleChildScrollView(
+            child: Center(
+                child: Container(
+                    margin: EdgeInsets.only(top: 50),
+                    child: Column(children: [
+                      Text(
+                        "Desliza las cartas para ver las categorías y pulsa "
+                            "\n para seleccionar ...",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.black54, fontSize: 16),
+                      ),
+                      CategoriesCardSwiper(categories: categories),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      mixedModeWidget(context),
+                    ]))),
+          ),
         ),
       ),
     );
@@ -233,7 +241,7 @@ class HomePage extends StatelessWidget {
               ]),
           child: Column(
               children: const [
-            Text("Dudas con que categoría elegir ?  👀 ",
+            Text("Dudas con cual categoría elegir?,prueba el Modo Mixto. ",
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.black54, fontSize: 16)),
           ]),
@@ -263,8 +271,8 @@ class HomePage extends StatelessWidget {
 
   /// Method to launch each share option for the [SocialMedia]
   Future share(SocialMedia platform) async {
-    const text ='Descarga esta aplicación de Yo Nunca personalizable '
-        'para jugar de fiesta con los amigos.¡Juega con preguntas por defecto o'
+    const text ='Prueba esta app de "YO NUNCA" personalizable '
+        'para jugar de fiesta con los amigos. ¡Juega con preguntas por defecto o'
         ' agrega las tuyas!.';
     String appId = Constants.playStoreId;
     final urlString = 'https://play.google.com/store/apps/details?id=$appId';

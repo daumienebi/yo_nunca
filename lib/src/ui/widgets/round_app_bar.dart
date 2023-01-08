@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:yo_nunca/src/ui/pages/pages.dart';
 import 'package:yo_nunca/src/ui/widgets/widgets.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
-
-import '../pages/pages.dart';
 
 class RoundAppBar extends StatelessWidget with PreferredSizeWidget {
   final double barHeight = 10;

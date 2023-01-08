@@ -1,9 +1,12 @@
+///Enum for the possible social medias where the app can be shared
+enum SocialMedia { facebook, twitter, instagram, whatsapp,enlace}
+
 class Constants {
   static Routes routes = const Routes();
   static double homePageWidgetHeight = 200;
-  //static String playStoreId = 'com.android.chrome';
-  static String playStoreId = 'com.devdaumienebi.yonunca'; //will be updated
-  static List<String> monthsInSpanish = [
+  static String playStoreId = 'com.devdaumienebi.yonunca';
+  static List<String> monthsInSpanish =
+  [
     'Enero',
     'Febrero',
     'Marzo',

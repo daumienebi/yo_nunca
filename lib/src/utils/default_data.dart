@@ -373,7 +373,7 @@ class DefaultData {
     {
       "id" : 0,
       "categoryId":1,
-      "description": "Yo nunca he sentido que me iba a morir.",
+      "description": "Yo nunca tuve el sentimiento que me iba a morir.",
       "isFavourite": 0
     },
     {
@@ -691,6 +691,18 @@ class DefaultData {
     {
       "id": 0,
       "categoryId": 1,
+      "description": "Yo nunca me he quedado dormido en el cine.",
+      "isFavourite": 0
+    },
+    {
+      "id": 0,
+      "categoryId": 1,
+      "description": "Yo nunca me he perdido en la casa de alguien.",
+      "isFavourite": 0
+    },
+    {
+      "id": 0,
+      "categoryId": 1,
       "description": "Yo nunca he sido sorprendido con una fiesta sorpresa.",
       "isFavourite": 0
     },
@@ -829,6 +841,12 @@ class DefaultData {
     {
       "id": 0,
       "categoryId": 1,
+      "description": "Yo nunca usado la misma ropa interior más de 4 días seguidos.",
+      "isFavourite": 0
+    },
+    {
+      "id": 0,
+      "categoryId": 1,
       "description": "Yo nunca he hecho un simpa en una feria.",
       "isFavourite": 0
     },
@@ -937,13 +955,13 @@ class DefaultData {
     {
       "id": 0,
       "categoryId": 1,
-      "description": "Yo nunca he viajado en el coche con un/a borracho/a.",
+      "description": "Yo nunca he viajado en el coche con alguien borracho.",
       "isFavourite": 0
     },
     {
       "id": 0,
       "categoryId": 1,
-      "description": "Yo nunca he suspendido una materia con un 4.9.",
+      "description": "Yo nunca he suspendido una materia del instituto/universidad con un 4.9.",
       "isFavourite": 0
     },
     {
@@ -1143,6 +1161,12 @@ class DefaultData {
       "id" : 0,
       "categoryId":1,
       "description": "Yo nunca he discutido con mis padres sobre política.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca me he emborrachado con mis padres.",
       "isFavourite": 0
     },
     {
@@ -1683,7 +1707,7 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId":2,
-        "description": "Yo nunca he vomitado en un examen por ir borracho.",
+        "description": "Yo nunca he vomitado en un examen por estar borracho.",
         "isFavourite": 0
       },
       {
@@ -1695,7 +1719,7 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId":2,
-        "description": "Yo nunca he puesto los cuernos a mi pareja por ir borracho/a.",
+        "description": "Yo nunca he puesto los cuernos a mi pareja por estar borracho/a.",
         "isFavourite": 0
       },
       {
@@ -1713,7 +1737,7 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId":2,
-        "description": "Yo nunca he llevado una hostia por decir cosas inapropiadas estando borracho.",
+        "description": "Yo nunca he llevado un golpe por decir cosas inapropiadas estando borracho.",
         "isFavourite": 0
       },
       {
@@ -3412,6 +3436,12 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId": 3,
+        "description": "Yo nunca me he estado masturbando por mas de de 2 horas.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId": 3,
         "description": "Yo nunca lo he hecho 2 o mas veces seguidas.",
         "isFavourite": 0
       },
@@ -3448,7 +3478,7 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId": 3,
-        "description": "Yo nunca he deseado una sugar-mommy o un sugar-daddy",
+        "description": "Yo nunca he deseado una sugar-mommy o un sugar-daddy.",
         "isFavourite": 0
       },
       {
@@ -4594,7 +4624,7 @@ class DefaultData {
       {
         "id" : 0,
         "categoryId": 3,
-        "description": "Yo nunca he pensado en operarme el culo",
+        "description": "Yo nunca he pensado en operarme el culo.",
         "isFavourite": 0
       },
       {
@@ -4649,6 +4679,12 @@ class DefaultData {
         "id" : 0,
         "categoryId": 3,
         "description": "Yo nunca he usado lubricantes con efectos de calor o frio.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId": 3,
+        "description": "Yo nunca he jugado el juego de la galleta.",
         "isFavourite": 0
       },
       {
@@ -4793,6 +4829,12 @@ class DefaultData {
         "id" : 0,
         "categoryId": 3,
         "description": "Yo nunca haria un trio con una persona de distinto sexo y otra de mi mismo sexo.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId": 3,
+        "description": "Yo nunca he pensado en crear una cuenta de Tinder.",
         "isFavourite": 0
       },
       {
@@ -5751,6 +5793,30 @@ class DefaultData {
       "id" : 0,
       "categoryId":4,
       "description": "A mi nunca me han preguntado si mi pareja era mi abuelo/a.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he conocido a mi pareja por Tinder.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he pillado a mi pareja viendo pornografía.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca tuve una pareja que estaba obsesionado con los videojuegos.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca tuve una pareja que estaba obsesionado con el fútbol o cualquier otro deporte/actividad",
       "isFavourite": 0
     },
   ];

@@ -98,7 +98,6 @@ class DrawerPage extends StatelessWidget{
     );
   }
 
-
   Future<String> getLastEntry()async{
     SharedPreferences pref =await SharedPreferences.getInstance();
     var lastEntry = pref.getString('lastEntry') ?? '';

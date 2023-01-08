@@ -51,7 +51,7 @@ class CategoriesCardSwiper extends StatelessWidget {
             },
           itemCount: categories.length,
           itemHeight: size.height * 0.5,
-          itemWidth: size.width * 0.90,
+          itemWidth: size.width * 0.85,
           layout: SwiperLayout.TINDER,
           //layout: SwiperLayout.STACK,//strange behaviour sometimes on start
         ),

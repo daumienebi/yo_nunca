@@ -5,7 +5,7 @@ import 'package:yo_nunca/src/models/question.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
 import 'package:yo_nunca/src/ui/widgets/round_app_bar.dart';
 import 'package:yo_nunca/src/utils/messages.dart';
-import 'dart:developer' as dev;
+//import 'dart:developer' as dev;
 import 'package:yo_nunca/src/utils/my_decorations.dart';
 // ignore_for_file: prefer_const_constructors
 
@@ -242,7 +242,7 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
                 category.description = _category;
                 affectedRows = await provider.modifyCategory(category);
               }
-              dev.log(category.toString());
+              //dev.log(category.toString());
               _showSnackBar(affectedRows,categoryExists,oldName,_category);
             }
           },
