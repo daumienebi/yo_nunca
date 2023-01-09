@@ -43,7 +43,7 @@ class DefaultData {
     {
       'id': 2,
       'description': 'Fiesta',
-      'imageRoute' : 'assets/images/drunk.png'
+      'imageRoute' : 'assets/images/party.png'
     },
     {
       'id': 3,
@@ -1409,6 +1409,109 @@ class DefaultData {
       "description": "Yo nunca he suspendido el examen teórico de la autoescuela más de tres veces.",
       "isFavourite": 0
     },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca me he encontrado con alguien al abrir la puerta de un baño.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he golpeado una pared y me arrepiento porque era doloroso.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca me había reído tanto que me oriné encima.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca me he vestido como del sexo opuesto.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca me he tirado un pedo delante de alguien que me gustaba.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he volado en primera clase.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he conducido un coche manual.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he devuelto mi comida a un restaurante.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca le he mentido a mi mejor amigo sobre con quién estaba.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he estado en Disneyland.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca me he quedado dormido en clase.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he sido despedido.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he ganado la lotería.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he inventado un novio / novia falso.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he fingido que huía de los zombis meintras corría.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he mentido en algo para impresionar a mi cita.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":1,
+      "description": "Yo nunca he bailado solo en la pista de baile.",
+      "isFavourite": 0
+    },
+
   ];
 
   //Fiesta
@@ -5348,6 +5451,151 @@ class DefaultData {
         "description": "Yo nunca he llamado a mi ex estando en el acto para darle celos.",
         "isFavourite": 0
       },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca he ajustado mis botones en función de quién está en la habitación.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca he tenido una aventura de una noche y me quedé a desayunar.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca he tenido una aventura de una noche y me quedé hasta la hora de cenar.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca he mentido para proteger a un amigo infiel.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca he mentido sobre mi virginidad.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca he echado a alguien después de tener sexo.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca me he echo daño mientras me masturbaba a mi mismo.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca he mirado en Google los efectos adversos de masturbarte.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca me he reído al ver los genitales de otra persona.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca he hecho favores a cambio de sexo.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca me he subido la falda para hacerla más corta.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca he usado ropa interior comestible.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca he ido a una fiesta para enrollarme con alguien.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca he tenido dificultad para encontrar el punto g.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca he sentido vergüenza después de acostarme con alguien.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca he tenido sexo en una boda.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca he tenido un orgasmo anal.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca he perdido algo en uno de mis orificios.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca he tomado viagra.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca he tenido más de 10 parejas sexuales.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca he metido el pene en una aspiradora.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca he hecho un cuarteto con otros tres hombres.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca le he mirado el culo a un extraño.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca he hablado y dado mimos con alguien toda la noche.",
+        "isFavourite": 0
+      },
+
     ];
 
   final coupleQuestions = [
@@ -5823,6 +6071,138 @@ class DefaultData {
       "id" : 0,
       "categoryId":4,
       "description": "Yo nunca tuve una pareja que estaba obsesionado con el fútbol o cualquier otro deporte/actividad",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he recibido flores de alguien con quien estoy saliendo.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he intentado robar las contraseñas de mi pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca me he arrepentido de haber salido con alguien.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he tenido deseos sexuales que no comentaría a mi pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca me he tirado un pedo delante de mi pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca me he hecho el mismo tatuaje con mi novia/ novio.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he intentado robarle la pareja a otra persona.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca le he regalado flores a mi pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he pensado que he encontrado el amor de mi vida.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca le he hecho un masaje a mi pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he intentado de impresionar a los padres de mi pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he olido la ropa de mi pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he roto algunas de las reglas de la relación con mi ex o pareja actual.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he fingido dolores de cabeza u otras dolencias físicas porque no tenía ganas de tener sexo.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he tenido mal de amores.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he devuelto un regalo de mi ex después de la ruptura.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he comprado la colonia de mi ex pareja solo para acordarme de como olía.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he discutido con mi pareja delante de mis suegros.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he fingido estar embarazada para asustar a mi pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he tenido un mejor amigo que no fuera mi novio.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he tenido una mejor amiga que no fuera mi novia.",
+      "isFavourite": 0
+    },
+    {
+      "id" : 0,
+      "categoryId":4,
+      "description": "Yo nunca he pensado en como sería tener una familia con mi pareja.",
       "isFavourite": 0
     },
   ];

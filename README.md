@@ -11,7 +11,7 @@ Flutter mobile app to create a simple question game.The app UI and the questions
   - [Question icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/question)
   - [Smile icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/smile)
   - [Sexy icons created by iconixar - Flaticon](https://www.flaticon.com/free-icons/sexy)
-  - [Drunk icons created by noomtah - Flaticon](https://www.flaticon.com/free-icons/drunk)
+  - [Birthday icons created by Icon Place - Flaticon](https://www.flaticon.com/free-icons/birthday)
   - [Card game icons created by mangsaabguru - Flaticon](https://www.flaticon.com/free-icons/card-game)
   - [Couple icons created by Victoruler - Flaticon](https://www.flaticon.com/free-icons/couple)
 

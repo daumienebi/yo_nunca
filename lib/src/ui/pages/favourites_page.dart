@@ -60,7 +60,7 @@ class _FavouritesPageState extends State<FavouritesPage> {
                               ),
                               Text(
                                 "Todavía no hay preguntas favoritas."
-                                "Pulsa el icono del corazón de una pregunta "
+                                "Pulsa el icono de corazón de una pregunta "
                                 "para añadirlo a los favoritos.",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(

@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -260,10 +259,10 @@ class HomePage extends StatelessWidget {
             style: TextStyle(
                 fontFamily: 'OoohBaby',
                 fontWeight: FontWeight.bold,
-                fontSize: 17,
+                fontSize: 18,
                 color: Colors.white),
           ),
-          style: TextButton.styleFrom(backgroundColor: Colors.pink[500]),
+          style: TextButton.styleFrom(backgroundColor: Colors.green),
         )
       ],
     );

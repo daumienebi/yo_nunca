@@ -168,10 +168,11 @@ class _CategoryTileState extends State<CategoryTile> {
   @override
   Widget build(BuildContext context) {
     final mainTxtStyle = TextStyle(
-        fontSize: 20,
-        color: Colors.cyan,
+        fontSize: 30,
+        color: Colors.cyan[400],
         fontFamily: 'OoohBaby',
-        fontWeight: FontWeight.bold);
+        //fontWeight: FontWeight.w500
+    );
     final countTxtStyle = TextStyle(
         fontSize: 18, color: Colors.white, fontWeight: FontWeight.normal);
     final editBtn = TextButton.styleFrom(backgroundColor: Colors.lightGreen);
