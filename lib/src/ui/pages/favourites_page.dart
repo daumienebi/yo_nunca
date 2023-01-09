@@ -60,7 +60,7 @@ class _FavouritesPageState extends State<FavouritesPage> {
                               ),
                               Text(
                                 "Todavía no hay preguntas favoritas."
-                                "Pulsa el icono de corazón de una pregunta "
+                                "Pulsa el icono ❤ de una pregunta "
                                 "para añadirlo a los favoritos.",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
@@ -96,7 +96,7 @@ class _FavouritesPageState extends State<FavouritesPage> {
           ),
         ),
         createGameButton(),
-        Text("Se creará una lista de preguntas con solo las preguntas favoritas.",
+        Text("Se creará una lista con solo las preguntas favoritas.",
             style: TextStyle(color: Colors.blue),
           textAlign: TextAlign.center,
         ),

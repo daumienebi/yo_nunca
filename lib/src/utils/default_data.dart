@@ -85,12 +85,6 @@ class DefaultData {
     {
       "id" : 0,
       "categoryId":1,
-      "description": "Yo nunca he intentado comprobar cuántos chicles me caben en la boca.",
-      "isFavourite": 0
-    },
-    {
-      "id" : 0,
-      "categoryId":1,
       "description": "Yo nunca he intentado comprobar cuántos caramemlos me caben en la boca.",
       "isFavourite": 0
     },
@@ -176,12 +170,6 @@ class DefaultData {
       "id" : 0,
       "categoryId":1,
       "description": "yo nunca me he comido una caja entera de helado de golpe.",
-      "isFavourite": 0
-    },
-    {
-      "id" : 0,
-      "categoryId":1,
-      "description": "Nunca me he cortado mal el pelo.",
       "isFavourite": 0
     },
     {
@@ -5595,6 +5583,18 @@ class DefaultData {
         "description": "Yo nunca he hablado y dado mimos con alguien toda la noche.",
         "isFavourite": 0
       },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca me he liado con mi primo/a.",
+        "isFavourite": 0
+      },
+      {
+        "id" : 0,
+        "categoryId":3,
+        "description": "Yo nunca he utilizado un preservativo femenino.",
+        "isFavourite": 0
+      },
 
     ];
 
@@ -5603,12 +5603,6 @@ class DefaultData {
       "id": 0,
       "categoryId": 4,
       "description": "Yo nunca he mentido diciendo que me gustaba lo que había cocinado mi pareja.",
-      "isFavourite": 0
-    },
-    {
-      "id": 0,
-      "categoryId": 4,
-      "description": "Yo nunca he alimentado a mi pareja con una cuchara.",
       "isFavourite": 0
     },
     {

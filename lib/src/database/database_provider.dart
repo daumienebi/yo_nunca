@@ -2,7 +2,7 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/models/question.dart';
-import 'dart:developer' as dev;
+//import 'dart:developer' as dev;
 import 'package:yo_nunca/src/utils/default_data.dart';
 
 ///Create the singleton pattern to ensure that the class only has one instance
@@ -81,21 +81,21 @@ class DatabaseProvider {
     //Execute the sql sentences
     try{
       Batch batch = database.batch();
-      dev.log("---------------CREATING TABLES-----------------");
+      //dev.log("---------------CREATING TABLES-----------------");
       //Category
       await database.execute(categorySql);
-      dev.log("Category table created");
+      //dev.log("Category table created");
       //Question
       await database.execute(questionSql);
-      dev.log("Question table created");
-      dev.log("Inserting data into category table...");
-      dev.log("---------------ALL TABLES CREATED---------------");
+      //dev.log("Question table created");
+      //dev.log("Inserting data into category table...");
+      //dev.log("---------------ALL TABLES CREATED---------------");
 
       //Insert default values
       await _insertDefaultValuesInBatch(batch);
 
     }on DatabaseException catch (ex){
-      dev.log(ex.toString());
+      //dev.log(ex.toString());
     }
   }
 
@@ -109,12 +109,12 @@ class DatabaseProvider {
     List<Question> coupleQuestions = defaultData.getCoupleQuestionsList;
     List<Question> hotQuestions = defaultData.getHotQuestionsList;
 
-    dev.log("Inserting data into category table...");
+    //dev.log("Inserting data into category table...");
     for (var element in categories) {
       //Category category = Category.fromMap(element);
       batch.insert('category', element.toMap());
     }
-    dev.log("Inserting data into question table...");
+    //dev.log("Inserting data into question table...");
     for (var element in normalQuestions) {
       batch.insert('question', element.toMap());
     }
@@ -128,7 +128,7 @@ class DatabaseProvider {
       batch.insert('question', element.toMap());
     }
     var result = batch.commit();
-    result.whenComplete(() => dev.log('Questions added'));
+    //result.whenComplete(() => dev.log('Questions added'));
   }
 
   Future close() async{
