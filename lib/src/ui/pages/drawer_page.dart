@@ -63,10 +63,12 @@ class DrawerPage extends StatelessWidget{
     final DateTime now = DateTime.now();
     final format = DateFormat.jm();
     String formattedString = format.format(now);
-
     if(formattedString.endsWith('AM')){
       greetingsText = 'Buenos días,';
-    }else if(formattedString.endsWith('PM') && now.hour > 8){
+    }else if(formattedString.endsWith('PM') &&
+        //Example of a formattedString could be 6:54 PM, so we split the string
+        //to get the item at the first index and compare if its past 8 o'clock
+        int.parse(formattedString.split(":")[0]) > 8){
       greetingsText = 'Buenas noches,';
     }else{
       greetingsText = 'Buenas tardes,';
