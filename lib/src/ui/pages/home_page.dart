@@ -261,9 +261,9 @@ class HomePage extends StatelessWidget {
                 fontFamily: 'OoohBaby',
                 fontWeight: FontWeight.bold,
                 fontSize: 17,
-                color: Colors.black87),
+                color: Colors.white),
           ),
-          style: TextButton.styleFrom(backgroundColor: Colors.orangeAccent),
+          style: TextButton.styleFrom(backgroundColor: Colors.pink[500]),
         )
       ],
     );

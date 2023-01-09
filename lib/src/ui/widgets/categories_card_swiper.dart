@@ -46,7 +46,11 @@ class CategoriesCardSwiper extends StatelessWidget {
                       //Try the child with a future builder to simulate a fake
                       //load
                       child: MyDecorations.homePageBoxText(
-                          categories[index].description, Colors.cyan)) ,
+                          categories[index].description,
+                          //if the image route is empty, that means the category was added by the user
+                          categories[index].imageRoute.isEmpty
+                      )
+                  ) ,
                 ));
             },
           itemCount: categories.length,

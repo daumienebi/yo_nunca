@@ -69,13 +69,13 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
                   labelStyle: TextStyle(color: Colors.black87, fontSize: 17),
                   hintText: 'Introduce el nombre de la categoría',
                   suffixIcon: Icon(
-                    Icons.category,
+                    Icons.list_alt_outlined,
                     color: Colors.black87,
                   )),
               maxLength: 25,
               validator: (String? value) {
                 if (value == null || value.isEmpty) {
-                  return "Por favor, introduce un nombre de categoría valída";
+                  return "Por favor, introduce un nombre de categoría valído";
                 }
                 return null;
               }),
@@ -195,7 +195,7 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
           style: btnStyle,
           onPressed: () async {
             if (_formKey.currentState!.validate()) {
-              _category = categoryNameController.text.toUpperCase();
+              _category = categoryNameController.text;
               Category newCategory = Category(
                   description: _category,
                   imageRoute: '');

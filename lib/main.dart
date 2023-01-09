@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
           Constants.routes.creditsPage : (_) => const CreditsPage(),
         },
         theme: ThemeData(
-          scaffoldBackgroundColor: Colors.orange[50],
+          scaffoldBackgroundColor: Colors.white,
           primaryColor: Colors.blueGrey,
           primarySwatch: Colors.blueGrey,
         ),

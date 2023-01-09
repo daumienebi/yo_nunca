@@ -37,22 +37,22 @@ class DefaultData {
   final categories = [
     {
       'id': 1,
-      'description': 'NORMAL',
+      'description': 'Normal',
       'imageRoute' : 'assets/images/smile.png'
     },
     {
       'id': 2,
-      'description': 'FIESTA',
+      'description': 'Fiesta',
       'imageRoute' : 'assets/images/drunk.png'
     },
     {
       'id': 3,
-      'description': 'TRAVIESOS',
+      'description': 'Traviesos',
       'imageRoute' : 'assets/images/naughty.png'
     },
     {
       'id': 4,
-      'description': 'PAREJAS',
+      'description': 'Vida Amorosa',
       'imageRoute' : 'assets/images/couple.png'
     },
   ];
@@ -649,7 +649,7 @@ class DefaultData {
     {
       "id": 0,
       "categoryId": 1,
-      "description": "Yo nunca he hecho un simpa en un restaurante.",
+      "description": "Yo nunca me he ido de un bar/restaurante sin pagar.",
       "isFavourite": 0
     },
     {
@@ -5354,7 +5354,13 @@ class DefaultData {
     {
       "id": 0,
       "categoryId": 4,
-      "description": "Yo nunca he mentido diciendo que me gustaba lo que había cocinado una amistad o mi pareja.",
+      "description": "Yo nunca he mentido diciendo que me gustaba lo que había cocinado mi pareja.",
+      "isFavourite": 0
+    },
+    {
+      "id": 0,
+      "categoryId": 4,
+      "description": "Yo nunca he alimentado a mi pareja con una cuchara.",
       "isFavourite": 0
     },
     {

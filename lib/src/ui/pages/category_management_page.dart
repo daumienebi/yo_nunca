@@ -234,7 +234,7 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
           style: btnStyle,
           onPressed: () async {
             if (_formKey.currentState!.validate()) {
-              _category = categoryNameController.text.toUpperCase();
+              _category = categoryNameController.text;
               String oldName = category.description;
               bool categoryExists = await provider.categoryExists(_category);
               int affectedRows = 0;

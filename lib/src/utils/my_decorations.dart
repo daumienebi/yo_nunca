@@ -8,15 +8,15 @@ class MyDecorations{
     const double fillPercent = 56.23; // fills 56.23% for container from bottom
     const double fillStop = (100 - fillPercent) / 100;
     final List<double> stops = [0.3, 0.9];
-    List<Color> colors = [Colors.white,Colors.orangeAccent];
+    List<Color> colors = [Colors.white,Colors.pinkAccent];
     return imgRoute!.isNotEmpty ? BoxDecoration(
       image: DecorationImage(
           image: AssetImage(imgRoute),
-          colorFilter: ColorFilter.mode(Colors.white.withOpacity(0.2), BlendMode.saturation),
+          //colorFilter: ColorFilter.mode(Colors.white.withOpacity(0.2), BlendMode.saturation),
           fit: BoxFit.scaleDown,
       ),
-      //color: Colors.amberAccent[100],
-      color: Colors.white,
+      //color: Colors.pinkAccent[400],
+      color: Colors.pink[500],
       borderRadius: const BorderRadius.all(Radius.circular(15)),
       boxShadow: [
         BoxShadow(
@@ -60,11 +60,11 @@ class MyDecorations{
     );
   }
 
-  static Text homePageBoxText(String content,Color textColor){
+  static Text homePageBoxText(String content,bool addedByUser){
     return Text(content,
       textAlign: TextAlign.center,style: TextStyle(
-          fontWeight: FontWeight.bold,fontSize: 35,
-          color: textColor,
+          fontWeight: FontWeight.bold,fontSize: 45,
+          color: addedByUser ? Colors.black87 : Colors.white,
           fontFamily: 'OoohBaby'
       ),
     );
