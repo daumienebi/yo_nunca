@@ -33,5 +33,5 @@ Flutter mobile app to create a simple question game.The app UI and the questions
   | Android | iOS | MacOS | Web |
   | :-----: | :-: | :---: | :-: |
   |   ✅    | ❌  |  ❌   | ❌  |
-
-  <a href='https://play.google.com/store/apps/details?id=com.devdaumienebi.yonunca' target="_blank"><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/></a>
+  
+ <a href='https://play.google.com/store/apps/details?id=com.devdaumienebi.yonunca' target="_blank"><img alt='Get it on Google Play' src='assets/images/google-play-badge.png'/></a>
