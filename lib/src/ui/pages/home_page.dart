@@ -27,52 +27,34 @@ class HomePage extends StatelessWidget {
       appBar: RoundAppBar(
         homePage: true,
       ),
-      floatingActionButton: ExpandableFab(
-        distance: 95.0,
-        children: [
-          ActionButton(
-            onPressed: () {
-              showModalBottomSheet(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return Container(
-                      height: 110,
-                      color: Colors.white,
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Compartir la app',textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  color: Colors.black54, fontSize: 20),
-                            ),
-                            SizedBox(height: 5,),
-                            Expanded(
-                              child: ListView(
-                                scrollDirection: Axis.horizontal,
-                                children: socialMediaButtons(context),
-                              ),
-                            ),
-                          ]),
-                    );
-                  });
-            },
-            icon: const Icon(Icons.share_sharp,color: Colors.white,),
-          ),
-          ActionButton(
-            onPressed: () async{
-              String appId = Constants.playStoreId;
-              final url = Uri.parse('https://play.google.com/store/apps/details?id=$appId');
-              await launchUrl(url,mode: LaunchMode.externalApplication);
-            },
-            icon: const Icon(Icons.star,color: Colors.white,),
-          ),
-          ActionButton(
-            onPressed: () =>
-                {Navigator.pushNamed(context, Constants.routes.newCategory)},
-            icon: const Icon(Icons.add,color: Colors.white,),
-          ),
-        ],
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.share_sharp),
+        onPressed: () {
+          showModalBottomSheet(
+              context: context,
+              builder: (BuildContext context) {
+                return Container(
+                  height: 110,
+                  color: Colors.white,
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Compartir la app',textAlign: TextAlign.left,
+                          style: TextStyle(
+                              color: Colors.black54, fontSize: 20),
+                        ),
+                        SizedBox(height: 5,),
+                        Expanded(
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: socialMediaButtons(context),
+                          ),
+                        ),
+                      ]),
+                );
+              });
+        },
       ),
       body: UpgradeAlert(
         upgrader: Upgrader(
@@ -85,7 +67,7 @@ class HomePage extends StatelessWidget {
           child: SingleChildScrollView(
             child: Center(
                 child: Container(
-                    margin: EdgeInsets.only(top: 50),
+                    margin: EdgeInsets.only(top: 35),
                     child: Column(children: [
                       Text(
                         "Desliza las cartas para ver las categorías y pulsa "
@@ -94,10 +76,29 @@ class HomePage extends StatelessWidget {
                         style: TextStyle(color: Colors.black54, fontSize: 16),
                       ),
                       CategoriesCardSwiper(categories: categories),
-                      SizedBox(
-                        height: 15,
+                      ElevatedButton(
+                        onPressed: (){
+
+                          Navigator.of(context).push(
+                            _createRoute(
+                                settingsName: Constants.routes.newCategory,
+                                page: const NewCategoryPage()
+                            )
+                          );
+                        },
+                        child: Text(
+                          "Añadir categoría",
+                          style: TextStyle(color: Colors.black87),
+                        ),
+                        style: TextButton.styleFrom(
+                            backgroundColor: Colors.greenAccent,
+                            shape: StadiumBorder()
+                        ),
                       ),
-                      mixedModeWidget(context),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      mixedModeWidget(context)
                     ]))),
           ),
         ),
@@ -208,11 +209,11 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Route _createRoute({required Object? arguments}) {
+  Route _createRoute({required page,required String settingsName, Object? arguments}) {
     return PageRouteBuilder(
-      settings: RouteSettings(name: Constants.routes.mixedModePage,
+      settings: RouteSettings(name: settingsName,
           arguments: arguments),
-      pageBuilder: (context, animation, secondaryAnimation) => const MixedModePage(),
+      pageBuilder: (context, animation, secondaryAnimation) => page,
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         return FadeTransition(
           opacity: animation,
@@ -240,7 +241,7 @@ class HomePage extends StatelessWidget {
               ]),
           child: Column(
               children: const [
-            Text("Dudas con cual categoría elegir?,prueba el Modo Mixto. ",
+            Text("Dudas con cual categoría elegir?,prueba el Modo Mixto",
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.black54, fontSize: 16)),
           ]),
@@ -251,19 +252,24 @@ class HomePage extends StatelessWidget {
             _setPrefsData();
             //The page receives a category with id : 0,because it is only going
             //to be used for this mode
-            Navigator.of(context).push(_createRoute(arguments:
-            Category(id: 0, description: 'MODO MIXTO', imageRoute: '')));
+            Navigator.of(context).push(
+                _createRoute(
+                  settingsName: Constants.routes.mixedModePage,
+                    page: const MixedModePage(),
+                    arguments:
+            Category(id: 0, description: 'MODO MIXTO', imageRoute: '')
+            ));
           },
           child: Text(
             'MODO MIXTO',
             style: TextStyle(
                 fontFamily: 'OoohBaby',
                 fontWeight: FontWeight.bold,
-                fontSize: 18,
+                fontSize: 20,
                 color: Colors.white),
           ),
-          style: TextButton.styleFrom(backgroundColor: Colors.green),
-        )
+          style: TextButton.styleFrom(backgroundColor: Colors.black87),
+        ),
       ],
     );
   }

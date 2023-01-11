@@ -33,10 +33,9 @@ class CategoriesCardSwiper extends StatelessWidget {
                 child: Hero(
                   tag: UniqueKey(), //or find another way to use a unique tag
                   child: Container(
-                      margin: const EdgeInsets.all(10),
+                      margin: const EdgeInsets.only(left: 10,
+                          right: 10,bottom: 10),
                       padding: const EdgeInsets.all(5),
-                      //decoration: MyDecorations.homePageBoxDecoration(
-                      //categories[index].imageRoute),
                       decoration:
                           MyDecorations.homePageBoxDecoration(
                             categories[index].imageRoute
