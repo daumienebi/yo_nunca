@@ -162,7 +162,7 @@ class DrawerPage extends StatelessWidget{
       trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
       onTap: (){
         //original url: https://www.termsfeed.com/live/df65fce0-9b00-48db-b48b-0bca473a6fe0
-        final url = Uri.parse('https://daumienebi.github.io/yo_nunca/');
+        final url = Uri.parse('https://daumienebi.github.io/yo_nunca/policy.html');
         _launchUrl(url);
       },
     ));
