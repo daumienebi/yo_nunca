@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:upgrader/upgrader.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
@@ -56,51 +55,43 @@ class HomePage extends StatelessWidget {
               });
         },
       ),
-      body: UpgradeAlert(
-        upgrader: Upgrader(
-          canDismissDialog: true,
-          durationUntilAlertAgain: const Duration(days: 1),
-          dialogStyle: Platform.isIOS ? UpgradeDialogStyle.cupertino :
-          UpgradeDialogStyle.material
-        ),
-        child: SafeArea(
-          child: SingleChildScrollView(
-            child: Center(
-                child: Container(
-                    margin: EdgeInsets.only(top: 35),
-                    child: Column(children: [
-                      Text(
-                        "Desliza las cartas para ver las categorías y pulsa "
-                            "\n para seleccionar ...",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.black54, fontSize: 16),
-                      ),
-                      CategoriesCardSwiper(categories: categories),
-                      ElevatedButton(
-                        onPressed: (){
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Center(
+              child: Container(
+                  margin: EdgeInsets.only(top: 35),
+                  child: Column(children: [
+                    Text(
+                      "Desliza las cartas para ver las categorías y pulsa "
+                          "\n para seleccionar ...",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.black54, fontSize: 16),
+                    ),
+                    CategoriesCardSwiper(categories: categories),
+                    ElevatedButton(
+                      onPressed: (){
 
-                          Navigator.of(context).push(
-                            _createRoute(
-                                settingsName: Constants.routes.newCategory,
-                                page: const NewCategoryPage()
-                            )
-                          );
-                        },
-                        child: Text(
-                          "Añadir categoría",
-                          style: TextStyle(color: Colors.black87),
-                        ),
-                        style: TextButton.styleFrom(
-                            backgroundColor: Colors.greenAccent,
-                            shape: StadiumBorder()
-                        ),
+                        Navigator.of(context).push(
+                          _createRoute(
+                              settingsName: Constants.routes.newCategory,
+                              page: const NewCategoryPage()
+                          )
+                        );
+                      },
+                      child: Text(
+                        "Añadir categoría",
+                        style: TextStyle(color: Colors.black87),
                       ),
-                      SizedBox(
-                        height: 5,
+                      style: TextButton.styleFrom(
+                          backgroundColor: Colors.greenAccent,
+                          shape: StadiumBorder()
                       ),
-                      mixedModeWidget(context)
-                    ]))),
-          ),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    mixedModeWidget(context)
+                  ]))),
         ),
       ),
     );
