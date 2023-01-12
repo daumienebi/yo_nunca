@@ -108,10 +108,7 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
           alignment: Alignment.bottomCenter,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(30)),
-            boxShadow: const [
-              BoxShadow(
-                  color: Colors.black54)
-            ],
+            color: Colors.red,
           ),
           child: Column(children: [
             SizedBox(
