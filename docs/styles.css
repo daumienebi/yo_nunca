@@ -67,6 +67,23 @@ h2 {
     padding: 12px 16px;
     cursor: pointer;
 }
+.source_btn{
+    color: white;
+    font-weight: 500;
+    font-size: 20px;
+    background: #000000;
+    border: none;
+    border-radius: 5px;
+    border-radius: 5px;
+    padding: 12px 16px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.source_btn:hover{
+    background: #3b4a4a;
+}
+
 .btn:hover {
     background: #468486;
 }
@@ -105,7 +122,7 @@ footer {
 
 footer li{
     display: inline-block;
-    
+
 }
 
 footer li a{
@@ -130,6 +147,11 @@ footer li a{
     }
 
     .btn{
+        display: block;
+        font-size: 18px;
+    }
+
+    .source_btn{
         display: block;
         font-size: 18px;
     }
