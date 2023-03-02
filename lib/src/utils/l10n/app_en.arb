@@ -1,0 +1,15 @@
+{
+  "language" : "English",
+  "@language" : {
+    "description" : "The current Language"
+  },
+  "parameterTest" : "Parameter Test {parameter}",
+  "@parameterTest": {
+    "description" : "Just in case i use it later",
+    "placeholders": {
+      "parameterTest" : {
+        "type" : "String"
+      }
+    }
+  }
+}
