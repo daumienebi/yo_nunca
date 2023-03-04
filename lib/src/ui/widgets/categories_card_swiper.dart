@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/ui/pages/pages.dart';
+import 'package:yo_nunca/src/utils/app_routes.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
 import 'package:yo_nunca/src/utils/my_decorations.dart';
 
@@ -77,7 +78,7 @@ class CategoriesCardSwiper extends StatelessWidget {
   Route _createRoute({required Object? arguments}) {
     return PageRouteBuilder(
       settings: RouteSettings(
-          name: Constants.routes.questionsPage, arguments: arguments),
+          name: AppRoutes.routeStrings.questionsPage, arguments: arguments),
       pageBuilder: (context, animation, secondaryAnimation) =>
           const QuestionPage(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {

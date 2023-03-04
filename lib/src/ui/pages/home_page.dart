@@ -9,8 +9,10 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
 import 'package:yo_nunca/src/ui/pages/pages.dart';
+import 'package:yo_nunca/src/utils/app_routes.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
 import 'package:yo_nunca/src/ui/widgets/widgets.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -39,7 +41,7 @@ class HomePage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          'Compartir la app',textAlign: TextAlign.left,
+                          AppLocalizations.of(context)!.shareApp,textAlign: TextAlign.left,
                           style: TextStyle(
                               color: Colors.black54, fontSize: 20),
                         ),
@@ -62,8 +64,7 @@ class HomePage extends StatelessWidget {
                   margin: EdgeInsets.only(top: 35),
                   child: Column(children: [
                     Text(
-                      "Desliza las cartas para ver las categorías y pulsa "
-                          "\n para seleccionar ...",
+                      AppLocalizations.of(context)!.swipeToViewCategories,
                       textAlign: TextAlign.center,
                       style: TextStyle(color: Colors.black54, fontSize: 16),
                     ),
@@ -73,13 +74,13 @@ class HomePage extends StatelessWidget {
 
                         Navigator.of(context).push(
                           _createRoute(
-                              settingsName: Constants.routes.newCategory,
+                              settingsName: AppRoutes.routeStrings.newCategory,
                               page: const NewCategoryPage()
                           )
                         );
                       },
                       child: Text(
-                        "Añadir categoría",
+                        AppLocalizations.of(context)!.addCategory,
                         style: TextStyle(color: Colors.black87),
                       ),
                       style: TextButton.styleFrom(
@@ -127,7 +128,7 @@ class HomePage extends StatelessWidget {
         ),
         onClicked: (){
           Navigator.pop(context);
-          share(SocialMedia.whatsapp);
+          share(SocialMedia.whatsapp,context);
         }));
     items.add(SizedBox(
       width: 15,
@@ -141,7 +142,7 @@ class HomePage extends StatelessWidget {
         ),
         onClicked: (){
           Navigator.pop(context);
-          share(SocialMedia.twitter);
+          share(SocialMedia.twitter,context);
         }));
     items.add(SizedBox(
       width: 15,
@@ -155,7 +156,7 @@ class HomePage extends StatelessWidget {
         ),
         onClicked: (){
           Navigator.pop(context);
-          share(SocialMedia.facebook);
+          share(SocialMedia.facebook,context);
         }));
     items.add(SizedBox(
       width: 15,
@@ -174,7 +175,7 @@ class HomePage extends StatelessWidget {
           await Clipboard.setData(ClipboardData(text:urlString));
           Navigator.pop(context);
           ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('Enlace copiado'),duration: Duration(
+              SnackBar(content: Text(AppLocalizations.of(context)!.linkCopied),duration: Duration(
                 seconds: 2
               ),)
           );
@@ -231,10 +232,12 @@ class HomePage extends StatelessWidget {
                     offset: Offset(0, 3))
               ]),
           child: Column(
-              children: const [
-            Text("Dudas con cual categoría elegir?,prueba el Modo Mixto",
+              children: [
+            Text(
+                AppLocalizations.of(context)!.mixedModeText,
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.black54, fontSize: 16)),
+                style: TextStyle(color: Colors.black54, fontSize: 16)
+            ),
           ]),
         ),
         ElevatedButton(
@@ -245,14 +248,20 @@ class HomePage extends StatelessWidget {
             //to be used for this mode
             Navigator.of(context).push(
                 _createRoute(
-                  settingsName: Constants.routes.mixedModePage,
+                  settingsName: AppRoutes.routeStrings.mixedModePage,
                     page: const MixedModePage(),
                     arguments:
-            Category(id: 0, description: 'MODO MIXTO', imageRoute: '')
+            Category(
+              //This category will not actually be added
+                id: 0,
+                description: AppLocalizations.of(context)!.mixedMode,
+                imageRoute: ''
+            )
             ));
           },
           child: Text(
-            'MODO MIXTO',
+            AppLocalizations.of(context)!.mixedMode
+            ,
             style: TextStyle(
                 fontFamily: 'OoohBaby',
                 fontWeight: FontWeight.bold,
@@ -266,10 +275,8 @@ class HomePage extends StatelessWidget {
   }
 
   /// Method to launch each share option for the [SocialMedia]
-  Future share(SocialMedia platform) async {
-    const text ='Prueba esta app de "YO NUNCA" personalizable '
-        'para jugar de fiesta con los amigos. ¡Juega con preguntas por defecto o'
-        ' agrega las tuyas!.';
+  Future share(SocialMedia platform,BuildContext context) async {
+    String text = AppLocalizations.of(context)!.shareAppText;
     String appId = Constants.playStoreId;
     final urlString = 'https://play.google.com/store/apps/details?id=$appId';
     final urlShare = Uri.encodeComponent(urlString);

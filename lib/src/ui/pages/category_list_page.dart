@@ -3,7 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
 import 'package:yo_nunca/src/ui/pages/category_management_page.dart';
-import 'package:yo_nunca/src/utils/constants.dart';
+import 'package:yo_nunca/src/utils/app_routes.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 // ignore_for_file: prefer_const_constructors
 
 class CategoryListPage extends StatelessWidget {
@@ -23,26 +24,26 @@ class CategoryListPage extends StatelessWidget {
           floatingActionButton: FloatingActionButton(
               child: Icon(Icons.add),
               onPressed: () =>
-                  Navigator.pushNamed(context, Constants.routes.newCategory)),
+                  Navigator.pushNamed(context, AppRoutes.routeStrings.newCategory)),
           appBar: AppBar(
-            title: Text('Gestionar Categorías'),
+            title: Text(AppLocalizations.of(context)!.manageCategories),
             bottom: TabBar(
               indicatorColor: Colors.orange[50],
               tabs: [
                 Tab(
                   child:
-                      categoryTabHeader(_categories.length, 'Mis Categorías'),
+                      categoryTabHeader(_categories.length, AppLocalizations.of(context)!.myCategories),
                 ),
                 Tab(
                   child: categoryTabHeader(
-                      _defaultCategories.length, 'Por Defecto'),
+                      _defaultCategories.length, AppLocalizations.of(context)!.defaultQuestions),
                 ),
               ],
             ),
           ),
           body: TabBarView(children: [
             userCategoryContents(_categories, context),
-            defaultCategoryContents(_defaultCategories)
+            defaultCategoryContents(_defaultCategories,context)
           ])),
     );
   }
@@ -70,12 +71,12 @@ class CategoryListPage extends StatelessWidget {
     ]);
   }
 
-  Widget defaultCategoryContents(List<Category> categories) {
+  Widget defaultCategoryContents(List<Category> categories,BuildContext context) {
     return Container(
       margin: EdgeInsets.only(top: 7),
       child: Column(children: [
         Text(
-          "Las siguientes categorías no se pueden modificar.",
+          AppLocalizations.of(context)!.unmodifiableCategories,
           style: TextStyle(color: Colors.black54, fontSize: 15),
         ),
         Expanded(
@@ -120,15 +121,15 @@ class CategoryListPage extends StatelessWidget {
       children: [
         Center(
             child: Text(
-          "Todavía no has agregado una categoría.",
+              AppLocalizations.of(context)!.noCategoryYet,
           style: TextStyle(color: Colors.black54, fontSize: 16),
         )),
         ElevatedButton(
           onPressed: () {
-            Navigator.pushNamed(context, Constants.routes.newCategory);
+            Navigator.pushNamed(context, AppRoutes.routeStrings.newCategory);
           },
           child: Text(
-            "Añadir categoría",
+            AppLocalizations.of(context)!.addCategory,
             style: TextStyle(color: Colors.black87),
           ),
           style: TextButton.styleFrom(backgroundColor: Colors.greenAccent),
@@ -202,17 +203,18 @@ class _CategoryTileState extends State<CategoryTile> {
                 if (snapshot.hasData) {
                   String text = '';
                   bool plural = snapshot.data > 1;
-                  text = plural ? 'preguntas' : 'pregunta';
+                  text = plural ? AppLocalizations.of(context)!.questions :
+                    AppLocalizations.of(context)!.question;
                   return RichText(
                       text: TextSpan(
                           text: snapshot.data > 0
                               ? '${snapshot.data} $text'
-                              : 'sin preguntas',
+                              : AppLocalizations.of(context)!.noQuestions,
                           style: countTxtStyle));
                 } else {
                   return RichText(
                       text: TextSpan(
-                          text: 'cargando...',
+                          text: AppLocalizations.of(context)!.loading,
                           style: TextStyle(
                               color: Colors.lightGreen[100], fontSize: 16)));
                 }
@@ -234,7 +236,7 @@ class _CategoryTileState extends State<CategoryTile> {
                         settings: RouteSettings(arguments: widget.category)));
                   },
                   child: Text(
-                    'Editar',
+                    AppLocalizations.of(context)!.edit,
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.w500),
                   ),
@@ -254,7 +256,7 @@ class _CategoryTileState extends State<CategoryTile> {
                         : null;
                   },
                   child: Text(
-                    'Borrar',
+                    AppLocalizations.of(context)!.delete,
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.w500),
                   ),
@@ -274,10 +276,9 @@ class _CategoryTileState extends State<CategoryTile> {
     await showDialog(
         context: context,
         builder: (_) => AlertDialog(
-              title: Text("Confirmar borrado"),
+              title: Text(AppLocalizations.of(context)!.confirmDelete),
               content:
-                  Text("Seguro que quieres borrar la categoría y todas las "
-                      "preguntas que tiene ?"),
+                  Text(AppLocalizations.of(context)!.deleteCategoryAndQuestions),
               actions: [
                 TextButton(
                     onPressed: () {
@@ -285,7 +286,7 @@ class _CategoryTileState extends State<CategoryTile> {
                           context, 'Return value'); //Return value to the caller
                     },
                     child: Text(
-                      'No',
+                      AppLocalizations.of(context)!.no,
                       style: TextStyle(color: Colors.red),
                     )),
                 TextButton(
@@ -294,7 +295,7 @@ class _CategoryTileState extends State<CategoryTile> {
                       Navigator.pop(context);
                     },
                     child: Text(
-                      'Si',
+                      AppLocalizations.of(context)!.yes,
                       style: TextStyle(color: Colors.green),
                     ))
               ],

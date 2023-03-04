@@ -6,6 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:yo_nunca/src/ui/pages/pages.dart';
 import 'package:yo_nunca/src/ui/widgets/round_app_bar.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 // ignore_for_file: prefer_const_constructors
 
 class DrawerPage extends StatelessWidget{
@@ -17,7 +18,7 @@ class DrawerPage extends StatelessWidget{
     return Scaffold(
       appBar: RoundAppBar(
         homePage: false,
-        title: Text('Opciones'),
+        title: Text(AppLocalizations.of(context)!.options),
       ),
         body: _mainBody(context)
     );
@@ -35,7 +36,7 @@ class DrawerPage extends StatelessWidget{
               onPressed: ()=> Navigator.of(context).pop(),
               style: TextButton.styleFrom(backgroundColor: Colors.redAccent),
               child: Text(
-                "Cerrar",
+                AppLocalizations.of(context)!.close,
                 style: TextStyle(color: Colors.white,),)
           )
         ],
@@ -50,28 +51,28 @@ class DrawerPage extends StatelessWidget{
       future: getLastEntry(),
       builder: (BuildContext context,AsyncSnapshot snapshot){
         if(snapshot.hasData){
-          return _lastEntryWidget(snapshot.data);
+          return _lastEntryWidget(snapshot.data,context);
         }else{
-          return _lastEntryWidget('');
+          return _lastEntryWidget('',context);
         }
       },
     );
   }
 
-  Widget _lastEntryWidget(String lastEntry){
+  Widget _lastEntryWidget(String lastEntry,BuildContext context){
     String greetingsText = '';
     final DateTime now = DateTime.now();
     final format = DateFormat.jm();
     String formattedString = format.format(now);
     if(formattedString.endsWith('AM')){
-      greetingsText = 'Buenos días,';
+      greetingsText = AppLocalizations.of(context)!.goodMorning;
     }else if(formattedString.endsWith('PM') &&
         //Example of a formattedString could be 6:54 PM, so we split the string
         //to get the item at the first index and compare if its past 8 o'clock
         int.parse(formattedString.split(":")[0]) > 8){
-      greetingsText = 'Buenas noches,';
+      greetingsText = AppLocalizations.of(context)!.goodNight;
     }else{
-      greetingsText = 'Buenas tardes,';
+      greetingsText = AppLocalizations.of(context)!.goodEvening;
     }
 
     return Container(
@@ -89,10 +90,13 @@ class DrawerPage extends StatelessWidget{
                 fontWeight: FontWeight.bold,fontSize: 23,color: Colors.cyanAccent[400]
             ),),
           SizedBox(height: 5),
-          Text(lastEntry.isNotEmpty ? "Jugaste por última vez el $lastEntry."
-            :"Todavía no jugaste ninguna partida.",//empty space ;)
+          Text(
+            lastEntry.isNotEmpty ?
+            AppLocalizations.of(context)!.lastEntryText(lastEntry) :
+            AppLocalizations.of(context)!.youHaveNotPlayedYet,//empty space ;)
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 15,color: Colors.white
+            style: TextStyle(
+                fontSize: 15,color: Colors.white
             ),
           )
         ],
@@ -136,8 +140,8 @@ class DrawerPage extends StatelessWidget{
 
     widgets.add(InkWell(
       child: ListTile(
-        title: Text("Gestionar Categorías",style: titleStyle,),
-        subtitle: Text("Todas las categorías con las preguntas añadidas.",
+        title: Text(AppLocalizations.of(context)!.manageCategories,style: titleStyle,),
+        subtitle: Text(AppLocalizations.of(context)!.questionsWithCategoriesText,
           style: subTitleStyle,),
         leading: Icon(Icons.list_alt_outlined),
         trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
@@ -147,8 +151,8 @@ class DrawerPage extends StatelessWidget{
     ));
 
     widgets.add(ListTile(
-        title: Text("Favoritos",style: titleStyle),
-        subtitle: Text("Lista de tus preguntas destacadas.",style: subTitleStyle,),
+        title: Text(AppLocalizations.of(context)!.favourites,style: titleStyle),
+        subtitle: Text(AppLocalizations.of(context)!.favouriteQuestionsList,style: subTitleStyle,),
         leading: Icon(Icons.favorite,color: Colors.red,),
         trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
         onTap: ()=>Navigator.of(context).push(
@@ -156,8 +160,8 @@ class DrawerPage extends StatelessWidget{
     ));
 
     widgets.add(ListTile(
-      title: Text("Privacidad",style: titleStyle),
-      subtitle: Text("Gestion de tus datos etc...",style: subTitleStyle,),
+      title: Text(AppLocalizations.of(context)!.privacy,style: titleStyle),
+      subtitle: Text(AppLocalizations.of(context)!.dataManagement,style: subTitleStyle,),
       leading: Icon(Icons.privacy_tip_outlined),
       trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
       onTap: (){
@@ -168,8 +172,8 @@ class DrawerPage extends StatelessWidget{
     ));
 
     widgets.add(ListTile(
-        title: Text("Valorar",style: titleStyle),
-        subtitle: Text("Si te gustó la app,puedes calificarlo con 5 estrellas o sugerir mejoras.", style: subTitleStyle,),
+        title: Text(AppLocalizations.of(context)!.rateTheApp,style: titleStyle),
+        subtitle: Text(AppLocalizations.of(context)!.rateTheAppText, style: subTitleStyle,),
         leading: Icon(FontAwesomeIcons.googlePlay,),
         trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
         onTap: () async{
@@ -180,8 +184,8 @@ class DrawerPage extends StatelessWidget{
 
     ));
     widgets.add(ListTile(
-      title: Text("Créditos",style: titleStyle),
-      subtitle: Text("Aportaciones al proyecto.", style: subTitleStyle,),
+      title: Text(AppLocalizations.of(context)!.credits,style: titleStyle),
+      subtitle: Text(AppLocalizations.of(context)!.contributionsToTheProject, style: subTitleStyle,),
       leading: Icon(Icons.people_outline,),
       trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
       onTap: ()=> Navigator.push(context, _createRoute(page: CreditsPage())),
@@ -189,8 +193,8 @@ class DrawerPage extends StatelessWidget{
     ));
 
     widgets.add(ListTile(
-      title: Text("Contactar con el desarrollador",style: titleStyle),
-      subtitle: Text("Sobre cualquier error o duda acerca de la app.",
+      title: Text(AppLocalizations.of(context)!.contactDeveloper,style: titleStyle),
+      subtitle: Text(AppLocalizations.of(context)!.contactDeveloperSubtitle,
         style: subTitleStyle,
       ),
       leading: Icon(Icons.contact_mail_outlined,),

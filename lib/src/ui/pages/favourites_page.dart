@@ -4,8 +4,9 @@ import 'package:provider/provider.dart';
 import 'package:yo_nunca/src/models/question.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
 import 'package:yo_nunca/src/ui/widgets/widgets.dart';
-import 'package:yo_nunca/src/utils/constants.dart';
+import 'package:yo_nunca/src/utils/app_routes.dart';
 import 'package:yo_nunca/src/utils/messages.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FavouritesPage extends StatefulWidget {
   const FavouritesPage({Key? key = const Key("favouritePage")}); //wtf
@@ -30,7 +31,7 @@ class _FavouritesPageState extends State<FavouritesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: RoundAppBar(
-          title: Text('Preguntas favoritas'),
+          title: Text(AppLocalizations.of(context)!.favouriteQuestions),
           homePage: false,
         ),
         body: FutureBuilder(
@@ -41,7 +42,7 @@ class _FavouritesPageState extends State<FavouritesPage> {
               _favouriteQuestions = snapshot.data;
             } else if (snapshot.hasError) {
               futureWidgets = <Widget>[
-                Messages.errorWidget('No se pudieron cargar las preguntas :('),
+                Messages.errorWidget(AppLocalizations.of(context)!.questionsCouldNotBeLoaded),
               ];
             }
             return Column(children: [
@@ -59,9 +60,7 @@ class _FavouritesPageState extends State<FavouritesPage> {
                                 scale: 7,
                               ),
                               Text(
-                                "Todavía no hay preguntas favoritas."
-                                "Pulsa el icono ❤ de una pregunta "
-                                "para añadirlo a los favoritos.",
+                                AppLocalizations.of(context)!.noFavouriteQuestionsYet,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize: 17, color: Colors.black54
@@ -96,7 +95,7 @@ class _FavouritesPageState extends State<FavouritesPage> {
           ),
         ),
         createGameButton(),
-        Text("Se creará una lista con solo las preguntas favoritas.",
+        Text(AppLocalizations.of(context)!.newGameWithOnlyFavourites,
             style: TextStyle(color: Colors.blue),
           textAlign: TextAlign.center,
         ),
@@ -131,10 +130,10 @@ class _FavouritesPageState extends State<FavouritesPage> {
         backgroundColor: Colors.greenAccent);
     return ElevatedButton(
       onPressed: () {
-        Navigator.pushNamed(context, Constants.routes.favouriteQuestionPage);
+        Navigator.pushNamed(context, AppRoutes.routeStrings.favouriteQuestionPage);
       },
       child: Text(
-        'Crear juego',
+        AppLocalizations.of(context)!.shareApp,
         style: TextStyle(color: Colors.black87),
       ),
       style: btnStyle,

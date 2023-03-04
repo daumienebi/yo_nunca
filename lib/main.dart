@@ -1,11 +1,13 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:upgrader/upgrader.dart';
-import 'package:yo_nunca/src/ui/pages/pages.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
-import 'package:yo_nunca/src/utils/constants.dart';
+import 'package:yo_nunca/src/utils/app_routes.dart';
+import 'package:yo_nunca/src/utils/l10n/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,22 +31,16 @@ class MyApp extends StatelessWidget {
               ? UpgradeDialogStyle.cupertino
               : UpgradeDialogStyle.material),
       child: MaterialApp(
-        initialRoute: Constants.routes.homepage,
+        initialRoute: AppRoutes.routeStrings.homepage,
         debugShowCheckedModeBanner: false,
-        routes: {
-          Constants.routes.homepage: (_) => const HomePage(),
-          Constants.routes.questionsPage: (_) => const QuestionPage(),
-          Constants.routes.favouritesPage: (_) => const FavouritesPage(),
-          Constants.routes.newCategory: (_) => const NewCategoryPage(),
-          Constants.routes.favouriteQuestionPage: (_) =>
-              const FavouriteQuestionPage(),
-          Constants.routes.mixedModePage: (_) => const MixedModePage(),
-          Constants.routes.categoryManagementPage: (_) =>
-              const CategoryManagementPage(),
-          Constants.routes.categoryListPage: (_) => const CategoryListPage(),
-          Constants.routes.drawerPage: (_) => const DrawerPage(),
-          Constants.routes.creditsPage: (_) => const CreditsPage(),
-        },
+        routes: AppRoutes.allRoutes,
+        supportedLocales: L10n.all,
+        localizationsDelegates: [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate
+        ],
         theme: ThemeData(
           scaffoldBackgroundColor: Colors.white,
           primaryColor: Colors.blueGrey,

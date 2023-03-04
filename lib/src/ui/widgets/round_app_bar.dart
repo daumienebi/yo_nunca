@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:yo_nunca/src/ui/pages/pages.dart';
 import 'package:yo_nunca/src/ui/widgets/widgets.dart';
-import 'package:yo_nunca/src/utils/constants.dart';
+import 'package:yo_nunca/src/utils/app_routes.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class RoundAppBar extends StatelessWidget with PreferredSizeWidget {
   final double barHeight = 10;
@@ -40,7 +41,7 @@ class RoundAppBar extends StatelessWidget with PreferredSizeWidget {
             onPressed: () => showSearch(
                 context: context,
                 delegate:
-                    CategorySearchDelegate(hintText: 'Buscar categorías')),
+                    CategorySearchDelegate(hintText: AppLocalizations.of(context)!.searchCategories)),
             child: const Center(
               child:  Icon(
                 Icons.search,
@@ -83,7 +84,7 @@ class RoundAppBar extends StatelessWidget with PreferredSizeWidget {
 
   Route createRouteWithSlideAnimation() {
     return PageRouteBuilder(
-      settings: RouteSettings(name: Constants.routes.drawerPage,),
+      settings: RouteSettings(name: AppRoutes.routeStrings.drawerPage,),
       pageBuilder: (context, animation, secondaryAnimation) => const DrawerPage(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         const begin = Offset(-1.5, 1);

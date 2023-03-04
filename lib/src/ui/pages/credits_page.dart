@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:yo_nunca/src/ui/widgets/round_app_bar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CreditsPage extends StatelessWidget{
   const CreditsPage({Key? key}):super(key: key);
@@ -11,13 +12,13 @@ class CreditsPage extends StatelessWidget{
     final txtStyle = TextStyle(color: Colors.green,fontSize: 20);
     return Scaffold(
       appBar: RoundAppBar(
-        title: Text('Créditos'),
+        title: Text(AppLocalizations.of(context)!.credits),
         homePage: false,
       ),
       body: Container(
         margin: EdgeInsets.all(5),
         child: ListView(
-          children: creditsList(),
+          children: creditsList(context),
         ),
       )
     );
@@ -45,7 +46,7 @@ class CreditsPage extends StatelessWidget{
     );
   }
 
-  List<Widget> creditsList(){
+  List<Widget> creditsList(BuildContext context){
     List<Widget> widgets =  [];
 
     //Psycat Games
@@ -53,8 +54,7 @@ class CreditsPage extends StatelessWidget{
         creditTile(
             title: 'Psycat Games',
             url: 'https://psycatgames.com',
-            subtitle: 'Aportando una enorme lista de preguntas. '
-                'Visita la página web para mas juegos.',
+            subtitle: AppLocalizations.of(context)!.psyCatGamesCredit,
             imageAsset:'assets/images/psycatgames.png')
     );
 
@@ -63,8 +63,7 @@ class CreditsPage extends StatelessWidget{
         creditTile(
             title: 'Fran Visconti',
             url: 'https://www.instagram.com/franvisconti',
-            subtitle: 'Contribuidor de una lista con mas de 350 preguntas. '
-                '\nInstagram: @franvisconti',
+            subtitle: AppLocalizations.of(context)!.franViscontiCredit,
           imageAsset: ''
         )
     );
@@ -74,7 +73,7 @@ class CreditsPage extends StatelessWidget{
         creditTile(
             title: 'Flaticon',
             url: 'https://www.flaticon.com/',
-            subtitle: 'Plataforma con distintos tipos de iconos.',
+            subtitle: AppLocalizations.of(context)!.flatIconCredit,
             imageAsset: 'assets/images/flaticon.png'
         )
     );
@@ -85,7 +84,7 @@ class CreditsPage extends StatelessWidget{
             title: 'Mzdol',
             url: 'https://www.mdzol.com/sociedad/2021/3/10/yo-nunca-70-ideas-de-'
                 'preguntas-para-jugar-con-tus-amigos-144225.html',
-            subtitle: 'Algunas preguntas fueron recogidas de la página.',
+            subtitle: AppLocalizations.of(context)!.mzdolCredit,
             imageAsset: 'assets/images/mzdol.png'
         )
     );
@@ -95,7 +94,7 @@ class CreditsPage extends StatelessWidget{
         creditTile(
             title: 'Psicología y Mente',
             url: 'https://psicologiaymente.com/miscelanea/preguntas-yo-nunca',
-            subtitle: 'Varias preguntas fueron recogidas de la página.',
+            subtitle: AppLocalizations.of(context)!.psicologiaYMenteCredit,
             imageAsset: 'assets/images/psicologiaymente.png'
         )
     );
@@ -105,7 +104,7 @@ class CreditsPage extends StatelessWidget{
         creditTile(
             title: 'Business Insider',
             url: 'https://www.businessinsider.es/67-preguntas-picantes-hacerle-novio-novia-1076687',
-            subtitle: 'Algunas preguntas fueron recogidas de la página.',
+            subtitle: AppLocalizations.of(context)!.businessInsider,
             imageAsset: ''
         )
     );
