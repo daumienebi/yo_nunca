@@ -37,3 +37,5 @@ Flutter mobile app to create a simple question game.The app UI and the questions
   |   ✅    | ❌  |  ❌   | ❌  |
   
  <a href='https://play.google.com/store/apps/details?id=com.devdaumienebi.yonunca' target="_blank"><img alt='Get it on Google Play' src='assets/images/google-play-badge.png'/></a>
+ 
+⛔️ **You are not permitted to publish this app as your own.** ⛔️
