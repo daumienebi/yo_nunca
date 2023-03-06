@@ -4,7 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/models/question.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
-import 'package:yo_nunca/src/utils/constants.dart';
+import 'package:yo_nunca/src/utils/app_routes.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:yo_nunca/src/utils/messages.dart';
 import 'dart:math';
 
@@ -88,14 +89,13 @@ class _QuestionWidgetState extends State<QuestionWidget> {
                           : _noQuestionWidget();
                 } else if (snapshot.hasError) {
                   futureWidgets = <Widget>[
-                    Messages.errorWidget(
-                        'No se pudieron cargar las preguntas :('),
+                    Messages.errorWidget(AppLocalizations.of(context)!.questionsCouldNotBeLoaded),
                   ];
                 } else {
                   futureWidgets = <Widget>[
                     Messages.circularLoadingWidget(widget.mixedMode ?
-                    'Cargando preguntas de todas las categorías...' :
-                    'Cargando preguntas ...'),
+                    AppLocalizations.of(context)!.loadingQuestionsFromAllCategories :
+                    AppLocalizations.of(context)!.loadingQuestions),
                   ];
                 }
                 return Center(
@@ -134,8 +134,8 @@ class _QuestionWidgetState extends State<QuestionWidget> {
   /// Displays this widget when no data is received or when the category has
   /// no questions
   _noQuestionWidget() {
-    String part1 = 'No hay preguntas disponibles para la categoría ';
-    String part2 = ', ve a las categorías para añadirlas.';
+    String part1 = AppLocalizations.of(context)!.noQuestionWidgetPart1;
+    String part2 = AppLocalizations.of(context)!.noQuestionWidgetPart2;
     final textStyle = TextStyle(color: Colors.black54,fontSize: 17);
     return <Widget>[
       Padding(
@@ -168,9 +168,13 @@ class _QuestionWidgetState extends State<QuestionWidget> {
       ),
       ElevatedButton(
         onPressed: () {
-          Navigator.pushNamed(context, Constants.routes.categoryListPage);
+          Navigator.pushNamed(context, AppRoutes.routeStrings.categoryListPage);
         },
-        child: Text('Ir a Categorías',style: TextStyle(color: Colors.black87),
+        child: Text(
+          AppLocalizations.of(context)!.goToCategories,
+          style: TextStyle(
+              color: Colors.black87
+          ),
         ),
         style: TextButton.styleFrom(backgroundColor: Colors.greenAccent),
       )
@@ -198,7 +202,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
               await provider.removeFromFavourites(question);
               snackBar = SnackBar(
                 duration: Duration(seconds: 1),
-                content: const Text('Pregunta eliminada de favoritos'),
+                content: Text(AppLocalizations.of(context)!.questionDeletedFromFavourites),
               );
               ScaffoldMessenger.of(context).showSnackBar(snackBar);
             } else {
@@ -206,7 +210,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
               await provider.addToFavourites(question);
               snackBar = SnackBar(
                 duration: Duration(seconds: 1),
-                content: const Text('Pregunta añadida a favoritos'),
+                content: Text(AppLocalizations.of(context)!.questionAddedToFavourites),
               );
               ScaffoldMessenger.of(context).showSnackBar(snackBar);
             }
@@ -263,7 +267,12 @@ class _QuestionWidgetState extends State<QuestionWidget> {
   Widget _previousQuestionButton() {
     //Previous question button
     final btnStyle = ElevatedButton.styleFrom(
-        textStyle: TextStyle(color: Colors.blue, fontSize: 17));
+        textStyle: TextStyle(
+            color: Colors.blue,
+            fontSize: 17
+        ),
+        shape: StadiumBorder()
+    );
     return ElevatedButton(
       key: Key('previousButton'),
       onPressed: () {
@@ -274,7 +283,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
           });
         }
       },
-      child: Text('Anterior'),
+      child: Text(AppLocalizations.of(context)!.previous),
       style: btnStyle,
     );
   }
@@ -282,7 +291,12 @@ class _QuestionWidgetState extends State<QuestionWidget> {
   /// [listLength] - to obtain the length of the questions list
   Widget _nextQuestionButton(int listLength) {
     final btnStyle = ElevatedButton.styleFrom(
-        textStyle: TextStyle(color: Colors.blue, fontSize: 17));
+        textStyle: TextStyle(
+            color: Colors.blue,
+            fontSize: 17
+        ),
+        shape: StadiumBorder()
+    );
     return ElevatedButton(
       key: Key('nextButton'),
       onPressed: (){
@@ -292,7 +306,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
           });
         }
       },
-      child: Text('Siguiente'),
+      child: Text(AppLocalizations.of(context)!.next),
       style: btnStyle,
     );
   }

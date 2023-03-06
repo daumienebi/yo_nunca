@@ -1,6 +1,7 @@
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/models/question.dart';
 
+//help from https://www.bezkoder.com/dart-flutter-parse-json-string-array-to-object-list/#DartFlutter_parse_JSON_array_into_List
 class DefaultData {
   List<Question> _normalQuestionsList = [];
   List<Question> _partyQuestionsList = [];

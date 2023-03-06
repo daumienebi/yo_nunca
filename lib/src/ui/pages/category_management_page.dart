@@ -5,8 +5,8 @@ import 'package:yo_nunca/src/models/question.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
 import 'package:yo_nunca/src/ui/widgets/round_app_bar.dart';
 import 'package:yo_nunca/src/utils/messages.dart';
-//import 'dart:developer' as dev;
 import 'package:yo_nunca/src/utils/my_decorations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 // ignore_for_file: prefer_const_constructors
 
 class CategoryManagementPage extends StatefulWidget {
@@ -42,7 +42,7 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
 
     categoryNameController.text = category.description;
     return Scaffold(
-        appBar: RoundAppBar(title: Text('Editar Categoría'),homePage: false,),
+        appBar: RoundAppBar(title: Text(AppLocalizations.of(context)!.editCategory),homePage: false,),
         body: Container(
           margin: EdgeInsets.all(10),
           child: Column(
@@ -52,7 +52,7 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
               Container(
                   padding: EdgeInsets.only(left: 15),
                   width: double.infinity,
-                  child: Text('Pulsa sobre una pregunta para modificarla',
+                  child: Text(AppLocalizations.of(context)!.modifyQuestionText,
                     style: TextStyle(color: Colors.black54, fontSize: 15),
                   )),
               SizedBox(
@@ -84,13 +84,13 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  labelText: 'Nombre',
+                  labelText: AppLocalizations.of(context)!.name,
                   labelStyle: TextStyle(color: Colors.black87,fontSize: 20),
-                  hintText: 'Introduce el nombre de la categoría',
+                  hintText: AppLocalizations.of(context)!.introduceCategoryName,
                   suffixIcon: Icon(Icons.category)),
               validator: (String? value) {
                 if (value == null || value.isEmpty) {
-                  return 'Por favor, introduce un nombre de categoría valída';
+                  return AppLocalizations.of(context)!.introduceCategoryNameValidator;
                 }
                 return null;
               }),
@@ -103,7 +103,7 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
     return TextButton(
       onPressed: () => _popUpForm(null,category, false),
       child: Text(
-        "Añadir Pregunta",
+        AppLocalizations.of(context)!.addQuestion,
         style: TextStyle(color: Colors.black),
       ),
       style: TextButton.styleFrom(backgroundColor: Colors.greenAccent),
@@ -121,14 +121,14 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
           Provider.of<QuestionProvider>(context, listen: true);
           return AlertDialog(
             title: isEditMode
-                ? const Text('Modificar pregunta')
-                : const Text('Añadir pregunta'),
+                ? Text(AppLocalizations.of(context)!.modifyQuestion)
+                : Text(AppLocalizations.of(context)!.addQuestion),
             content: SingleChildScrollView(
               child: Column(
                 children: [
                   TextFormField(
                     controller: _questionController,
-                    decoration: MyDecorations.questionField(),
+                    decoration: MyDecorations.questionField(context),
                     maxLines: null,
                   ),
                 ],
@@ -137,7 +137,10 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: Text('Cancelar',style: TextStyle(color: Colors.red),),
+                child: Text(
+                  AppLocalizations.of(context)!.cancel,
+                  style: TextStyle(color: Colors.red),
+                ),
               ),
               TextButton(
                 onPressed: () async {
@@ -165,7 +168,10 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
                   }
                   Navigator.pop(context); // instead of dispose();
                 },
-                child: Text('Aceptar',style: TextStyle(color: Colors.green)),
+                child: Text(
+                    AppLocalizations.of(context)!.accept,
+                    style: TextStyle(color: Colors.green)
+                ),
               ),
             ],
           );
@@ -184,7 +190,7 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
           }else if(snapshot.hasError){
             futureWidgets = <Widget>[
               Messages.errorWidget(
-                  'No se pudieron cargar las preguntas :('),
+                  AppLocalizations.of(context)!.questionsCouldNotBeLoaded),
             ];
           }
           return ListView.separated(
@@ -246,7 +252,7 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
               _showSnackBar(affectedRows,categoryExists,oldName,_category);
             }
           },
-          child: Text("Guardar"));
+          child: Text(AppLocalizations.of(context)!.save));
     });
   }
 
@@ -263,14 +269,14 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
     if(count == 0 && !categoryExists){
       snackBar = SnackBar(
           duration: Duration(seconds: 1),
-          content: Text('Error interno,no se pudo modificar la categoría')
+          content: Text(AppLocalizations.of(context)!.categoryNotModifiedError)
       );
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
     if(categoryExists && oldName != newName){
       snackBar = SnackBar(
           duration: Duration(seconds: 1),
-          content: Text('Ya existe una categoría con ese nombre')
+          content: Text(AppLocalizations.of(context)!.categoryNameExists)
       );
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
@@ -278,7 +284,7 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
     if(count > 0 && (!categoryExists || oldName == newName)){
       snackBar = SnackBar(
           duration: Duration(seconds: 1),
-          content: Text('Categoría modificada.')
+          content: Text(AppLocalizations.of(context)!.categoryModified)
       );
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
       Navigator.pop(context);

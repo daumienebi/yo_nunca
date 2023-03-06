@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/ui/pages/pages.dart';
+import 'package:yo_nunca/src/utils/app_routes.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
 import 'package:yo_nunca/src/utils/my_decorations.dart';
+import 'package:yo_nunca/src/utils/shared_preferences_util.dart';
 
 class CategoriesCardSwiper extends StatelessWidget {
   final List<Category> categories;
@@ -26,7 +28,7 @@ class CategoriesCardSwiper extends StatelessWidget {
                 onTap: () async {
                   //The idea is to save the date the user enters a category
                   // to view the questions
-                  await _setPrefsData();
+                  await SharedPreferencesUtil.setUserLastEntry();
                   Navigator.of(context)
                       .push(_createRoute(arguments: categories[index]));
                 },
@@ -62,22 +64,10 @@ class CategoriesCardSwiper extends StatelessWidget {
     ]);
   }
 
-  Future<void> _setPrefsData() async {
-    final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-    final SharedPreferences prefs = await _prefs;
-    String data = '';
-    int year = DateTime.now().year;
-    int day = DateTime.now().day;
-    int month = DateTime.now().month;
-    var months = Constants.monthsInSpanish;
-    data = '$day de ${months.elementAt(month - 1)} del $year';
-    prefs.setString('lastEntry', data);
-  }
-
   Route _createRoute({required Object? arguments}) {
     return PageRouteBuilder(
       settings: RouteSettings(
-          name: Constants.routes.questionsPage, arguments: arguments),
+          name: AppRoutes.routeStrings.questionsPage, arguments: arguments),
       pageBuilder: (context, animation, secondaryAnimation) =>
           const QuestionPage(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {

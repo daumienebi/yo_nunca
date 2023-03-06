@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
-import 'package:yo_nunca/src/ui/pages/home_page.dart';
-import 'package:yo_nunca/src/utils/constants.dart';
+import 'package:yo_nunca/src/utils/app_routes.dart';
 
 void main(){
   //Simple test to make sure the home page is created
@@ -15,12 +14,8 @@ void main(){
           ChangeNotifierProvider(create: (_) => QuestionProvider()),
         ],
       child: MaterialApp(
-        initialRoute: Constants.routes.homepage,
-        routes: {
-          Constants.routes.homepage : (_){
-            return HomePage();
-          }
-        },
+        initialRoute: AppRoutes.routeStrings.homepage,
+        routes: AppRoutes.allRoutes
       ),
     );
     await tester.pumpWidget(homePage);

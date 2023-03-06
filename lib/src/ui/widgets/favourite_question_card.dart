@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:yo_nunca/src/models/question.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
 import 'package:yo_nunca/src/utils/messages.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FavouriteQuestionCard extends StatefulWidget {
   const FavouriteQuestionCard({Key? key}) : super(key: key);
@@ -68,15 +69,14 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
         builder: (context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {
           } else if (snapshot.hasError) {
-            return Messages.errorWidget('Error: No se pudieron cargar '
-                'las preguntas :(');
+            return Messages.errorWidget(AppLocalizations.of(context)!.questionsCouldNotBeLoaded);
           } else {
-            return Messages.circularLoadingWidget('Creando juego...');
+            return Messages.circularLoadingWidget(AppLocalizations.of(context)!.creatingGame);
           }
           //main content to return with the data
           return Column(
             children: [
-              Text("Desliza en cualquier dirección para cambiar de pregunta.",
+              Text(AppLocalizations.of(context)!.swipeInAnyDirection,
                 style: TextStyle(fontSize: 15,color: Colors.black54),
                 textAlign: TextAlign.center,),
               SizedBox(
@@ -157,7 +157,7 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
           visible = false;
         });
       },
-      child: Text('Reiniciar juego',style: TextStyle(color: Colors.black87),),
+      child: Text(AppLocalizations.of(context)!.restartGame,style: TextStyle(color: Colors.black87),),
       style: btnStyle,
     );
   }

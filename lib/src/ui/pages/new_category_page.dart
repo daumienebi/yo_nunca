@@ -6,6 +6,7 @@ import 'package:yo_nunca/src/models/question.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
 import 'package:yo_nunca/src/ui/widgets/widgets.dart';
 import 'package:yo_nunca/src/utils/my_decorations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NewCategoryPage extends StatefulWidget {
   const NewCategoryPage({Key? key}) : super(key: key);
@@ -26,7 +27,7 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: RoundAppBar(
-        title: Text('Categoría nueva'),
+        title: Text(AppLocalizations.of(context)!.newCategory),
         homePage: false,
       ),
       body: Container(
@@ -65,9 +66,9 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
                     borderSide: BorderSide(color: Colors.black87),
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  labelText: 'Nombre',
+                  labelText: AppLocalizations.of(context)!.name,
                   labelStyle: TextStyle(color: Colors.black87, fontSize: 17),
-                  hintText: 'Introduce el nombre de la categoría',
+                  hintText: AppLocalizations.of(context)!.introduceCategoryName,
                   suffixIcon: Icon(
                     Icons.list_alt_outlined,
                     color: Colors.black87,
@@ -75,7 +76,7 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
               maxLength: 25,
               validator: (String? value) {
                 if (value == null || value.isEmpty) {
-                  return "Por favor, introduce un nombre de categoría valído";
+                  return AppLocalizations.of(context)!.introduceCategoryNameValidator;
                 }
                 return null;
               }),
@@ -88,7 +89,7 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
     return TextButton(
       onPressed: () => _popUpForm(isEditMode: false),
       child: Text(
-        "Añadir Pregunta",
+        AppLocalizations.of(context)!.addQuestion,
         style: TextStyle(color: Colors.black),
       ),
       style: TextButton.styleFrom(backgroundColor: Colors.greenAccent),
@@ -103,13 +104,16 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
         _questionController.text = question?.description ?? "";
         return Consumer(builder: (_, CategoryProvider provider, __) {
           return AlertDialog(
-            title: Text(isEditMode ? 'Modificar pregunta' : 'Añadir pregunta'),
+            title: Text(
+                isEditMode ? AppLocalizations.of(context)!.modifyQuestion :
+                AppLocalizations.of(context)!.addQuestion
+            ),
             content: SingleChildScrollView(
               child: Column(
                 children: [
                   TextFormField(
                     controller: _questionController,
-                    decoration: MyDecorations.questionField(),
+                    decoration: MyDecorations.questionField(context),
                     maxLines: null,
                   ),
                 ],
@@ -118,7 +122,10 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: Text('Cancelar',style: TextStyle(color: Colors.red)),
+                child: Text(
+                    AppLocalizations.of(context)!.cancel,
+                    style: TextStyle(color: Colors.red)
+                ),
               ),
               TextButton(
                 onPressed: () async {
@@ -142,7 +149,10 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
                   }
                   Navigator.pop(context);
                 },
-                child: Text('Aceptar',style: TextStyle(color: Colors.green)),
+                child: Text(
+                    AppLocalizations.of(context)!.accept,
+                    style: TextStyle(color: Colors.green)
+                ),
               ),
             ],
           );
@@ -215,7 +225,7 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
               _showSnackBar(categoryId, categoryExists);
             }
           },
-          child: Text("Guardar"));
+          child: Text(AppLocalizations.of(context)!.save));
     });
   }
 
@@ -226,21 +236,19 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
     if (id == 0 && !categoryExists) {
       snackBar = SnackBar(
           duration: Duration(seconds: 1),
-          content: Text('Error interno,no se '
-              'pudo añadir la categoría'));
+          content: Text(AppLocalizations.of(context)!.categoryNotAdded));
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
     if (categoryExists) {
       snackBar = SnackBar(
           duration: Duration(seconds: 1),
-          content: Text('Ya existe una categoría'
-              ' con ese nombre'));
+          content: Text(AppLocalizations.of(context)!.categoryNameExists));
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
     //When the category gets inserted
     if (id > 0 && !categoryExists) {
       snackBar = SnackBar(
-          duration: Duration(seconds: 1), content: Text('Categoría añadida.'));
+          duration: Duration(seconds: 1), content: Text(AppLocalizations.of(context)!.categoryAdded));
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
       Navigator.pop(context);
     }

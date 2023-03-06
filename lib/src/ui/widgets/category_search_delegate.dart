@@ -3,7 +3,10 @@ import 'package:provider/provider.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/models/question.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
-import 'package:yo_nunca/src/utils/constants.dart';
+import 'package:yo_nunca/src/utils/app_routes.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:yo_nunca/src/utils/shared_preferences_util.dart';
+
 // ignore_for_file: prefer_const_constructors
 
 class CategorySearchDelegate extends SearchDelegate {
@@ -22,7 +25,7 @@ class CategorySearchDelegate extends SearchDelegate {
           query = '';
         },
         icon: Icon(Icons.clear),
-        tooltip: 'Cerrar',
+        tooltip: AppLocalizations.of(context)!.close,
       )
     ];
   }
@@ -155,7 +158,7 @@ class _CategoryDetailState extends State<CategoryDetail> {
         SizedBox(height: 5,),
         ListTile(
             title: Text(
-              'Número de preguntas :',
+              AppLocalizations.of(context)!.numberOfQuestions,
               style: TextStyle(fontSize: 17, color: Colors.white),
             ),
             tileColor: Colors.black87,
@@ -176,11 +179,12 @@ class _CategoryDetailState extends State<CategoryDetail> {
           children: [
             TextButton(
               onPressed: () {
+                SharedPreferencesUtil.setUserLastEntry();
                 Navigator.popAndPushNamed(context,
-                    Constants.routes.questionsPage,arguments: widget.category);
+                    AppRoutes.routeStrings.questionsPage,arguments: widget.category);
               },
               child: Text(
-                "Jugar",
+                AppLocalizations.of(context)!.play,
                 style:
                 TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
               ),
@@ -195,7 +199,7 @@ class _CategoryDetailState extends State<CategoryDetail> {
                 Navigator.pop(context);
               },
               child: Text(
-                "Cerrar",
+                AppLocalizations.of(context)!.close,
                 style:
                 TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
               ),

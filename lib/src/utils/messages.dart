@@ -42,7 +42,7 @@ class Messages{
 
   /// * [errorMessage] - The messages to be thrown.
   /// * [icon] - The icon for the error message, if no icon is selected, a default icon will be used.
-  /// * [opacity] - Opacity to apply to the background color of the Container.It must be a double 0.0 and 1.0.
+  /// * [opacity] - Opacity to apply to the background color of the Container.It must be a double between 0.0 and 1.0.
   static Widget errorWidget2(String errorMessage,Icon ?icon,double ?opacity){
     return  Container(
       height: 200,

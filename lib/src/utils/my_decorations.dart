@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MyDecorations{
 
@@ -70,9 +71,9 @@ class MyDecorations{
     );
   }
 
-  static InputDecoration questionField(){
-    return const InputDecoration(
-        labelText: "Pregunta",
+  static InputDecoration questionField(BuildContext context){
+    return InputDecoration(
+        labelText: AppLocalizations.of(context)!.question,
         labelStyle: TextStyle(
           color: Colors.black87
         ),
