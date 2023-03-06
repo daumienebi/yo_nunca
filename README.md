@@ -25,8 +25,7 @@ Flutter mobile app to create a simple question game.The app UI and the questions
 # Screenshots
   Try out the available categories | Add & Manage your categories | View your categories along with the existing ones | View questions from your categories
   |:--------------------------:|:-----------------------------:|:-----------------------------------------:|:----------------------------------:|
-   ![file1](https://user-images.githubusercontent.com/90214727/211707354-6f270b4f-d511-490a-b4a4-745538977b8c.png) | ![file7](https://user-images.githubusercontent.com/90214727/211374589-787d1773-daf6-44f7-a551-6f840119d01e.png) | ![file8](https://user-images.githubusercontent.com/90214727/211707563-91de1801-6d8e-40cb-af57-2a1377794910.png) | ![file9](https://user-images.githubusercontent.com/90214727/211966521-cbec3e82-fe52-4fa7-9d6c-cf77f63bb5e5.png)
-
+  ![file1](https://user-images.githubusercontent.com/90214727/223002888-0bc37281-6974-4206-999d-adb2630d4073.png) | ![file2](https://user-images.githubusercontent.com/90214727/223002872-6518473d-02ee-499f-af7d-dad3da6ae534.png) | ![file3](https://user-images.githubusercontent.com/90214727/223002881-57f6282c-019f-4ca4-a623-5665553a97d6.png) | ![file4](https://user-images.githubusercontent.com/90214727/223002884-4314b492-a335-46d8-a5bc-a3a033bb7805.png)
 
 
 # Download the app
