@@ -30,7 +30,6 @@ class DrawerPage extends StatelessWidget{
       child: Column(
         children: [
           _buildLastEntryWidget(context),
-          SizedBox(height: 10),
           _optionsWidgets(context),
           TextButton(
               onPressed: ()=> Navigator.of(context).pop(),
@@ -199,8 +198,78 @@ class DrawerPage extends StatelessWidget{
         await _launchUrl(Uri.parse(mailUrl));
       },
     ));
+
+    widgets.add(ListTile(
+      title: Text(AppLocalizations.of(context)!.updateApp,style: titleStyle),
+      subtitle: Text(AppLocalizations.of(context)!.updateAppText,
+        style: subTitleStyle,
+      ),
+      leading: Icon(Icons.update_sharp,color: Colors.green,),
+      trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
+      onTap: () async{
+        _updateAppPopUpForm(context);
+      },
+    ));
+
     return widgets;
   }
+
+  Future _updateAppPopUpForm(BuildContext context) {
+    return showDialog(
+      context: context,
+      builder: (_) {
+          return AlertDialog(
+            title: Text(
+                AppLocalizations.of(context)!.updateModeText
+            ),
+            content: SingleChildScrollView(
+              child: Column(
+                children: [
+                  TextButton(
+                      onPressed: () async{
+                        String appId = Constants.playStoreId;
+                        final url = Uri.parse('https://play.google.com/store/apps/details?id=$appId');
+                        await launchUrl(url,mode: LaunchMode.externalApplication);
+                      },
+                    child: Text(
+                        AppLocalizations.of(context)!.goToPlaystore,
+                        style: TextStyle(color: Colors.black87)
+                    ),
+                    style:TextButton.styleFrom(
+                        backgroundColor: Colors.greenAccent,
+                      )
+                  ),
+                  TextButton(
+                    onPressed: () async{
+                      //String apkLink = Constants.apkLink;
+                      final url = Uri.parse('https://daumienebi.github.io/yo_nunca');
+                      await launchUrl(url,mode: LaunchMode.externalApplication);
+                    },
+                    child: Text(
+                        AppLocalizations.of(context)!.downloadApk,
+                        style: TextStyle(color: Colors.black87)
+                    ),
+                    style:TextButton.styleFrom(
+                        backgroundColor: Colors.orangeAccent,
+                      )
+                  ),
+                ],
+              ),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text(
+                    AppLocalizations.of(context)!.cancel,
+                    style: TextStyle(color: Colors.red)
+                ),
+              ),
+            ],
+          );
+      },
+    );
+  }
+
 
   _launchUrl(Uri url) async{
     await launchUrl(url,mode:LaunchMode.externalApplication);
