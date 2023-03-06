@@ -3,7 +3,7 @@
   "manageCategories" : "Gestionar Categorías",
   "myCategories" : "Mis Categorías",
   "defaultQuestions" : "Por defecto",
-  "unmodifiableCategories" : "Las sigueintes categorias no se pueden modificar.",
+  "unmodifiableCategories" : "Las siguientes categorias no se pueden modificar.",
   "noCategoryYet" : "Todavía no has agregado una categoría.",
   "addCategory" : "Añadir categoría",
   "question" : "pregunta",
@@ -59,7 +59,7 @@
   "newGameWithOnlyFavourites" : "Se creará un juego nuevo con solo las preguntas favoritas.",
   "createGame" : "Crear juego",
   "shareApp" : "Compartir la app",
-  "swipeToViewCategories" : "Desliza las cartas para ver las categorías y pulsa para seleccionar ...",
+  "swipeToViewCategories" : "Desliza las cartas para ver las categorías y pulsa para seleccionar una ...",
   "linkCopied" : "Enlace copiado",
   "mixedModeText" : "Dudas con cual categoría elegir?,prueba el Modo Mixto",
   "mixedMode" : "MODO MIXTO",
@@ -81,5 +81,19 @@
   "next" : "Siguiente",
   "searchCategories" : "Buscar categorías",
   "categoryNotAdded" : "Error interno, no se pudo añadir la categoría",
-  "categoryAdded" : "La categoría fue añadida"
+  "categoryAdded" : "La categoría fue añadida",
+  "january" : "Enero",
+  "february" : "Febrero",
+  "march" : "Marzo",
+  "april" : "Abril",
+  "may" : "Mayo",
+  "june" : "Junio",
+  "july" : "Julio",
+  "august" : "Agosto",
+  "september" : "Septiembre",
+  "october" : "Octubre",
+  "november" : "Noviembre",
+  "december" : "Diciembre",
+  "of_" : "de"
+
 }

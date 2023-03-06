@@ -47,9 +47,9 @@ class DatabaseProvider {
     await db.execute('PRAGMA foreign_keys = ON');
   }
   Future _onUpgrade(Database database,int oldVersion, int newVersion) async{
-    // TO add new questions or categories in the next update, add them to the
+    // To add new questions or categories in the next update, add them to the
     // [DefaultData] class in the right list so that newer users can get them
-    //  too.
+    // too.
 
     //Changes in the Database queries :
     // Filter with the names of the default & newer Categories in the

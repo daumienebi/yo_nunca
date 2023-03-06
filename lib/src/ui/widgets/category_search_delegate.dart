@@ -5,6 +5,7 @@ import 'package:yo_nunca/src/models/question.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
 import 'package:yo_nunca/src/utils/app_routes.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:yo_nunca/src/utils/shared_preferences_util.dart';
 
 // ignore_for_file: prefer_const_constructors
 
@@ -178,6 +179,7 @@ class _CategoryDetailState extends State<CategoryDetail> {
           children: [
             TextButton(
               onPressed: () {
+                SharedPreferencesUtil.setUserLastEntry();
                 Navigator.popAndPushNamed(context,
                     AppRoutes.routeStrings.questionsPage,arguments: widget.category);
               },

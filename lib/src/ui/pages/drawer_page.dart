@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:yo_nunca/src/ui/pages/pages.dart';
 import 'package:yo_nunca/src/ui/widgets/round_app_bar.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:yo_nunca/src/utils/shared_preferences_util.dart';
 // ignore_for_file: prefer_const_constructors
 
 class DrawerPage extends StatelessWidget{
@@ -29,7 +29,7 @@ class DrawerPage extends StatelessWidget{
       margin: EdgeInsets.only(top: 20,left: 15, right: 15),
       child: Column(
         children: [
-          _buildLastEntryWidget(),
+          _buildLastEntryWidget(context),
           SizedBox(height: 10),
           _optionsWidgets(context),
           TextButton(
@@ -46,9 +46,9 @@ class DrawerPage extends StatelessWidget{
     );
   }
 
-    Widget _buildLastEntryWidget(){
+    Widget _buildLastEntryWidget(BuildContext context){
     return FutureBuilder(
-      future: getLastEntry(),
+      future: SharedPreferencesUtil.getUserLastEntry(context),
       builder: (BuildContext context,AsyncSnapshot snapshot){
         if(snapshot.hasData){
           return _lastEntryWidget(snapshot.data,context);
@@ -96,18 +96,13 @@ class DrawerPage extends StatelessWidget{
             AppLocalizations.of(context)!.youHaveNotPlayedYet,//empty space ;)
             textAlign: TextAlign.center,
             style: TextStyle(
-                fontSize: 15,color: Colors.white
+                fontSize: 15,
+                color: Colors.white,
             ),
           )
         ],
       ),
     );
-  }
-
-  Future<String> getLastEntry()async{
-    SharedPreferences pref =await SharedPreferences.getInstance();
-    var lastEntry = pref.getString('lastEntry') ?? '';
-    return Future.value(lastEntry);
   }
 
   Widget _optionsWidgets(context){
@@ -181,15 +176,14 @@ class DrawerPage extends StatelessWidget{
           final url = Uri.parse('https://play.google.com/store/apps/details?id=$appId');
           await launchUrl(url,mode: LaunchMode.externalApplication);
         },
-
     ));
+
     widgets.add(ListTile(
       title: Text(AppLocalizations.of(context)!.credits,style: titleStyle),
       subtitle: Text(AppLocalizations.of(context)!.contributionsToTheProject, style: subTitleStyle,),
       leading: Icon(Icons.people_outline,),
       trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
       onTap: ()=> Navigator.push(context, _createRoute(page: CreditsPage())),
-
     ));
 
     widgets.add(ListTile(
@@ -204,7 +198,6 @@ class DrawerPage extends StatelessWidget{
         String mailUrl = 'mailto:devdaumienebi@gmail.com?subject=$subject';
         await _launchUrl(Uri.parse(mailUrl));
       },
-
     ));
     return widgets;
   }

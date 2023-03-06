@@ -1,10 +1,8 @@
-import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
@@ -13,6 +11,7 @@ import 'package:yo_nunca/src/utils/app_routes.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
 import 'package:yo_nunca/src/ui/widgets/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:yo_nunca/src/utils/shared_preferences_util.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -63,10 +62,13 @@ class HomePage extends StatelessWidget {
               child: Container(
                   margin: EdgeInsets.only(top: 35),
                   child: Column(children: [
-                    Text(
-                      AppLocalizations.of(context)!.swipeToViewCategories,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.black54, fontSize: 16),
+                    Padding(
+                      padding: EdgeInsets.only(left: 20),
+                      child: Text(
+                        AppLocalizations.of(context)!.swipeToViewCategories,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.black54, fontSize: 16),
+                      ),
                     ),
                     CategoriesCardSwiper(categories: categories),
                     ElevatedButton(
@@ -96,20 +98,6 @@ class HomePage extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  /// Get the date the user enters a category to view the question and save it
-  /// in the [SharedPreferences]
-  Future<void> _setPrefsData() async {
-    final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-    final SharedPreferences prefs = await _prefs;
-    String data = '';
-    int year = DateTime.now().year;
-    int day = DateTime.now().day;
-    int month = DateTime.now().month;
-    var months = Constants.monthsInSpanish;
-    data = '$day de ${months.elementAt(month - 1)} del $year';
-    prefs.setString('lastEntry', data);
   }
 
   List<Widget> socialMediaButtons(context) {
@@ -243,7 +231,7 @@ class HomePage extends StatelessWidget {
         ElevatedButton(
           onPressed: () async{
             //Set the date the user enters to view the questions
-            _setPrefsData();
+            SharedPreferencesUtil.setUserLastEntry();
             //The page receives a category with id : 0,because it is only going
             //to be used for this mode
             Navigator.of(context).push(

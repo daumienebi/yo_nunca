@@ -133,7 +133,7 @@ class _FavouritesPageState extends State<FavouritesPage> {
         Navigator.pushNamed(context, AppRoutes.routeStrings.favouriteQuestionPage);
       },
       child: Text(
-        AppLocalizations.of(context)!.shareApp,
+        AppLocalizations.of(context)!.createGame,
         style: TextStyle(color: Colors.black87),
       ),
       style: btnStyle,

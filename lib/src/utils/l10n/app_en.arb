@@ -46,7 +46,7 @@
   "goodMorning" : "Good Morning,",
   "goodNight" : "Good Night,",
   "goodEvening" : "Good Evening,",
-  "lastEntryText" : "The last time you played was on the {lastEntry}.",
+  "lastEntryText" : "Your last game was on the {lastEntry}.",
   "@lastEntryText": {
     "description" : "Form up the last entry text",
     "placeholders": {
@@ -61,7 +61,7 @@
   "favouriteQuestionsList" : "List of your favourite questions.",
   "privacy" : "Privacy",
   "dataManagement" : "Your data management etc...",
-  "rateTheAppText" : "If you like the app, tap to rate it on the App store o suggest improvements",
+  "rateTheAppText" : "If you like the app, tap to rate it on the App store or suggest improvements",
   "rateTheApp" : "Rate the app",
   "contributionsToTheProject" : "Contributions to the project",
   "contactDeveloper" : "Contact the developer",
@@ -71,7 +71,7 @@
   "newGameWithOnlyFavourites" : "A new game will be created with only the favourite questions.",
   "createGame" : "Create game",
   "shareApp" : "Share the app",
-  "swipeToViewCategories" : "Swipe the cards to view the categories and tap to select ...",
+  "swipeToViewCategories" : "Swipe the cards to view the categories and tap to select one ...",
   "linkCopied" : "Link copied",
   "mixedModeText" : "Not sure of which category to choose ?, try out the Mixed Mode",
   "mixedMode" : "MIXED MODE",
@@ -93,6 +93,19 @@
   "next" : "Next",
   "searchCategories" : "Search categories",
   "categoryNotAdded" : "Internal error, the category could not be added",
-  "categoryAdded" : "The category has been added"
+  "categoryAdded" : "The category has been added",
+  "january" : "January",
+  "february" : "February",
+  "march" : "March",
+  "april" : "April",
+  "may" : "May",
+  "june" : "June",
+  "july" : "July",
+  "august" : "August",
+  "september" : "September",
+  "october" : "October",
+  "november" : "November",
+  "december" : "December",
+  "of_" : "of"
 
 }

@@ -128,7 +128,7 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
                 children: [
                   TextFormField(
                     controller: _questionController,
-                    decoration: MyDecorations.questionField(),
+                    decoration: MyDecorations.questionField(context),
                     maxLines: null,
                   ),
                 ],

@@ -29,7 +29,8 @@ class MyApp extends StatelessWidget {
           durationUntilAlertAgain: const Duration(days: 1),
           dialogStyle: Platform.isIOS
               ? UpgradeDialogStyle.cupertino
-              : UpgradeDialogStyle.material),
+              : UpgradeDialogStyle.material
+      ),
       child: MaterialApp(
         initialRoute: AppRoutes.routeStrings.homepage,
         debugShowCheckedModeBanner: false,
@@ -43,8 +44,8 @@ class MyApp extends StatelessWidget {
         ],
         theme: ThemeData(
           scaffoldBackgroundColor: Colors.white,
-          primaryColor: Colors.blueGrey,
-          primarySwatch: Colors.blueGrey,
+          primaryColor: Colors.teal,
+          primarySwatch: Colors.teal,
         ),
       ),
     );

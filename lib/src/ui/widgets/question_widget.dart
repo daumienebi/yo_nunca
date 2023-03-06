@@ -267,7 +267,12 @@ class _QuestionWidgetState extends State<QuestionWidget> {
   Widget _previousQuestionButton() {
     //Previous question button
     final btnStyle = ElevatedButton.styleFrom(
-        textStyle: TextStyle(color: Colors.blue, fontSize: 17));
+        textStyle: TextStyle(
+            color: Colors.blue,
+            fontSize: 17
+        ),
+        shape: StadiumBorder()
+    );
     return ElevatedButton(
       key: Key('previousButton'),
       onPressed: () {
@@ -286,7 +291,12 @@ class _QuestionWidgetState extends State<QuestionWidget> {
   /// [listLength] - to obtain the length of the questions list
   Widget _nextQuestionButton(int listLength) {
     final btnStyle = ElevatedButton.styleFrom(
-        textStyle: TextStyle(color: Colors.blue, fontSize: 17));
+        textStyle: TextStyle(
+            color: Colors.blue,
+            fontSize: 17
+        ),
+        shape: StadiumBorder()
+    );
     return ElevatedButton(
       key: Key('nextButton'),
       onPressed: (){

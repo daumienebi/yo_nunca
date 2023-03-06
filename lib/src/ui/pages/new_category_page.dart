@@ -113,7 +113,7 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
                 children: [
                   TextFormField(
                     controller: _questionController,
-                    decoration: MyDecorations.questionField(),
+                    decoration: MyDecorations.questionField(context),
                     maxLines: null,
                   ),
                 ],
