@@ -111,6 +111,7 @@
   "updateAppText" : "Get the latest version of the app through the Playstore or by downloading the APK",
   "updateModeText" : "Select update mode",
   "downloadApk" : "Download APK",
-  "goToPlaystore" : "Go to Playstore"
+  "goToPlaystore" : "Go to Playstore",
+  "appVersion" : "Version :"
 
 }

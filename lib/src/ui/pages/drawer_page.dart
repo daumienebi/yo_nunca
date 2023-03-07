@@ -7,6 +7,7 @@ import 'package:yo_nunca/src/ui/widgets/round_app_bar.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:yo_nunca/src/utils/shared_preferences_util.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 // ignore_for_file: prefer_const_constructors
 
 class DrawerPage extends StatelessWidget{
@@ -30,7 +31,24 @@ class DrawerPage extends StatelessWidget{
       child: Column(
         children: [
           _buildLastEntryWidget(context),
+          SizedBox(height: 10),
           _optionsWidgets(context),
+          //Display the current app version
+          FutureBuilder(
+            future: getVersion(),
+              builder: (context, snapshot) {
+                if(snapshot.hasData){
+                  return Container(
+                    child: Text(
+                        '${AppLocalizations.of(context)!.appVersion} ${snapshot.data.toString()}',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.black38
+                      ),
+                    ),
+                  );
+                }else return Text("");
+              }),
           TextButton(
               onPressed: ()=> Navigator.of(context).pop(),
               style: TextButton.styleFrom(backgroundColor: Colors.redAccent),
@@ -79,7 +97,7 @@ class DrawerPage extends StatelessWidget{
       height: 90,
       decoration: BoxDecoration(
         color: Colors.black87,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(10),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -206,7 +224,7 @@ class DrawerPage extends StatelessWidget{
       ),
       leading: Icon(Icons.update_sharp,color: Colors.green,),
       trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
-      onTap: () async{
+      onTap: (){
         _updateAppPopUpForm(context);
       },
     ));
@@ -242,6 +260,7 @@ class DrawerPage extends StatelessWidget{
                   TextButton(
                     onPressed: () async{
                       //String apkLink = Constants.apkLink;
+                      //Send the user to to app page to download the latest APK
                       final url = Uri.parse('https://daumienebi.github.io/yo_nunca');
                       await launchUrl(url,mode: LaunchMode.externalApplication);
                     },
@@ -270,6 +289,12 @@ class DrawerPage extends StatelessWidget{
     );
   }
 
+  Future<String> getVersion() async{
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    String version = packageInfo.version;
+    String code = packageInfo.buildNumber;
+    return Future.value(version);
+  }
 
   _launchUrl(Uri url) async{
     await launchUrl(url,mode:LaunchMode.externalApplication);
