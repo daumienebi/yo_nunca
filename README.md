@@ -1,6 +1,7 @@
 # Yo Nunca (Never Have I Ever)
 
-Flutter mobile app to create a simple question game.The app UI and the questions are currently in spanish but the UI will be translated later on.
+A Flutter mobile app to create a simple question game ("Never have i ever" type of game).The user interface is available in `English` and ``Spanish``
+but the questions are in ``Spanish`` since it is directed to the spanish audience but you can add your questions in any other language.
 
 # Credits
 - Splash screen and app icon :
