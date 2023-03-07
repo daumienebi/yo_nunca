@@ -11,6 +11,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  Upgrader.sharedInstance.initialize();
 
   /// The landscape idea for the app has been scrapped for now, some classes still
   /// have the code for landscape mode like [QuestionWidget], for future purposes

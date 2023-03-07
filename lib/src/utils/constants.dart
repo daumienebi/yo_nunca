@@ -7,6 +7,7 @@ enum SocialMedia { facebook, twitter, instagram, whatsapp,enlace}
 class Constants {
   static double homePageWidgetHeight = 200;
   static String playStoreId = 'com.devdaumienebi.yonunca';
+  static String apkLink = "https://github.com/daumienebi/yo_nunca/releases/download/v1.2.0/app-release.apk";
 
   static String getMonthName(int month,BuildContext context){
     Map<int,String> months = {

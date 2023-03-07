@@ -94,6 +94,12 @@
   "october" : "Octubre",
   "november" : "Noviembre",
   "december" : "Diciembre",
-  "of_" : "de"
+  "of_" : "de",
+  "updateApp" : "Actualizar la app",
+  "updateAppText" : "Obtén la versión más reciente de la app por Playstore o descargando la APK",
+  "updateModeText" : "Selecciona el modo de actualización",
+  "downloadApk" : "Descargar APK",
+  "goToPlaystore" : "Ir a la Playstore",
+  "appVersion" : "Versión :"
 
 }
