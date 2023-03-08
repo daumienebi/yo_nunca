@@ -108,7 +108,7 @@ class HomePage extends StatelessWidget {
       width: 10,
     ));
     items.add(socialButton(
-        socialMedia: SocialMedia.whatsapp,
+        socialMedia: SocialMedia.Whatsapp.name,
         icon: Icon(
           FontAwesomeIcons.whatsapp,
           color: Colors.green,
@@ -116,13 +116,13 @@ class HomePage extends StatelessWidget {
         ),
         onClicked: (){
           Navigator.pop(context);
-          share(SocialMedia.whatsapp,context);
+          share(SocialMedia.Whatsapp,context);
         }));
     items.add(SizedBox(
       width: 15,
     ));
     items.add(socialButton(
-        socialMedia: SocialMedia.twitter,
+        socialMedia: SocialMedia.Twitter.name,
         icon: Icon(
           FontAwesomeIcons.twitter,
           color: Colors.lightBlueAccent,
@@ -130,13 +130,13 @@ class HomePage extends StatelessWidget {
         ),
         onClicked: (){
           Navigator.pop(context);
-          share(SocialMedia.twitter,context);
+          share(SocialMedia.Twitter,context);
         }));
     items.add(SizedBox(
       width: 15,
     ));
     items.add(socialButton(
-        socialMedia: SocialMedia.facebook,
+        socialMedia: SocialMedia.Facebook.name,
         icon: Icon(
           FontAwesomeIcons.facebook,
           color: Colors.indigo,
@@ -144,14 +144,14 @@ class HomePage extends StatelessWidget {
         ),
         onClicked: (){
           Navigator.pop(context);
-          share(SocialMedia.facebook,context);
+          share(SocialMedia.Facebook,context);
         }));
     items.add(SizedBox(
       width: 15,
     ));
     items.add(
         socialButton(
-        socialMedia: SocialMedia.enlace,
+        socialMedia: AppLocalizations.of(context)!.copyLink,
         icon: Icon(
           Icons.copy,
           color: Colors.grey,
@@ -163,9 +163,10 @@ class HomePage extends StatelessWidget {
           await Clipboard.setData(ClipboardData(text:urlString));
           Navigator.pop(context);
           ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(AppLocalizations.of(context)!.linkCopied),duration: Duration(
-                seconds: 2
-              ),)
+              SnackBar(
+                content: Text(AppLocalizations.of(context)!.linkCopied),
+                duration: Duration(seconds: 2)
+              )
           );
         }
       )
@@ -173,7 +174,7 @@ class HomePage extends StatelessWidget {
     return items;
   }
 
-  socialButton({required SocialMedia socialMedia,required Icon icon,
+  socialButton({required String socialMedia,required Icon icon,
       Function()? onClicked}) {
     final listTextStyle = TextStyle(color: Colors.black54);
     return Container(
@@ -183,7 +184,7 @@ class HomePage extends StatelessWidget {
             child: icon,
             onTap: onClicked,
           ),
-          Text(socialMedia.name.toUpperCase(),style: listTextStyle,),
+          Text(socialMedia, style: listTextStyle,),
         ],
       ),
     );
@@ -269,11 +270,11 @@ class HomePage extends StatelessWidget {
     final urlString = 'https://play.google.com/store/apps/details?id=$appId';
     final urlShare = Uri.encodeComponent(urlString);
     final urls = {
-      SocialMedia.facebook:
+      SocialMedia.Facebook:
           'https://www.facebook.com/sharer/sharer.php?u=$urlShare&t=$text',
-      SocialMedia.twitter:
+      SocialMedia.Twitter:
           'https://twitter.com/intent/tweet?url=$urlShare&text=$text',
-      SocialMedia.whatsapp: 'https://api.whatsapp.com/send?text=$text $urlShare',
+      SocialMedia.Whatsapp: 'https://api.whatsapp.com/send?text=$text $urlShare',
     };
     final url = Uri.parse(urls[platform]!);
       await launchUrl(url,mode: LaunchMode.externalApplication);

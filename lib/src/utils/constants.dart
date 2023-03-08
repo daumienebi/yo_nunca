@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 ///Enum for the possible social medias where the app can be shared
-enum SocialMedia { facebook, twitter, instagram, whatsapp,enlace}
+enum SocialMedia { Facebook, Twitter, Instagram, Whatsapp,Enlace}
 
 class Constants {
   static double homePageWidgetHeight = 200;

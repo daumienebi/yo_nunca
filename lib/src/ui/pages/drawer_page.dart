@@ -27,39 +27,33 @@ class DrawerPage extends StatelessWidget{
 
   Widget _mainBody(context){
     return Container(
-      margin: EdgeInsets.only(top: 20,left: 15, right: 15),
+      margin: EdgeInsets.only(top: 15,left: 20, right: 20),
       child: Column(
         children: [
           _buildLastEntryWidget(context),
-          SizedBox(height: 10),
+          SizedBox(height:10),
           _optionsWidgets(context),
           //Display the current app version
-          FutureBuilder(
-            future: getVersion(),
-              builder: (context, snapshot) {
-                if(snapshot.hasData){
-                  return Container(
-                    child: Text(
-                        '${AppLocalizations.of(context)!.appVersion} ${snapshot.data.toString()}',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.black38
+          Padding(
+            padding: EdgeInsets.only(top:10,bottom: 15),
+            child: FutureBuilder(
+              future: getVersion(),
+                builder: (context, snapshot) {
+                  if(snapshot.hasData){
+                    return Container(
+                      child: Text(
+                          '${AppLocalizations.of(context)!.appVersion} ${snapshot.data.toString()}',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.black38
+                        ),
                       ),
-                    ),
-                  );
-                }else return Text("");
-              }),
-          TextButton(
-              onPressed: ()=> Navigator.of(context).pop(),
-              style: TextButton.styleFrom(backgroundColor: Colors.redAccent),
-              child: Text(
-                AppLocalizations.of(context)!.close,
-                style: TextStyle(color: Colors.white,),)
-          )
+                    );
+                  }else return Text("");
+                }),
+          ),
         ],
-      ),decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-    ),
+      ),
     );
   }
 
@@ -94,10 +88,11 @@ class DrawerPage extends StatelessWidget{
 
     return Container(
       padding: EdgeInsets.all(7),
-      height: 90,
+      height: 75,
       decoration: BoxDecoration(
         color: Colors.black87,
         borderRadius: BorderRadius.circular(10),
+        //backgroundBlendMode: BlendMode.clear
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -125,9 +120,19 @@ class DrawerPage extends StatelessWidget{
   Widget _optionsWidgets(context){
     return Expanded(
       child: Container(
-        color: Colors.white,
         child: ListView(
           children: _optionsList(context),
+        ),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+          boxShadow: [
+            BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 5,
+                blurRadius: 15,
+                offset: Offset(0, 3))
+          ],
         ),
       ),
     );
@@ -152,9 +157,9 @@ class DrawerPage extends StatelessWidget{
 
     widgets.add(InkWell(
       child: ListTile(
-        title: Text(AppLocalizations.of(context)!.manageCategories,style: titleStyle,),
+        title: Text(AppLocalizations.of(context)!.manageCategories,style: titleStyle),
         subtitle: Text(AppLocalizations.of(context)!.questionsWithCategoriesText,
-          style: subTitleStyle,),
+          style: subTitleStyle),
         leading: Icon(Icons.list_alt_outlined),
         trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
         onTap: ()=> Navigator.of(context).push(
@@ -164,8 +169,8 @@ class DrawerPage extends StatelessWidget{
 
     widgets.add(ListTile(
         title: Text(AppLocalizations.of(context)!.favourites,style: titleStyle),
-        subtitle: Text(AppLocalizations.of(context)!.favouriteQuestionsList,style: subTitleStyle,),
-        leading: Icon(Icons.favorite,color: Colors.red,),
+        subtitle: Text(AppLocalizations.of(context)!.favouriteQuestionsList,style: subTitleStyle),
+        leading: Icon(Icons.favorite_border),
         trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
         onTap: ()=>Navigator.of(context).push(
             _createRoute(page: FavouritesPage()))
@@ -173,7 +178,7 @@ class DrawerPage extends StatelessWidget{
 
     widgets.add(ListTile(
       title: Text(AppLocalizations.of(context)!.privacy,style: titleStyle),
-      subtitle: Text(AppLocalizations.of(context)!.dataManagement,style: subTitleStyle,),
+      subtitle: Text(AppLocalizations.of(context)!.dataManagement,style: subTitleStyle),
       leading: Icon(Icons.privacy_tip_outlined),
       trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
       onTap: (){
@@ -185,8 +190,8 @@ class DrawerPage extends StatelessWidget{
 
     widgets.add(ListTile(
         title: Text(AppLocalizations.of(context)!.rateTheApp,style: titleStyle),
-        subtitle: Text(AppLocalizations.of(context)!.rateTheAppText, style: subTitleStyle,),
-        leading: Icon(FontAwesomeIcons.googlePlay,),
+        subtitle: Text(AppLocalizations.of(context)!.rateTheAppText, style: subTitleStyle),
+        leading: Icon(FontAwesomeIcons.googlePlay),
         trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
         onTap: () async{
           String appId = Constants.playStoreId;
@@ -197,9 +202,9 @@ class DrawerPage extends StatelessWidget{
 
     widgets.add(ListTile(
       title: Text(AppLocalizations.of(context)!.credits,style: titleStyle),
-      subtitle: Text(AppLocalizations.of(context)!.contributionsToTheProject, style: subTitleStyle,),
-      leading: Icon(Icons.people_outline,),
-      trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
+      subtitle: Text(AppLocalizations.of(context)!.contributionsToTheProject, style: subTitleStyle),
+      leading: Icon(Icons.people_outline),
+      trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10),
       onTap: ()=> Navigator.push(context, _createRoute(page: CreditsPage())),
     ));
 
@@ -222,7 +227,7 @@ class DrawerPage extends StatelessWidget{
       subtitle: Text(AppLocalizations.of(context)!.updateAppText,
         style: subTitleStyle,
       ),
-      leading: Icon(Icons.update_sharp,color: Colors.green,),
+      leading: Icon(Icons.update_sharp),
       trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
       onTap: (){
         _updateAppPopUpForm(context);
@@ -292,7 +297,6 @@ class DrawerPage extends StatelessWidget{
   Future<String> getVersion() async{
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     String version = packageInfo.version;
-    String code = packageInfo.buildNumber;
     return Future.value(version);
   }
 

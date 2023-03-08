@@ -20,7 +20,7 @@ class SharedPreferencesUtil{
     prefs.setString('lastEntry', data);
   }
 
-  //Retrieve the user's last entry
+  /// Retrieve the user's last entry
   static Future<String> getUserLastEntry(BuildContext context) async{
     SharedPreferences pref = await SharedPreferences.getInstance();
     var lastEntry = pref.getString('lastEntry') ?? '';

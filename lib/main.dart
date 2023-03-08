@@ -45,8 +45,8 @@ class MyApp extends StatelessWidget {
         ],
         theme: ThemeData(
           scaffoldBackgroundColor: Colors.white,
-          primaryColor: Colors.teal,
-          primarySwatch: Colors.teal,
+          primaryColor: Colors.blueGrey,
+          primarySwatch: Colors.blueGrey,
         ),
       ),
     );
@@ -63,6 +63,7 @@ class AppState extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => CategoryProvider()),
         ChangeNotifierProvider(create: (_) => QuestionProvider()),
       ],
+
       child: const MyApp(),
     );
   }

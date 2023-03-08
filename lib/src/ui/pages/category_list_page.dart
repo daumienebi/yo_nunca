@@ -180,7 +180,6 @@ class _CategoryTileState extends State<CategoryTile> {
     final deleteBtn = TextButton.styleFrom(backgroundColor: Colors.redAccent);
     CategoryProvider provider =
         Provider.of<CategoryProvider>(context, listen: true);
-    // TODO: implement build
     return Center(
         child: Container(
       padding: EdgeInsets.all(7),
