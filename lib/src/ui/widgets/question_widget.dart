@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/models/question.dart';
@@ -136,7 +137,10 @@ class _QuestionWidgetState extends State<QuestionWidget> {
   _noQuestionWidget() {
     String part1 = AppLocalizations.of(context)!.noQuestionWidgetPart1;
     String part2 = AppLocalizations.of(context)!.noQuestionWidgetPart2;
-    final textStyle = TextStyle(color: Colors.black54,fontSize: 17);
+    final textStyle =  GoogleFonts.varelaRound(
+        color: Colors.black54,
+        fontSize: 17
+    );
     return <Widget>[
       Padding(
         padding: EdgeInsets.all(10),
@@ -223,12 +227,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
         Padding(
           padding: EdgeInsets.all(5),
             child: Text('${currentIndex + 1} / $numberOfQuestions',
-              style: TextStyle(
-                  color: Colors.black87,
-                  fontFamily: 'OoohBaby',
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold
-              ),
+              style: GoogleFonts.varelaRound(fontSize: 16),
             )
         ),
         //question description
@@ -253,8 +252,10 @@ class _QuestionWidgetState extends State<QuestionWidget> {
                 child: Text(
                   question.description,
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: 21, color: Colors.black87, fontFamily: 'Abel'),
+                    style: GoogleFonts.varelaRound(
+                        fontSize: 20,
+                        color: Colors.black87
+                    )
                 ),
               ),
             );
@@ -267,10 +268,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
   Widget _previousQuestionButton() {
     //Previous question button
     final btnStyle = ElevatedButton.styleFrom(
-        textStyle: TextStyle(
-            color: Colors.blue,
-            fontSize: 17
-        ),
+        textStyle: GoogleFonts.varelaRound(fontSize: 17),
         shape: StadiumBorder()
     );
     return ElevatedButton(
@@ -291,10 +289,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
   /// [listLength] - to obtain the length of the questions list
   Widget _nextQuestionButton(int listLength) {
     final btnStyle = ElevatedButton.styleFrom(
-        textStyle: TextStyle(
-            color: Colors.blue,
-            fontSize: 17
-        ),
+        textStyle: GoogleFonts.varelaRound(fontSize: 17),
         shape: StadiumBorder()
     );
     return ElevatedButton(

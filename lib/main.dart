@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:upgrader/upgrader.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
@@ -45,8 +46,22 @@ class MyApp extends StatelessWidget {
         ],
         theme: ThemeData(
           scaffoldBackgroundColor: Colors.white,
-          primaryColor: Colors.blueGrey,
-          primarySwatch: Colors.blueGrey,
+          //Look into the theme config before release
+          primaryColor: Color(0xFFC77D01),
+          primarySwatch: MaterialColor(0xFFC77D00,{
+            50 : const Color(0xFFC77D00),
+            100 : const Color(0xFFC77D00),
+            200 : const Color(0xFFC77D00),
+            300 : const Color(0xFFC77D00),
+            400 : const Color(0xFFC77D00),
+            500 : const Color(0xFFC77D00),
+            600 : const Color(0xFFC77D00),
+            700 : const Color(0xFFC77D00),
+            800 : const Color(0xFFC77D00),
+            900 : const Color(0xFFC77D00)
+          }
+          ),
+          textTheme: GoogleFonts.varelaRoundTextTheme(),
         ),
       ),
     );

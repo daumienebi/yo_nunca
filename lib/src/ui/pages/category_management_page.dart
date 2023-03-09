@@ -234,7 +234,8 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
 
   Widget _saveButton(Category category) {
     final btnStyle = ElevatedButton.styleFrom(
-        textStyle: TextStyle(color: Colors.blue, fontSize: 20));
+      textStyle: TextStyle(fontSize: 17),
+    );
     return Consumer(builder: (_, CategoryProvider provider, __) {
       return ElevatedButton(
           style: btnStyle,

@@ -1,5 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
@@ -42,7 +43,9 @@ class HomePage extends StatelessWidget {
                         Text(
                           AppLocalizations.of(context)!.shareApp,textAlign: TextAlign.left,
                           style: TextStyle(
-                              color: Colors.black54, fontSize: 20),
+                              color: Colors.black54,
+                              fontSize: 20
+                          ),
                         ),
                         SizedBox(height: 5,),
                         Expanded(
@@ -216,8 +219,8 @@ class HomePage extends StatelessWidget {
               boxShadow: [
                 BoxShadow(
                     color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 5,
-                    blurRadius: 10,
+                    spreadRadius: 2,
+                    blurRadius: 25,
                     offset: Offset(0, 3))
               ]),
           child: Column(
@@ -248,21 +251,83 @@ class HomePage extends StatelessWidget {
             )
             ));
           },
-          child: Text(
-            AppLocalizations.of(context)!.mixedMode
-            ,
-            style: TextStyle(
-                fontFamily: 'OoohBaby',
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-                color: Colors.white),
-          ),
+          child: mixedModeRichText(context),
           style: TextButton.styleFrom(backgroundColor: Colors.black87),
         ),
       ],
     );
   }
 
+  /// Return the Mixed Mode text depending on the language but paints the
+  /// characters with different colours
+  RichText mixedModeRichText(BuildContext context){
+    String mixedModeText = AppLocalizations.of(context)!.mixedMode;
+    // Get the length of the text to be able to loop through it and create the
+    // TextSpans
+    var textLength = mixedModeText.length;
+    List<TextSpan> textSpans = [];
+    // Variable to check if the text has been separated, after a space i.e " "
+    // the next letter should have a larger font size
+    bool spaceFound = false;
+    late int spacePosition;
+    for(int i = 0; i < textLength; i++){
+      //If it's the first character, make the font larger
+      if(i == 0){
+        textSpans.add(
+            TextSpan(
+                text: mixedModeText[i],
+                style: GoogleFonts.varelaRound(
+                    color:Constants.mixedModeColors[i],
+                    fontSize: 30,
+                    //fontWeight: FontWeight.bold
+                )
+            )
+        );
+      }
+      if(mixedModeText[i] == " "){
+        // Add a TextSpan without any colour or size, set the spaceFound
+        // value to "true" so that the next character can be uppercase
+        spaceFound = true;
+        // Obtain the position in the text where the space " " was found
+        spacePosition = i;
+        textSpans.add(
+            TextSpan(text: mixedModeText[i])
+        );
+      }
+      // Set the next character after the " " to a larger fontSize
+      // (spacePosition + 1 == i) is just to make sure the larger font size is
+      // only applied to the next character after the space " "
+      if(spaceFound && (spacePosition + 1 == i)){
+        textSpans.add(
+            TextSpan(
+                text: mixedModeText[i],
+                style: GoogleFonts.varelaRound(
+                    color:Constants.mixedModeColors[i],
+                    fontSize: 30,
+                    //fontWeight: FontWeight.bold
+                )
+            )
+        );
+        // Last case where its not the first character nor the first character
+        // after the space " "
+      }else if(i != 0){
+        textSpans.add(
+            TextSpan(
+                text: mixedModeText[i],
+                style: GoogleFonts.varelaRound(
+                    color:Constants.mixedModeColors[i],
+                    fontSize: 20,
+                    //fontWeight: FontWeight.bold
+                )
+            )
+        );
+      }
+    }
+    return RichText(
+      text: TextSpan(children: textSpans),
+    );
+  }
+  
   /// Method to launch each share option for the [SocialMedia]
   Future share(SocialMedia platform,BuildContext context) async {
     String text = AppLocalizations.of(context)!.shareAppText;
