@@ -56,16 +56,16 @@
     }
   },
   "youHaveNotPlayedYet" : "You haven't played any game yet.",
-  "questionsWithCategoriesText" : "All the categories with their questions.",
+  "questionsWithCategoriesText" : "Manage your categories/questions.",
   "favourites" : "Favourites",
   "favouriteQuestionsList" : "List of your favourite questions.",
   "privacy" : "Privacy",
   "dataManagement" : "Your data management etc...",
-  "rateTheAppText" : "If you like the app, tap to rate it on the App store or suggest improvements",
+  "rateTheAppText" : "Tap to rate on the App store",
   "rateTheApp" : "Rate the app",
   "contributionsToTheProject" : "Contributions to the project",
   "contactDeveloper" : "Contact the developer",
-  "contactDeveloperSubtitle" : "About any error or questions about the app.",
+  "contactDeveloperSubtitle" : "Concerning errors or questions",
   "favouriteQuestions" : "Favourite questions",
   "noFavouriteQuestionsYet" : "No favourite questions yet. Tap the ❤ icon of a question to add it to the favourites.",
   "newGameWithOnlyFavourites" : "A new game will be created with only the favourite questions.",
@@ -108,10 +108,11 @@
   "december" : "December",
   "of_" : "of",
   "updateApp" : "Update app",
-  "updateAppText" : "Get the latest version of the app through the Playstore or by downloading the APK",
+  "updateAppText" : "Get the latest version",
   "updateModeText" : "Select update mode",
   "downloadApk" : "Download APK",
   "goToPlaystore" : "Go to Playstore",
-  "appVersion" : "Version :"
+  "appVersion" : "Version :",
+  "copyLink" : "Copy Link"
 
 }

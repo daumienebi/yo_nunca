@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
@@ -22,6 +23,9 @@ class CategoryListPage extends StatelessWidget {
       length: tabLength,
       child: Scaffold(
           floatingActionButton: FloatingActionButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15)
+              ),
               child: Icon(Icons.add),
               onPressed: () =>
                   Navigator.pushNamed(context, AppRoutes.routeStrings.newCategory)),
@@ -50,7 +54,7 @@ class CategoryListPage extends StatelessWidget {
 
   categoryTabHeader(int number, String tabName) {
     return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-      Text(tabName),
+      Text(tabName,style: GoogleFonts.varelaRound(),),
       SizedBox(
         width: 5,
       ),
@@ -59,7 +63,6 @@ class CategoryListPage extends StatelessWidget {
             child: Text(
           number.toString(),
           textAlign: TextAlign.center,
-          style: TextStyle(color: Colors.white),
         )),
         decoration: BoxDecoration(
           color: Colors.red[600],
@@ -168,19 +171,15 @@ class _CategoryTileState extends State<CategoryTile> {
 
   @override
   Widget build(BuildContext context) {
-    final mainTxtStyle = TextStyle(
-        fontSize: 30,
-        color: Colors.cyan[400],
-        fontFamily: 'OoohBaby',
-        //fontWeight: FontWeight.w500
+    final mainTxtStyle = GoogleFonts.varelaRound(
+      fontSize: 23,
+      color: Colors.cyan[400],
     );
-    final countTxtStyle = TextStyle(
-        fontSize: 18, color: Colors.white, fontWeight: FontWeight.normal);
+    final countTxtStyle = GoogleFonts.varelaRound(fontSize: 16, color: Colors.white, fontWeight: FontWeight.normal);
     final editBtn = TextButton.styleFrom(backgroundColor: Colors.lightGreen);
     final deleteBtn = TextButton.styleFrom(backgroundColor: Colors.redAccent);
     CategoryProvider provider =
         Provider.of<CategoryProvider>(context, listen: true);
-    // TODO: implement build
     return Center(
         child: Container(
       padding: EdgeInsets.all(7),

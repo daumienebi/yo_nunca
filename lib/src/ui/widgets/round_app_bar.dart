@@ -32,7 +32,7 @@ class RoundAppBar extends StatelessWidget with PreferredSizeWidget {
       ),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
-          bottom: Radius.circular(60.0),
+          bottom: Radius.circular(50.0),
         ),
       ),
       //: Colors.amberAccent,
@@ -67,7 +67,7 @@ class RoundAppBar extends StatelessWidget with PreferredSizeWidget {
       title: appBarTitle(title!),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
-          bottom: Radius.circular(60.0),
+          bottom: Radius.circular(50.0),
         ),
       ),
       //: Colors.amberAccent,

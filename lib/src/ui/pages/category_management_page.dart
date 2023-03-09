@@ -87,7 +87,9 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
                   labelText: AppLocalizations.of(context)!.name,
                   labelStyle: TextStyle(color: Colors.black87,fontSize: 20),
                   hintText: AppLocalizations.of(context)!.introduceCategoryName,
-                  suffixIcon: Icon(Icons.category)),
+                  suffixIcon: Icon(Icons.category)
+              ),
+              maxLength: 25,
               validator: (String? value) {
                 if (value == null || value.isEmpty) {
                   return AppLocalizations.of(context)!.introduceCategoryNameValidator;
@@ -234,7 +236,8 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
 
   Widget _saveButton(Category category) {
     final btnStyle = ElevatedButton.styleFrom(
-        textStyle: TextStyle(color: Colors.blue, fontSize: 20));
+      textStyle: TextStyle(fontSize: 17),
+    );
     return Consumer(builder: (_, CategoryProvider provider, __) {
       return ElevatedButton(
           style: btnStyle,

@@ -1,5 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
@@ -28,6 +29,7 @@ class HomePage extends StatelessWidget {
         homePage: true,
       ),
       floatingActionButton: FloatingActionButton(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         child: Icon(Icons.share_sharp),
         onPressed: () {
           showModalBottomSheet(
@@ -42,7 +44,9 @@ class HomePage extends StatelessWidget {
                         Text(
                           AppLocalizations.of(context)!.shareApp,textAlign: TextAlign.left,
                           style: TextStyle(
-                              color: Colors.black54, fontSize: 20),
+                              color: Colors.black54,
+                              fontSize: 20
+                          ),
                         ),
                         SizedBox(height: 5,),
                         Expanded(
@@ -60,10 +64,10 @@ class HomePage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Center(
               child: Container(
-                  margin: EdgeInsets.only(top: 35),
+                  margin: EdgeInsets.only(top: 20),
                   child: Column(children: [
                     Padding(
-                      padding: EdgeInsets.only(left: 20),
+                      padding: EdgeInsets.all(10),
                       child: Text(
                         AppLocalizations.of(context)!.swipeToViewCategories,
                         textAlign: TextAlign.center,
@@ -108,7 +112,7 @@ class HomePage extends StatelessWidget {
       width: 10,
     ));
     items.add(socialButton(
-        socialMedia: SocialMedia.whatsapp,
+        socialMedia: SocialMedia.Whatsapp.name,
         icon: Icon(
           FontAwesomeIcons.whatsapp,
           color: Colors.green,
@@ -116,13 +120,13 @@ class HomePage extends StatelessWidget {
         ),
         onClicked: (){
           Navigator.pop(context);
-          share(SocialMedia.whatsapp,context);
+          share(SocialMedia.Whatsapp,context);
         }));
     items.add(SizedBox(
       width: 15,
     ));
     items.add(socialButton(
-        socialMedia: SocialMedia.twitter,
+        socialMedia: SocialMedia.Twitter.name,
         icon: Icon(
           FontAwesomeIcons.twitter,
           color: Colors.lightBlueAccent,
@@ -130,13 +134,13 @@ class HomePage extends StatelessWidget {
         ),
         onClicked: (){
           Navigator.pop(context);
-          share(SocialMedia.twitter,context);
+          share(SocialMedia.Twitter,context);
         }));
     items.add(SizedBox(
       width: 15,
     ));
     items.add(socialButton(
-        socialMedia: SocialMedia.facebook,
+        socialMedia: SocialMedia.Facebook.name,
         icon: Icon(
           FontAwesomeIcons.facebook,
           color: Colors.indigo,
@@ -144,14 +148,14 @@ class HomePage extends StatelessWidget {
         ),
         onClicked: (){
           Navigator.pop(context);
-          share(SocialMedia.facebook,context);
+          share(SocialMedia.Facebook,context);
         }));
     items.add(SizedBox(
       width: 15,
     ));
     items.add(
         socialButton(
-        socialMedia: SocialMedia.enlace,
+        socialMedia: AppLocalizations.of(context)!.copyLink,
         icon: Icon(
           Icons.copy,
           color: Colors.grey,
@@ -163,9 +167,10 @@ class HomePage extends StatelessWidget {
           await Clipboard.setData(ClipboardData(text:urlString));
           Navigator.pop(context);
           ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(AppLocalizations.of(context)!.linkCopied),duration: Duration(
-                seconds: 2
-              ),)
+              SnackBar(
+                content: Text(AppLocalizations.of(context)!.linkCopied),
+                duration: Duration(seconds: 2)
+              )
           );
         }
       )
@@ -173,7 +178,7 @@ class HomePage extends StatelessWidget {
     return items;
   }
 
-  socialButton({required SocialMedia socialMedia,required Icon icon,
+  socialButton({required String socialMedia,required Icon icon,
       Function()? onClicked}) {
     final listTextStyle = TextStyle(color: Colors.black54);
     return Container(
@@ -183,7 +188,7 @@ class HomePage extends StatelessWidget {
             child: icon,
             onTap: onClicked,
           ),
-          Text(socialMedia.name.toUpperCase(),style: listTextStyle,),
+          Text(socialMedia, style: listTextStyle,),
         ],
       ),
     );
@@ -215,8 +220,8 @@ class HomePage extends StatelessWidget {
               boxShadow: [
                 BoxShadow(
                     color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 5,
-                    blurRadius: 10,
+                    spreadRadius: 2,
+                    blurRadius: 25,
                     offset: Offset(0, 3))
               ]),
           child: Column(
@@ -247,21 +252,82 @@ class HomePage extends StatelessWidget {
             )
             ));
           },
-          child: Text(
-            AppLocalizations.of(context)!.mixedMode
-            ,
-            style: TextStyle(
-                fontFamily: 'OoohBaby',
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-                color: Colors.white),
-          ),
+          child: mixedModeRichText(context),
           style: TextButton.styleFrom(backgroundColor: Colors.black87),
         ),
       ],
     );
   }
 
+  /// Return the Mixed Mode text depending on the language but paints the
+  /// characters with different colours
+  RichText mixedModeRichText(BuildContext context){
+    String mixedModeText = AppLocalizations.of(context)!.mixedMode;
+    // Get the length of the text to be able to loop through it and create the
+    // TextSpans
+    var textLength = mixedModeText.length;
+    List<TextSpan> textSpans = [];
+    // Variable to check if the text has been separated, after a space i.e " "
+    // the next letter should have a larger font size
+    bool spaceFound = false;
+    late int spacePosition;
+    for(int i = 0; i < textLength; i++){
+      //If it's the first character, make the font larger
+      if(i == 0){
+        textSpans.add(
+            TextSpan(
+                text: mixedModeText[i],
+                style: GoogleFonts.varelaRound(
+                    color:Constants.mixedModeColors[i],
+                    fontSize: 30,
+                    //fontWeight: FontWeight.bold
+                )
+            )
+        );
+      }
+      if(mixedModeText[i] == " "){
+        // Add a TextSpan without any colour or size, set the spaceFound
+        // value to "true" so that the next character can be uppercase
+        spaceFound = true;
+        // Obtain the position in the text where the space " " was found
+        spacePosition = i;
+        textSpans.add(
+            TextSpan(text: mixedModeText[i])
+        );
+      }
+      // Set the next character after the " " to a larger fontSize
+      // (spacePosition + 1 == i) is just to make sure the larger font size is
+      // only applied to the next character after the space " "
+      if(spaceFound && (spacePosition + 1 == i)){
+        textSpans.add(
+            TextSpan(
+                text: mixedModeText[i],
+                style: GoogleFonts.varelaRound(
+                    color:Constants.mixedModeColors[i],
+                    fontSize: 30,
+                    //fontWeight: FontWeight.bold
+                )
+            )
+        );
+      // Last case where its not the first character of the text
+      }else if(i != 0){
+        textSpans.add(
+            TextSpan(
+                text: mixedModeText[i],
+                style: GoogleFonts.varelaRound(
+                    color:Constants.mixedModeColors[i],
+                    fontSize: 20,
+                    //fontWeight: FontWeight.bold
+                )
+            )
+        );
+      }
+    }
+    return RichText(
+      text: TextSpan(children: textSpans),
+    );
+  }
+  
   /// Method to launch each share option for the [SocialMedia]
   Future share(SocialMedia platform,BuildContext context) async {
     String text = AppLocalizations.of(context)!.shareAppText;
@@ -269,11 +335,11 @@ class HomePage extends StatelessWidget {
     final urlString = 'https://play.google.com/store/apps/details?id=$appId';
     final urlShare = Uri.encodeComponent(urlString);
     final urls = {
-      SocialMedia.facebook:
+      SocialMedia.Facebook:
           'https://www.facebook.com/sharer/sharer.php?u=$urlShare&t=$text',
-      SocialMedia.twitter:
+      SocialMedia.Twitter:
           'https://twitter.com/intent/tweet?url=$urlShare&text=$text',
-      SocialMedia.whatsapp: 'https://api.whatsapp.com/send?text=$text $urlShare',
+      SocialMedia.Whatsapp: 'https://api.whatsapp.com/send?text=$text $urlShare',
     };
     final url = Uri.parse(urls[platform]!);
       await launchUrl(url,mode: LaunchMode.externalApplication);

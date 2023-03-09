@@ -44,16 +44,16 @@
   "goodEvening" : "Buenas tardes,",
   "lastEntryText" : "Jugaste por última vez el {lastEntry}.",
   "youHaveNotPlayedYet" : "Todavía no jugaste ninguna partida.",
-  "questionsWithCategoriesText" : "Todas las categorías con las preguntas añadidas.",
+  "questionsWithCategoriesText" : "Gestiona tus categorías/preguntas",
   "favourites" : "Favoritos",
   "favouriteQuestionsList" : "Lista de tus preguntas favoritas.",
   "privacy" : "Privacidad",
   "dataManagement" : "Gestion de tus datos etc...",
-  "rateTheAppText" : "Si te gustó la app,pulsa para calificarlo en la App store o sugerir mejoras.",
+  "rateTheAppText" : "Pulsa para calificar la app en Playstore",
   "rateTheApp" : "Valorar la app",
   "contributionsToTheProject" : "Aportaciones al proyecto.",
   "contactDeveloper" : "Contactar con el desarrollador",
-  "contactDeveloperSubtitle" : "Sobre cualquier error o duda acerca de la app.",
+  "contactDeveloperSubtitle" : "Acerca de errores o dudas",
   "favouriteQuestions" : "Preguntas favoritas",
   "noFavouriteQuestionsYet" : "Todavía no hay preguntas favoritas. Pulsa el icono ❤ de una pregunta para añadirlo a los favoritos.",
   "newGameWithOnlyFavourites" : "Se creará un juego nuevo con solo las preguntas favoritas.",
@@ -96,10 +96,11 @@
   "december" : "Diciembre",
   "of_" : "de",
   "updateApp" : "Actualizar la app",
-  "updateAppText" : "Obtén la versión más reciente de la app por Playstore o descargando la APK",
+  "updateAppText" : "Obtén la versión más reciente",
   "updateModeText" : "Selecciona el modo de actualización",
   "downloadApk" : "Descargar APK",
   "goToPlaystore" : "Ir a la Playstore",
-  "appVersion" : "Versión :"
+  "appVersion" : "Versión :",
+  "copyLink" : "Copiar Enlace"
 
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MyDecorations{
 
@@ -23,7 +24,7 @@ class MyDecorations{
         BoxShadow(
           color: Colors.grey.withOpacity(0.5),
           spreadRadius: 2,
-          blurRadius: 3,
+          blurRadius: 10,
           offset: Offset(0, 3), // changes position of shadow
         ),
       ],
@@ -63,11 +64,10 @@ class MyDecorations{
 
   static Text homePageBoxText(String content,bool addedByUser){
     return Text(content,
-      textAlign: TextAlign.center,style: TextStyle(
-          fontWeight: FontWeight.bold,fontSize: 45,
-          color: addedByUser ? Colors.black87 : Colors.white,
-          fontFamily: 'OoohBaby'
-      ),
+      textAlign: TextAlign.center,style: GoogleFonts.alegreyaSansSc(
+            fontSize: 40,
+            color: addedByUser ? Colors.black87 : Colors.white
+        )
     );
   }
 

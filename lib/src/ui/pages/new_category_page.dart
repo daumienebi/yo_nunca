@@ -197,7 +197,8 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
 
   Widget _saveButton() {
     final btnStyle = ElevatedButton.styleFrom(
-        textStyle: TextStyle(color: Colors.blue, fontSize: 20));
+        textStyle: TextStyle(fontSize: 17),
+    );
     QuestionProvider questionProvider =
         Provider.of<QuestionProvider>(context, listen: false);
     return Consumer(builder: (_, CategoryProvider provider, __) {
