@@ -87,7 +87,9 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
                   labelText: AppLocalizations.of(context)!.name,
                   labelStyle: TextStyle(color: Colors.black87,fontSize: 20),
                   hintText: AppLocalizations.of(context)!.introduceCategoryName,
-                  suffixIcon: Icon(Icons.category)),
+                  suffixIcon: Icon(Icons.category)
+              ),
+              maxLength: 25,
               validator: (String? value) {
                 if (value == null || value.isEmpty) {
                   return AppLocalizations.of(context)!.introduceCategoryNameValidator;
