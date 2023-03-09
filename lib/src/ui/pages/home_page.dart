@@ -29,6 +29,7 @@ class HomePage extends StatelessWidget {
         homePage: true,
       ),
       floatingActionButton: FloatingActionButton(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         child: Icon(Icons.share_sharp),
         onPressed: () {
           showModalBottomSheet(
@@ -63,10 +64,10 @@ class HomePage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Center(
               child: Container(
-                  margin: EdgeInsets.only(top: 35),
+                  margin: EdgeInsets.only(top: 20),
                   child: Column(children: [
                     Padding(
-                      padding: EdgeInsets.only(left: 20),
+                      padding: EdgeInsets.all(10),
                       child: Text(
                         AppLocalizations.of(context)!.swipeToViewCategories,
                         textAlign: TextAlign.center,
@@ -308,8 +309,7 @@ class HomePage extends StatelessWidget {
                 )
             )
         );
-        // Last case where its not the first character nor the first character
-        // after the space " "
+      // Last case where its not the first character of the text
       }else if(i != 0){
         textSpans.add(
             TextSpan(

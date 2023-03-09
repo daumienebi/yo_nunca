@@ -23,6 +23,9 @@ class CategoryListPage extends StatelessWidget {
       length: tabLength,
       child: Scaffold(
           floatingActionButton: FloatingActionButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15)
+              ),
               child: Icon(Icons.add),
               onPressed: () =>
                   Navigator.pushNamed(context, AppRoutes.routeStrings.newCategory)),

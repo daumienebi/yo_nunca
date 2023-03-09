@@ -119,7 +119,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
     return <Widget>[
       Column(mainAxisAlignment: MainAxisAlignment.center, children: [
         _questionTextWidget(snapshot.data[gameOrder[currentIndex]]),
-        SizedBox(height: 10),
+        SizedBox(height: 5),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -236,7 +236,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
           builder: (BuildContext context, _, Widget? child) {
             return Container(
               decoration: BoxDecoration(
-                color: Colors.teal[100],
+                color: Colors.teal[50],
                 borderRadius: BorderRadius.all(Radius.circular(25)),
                 boxShadow: [
                   BoxShadow(

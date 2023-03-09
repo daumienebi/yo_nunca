@@ -33,4 +33,19 @@ class Constants {
     };
     return months[month].toString();
   }
+
+  static MaterialColor primarySwatch = MaterialColor(0xFF004e95,
+      {
+        50  : const Color(0xFF004e95),
+        100 : const Color(0xFF004e95),
+        200 : const Color(0xFF004e95),
+        300 : const Color(0xFF004e95),
+        400 : const Color(0xFF004e95),
+        500 : const Color(0xFF004e95),
+        600 : const Color(0xFF004e95),
+        700 : const Color(0xFF004e95),
+        800 : const Color(0xFF004e95),
+        900 : const Color(0xFF004e95)
+      });
+
 }

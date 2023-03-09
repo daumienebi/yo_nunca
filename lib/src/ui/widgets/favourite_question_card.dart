@@ -1,6 +1,7 @@
 import 'package:appinio_swiper/appinio_swiper.dart';
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:yo_nunca/src/models/question.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
@@ -108,7 +109,7 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
           alignment: Alignment.bottomCenter,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(30)),
-            color: Colors.red,
+            color: Colors.red[700],
           ),
           child: Column(children: [
             SizedBox(
@@ -119,11 +120,11 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
                 child: Text(
                   question,
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w800,
-                      fontFamily: 'Abel'),
+                  style: GoogleFonts.varelaRound(
+                    fontSize: 20,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w800,
+                  ),
                 ),
               ),
             ),

@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:upgrader/upgrader.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
 import 'package:yo_nunca/src/utils/app_routes.dart';
+import 'package:yo_nunca/src/utils/constants.dart';
 import 'package:yo_nunca/src/utils/l10n/l10n.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -46,21 +47,7 @@ class MyApp extends StatelessWidget {
         ],
         theme: ThemeData(
           scaffoldBackgroundColor: Colors.white,
-          //Look into the theme config before release
-          primaryColor: Color(0xFFC77D01),
-          primarySwatch: MaterialColor(0xFFC77D00,{
-            50 : const Color(0xFFC77D00),
-            100 : const Color(0xFFC77D00),
-            200 : const Color(0xFFC77D00),
-            300 : const Color(0xFFC77D00),
-            400 : const Color(0xFFC77D00),
-            500 : const Color(0xFFC77D00),
-            600 : const Color(0xFFC77D00),
-            700 : const Color(0xFFC77D00),
-            800 : const Color(0xFFC77D00),
-            900 : const Color(0xFFC77D00)
-          }
-          ),
+          primarySwatch: Constants.primarySwatch,
           textTheme: GoogleFonts.varelaRoundTextTheme(),
         ),
       ),
@@ -78,7 +65,6 @@ class AppState extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => CategoryProvider()),
         ChangeNotifierProvider(create: (_) => QuestionProvider()),
       ],
-
       child: const MyApp(),
     );
   }
