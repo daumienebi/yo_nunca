@@ -1,6 +1,5 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/ui/pages/pages.dart';
 import 'package:yo_nunca/src/utils/app_routes.dart';
@@ -33,10 +32,12 @@ class CategoriesCardSwiper extends StatelessWidget {
                       .push(_createRoute(arguments: categories[index]));
                 },
                 child: Hero(
-                  tag: UniqueKey(), //or find another way to use a unique tag
+                  tag : UniqueKey(),//or find another way to use a unique tag
                   child: Container(
-                      margin: const EdgeInsets.only(left: 10,
-                          right: 10,bottom: 10),
+                      margin: const EdgeInsets.only(
+                          left: 10,
+                          right: 10,
+                      ),
                       padding: const EdgeInsets.all(5),
                       decoration:
                           MyDecorations.homePageBoxDecoration(
@@ -48,17 +49,19 @@ class CategoriesCardSwiper extends StatelessWidget {
                       //load
                       child: MyDecorations.homePageBoxText(
                           categories[index].description,
-                          //if the image route is empty, that means the category was added by the user
+                          //if the image route is empty, that means the category
+                          //was added by the user
                           categories[index].imageRoute.isEmpty
                       )
                   ) ,
                 ));
             },
           itemCount: categories.length,
-          itemHeight: size.height * 0.5,
-          itemWidth: size.width * 0.85,
-          layout: SwiperLayout.TINDER,
-          //layout: SwiperLayout.STACK,//strange behaviour sometimes on start
+          scrollDirection: Axis.vertical,
+          itemHeight: size.height * 0.40,
+          itemWidth: size.width * 0.80,
+          layout: SwiperLayout.STACK//strange behaviour sometimes on start
+          //layout: SwiperLayout.TINDER,//strange behaviour sometimes on start
         ),
       ),
     ]);
@@ -67,7 +70,9 @@ class CategoriesCardSwiper extends StatelessWidget {
   Route _createRoute({required Object? arguments}) {
     return PageRouteBuilder(
       settings: RouteSettings(
-          name: AppRoutes.routeStrings.questionsPage, arguments: arguments),
+          name: AppRoutes.routeStrings.questionsPage,
+          arguments: arguments
+      ),
       pageBuilder: (context, animation, secondaryAnimation) =>
           const QuestionPage(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
