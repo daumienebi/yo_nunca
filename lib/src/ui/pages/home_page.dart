@@ -77,7 +77,6 @@ class HomePage extends StatelessWidget {
                     CategoriesCardSwiper(categories: categories),
                     ElevatedButton(
                       onPressed: (){
-
                         Navigator.of(context).push(
                           _createRoute(
                               settingsName: AppRoutes.routeStrings.newCategory,
