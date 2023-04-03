@@ -114,6 +114,7 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
 
   Future _popUpForm(Question? question,Category? category, bool isEditMode) {
     return showDialog(
+      barrierColor: Colors.black26,
       context: context,
       builder: (_) {
         TextEditingController _questionController = TextEditingController();

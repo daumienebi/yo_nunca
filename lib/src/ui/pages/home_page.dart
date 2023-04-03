@@ -33,6 +33,7 @@ class HomePage extends StatelessWidget {
         child: Icon(Icons.share_sharp),
         onPressed: () {
           showModalBottomSheet(
+              barrierColor: Colors.black26,
               context: context,
               builder: (BuildContext context) {
                 return Container(

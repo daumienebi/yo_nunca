@@ -239,6 +239,7 @@ class DrawerPage extends StatelessWidget{
 
   Future _updateAppPopUpForm(BuildContext context) {
     return showDialog(
+      barrierColor: Colors.black26,
       context: context,
       builder: (_) {
           return AlertDialog(

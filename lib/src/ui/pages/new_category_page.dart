@@ -98,6 +98,7 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
 
   Future _popUpForm({required bool isEditMode, Question? question}) {
     return showDialog(
+      barrierColor: Colors.black26,
       context: context,
       builder: (_) {
         TextEditingController _questionController = TextEditingController();
