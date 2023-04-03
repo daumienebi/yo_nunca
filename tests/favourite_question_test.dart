@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:yo_nunca/src/models/question.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
 
-/* Revise them
+// Revise them
 void main(){
   TestWidgetsFlutterBinding.ensureInitialized();
   QuestionProvider provider = QuestionProvider();
@@ -12,4 +12,3 @@ void main(){
     expect(rows, 1);
   });
 }
-*/

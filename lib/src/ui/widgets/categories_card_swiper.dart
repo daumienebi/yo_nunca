@@ -25,7 +25,7 @@ class CategoriesCardSwiper extends StatelessWidget {
                 //onTap: () => Navigator.of(context).pushNamed(
                 //Constants.routes.questionsPage, arguments: categories[index]),
                 onTap: () async {
-                  //The idea is to save the date the user enters a category
+                  // The idea is to save the date the user enters a category
                   // to view the questions
                   await SharedPreferencesUtil.setUserLastEntry();
                   Navigator.of(context)

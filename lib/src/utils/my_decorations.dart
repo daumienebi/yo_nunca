@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:yo_nunca/src/utils/constants.dart';
 
 class MyDecorations{
 
@@ -10,15 +11,15 @@ class MyDecorations{
     const double fillPercent = 56.23; // fills 56.23% for container from bottom
     const double fillStop = (100 - fillPercent) / 100;
     final List<double> stops = [0.3, 0.9];
-    List<Color> colors = [Colors.white,Colors.pinkAccent];
+    // list of colors to create the effect
+    List<Color> colors = [Colors.white,Constants.primarySwatch.shade400];
     return imgRoute!.isNotEmpty ? BoxDecoration(
       image: DecorationImage(
           image: AssetImage(imgRoute),
           //colorFilter: ColorFilter.mode(Colors.white.withOpacity(0.2), BlendMode.saturation),
           fit: BoxFit.scaleDown,
       ),
-      //color: Colors.pinkAccent[400],
-      color: Colors.pink[500],
+      color: Constants.primarySwatch.shade500,
       borderRadius: const BorderRadius.all(Radius.circular(15)),
       boxShadow: [
         BoxShadow(
@@ -28,6 +29,12 @@ class MyDecorations{
           offset: Offset(0, 3), // changes position of shadow
         ),
       ],
+      gradient :LinearGradient(
+        colors: colors,
+        stops: stops,
+        end: Alignment.topCenter,
+        begin: Alignment.bottomCenter,
+      ),
     ) : BoxDecoration(
       borderRadius: const BorderRadius.all(Radius.circular(15)),
       boxShadow: [

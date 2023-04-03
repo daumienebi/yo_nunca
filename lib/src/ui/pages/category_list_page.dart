@@ -6,6 +6,7 @@ import 'package:yo_nunca/src/providers/providers.dart';
 import 'package:yo_nunca/src/ui/pages/category_management_page.dart';
 import 'package:yo_nunca/src/utils/app_routes.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:yo_nunca/src/utils/constants.dart';
 // ignore_for_file: prefer_const_constructors
 
 class CategoryListPage extends StatelessWidget {
@@ -65,7 +66,7 @@ class CategoryListPage extends StatelessWidget {
           textAlign: TextAlign.center,
         )),
         decoration: BoxDecoration(
-          color: Colors.red[600],
+          color: Constants.primarySwatch.shade900,
           borderRadius: BorderRadius.circular(15),
         ),
         height: 30,

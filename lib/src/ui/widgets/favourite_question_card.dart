@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:yo_nunca/src/models/question.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
+import 'package:yo_nunca/src/utils/constants.dart';
 import 'package:yo_nunca/src/utils/messages.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -109,7 +110,7 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
           alignment: Alignment.bottomCenter,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(30)),
-            color: Colors.red[700],
+            color: Colors.redAccent,
           ),
           child: Column(children: [
             SizedBox(

@@ -221,7 +221,7 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
             },
             child: Icon(
               Icons.delete,
-              color: Colors.red,
+              color: Colors.black54,
               size: 30,
             ),
           );

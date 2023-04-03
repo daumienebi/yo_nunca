@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/providers/category_provider.dart';
 
-/* Revise them
+// Revise them
 void main(){
   //WidgetsFlutterBinding.ensureInitialized();
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -34,4 +34,3 @@ void main(){
   });
 
 }
-*/
