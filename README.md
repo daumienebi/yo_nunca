@@ -26,8 +26,7 @@ but the questions are in ``Spanish`` since it is directed to the spanish audienc
 # Screenshots
   Try out the available categories | Add & Manage your categories | View your categories along with the existing ones | View questions from your categories
   |:--------------------------:|:-----------------------------:|:-----------------------------------------:|:----------------------------------:|
-  ![file1](https://user-images.githubusercontent.com/90214727/224152265-3da4e152-f133-494d-b2f7-ab3e5ae2d0da.png) | ![file2](https://user-images.githubusercontent.com/90214727/224152274-6909eb5b-e67a-4bf2-9895-447f9cc2b36f.png) | ![file3](https://user-images.githubusercontent.com/90214727/224152282-d4b7d887-a09e-400d-b8de-a414494e09a6.png) | ![file4](https://user-images.githubusercontent.com/90214727/224152293-dbcfd41a-6cfa-401e-9fb8-73521dadc74a.png)
-
+  ![file1](https://user-images.githubusercontent.com/90214727/229649194-2e78e4fe-4dc7-4b25-9e57-cde88421b987.png) | ![file2](https://user-images.githubusercontent.com/90214727/229649185-a9d723c5-dcd2-430d-ab84-46cb906fa64f.png) | ![file3](https://user-images.githubusercontent.com/90214727/229649188-960181a1-3b5d-4677-9591-b04ea77cb518.png) | ![file4](https://user-images.githubusercontent.com/90214727/229649193-b397902c-c930-47e1-9116-30e68e6dfb15.png)
 
 # Download the app
   ### Platforms
