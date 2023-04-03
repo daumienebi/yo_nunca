@@ -137,4 +137,8 @@ class DatabaseProvider {
     }
     _database = null;
   }
+
+  /// To be called during tests
+  Future<void> deleteDatabase() async =>
+      databaseFactory.deleteDatabase(await getDatabasesPath());
 }
