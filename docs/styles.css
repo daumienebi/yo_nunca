@@ -56,6 +56,10 @@ h2 {
     padding: 0 20px 0 20px;
     max-width: 900px;
 }
+.container img{
+    background-color: antiquewhite;
+    border-radius: 15px
+}
 .btn {
     display: inline-block;
     color: white;
