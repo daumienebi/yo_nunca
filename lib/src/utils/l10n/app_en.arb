@@ -9,7 +9,7 @@
   "defaultQuestions" : "Default",
   "unmodifiableCategories" : "The following categories cannot be modified.",
   "noCategoryYet" : "You haven't added any category yet.",
-  "addCategory" : "Add category",
+  "addCategory" : "Add your category",
   "question" : "question",
   "questions" : "questions",
   "noQuestions" : "no questions",
@@ -113,6 +113,9 @@
   "downloadApk" : "Download APK",
   "goToPlaystore" : "Go to Playstore",
   "appVersion" : "Version :",
-  "copyLink" : "Copy Link"
-
+  "copyLink" : "Copy Link",
+  "backup" : "Backup",
+  "backupText" : "Backup your questions and save them to restore them on another device",
+  "help" : "Help",
+  "helpText" : "App help contents,contact the developer,privacy policy"
 }

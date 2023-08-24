@@ -10,7 +10,7 @@ class QuestionPage extends StatelessWidget {
     // TODO: implement build
     Category category = ModalRoute.of(context)!.settings.arguments as Category;
     return Scaffold(
-        appBar: RoundAppBar(
+        appBar: CustomAppBar(
           title: Text(
             category.description,
             style: TextStyle(

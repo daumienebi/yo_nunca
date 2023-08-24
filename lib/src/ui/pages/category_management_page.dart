@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/models/question.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
-import 'package:yo_nunca/src/ui/widgets/round_app_bar.dart';
+import 'package:yo_nunca/src/ui/widgets/custom_app_bar.dart';
 import 'package:yo_nunca/src/utils/messages.dart';
 import 'package:yo_nunca/src/utils/my_decorations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -42,7 +42,7 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> {
 
     categoryNameController.text = category.description;
     return Scaffold(
-        appBar: RoundAppBar(title: Text(AppLocalizations.of(context)!.editCategory),homePage: false,),
+        appBar: CustomAppBar(title: Text(AppLocalizations.of(context)!.editCategory),homePage: false,),
         body: Container(
           margin: EdgeInsets.all(10),
           child: Column(

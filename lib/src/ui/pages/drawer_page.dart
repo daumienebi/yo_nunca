@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:yo_nunca/src/ui/pages/pages.dart';
-import 'package:yo_nunca/src/ui/widgets/round_app_bar.dart';
+import 'package:yo_nunca/src/ui/widgets/custom_app_bar.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:yo_nunca/src/utils/shared_preferences_util.dart';
@@ -17,7 +17,7 @@ class DrawerPage extends StatelessWidget{
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      appBar: RoundAppBar(
+      appBar: CustomAppBar(
         homePage: false,
         title: Text(AppLocalizations.of(context)!.options),
       ),
@@ -99,7 +99,7 @@ class DrawerPage extends StatelessWidget{
         children: [
           Text(greetingsText,textAlign: TextAlign.left,
             style: TextStyle(
-                fontWeight: FontWeight.bold,fontSize: 23,color: Colors.cyanAccent[400]
+                fontWeight: FontWeight.w500,fontSize: 23,color: Colors.cyanAccent[400]
             ),),
           SizedBox(height: 5),
           Text(
@@ -152,34 +152,28 @@ class DrawerPage extends StatelessWidget{
 
   List<Widget> _optionsList(context){
     List<Widget> widgets = [];
-    final subTitleStyle = TextStyle(fontSize: 14);
-    final titleStyle = TextStyle(fontSize: 17);
+    final subTitleStyle = TextStyle(fontSize: 13.5);
+    final titleStyle = TextStyle(fontSize: 16);
 
     widgets.add(InkWell(
       child: ListTile(
         title: Text(AppLocalizations.of(context)!.manageCategories,style: titleStyle),
         subtitle: Text(AppLocalizations.of(context)!.questionsWithCategoriesText,
           style: subTitleStyle),
-        leading: Icon(Icons.list_alt_outlined),
+        leading: Icon(Icons.list_alt_outlined,color: Colors.black54),
         trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
         onTap: ()=> Navigator.of(context).push(
             _createRoute(page: CategoryListPage()))
       ),
     ));
 
-    widgets.add(ListTile(
-        title: Text(AppLocalizations.of(context)!.favourites,style: titleStyle),
-        subtitle: Text(AppLocalizations.of(context)!.favouriteQuestionsList,style: subTitleStyle),
-        leading: Icon(Icons.favorite_border),
-        trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
-        onTap: ()=>Navigator.of(context).push(
-            _createRoute(page: FavouritesPage()))
-    ));
-
+    //onTap: ()=>Navigator.of(context).push(
+    //             _createRoute(page: FavouritesPage()))
+    /*
     widgets.add(ListTile(
       title: Text(AppLocalizations.of(context)!.privacy,style: titleStyle),
       subtitle: Text(AppLocalizations.of(context)!.dataManagement,style: subTitleStyle),
-      leading: Icon(Icons.privacy_tip_outlined),
+      leading: Icon(Icons.privacy_tip_outlined,color: Colors.black54),
       trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
       onTap: (){
         //original url: https://www.termsfeed.com/live/df65fce0-9b00-48db-b48b-0bca473a6fe0
@@ -187,11 +181,12 @@ class DrawerPage extends StatelessWidget{
         _launchUrl(url);
       },
     ));
+    */
 
     widgets.add(ListTile(
         title: Text(AppLocalizations.of(context)!.rateTheApp,style: titleStyle),
         subtitle: Text(AppLocalizations.of(context)!.rateTheAppText, style: subTitleStyle),
-        leading: Icon(FontAwesomeIcons.googlePlay),
+        leading: Icon(FontAwesomeIcons.googlePlay,color: Colors.black54),
         trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
         onTap: () async{
           String appId = Constants.playStoreId;
@@ -203,11 +198,12 @@ class DrawerPage extends StatelessWidget{
     widgets.add(ListTile(
       title: Text(AppLocalizations.of(context)!.credits,style: titleStyle),
       subtitle: Text(AppLocalizations.of(context)!.contributionsToTheProject, style: subTitleStyle),
-      leading: Icon(Icons.people_outline),
+      leading: Icon(Icons.people_outline,color: Colors.black54,),
       trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10),
       onTap: ()=> Navigator.push(context, _createRoute(page: CreditsPage())),
     ));
 
+    /* Add this option inside the privacy stuff
     widgets.add(ListTile(
       title: Text(AppLocalizations.of(context)!.contactDeveloper,style: titleStyle),
       subtitle: Text(AppLocalizations.of(context)!.contactDeveloperSubtitle,
@@ -221,16 +217,39 @@ class DrawerPage extends StatelessWidget{
         await _launchUrl(Uri.parse(mailUrl));
       },
     ));
+     */
+
+    widgets.add(ListTile(
+      title: Text(AppLocalizations.of(context)!.backup,style: titleStyle),
+      subtitle: Text(AppLocalizations.of(context)!.backupText,
+        style: subTitleStyle,
+      ),
+      leading: Icon(Icons.backup_outlined,color: Colors.black54),
+      trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
+      onTap: ()async{
+        print('a');
+      },
+    ));
 
     widgets.add(ListTile(
       title: Text(AppLocalizations.of(context)!.updateApp,style: titleStyle),
       subtitle: Text(AppLocalizations.of(context)!.updateAppText,
         style: subTitleStyle,
       ),
-      leading: Icon(Icons.update_sharp),
+      leading: Icon(Icons.update_sharp,color: Colors.black54),
       trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
       onTap: (){
         _updateAppPopUpForm(context);
+      },
+    ));
+
+    widgets.add(ListTile(
+      title: Text(AppLocalizations.of(context)!.help,style: titleStyle),
+      subtitle: Text(AppLocalizations.of(context)!.helpText,style: subTitleStyle),
+      leading: Icon(Icons.help_outline,color: Colors.black54),
+      trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
+      onTap: (){
+        print("a");
       },
     ));
 

@@ -4,7 +4,7 @@ import 'package:yo_nunca/src/ui/widgets/widgets.dart';
 import 'package:yo_nunca/src/utils/app_routes.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class RoundAppBar extends StatelessWidget with PreferredSizeWidget {
+class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   final double barHeight = 10;
   final Text? title;
 
@@ -12,7 +12,7 @@ class RoundAppBar extends StatelessWidget with PreferredSizeWidget {
   ///contains the search delegate and drawer)
   final bool homePage;
 
-  RoundAppBar({Key? key, this.title, required this.homePage}) : super(key: key);
+  CustomAppBar({Key? key, this.title, required this.homePage}) : super(key: key);
   @override
   Size get preferredSize => Size.fromHeight(kToolbarHeight + barHeight);
   @override
@@ -20,29 +20,46 @@ class RoundAppBar extends StatelessWidget with PreferredSizeWidget {
     return homePage ? homePageAppBar(context) : normalAppBar(context);
   }
 
-  AppBar homePageAppBar(context) {
+  AppBar homePageAppBar(context){
     return AppBar(
       centerTitle: true,
       title: Center(child: title),
+      shadowColor: Colors.transparent,
       leading: InkWell(
-          child: const Icon(Icons.menu,color: Colors.white,),
+          child: const Icon(Icons.menu,color: Colors.white,size: 27,),
           onTap: () =>
-          Navigator.of(context).push(createRouteWithSlideAnimation())
+          Navigator.of(context).push(createRouteWithSlideAnimation(page: DrawerPage()))
         //Navigator.of(context).pushNamed(Constants.routes.drawerPage)
       ),
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(
-          bottom: Radius.circular(50.0),
-        ),
-      ),
-      //: Colors.amberAccent,
+      // Changing to a normal app bar instead of the rounded one
+      //shape: const RoundedRectangleBorder(
+      //  borderRadius: BorderRadius.vertical(
+      //    bottom: Radius.circular(0.0),
+      //  ),
+      //),
       actions: [
-        TextButton(
+        //Search icon
+        IconButton(
+          onPressed: () => Navigator.of(context).push(createRouteWithSlideAnimation(page: FavouritesPage())),
+          icon: const Center(
+            child:  Icon(
+              Icons.favorite_border,
+              size: 27,
+              color: Colors.white,
+            ),
+          ),
+          style: TextButton.styleFrom(
+              minimumSize: Size(50,20)
+          ),
+        ),
+
+        //Favourites icon
+        IconButton(
             onPressed: () => showSearch(
                 context: context,
                 delegate:
-                    CategorySearchDelegate(hintText: AppLocalizations.of(context)!.searchCategories)),
-            child: const Center(
+                CategorySearchDelegate(hintText: AppLocalizations.of(context)!.searchCategories)),
+            icon: const Center(
               child:  Icon(
                 Icons.search,
                 size: 27,
@@ -65,16 +82,17 @@ class RoundAppBar extends StatelessWidget with PreferredSizeWidget {
     return AppBar(
       centerTitle: true,
       title: appBarTitle(title!),
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(
-          bottom: Radius.circular(50.0),
-        ),
-      ),
+      shadowColor: Colors.transparent,
+      // Changing to a normal app bar instead of the rounded one
+      //shape: const RoundedRectangleBorder(
+      //  borderRadius: BorderRadius.vertical(
+      //    bottom: Radius.circular(50.0),
+      //  ),
+      //),
       //: Colors.amberAccent,
       backgroundColor: Theme.of(context).primaryColor,
     );
   }
-
   appBarTitle(Text title) {
     return Container(
       alignment: Alignment.topLeft,
@@ -82,10 +100,10 @@ class RoundAppBar extends StatelessWidget with PreferredSizeWidget {
     );
   }
 
-  Route createRouteWithSlideAnimation() {
+  Route createRouteWithSlideAnimation({required Widget page}) {
     return PageRouteBuilder(
       settings: RouteSettings(name: AppRoutes.routeStrings.drawerPage,),
-      pageBuilder: (context, animation, secondaryAnimation) => const DrawerPage(),
+      pageBuilder: (context, animation, secondaryAnimation) => page,
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         const begin = Offset(-1.5, 1);
         const end = Offset.zero;

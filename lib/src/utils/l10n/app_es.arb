@@ -5,7 +5,7 @@
   "defaultQuestions" : "Por defecto",
   "unmodifiableCategories" : "Las siguientes categorias no se pueden modificar.",
   "noCategoryYet" : "Todavía no has agregado una categoría.",
-  "addCategory" : "Añadir categoría",
+  "addCategory" : "Añade tu categoría",
   "question" : "pregunta",
   "questions" : "preguntas",
   "noQuestions" : "sin preguntas",
@@ -46,12 +46,12 @@
   "youHaveNotPlayedYet" : "Todavía no jugaste ninguna partida.",
   "questionsWithCategoriesText" : "Gestiona tus categorías/preguntas",
   "favourites" : "Favoritos",
-  "favouriteQuestionsList" : "Lista de tus preguntas favoritas.",
+  "favouriteQuestionsList" : "Lista de tus preguntas favoritas",
   "privacy" : "Privacidad",
   "dataManagement" : "Gestion de tus datos etc...",
   "rateTheAppText" : "Pulsa para calificar la app en Playstore",
   "rateTheApp" : "Valorar la app",
-  "contributionsToTheProject" : "Aportaciones al proyecto.",
+  "contributionsToTheProject" : "Aportaciones al proyecto",
   "contactDeveloper" : "Contactar con el desarrollador",
   "contactDeveloperSubtitle" : "Acerca de errores o dudas",
   "favouriteQuestions" : "Preguntas favoritas",
@@ -101,6 +101,9 @@
   "downloadApk" : "Descargar APK",
   "goToPlaystore" : "Ir a la Playstore",
   "appVersion" : "Versión :",
-  "copyLink" : "Copiar Enlace"
-
+  "copyLink" : "Copiar Enlace",
+  "backup" : "Copia de seguridad",
+  "backupText" : "Crea un respaldo de tus preguntas y restuaralos en cualquier dispositivo",
+   "help" : "Ayuda",
+   "helpText" : "Contenido de ayuda, contactar con el desarrollador, política de privacidad"
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:yo_nunca/src/ui/widgets/round_app_bar.dart';
+import 'package:yo_nunca/src/ui/widgets/custom_app_bar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CreditsPage extends StatelessWidget{
@@ -11,7 +11,7 @@ class CreditsPage extends StatelessWidget{
     // TODO: implement build
     final txtStyle = TextStyle(color: Colors.green,fontSize: 20);
     return Scaffold(
-      appBar: RoundAppBar(
+      appBar: CustomAppBar(
         title: Text(AppLocalizations.of(context)!.credits),
         homePage: false,
       ),

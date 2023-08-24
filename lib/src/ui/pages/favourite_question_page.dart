@@ -10,7 +10,7 @@ class FavouriteQuestionPage extends StatelessWidget{
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-        appBar: RoundAppBar(title: Text(AppLocalizations.of(context)!.favouriteQuestions),homePage: false,),
+        appBar: CustomAppBar(title: Text(AppLocalizations.of(context)!.favouriteQuestions),homePage: false,),
       body: const FavouriteQuestionCard()
     );
   }

@@ -12,7 +12,7 @@ class MixedModePage extends StatelessWidget{
     //In this case, a category with ID:0 will be received
     Category category = ModalRoute.of(context)!.settings.arguments as Category;
     return Scaffold(
-        appBar: RoundAppBar(title: Text(category.description,style: TextStyle(
+        appBar: CustomAppBar(title: Text(category.description,style: TextStyle(
           fontWeight: FontWeight.w400,
         ),),homePage: false,),
         body: QuestionWidget(category: category,mixedMode: true,)

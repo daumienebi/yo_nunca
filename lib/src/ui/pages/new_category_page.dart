@@ -26,7 +26,7 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: RoundAppBar(
+      appBar: CustomAppBar(
         title: Text(AppLocalizations.of(context)!.newCategory),
         homePage: false,
       ),

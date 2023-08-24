@@ -30,7 +30,7 @@ class _FavouritesPageState extends State<FavouritesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: RoundAppBar(
+        appBar: CustomAppBar(
           title: Text(AppLocalizations.of(context)!.favouriteQuestions),
           homePage: false,
         ),

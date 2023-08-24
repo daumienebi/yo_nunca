@@ -25,7 +25,7 @@ class HomePage extends StatelessWidget {
     //physics: const AlwaysScrollableScrollPhysics(),
 
     return Scaffold(
-      appBar: RoundAppBar(
+      appBar: CustomAppBar(
         homePage: true,
       ),
       floatingActionButton: FloatingActionButton(
@@ -49,7 +49,7 @@ class HomePage extends StatelessWidget {
                               fontSize: 20
                           ),
                         ),
-                        SizedBox(height: 5,),
+                        SizedBox(height: 5),
                         Expanded(
                           child: ListView(
                             scrollDirection: Axis.horizontal,
@@ -87,11 +87,14 @@ class HomePage extends StatelessWidget {
                       },
                       child: Text(
                         AppLocalizations.of(context)!.addCategory,
-                        style: TextStyle(color: Colors.black87),
+                        style: TextStyle(color: Colors.black87,fontSize: 14.5),
                       ),
                       style: TextButton.styleFrom(
                           backgroundColor: Colors.greenAccent,
                           shape: StadiumBorder()
+                          //shape: RoundedRectangleBorder(
+                            //borderRadius: BorderRadius.circular(7)
+                          //)
                       ),
                     ),
                     SizedBox(
