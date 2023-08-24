@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/models/question.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
-import 'package:yo_nunca/src/ui/widgets/custom_app_bar.dart';
+import 'package:yo_nunca/src/ui/components/custom_app_bar.dart';
 import 'package:yo_nunca/src/utils/messages.dart';
 import 'package:yo_nunca/src/utils/my_decorations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

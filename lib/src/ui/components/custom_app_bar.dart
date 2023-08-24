@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:yo_nunca/src/ui/components/components.dart';
 import 'package:yo_nunca/src/ui/pages/pages.dart';
-import 'package:yo_nunca/src/ui/widgets/widgets.dart';
 import 'package:yo_nunca/src/utils/app_routes.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -9,7 +9,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   final Text? title;
 
   ///[homePage] indicates if the app bar is for the home page,(it that case, it
-  ///contains the search delegate and drawer)
+  ///contains the search delegate, the fav icon and the menu)
   final bool homePage;
 
   CustomAppBar({Key? key, this.title, required this.homePage}) : super(key: key);
@@ -28,8 +28,8 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
       leading: InkWell(
           child: const Icon(Icons.menu,color: Colors.white,size: 27,),
           onTap: () =>
-          Navigator.of(context).push(createRouteWithSlideAnimation(page: DrawerPage()))
-        //Navigator.of(context).pushNamed(Constants.routes.drawerPage)
+          Navigator.of(context).push(createRouteWithSlideAnimation(page: MenuPage()))
+        //Navigator.of(context).pushNamed(Constants.routes.menuPage)
       ),
       // Changing to a normal app bar instead of the rounded one
       //shape: const RoundedRectangleBorder(
@@ -102,7 +102,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
 
   Route createRouteWithSlideAnimation({required Widget page}) {
     return PageRouteBuilder(
-      settings: RouteSettings(name: AppRoutes.routeStrings.drawerPage,),
+      settings: RouteSettings(name: AppRoutes.routeStrings.menuPage,),
       pageBuilder: (context, animation, secondaryAnimation) => page,
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         const begin = Offset(-1.5, 1);

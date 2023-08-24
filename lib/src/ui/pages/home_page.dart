@@ -10,7 +10,7 @@ import 'package:yo_nunca/src/providers/providers.dart';
 import 'package:yo_nunca/src/ui/pages/pages.dart';
 import 'package:yo_nunca/src/utils/app_routes.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
-import 'package:yo_nunca/src/ui/widgets/widgets.dart';
+import 'package:yo_nunca/src/ui/components/components.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:yo_nunca/src/utils/shared_preferences_util.dart';
 
@@ -33,12 +33,18 @@ class HomePage extends StatelessWidget {
         child: Icon(Icons.share_sharp),
         onPressed: () {
           showModalBottomSheet(
+              backgroundColor: Colors.transparent,
               barrierColor: Colors.black26,
               context: context,
               builder: (BuildContext context) {
                 return Container(
-                  height: 110,
-                  color: Colors.white,
+                  padding: const EdgeInsets.all(10),
+                  margin: const EdgeInsets.only(left: 7, right: 7),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15)
+                  ),
+                  height: 120,
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -49,7 +55,7 @@ class HomePage extends StatelessWidget {
                               fontSize: 20
                           ),
                         ),
-                        SizedBox(height: 5),
+                        const SizedBox(height: 5),
                         Expanded(
                           child: ListView(
                             scrollDirection: Axis.horizontal,
@@ -147,6 +153,21 @@ class HomePage extends StatelessWidget {
         icon: Icon(
           FontAwesomeIcons.facebook,
           color: Colors.indigo,
+          size: 40,
+        ),
+        onClicked: (){
+          Navigator.pop(context);
+          share(SocialMedia.Facebook,context);
+        }));
+    items.add(SizedBox(
+      width: 15,
+    ));
+    // add the translation
+    items.add(socialButton(
+        socialMedia: SocialMedia.Email.name,
+        icon: const Icon(
+          Icons.email,
+          color: Colors.redAccent,
           size: 40,
         ),
         onClicked: (){
@@ -263,7 +284,7 @@ class HomePage extends StatelessWidget {
   }
 
   /// Return the Mixed Mode text depending on the language but paints the
-  /// characters with different colours
+  /// characters with different colours and also makes the first letters bigger
   RichText mixedModeRichText(BuildContext context){
     String mixedModeText = AppLocalizations.of(context)!.mixedMode;
     // Get the length of the text to be able to loop through it and create the

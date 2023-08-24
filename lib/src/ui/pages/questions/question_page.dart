@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:yo_nunca/src/models/category.dart';
-import 'package:yo_nunca/src/ui/widgets/widgets.dart';
+import 'package:yo_nunca/src/ui/components/components.dart';
 
 class QuestionPage extends StatelessWidget {
   const QuestionPage({Key? key}) : super(key: key);

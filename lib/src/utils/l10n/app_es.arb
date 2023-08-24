@@ -42,7 +42,7 @@
   "goodMorning" : "Buenos días,",
   "goodNight" : "Buenas noches,",
   "goodEvening" : "Buenas tardes,",
-  "lastEntryText" : "Jugaste por última vez el {lastEntry}.",
+  "lastEntryText" : "Tu última partida fue el {lastEntry}.",
   "youHaveNotPlayedYet" : "Todavía no jugaste ninguna partida.",
   "questionsWithCategoriesText" : "Gestiona tus categorías/preguntas",
   "favourites" : "Favoritos",
@@ -104,6 +104,10 @@
   "copyLink" : "Copiar Enlace",
   "backup" : "Copia de seguridad",
   "backupText" : "Crea un respaldo de tus preguntas y restuaralos en cualquier dispositivo",
-   "help" : "Ayuda",
-   "helpText" : "Contenido de ayuda, contactar con el desarrollador, política de privacidad"
+  "help" : "Ayuda",
+  "helpText" : "Contenido de ayuda, contactar con el desarrollador, política de privacidad",
+  "termsAndConditions" : "Terminos y condiciones",
+  "termsAndConditionsText" : "Terminos y condiciones de la app",
+  "helpContents" : "Contenido de ayuda",
+  "helpContentsText" : "Información sobre la app y como usarla"
 }

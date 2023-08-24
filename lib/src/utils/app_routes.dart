@@ -10,8 +10,9 @@ class AppRoutes{
       routeStrings.mixedModePage: (_) => const MixedModePage(),
       routeStrings.categoryManagementPage: (_) => const CategoryManagementPage(),
       routeStrings.categoryListPage: (_) => const CategoryListPage(),
-      routeStrings.drawerPage: (_) => const DrawerPage(),
+      routeStrings.menuPage: (_) => const MenuPage(),
       routeStrings.creditsPage: (_) => const CreditsPage(),
+      routeStrings.helpPage : (_) => const HelpPage()
   };
 }
 
@@ -26,8 +27,9 @@ class _RouteStrings {
     String get mixedModePage => 'mixedmodepage';
     String get categoryManagementPage => 'categorymanagementpage';
     String get categoryListPage => 'categorylistpage';
-    String get drawerPage => 'drawerpage';
+    String get menuPage => 'menupage';
     String get creditsPage => 'creditspage';
     String get policyPage => 'policypage';
+    String get helpPage => 'help_page';
 }
 

@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
-import 'package:yo_nunca/src/ui/pages/category_management_page.dart';
+import 'package:yo_nunca/src/ui/pages/categories/category_management_page.dart';
 import 'package:yo_nunca/src/utils/app_routes.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:yo_nunca/src/utils/constants.dart';

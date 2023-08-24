@@ -3,15 +3,16 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:yo_nunca/src/ui/pages/pages.dart';
-import 'package:yo_nunca/src/ui/widgets/custom_app_bar.dart';
+import 'package:yo_nunca/src/ui/components/custom_app_bar.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:yo_nunca/src/utils/navigator_util.dart';
 import 'package:yo_nunca/src/utils/shared_preferences_util.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 // ignore_for_file: prefer_const_constructors
 
-class DrawerPage extends StatelessWidget{
-  const DrawerPage({Key? key}) : super(key: key);
+class MenuPage extends StatelessWidget{
+  const MenuPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -138,18 +139,6 @@ class DrawerPage extends StatelessWidget{
     );
   }
 
-  Route _createRoute({required page}) {
-    return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => page,
-      transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        return FadeTransition(
-          opacity: animation,
-          child: child,
-        );
-      },
-    );
-  }
-
   List<Widget> _optionsList(context){
     List<Widget> widgets = [];
     final subTitleStyle = TextStyle(fontSize: 13.5);
@@ -163,25 +152,10 @@ class DrawerPage extends StatelessWidget{
         leading: Icon(Icons.list_alt_outlined,color: Colors.black54),
         trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
         onTap: ()=> Navigator.of(context).push(
-            _createRoute(page: CategoryListPage()))
+            NavigatorUtil.createRouteWithSlideAnimation(newPage: CategoryListPage())
+        ),
       ),
     ));
-
-    //onTap: ()=>Navigator.of(context).push(
-    //             _createRoute(page: FavouritesPage()))
-    /*
-    widgets.add(ListTile(
-      title: Text(AppLocalizations.of(context)!.privacy,style: titleStyle),
-      subtitle: Text(AppLocalizations.of(context)!.dataManagement,style: subTitleStyle),
-      leading: Icon(Icons.privacy_tip_outlined,color: Colors.black54),
-      trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
-      onTap: (){
-        //original url: https://www.termsfeed.com/live/df65fce0-9b00-48db-b48b-0bca473a6fe0
-        final url = Uri.parse('https://daumienebi.github.io/yo_nunca/policy.html');
-        _launchUrl(url);
-      },
-    ));
-    */
 
     widgets.add(ListTile(
         title: Text(AppLocalizations.of(context)!.rateTheApp,style: titleStyle),
@@ -200,24 +174,10 @@ class DrawerPage extends StatelessWidget{
       subtitle: Text(AppLocalizations.of(context)!.contributionsToTheProject, style: subTitleStyle),
       leading: Icon(Icons.people_outline,color: Colors.black54,),
       trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10),
-      onTap: ()=> Navigator.push(context, _createRoute(page: CreditsPage())),
-    ));
-
-    /* Add this option inside the privacy stuff
-    widgets.add(ListTile(
-      title: Text(AppLocalizations.of(context)!.contactDeveloper,style: titleStyle),
-      subtitle: Text(AppLocalizations.of(context)!.contactDeveloperSubtitle,
-        style: subTitleStyle,
+      onTap: ()=> Navigator.of(context).push(
+          NavigatorUtil.createRouteWithSlideAnimation(newPage: CreditsPage())
       ),
-      leading: Icon(Icons.contact_mail_outlined,),
-      trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
-      onTap: ()async{
-        String subject = 'Usuario desde la app: Yo Nunca';
-        String mailUrl = 'mailto:devdaumienebi@gmail.com?subject=$subject';
-        await _launchUrl(Uri.parse(mailUrl));
-      },
     ));
-     */
 
     widgets.add(ListTile(
       title: Text(AppLocalizations.of(context)!.backup,style: titleStyle),
@@ -227,7 +187,7 @@ class DrawerPage extends StatelessWidget{
       leading: Icon(Icons.backup_outlined,color: Colors.black54),
       trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
       onTap: ()async{
-        print('a');
+        print('Backup page');
       },
     ));
 
@@ -249,7 +209,9 @@ class DrawerPage extends StatelessWidget{
       leading: Icon(Icons.help_outline,color: Colors.black54),
       trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
       onTap: (){
-        print("a");
+       Navigator.of(context).push(
+           NavigatorUtil.createRouteWithSlideAnimation(newPage: HelpPage())
+       );
       },
     ));
 
@@ -319,9 +281,4 @@ class DrawerPage extends StatelessWidget{
     String version = packageInfo.version;
     return Future.value(version);
   }
-
-  _launchUrl(Uri url) async{
-    await launchUrl(url,mode:LaunchMode.externalApplication);
-  }
-
 }

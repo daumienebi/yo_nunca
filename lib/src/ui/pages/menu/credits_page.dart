@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:yo_nunca/src/ui/widgets/custom_app_bar.dart';
+import 'package:yo_nunca/src/ui/components/custom_app_bar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CreditsPage extends StatelessWidget{

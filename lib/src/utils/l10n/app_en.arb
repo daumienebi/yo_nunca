@@ -1,5 +1,4 @@
 {
-
   "language" : "English",
   "@language" : {
     "description" : "The current Language"
@@ -117,5 +116,9 @@
   "backup" : "Backup",
   "backupText" : "Backup your questions and save them to restore them on another device",
   "help" : "Help",
-  "helpText" : "App help contents,contact the developer,privacy policy"
+  "helpText" : "App help contents,contact the developer,privacy policy",
+  "termsAndConditions" : "Terms and Conditions",
+  "termsAndConditionsText" : "The terms and conditions for the app",
+  "helpContents" : "Help contents",
+  "helpContentsText" : "Info about the app and how to use it"
 }
