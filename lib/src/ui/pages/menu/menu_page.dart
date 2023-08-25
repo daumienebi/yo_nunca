@@ -1,3 +1,7 @@
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
@@ -9,6 +13,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:yo_nunca/src/utils/navigator_util.dart';
 import 'package:yo_nunca/src/utils/shared_preferences_util.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:http/http.dart' as http;
+import 'dart:developer' as dev;
 // ignore_for_file: prefer_const_constructors
 
 class MenuPage extends StatelessWidget{
@@ -199,7 +205,8 @@ class MenuPage extends StatelessWidget{
       leading: Icon(Icons.update_sharp,color: Colors.black54),
       trailing: Icon(Icons.arrow_forward_ios_sharp,size: 10,),
       onTap: (){
-        _updateAppPopUpForm(context);
+        //Carry out the check update procedure
+        _updateAppBottomDialog(context);
       },
     ));
 
@@ -218,62 +225,97 @@ class MenuPage extends StatelessWidget{
     return widgets;
   }
 
-  Future _updateAppPopUpForm(BuildContext context) {
-    return showDialog(
-      barrierColor: Colors.black26,
-      context: context,
-      builder: (_) {
-          return AlertDialog(
-            title: Text(
-                AppLocalizations.of(context)!.updateModeText
-            ),
-            content: SingleChildScrollView(
-              child: Column(
-                children: [
-                  TextButton(
-                      onPressed: () async{
-                        String appId = Constants.playStoreId;
-                        final url = Uri.parse('https://play.google.com/store/apps/details?id=$appId');
-                        await launchUrl(url,mode: LaunchMode.externalApplication);
-                      },
-                    child: Text(
-                        AppLocalizations.of(context)!.goToPlaystore,
-                        style: TextStyle(color: Colors.black87)
+  Future _updateAppBottomDialog(BuildContext context){
+    final String newVersion = '';
+    //checkForUpdate();
+    return showModalBottomSheet(
+        backgroundColor: Colors.transparent,
+        barrierColor: Colors.black26,
+        context: context,
+        builder: (context)=> Container(
+          padding: const EdgeInsets.all(10),
+          margin: const EdgeInsets.only(left: 7, right: 7,bottom: 7),
+          height: MediaQuery.of(context).size.height * 0.27,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            color: Colors.white
+          ),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextButton(
+                      onPressed: (){}, child: Text('Newest version :',style: TextStyle(color: Colors.blue)),
+                      style: TextButton.styleFrom(backgroundColor: Colors.white),
                     ),
-                    style:TextButton.styleFrom(
-                        backgroundColor: Colors.greenAccent,
-                      )
-                  ),
-                  TextButton(
-                    onPressed: () async{
-                      //String apkLink = Constants.apkLink;
-                      //Send the user to to app page to download the latest APK
-                      final url = Uri.parse('https://daumienebi.github.io/yo_nunca');
-                      await launchUrl(url,mode: LaunchMode.externalApplication);
-                    },
-                    child: Text(
-                        AppLocalizations.of(context)!.downloadApk,
-                        style: TextStyle(color: Colors.black87)
-                    ),
-                    style:TextButton.styleFrom(
-                        backgroundColor: Colors.orangeAccent,
-                      )
-                  ),
-                ],
-              ),
-            ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: Text(
-                    AppLocalizations.of(context)!.cancel,
-                    style: TextStyle(color: Colors.red)
+                    Text('1.4.0'),
+                  ],
                 ),
-              ),
-            ],
-          );
-      },
+
+                Container(
+                  margin: EdgeInsets.only(top: 7,bottom: 7),
+                  child: Column(
+                    children: [
+                      Text('!Hay una actualización disponible!'),
+                      TextButton(
+                        onPressed: () async{
+                          String appId = Constants.playStoreId;
+                          final url = Uri.parse('https://play.google.com/store/apps/details?id=$appId');
+                          await launchUrl(url,mode: LaunchMode.externalApplication);
+                        },
+                        child: Text('Actualizar',style: TextStyle(color: Colors.white),),
+                        style: TextButton.styleFrom(
+                            backgroundColor: Colors.blue,
+                            shape: StadiumBorder(),
+                            minimumSize: Size(double.infinity,20)
+                        ),
+                      ),
+                      Text('Usuarios sin Google play store :'),
+                      TextButton(
+                        onPressed: () async{
+                          String appId = Constants.playStoreId;
+                          final url = Uri.parse('https://play.google.com/store/apps/details?id=$appId');
+                          await launchUrl(url,mode: LaunchMode.externalApplication);
+                        },
+                        child: Text('Descargar APK',style: TextStyle(color: Colors.white),),
+                        style: TextButton.styleFrom(
+                          backgroundColor: Colors.black87,
+                          shape: StadiumBorder(),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+        )
     );
+  }
+
+  //Check if a new version is available
+  // TODO finish it
+  Future<dynamic> checkForUpdate() async{
+    dynamic responseJson;
+    try {
+      final response = await http.get(Uri.parse(Constants.appVersionLink));
+      //Decode the response and return the json body to be mapped to any object
+      responseJson = jsonDecode(response.body);
+    } on SocketException catch (e){
+      print(responseJson.toString());
+      // Handle the SocketException
+      dev.log('Network connection error: $e');
+    }catch(e){
+      dev.log('Random Exception $e');
+    }
+    return responseJson;
+  }
+
+  // TODO
+  bool compareVersions(String currentVersion,newVersion){
+    return false;
   }
 
   Future<String> getVersion() async{

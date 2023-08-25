@@ -7,15 +7,22 @@ enum SocialMedia { Facebook, Twitter, Instagram, Whatsapp,Enlace, Email}
 class Constants {
   static double homePageWidgetHeight = 200;
 
+  // PlayStore link
   static String playStoreId = 'com.devdaumienebi.yonunca';
 
-  static String apkLink = "https://github.com/daumienebi/yo_nunca/releases/download/v1.2.0/app-release.apk";
+  // Release APK link
+  static String apkLink = 'https://github.com/daumienebi/yo_nunca/releases/download/v1.2.0/app-release.apk';
 
+  // App version link to check before updating the app
+  static String appVersionLink = 'https://raw.githubusercontent.com/daumienebi/yo_nunca/master/app_version.json';
+
+  // Colors for the mixed mode home page button
   static List<Color> mixedModeColors = [
     Colors.orange, Colors.pink, Colors.white, Colors.cyan, Colors.green,
     Colors.blue,Colors.grey, Colors.lime,Colors.yellow,Colors.teal
   ];
 
+  // Map to get the translation of each month depending on the number
   static String getMonthName(int month,BuildContext context){
     Map<int,String> months = {
       1 : AppLocalizations.of(context)!.january,
@@ -34,6 +41,7 @@ class Constants {
     return months[month].toString();
   }
 
+  // The app's primary swatch
   static MaterialColor primarySwatch = MaterialColor(0xFFFF5722,
       {
         50  : const Color(0xFFFBE9E7),
@@ -47,5 +55,4 @@ class Constants {
         800 : const Color(0xFFD84315),
         900 : const Color(0xFFBF360C)
       });
-
 }
