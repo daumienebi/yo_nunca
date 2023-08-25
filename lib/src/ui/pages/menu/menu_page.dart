@@ -44,7 +44,7 @@ class MenuPage extends StatelessWidget{
           Padding(
             padding: EdgeInsets.only(top:10,bottom: 15),
             child: FutureBuilder(
-              future: getVersion(),
+              future: getUsersVersion(),
                 builder: (context, snapshot) {
                   if(snapshot.hasData){
                     return Container(
@@ -225,16 +225,16 @@ class MenuPage extends StatelessWidget{
     return widgets;
   }
 
-  Future _updateAppBottomDialog(BuildContext context){
-    final String newVersion = '';
-    //checkForUpdate();
+  Future _updateAppBottomDialog(BuildContext context) async{
+
+    await compareVersions();
     return showModalBottomSheet(
         backgroundColor: Colors.transparent,
         barrierColor: Colors.black26,
         context: context,
         builder: (context)=> Container(
           padding: const EdgeInsets.all(10),
-          margin: const EdgeInsets.only(left: 7, right: 7,bottom: 7),
+          //margin: const EdgeInsets.only(left: 7, right: 7,bottom: 7),
           height: MediaQuery.of(context).size.height * 0.27,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
@@ -250,7 +250,14 @@ class MenuPage extends StatelessWidget{
                       onPressed: (){}, child: Text('Newest version :',style: TextStyle(color: Colors.blue)),
                       style: TextButton.styleFrom(backgroundColor: Colors.white),
                     ),
-                    Text('1.4.0'),
+                    Text(
+                        '1.4.0',
+                        style: TextStyle(
+                          color:Colors.green,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 14
+                        )
+                    ),
                   ],
                 ),
 
@@ -297,12 +304,15 @@ class MenuPage extends StatelessWidget{
 
   //Check if a new version is available
   // TODO finish it
-  Future<dynamic> checkForUpdate() async{
+  Future<String> getVersion(AppVersion appVersion) async{
     dynamic responseJson;
+    String newVersion = '';
     try {
       final response = await http.get(Uri.parse(Constants.appVersionLink));
+      print(Constants.appVersionLink);
       //Decode the response and return the json body to be mapped to any object
       responseJson = jsonDecode(response.body);
+      newVersion = responseJson[appVersion.name];
     } on SocketException catch (e){
       print(responseJson.toString());
       // Handle the SocketException
@@ -310,15 +320,21 @@ class MenuPage extends StatelessWidget{
     }catch(e){
       dev.log('Random Exception $e');
     }
-    return responseJson;
+    return newVersion;
   }
 
   // TODO
-  bool compareVersions(String currentVersion,newVersion){
+  Future<bool>compareVersions() async{
+    final String currentVersion = await getVersion(AppVersion.current_version);
+    final String usersVersion = await getUsersVersion();
+    final String minimumVersion = await getVersion(AppVersion.minimum_version);
+    print('Current :' + currentVersion);
+    print('User :' + usersVersion);
+    print('Minimum:' + minimumVersion);
     return false;
   }
 
-  Future<String> getVersion() async{
+  Future<String> getUsersVersion() async{
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     String version = packageInfo.version;
     return Future.value(version);
