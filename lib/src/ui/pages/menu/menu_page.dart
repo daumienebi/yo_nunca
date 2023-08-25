@@ -1,20 +1,14 @@
-import 'dart:convert';
-import 'dart:io';
-
-import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:yo_nunca/src/ui/pages/pages.dart';
 import 'package:yo_nunca/src/ui/components/custom_app_bar.dart';
+import 'package:yo_nunca/src/utils/app_version_util.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:yo_nunca/src/utils/navigator_util.dart';
 import 'package:yo_nunca/src/utils/shared_preferences_util.dart';
-import 'package:package_info_plus/package_info_plus.dart';
-import 'package:http/http.dart' as http;
-import 'dart:developer' as dev;
 // ignore_for_file: prefer_const_constructors
 
 class MenuPage extends StatelessWidget{
@@ -44,7 +38,7 @@ class MenuPage extends StatelessWidget{
           Padding(
             padding: EdgeInsets.only(top:10,bottom: 15),
             child: FutureBuilder(
-              future: getUsersVersion(),
+              future: AppVersionUtil.getUsersVersion(),
                 builder: (context, snapshot) {
                   if(snapshot.hasData){
                     return Container(
@@ -226,8 +220,8 @@ class MenuPage extends StatelessWidget{
   }
 
   Future _updateAppBottomDialog(BuildContext context) async{
-
-    await compareVersions();
+    //check if an update is required
+    await AppVersionUtil.isUpdateRequired();
     return showModalBottomSheet(
         backgroundColor: Colors.transparent,
         barrierColor: Colors.black26,
@@ -265,7 +259,7 @@ class MenuPage extends StatelessWidget{
                   margin: EdgeInsets.only(top: 7,bottom: 7),
                   child: Column(
                     children: [
-                      Text('!Hay una actualización disponible!'),
+                      Text('An update is available!'),
                       TextButton(
                         onPressed: () async{
                           String appId = Constants.playStoreId;
@@ -279,7 +273,7 @@ class MenuPage extends StatelessWidget{
                             minimumSize: Size(double.infinity,20)
                         ),
                       ),
-                      Text('Usuarios sin Google play store :'),
+                      Text('Users without Google play store :'),
                       TextButton(
                         onPressed: () async{
                           String appId = Constants.playStoreId;
@@ -300,43 +294,5 @@ class MenuPage extends StatelessWidget{
           ),
         )
     );
-  }
-
-  //Check if a new version is available
-  // TODO finish it
-  Future<String> getVersion(AppVersion appVersion) async{
-    dynamic responseJson;
-    String newVersion = '';
-    try {
-      final response = await http.get(Uri.parse(Constants.appVersionLink));
-      print(Constants.appVersionLink);
-      //Decode the response and return the json body to be mapped to any object
-      responseJson = jsonDecode(response.body);
-      newVersion = responseJson[appVersion.name];
-    } on SocketException catch (e){
-      print(responseJson.toString());
-      // Handle the SocketException
-      dev.log('Network connection error: $e');
-    }catch(e){
-      dev.log('Random Exception $e');
-    }
-    return newVersion;
-  }
-
-  // TODO
-  Future<bool>compareVersions() async{
-    final String currentVersion = await getVersion(AppVersion.current_version);
-    final String usersVersion = await getUsersVersion();
-    final String minimumVersion = await getVersion(AppVersion.minimum_version);
-    print('Current :' + currentVersion);
-    print('User :' + usersVersion);
-    print('Minimum:' + minimumVersion);
-    return false;
-  }
-
-  Future<String> getUsersVersion() async{
-    PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    String version = packageInfo.version;
-    return Future.value(version);
   }
 }
