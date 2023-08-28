@@ -92,7 +92,7 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
         AppLocalizations.of(context)!.addQuestion,
         style: TextStyle(color: Colors.black),
       ),
-      style: TextButton.styleFrom(backgroundColor: Colors.greenAccent),
+      style: TextButton.styleFrom(backgroundColor: Colors.greenAccent,shape: StadiumBorder()),
     );
   }
 

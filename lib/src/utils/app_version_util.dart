@@ -32,14 +32,28 @@ class AppVersionUtil{
 
   // Checks if the user needs to update the app
   static Future<bool>isUpdateRequired() async{
-    bool update; // to decide if the user has to update
-    final String currentVersion = await getVersion(AppVersion.current_version);
+    late bool update; // to decide if the user has to update
+    final String latestVersion = await getVersion(AppVersion.current_version);
     final String usersVersion = await getUsersVersion();
     final String minimumVersion = await getVersion(AppVersion.minimum_version);
-    print('Current :' + currentVersion);
-    print('User :' + usersVersion);
-    print('Minimum:' + minimumVersion);
-    return false;
+    // Versions are separated like this [x.y.z] so the indexes will be [0,1,2,3,4]
+    // in order to get the version numbers and compare them. indexes 1 & 3 cannot
+    // be parsed because they are '.'. For example usersVersion = 1.3.2 &
+    // latestVersion = 1.4.0
+
+    // X
+    if(int.parse(latestVersion[0].toString()) > int.parse(usersVersion[0].toString())){
+      update = true;
+    }
+    // Y
+    if(int.parse(latestVersion[2].toString()) > int.parse(usersVersion[2].toString())){
+      update = true;
+    }
+    // Z
+    if(int.parse(latestVersion[4].toString()) > int.parse(usersVersion[4].toString())){
+      update = true;
+    }
+    return update;
   }
 
   static Future<String> getUsersVersion() async{

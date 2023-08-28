@@ -2,9 +2,9 @@ import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/ui/pages/pages.dart';
-import 'package:yo_nunca/src/utils/app_routes.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
 import 'package:yo_nunca/src/utils/my_decorations.dart';
+import 'package:yo_nunca/src/utils/navigator_util.dart';
 import 'package:yo_nunca/src/utils/shared_preferences_util.dart';
 
 class CategoriesCardSwiper extends StatelessWidget {
@@ -22,14 +22,14 @@ class CategoriesCardSwiper extends StatelessWidget {
         child: Swiper(
           itemBuilder: (BuildContext context, int index) {
             return GestureDetector(
-                //onTap: () => Navigator.of(context).pushNamed(
-                //Constants.routes.questionsPage, arguments: categories[index]),
                 onTap: () async {
-                  // The idea is to save the date the user enters a category
-                  // to view the questions
+                  // Save the date the user enters a category to view the
+                  // questions, it is also done when the user enters MIXED MODE
                   await SharedPreferencesUtil.setUserLastEntry();
-                  Navigator.of(context)
-                      .push(_createRoute(arguments: categories[index]));
+                  Navigator.of(context).push(NavigatorUtil.createRouteWithFadeAnimation(
+                      newPage: QuestionPage(),
+                    arguments: categories[index],
+                  ));
                 },
                 child: Hero(
                   tag : UniqueKey(),//or find another way to use a unique tag
@@ -65,22 +65,5 @@ class CategoriesCardSwiper extends StatelessWidget {
         ),
       ),
     ]);
-  }
-
-  Route _createRoute({required Object? arguments}) {
-    return PageRouteBuilder(
-      settings: RouteSettings(
-          name: AppRoutes.routeStrings.questionsPage,
-          arguments: arguments
-      ),
-      pageBuilder: (context, animation, secondaryAnimation) =>
-          const QuestionPage(),
-      transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        return FadeTransition(
-          opacity: animation,
-          child: child,
-        );
-      },
-    );
   }
 }

@@ -39,7 +39,7 @@ class HomePage extends StatelessWidget {
               builder: (BuildContext context) {
                 return Container(
                   padding: const EdgeInsets.all(10),
-                  margin: const EdgeInsets.only(left: 7, right: 7),
+                  //margin: const EdgeInsets.only(left: 7, right: 7),
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(15)
@@ -96,11 +96,9 @@ class HomePage extends StatelessWidget {
                         style: TextStyle(color: Colors.black87,fontSize: 14.5),
                       ),
                       style: TextButton.styleFrom(
+                          //backgroundColor: Colors.greenAccent,
                           backgroundColor: Colors.greenAccent,
                           shape: StadiumBorder()
-                          //shape: RoundedRectangleBorder(
-                            //borderRadius: BorderRadius.circular(7)
-                          //)
                       ),
                     ),
                     SizedBox(

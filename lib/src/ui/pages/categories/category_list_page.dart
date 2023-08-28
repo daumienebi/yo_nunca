@@ -25,37 +25,39 @@ class CategoryListPage extends StatelessWidget {
       child: Scaffold(
           floatingActionButton: FloatingActionButton(
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15)
-              ),
+                  borderRadius: BorderRadius.circular(15)),
               child: Icon(Icons.add),
-              onPressed: () =>
-                  Navigator.pushNamed(context, AppRoutes.routeStrings.newCategory)),
+              onPressed: () => Navigator.pushNamed(
+                  context, AppRoutes.routeStrings.newCategory)),
           appBar: AppBar(
             title: Text(AppLocalizations.of(context)!.manageCategories),
             bottom: TabBar(
               indicatorColor: Colors.orange[50],
               tabs: [
                 Tab(
-                  child:
-                      categoryTabHeader(_categories.length, AppLocalizations.of(context)!.myCategories),
+                  child: categoryTabHeader(_categories.length,
+                      AppLocalizations.of(context)!.myCategories),
                 ),
                 Tab(
-                  child: categoryTabHeader(
-                      _defaultCategories.length, AppLocalizations.of(context)!.defaultQuestions),
+                  child: categoryTabHeader(_defaultCategories.length,
+                      AppLocalizations.of(context)!.defaultQuestions),
                 ),
               ],
             ),
           ),
           body: TabBarView(children: [
             userCategoryContents(_categories, context),
-            defaultCategoryContents(_defaultCategories,context)
+            defaultCategoryContents(_defaultCategories, context)
           ])),
     );
   }
 
   categoryTabHeader(int number, String tabName) {
     return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-      Text(tabName,style: GoogleFonts.varelaRound(),),
+      Text(
+        tabName,
+        style: GoogleFonts.varelaRound(),
+      ),
       SizedBox(
         width: 5,
       ),
@@ -75,7 +77,8 @@ class CategoryListPage extends StatelessWidget {
     ]);
   }
 
-  Widget defaultCategoryContents(List<Category> categories,BuildContext context) {
+  Widget defaultCategoryContents(
+      List<Category> categories, BuildContext context) {
     return Container(
       margin: EdgeInsets.only(top: 7),
       child: Column(children: [
@@ -125,7 +128,7 @@ class CategoryListPage extends StatelessWidget {
       children: [
         Center(
             child: Text(
-              AppLocalizations.of(context)!.noCategoryYet,
+          AppLocalizations.of(context)!.noCategoryYet,
           style: TextStyle(color: Colors.black54, fontSize: 16),
         )),
         ElevatedButton(
@@ -136,7 +139,8 @@ class CategoryListPage extends StatelessWidget {
             AppLocalizations.of(context)!.addCategory,
             style: TextStyle(color: Colors.black87),
           ),
-          style: TextButton.styleFrom(backgroundColor: Colors.greenAccent),
+          style: TextButton.styleFrom(
+              backgroundColor: Colors.greenAccent, shape: StadiumBorder()),
         )
       ],
     );
@@ -176,7 +180,8 @@ class _CategoryTileState extends State<CategoryTile> {
       fontSize: 23,
       color: Colors.cyan[400],
     );
-    final countTxtStyle = GoogleFonts.varelaRound(fontSize: 16, color: Colors.white, fontWeight: FontWeight.normal);
+    final countTxtStyle = GoogleFonts.varelaRound(
+        fontSize: 16, color: Colors.white, fontWeight: FontWeight.normal);
     final editBtn = TextButton.styleFrom(backgroundColor: Colors.lightGreen);
     final deleteBtn = TextButton.styleFrom(backgroundColor: Colors.redAccent);
     CategoryProvider provider =
@@ -203,8 +208,9 @@ class _CategoryTileState extends State<CategoryTile> {
                 if (snapshot.hasData) {
                   String text = '';
                   bool plural = snapshot.data > 1;
-                  text = plural ? AppLocalizations.of(context)!.questions :
-                    AppLocalizations.of(context)!.question;
+                  text = plural
+                      ? AppLocalizations.of(context)!.questions
+                      : AppLocalizations.of(context)!.question;
                   return RichText(
                       text: TextSpan(
                           text: snapshot.data > 0
@@ -277,8 +283,8 @@ class _CategoryTileState extends State<CategoryTile> {
         context: context,
         builder: (_) => AlertDialog(
               title: Text(AppLocalizations.of(context)!.confirmDelete),
-              content:
-                  Text(AppLocalizations.of(context)!.deleteCategoryAndQuestions),
+              content: Text(
+                  AppLocalizations.of(context)!.deleteCategoryAndQuestions),
               actions: [
                 TextButton(
                     onPressed: () {
