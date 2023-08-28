@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:yo_nunca/src/ui/components/custom_app_bar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:yo_nunca/src/utils/navigator_util.dart';
-import 'package:yo_nunca/src/ui/pages/pages.dart';
 
 class HelpPage extends StatelessWidget{
   const HelpPage({super.key});
@@ -22,6 +20,7 @@ class HelpPage extends StatelessWidget{
   Widget helpOptions(BuildContext context){
     return ListView(
       children: [
+        /*
         _HelpListTile(
             title: AppLocalizations.of(context)!.helpContents,
             subtitle: AppLocalizations.of(context)!.helpContentsText,
@@ -32,6 +31,7 @@ class HelpPage extends StatelessWidget{
               );
             }
         ),
+        */
         _HelpListTile(
           title: AppLocalizations.of(context)!.privacy,
           subtitle: AppLocalizations.of(context)!.dataManagement,

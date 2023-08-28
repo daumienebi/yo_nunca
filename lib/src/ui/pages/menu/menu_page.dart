@@ -194,6 +194,7 @@ class MenuPage extends StatelessWidget {
           NavigatorUtil.createRouteWithSlideAnimation(newPage: CreditsPage())),
     ));
 
+    /*
     widgets.add(ListTile(
       title: Text(AppLocalizations.of(context)!.backup, style: titleStyle),
       subtitle: Text(
@@ -205,10 +206,9 @@ class MenuPage extends StatelessWidget {
         Icons.arrow_forward_ios_sharp,
         size: 10,
       ),
-      onTap: () async {
-        print('Backup page');
-      },
+      onTap: () async {},
     ));
+     */
 
     widgets.add(ListTile(
       title: Text(AppLocalizations.of(context)!.updateApp, style: titleStyle),
@@ -294,7 +294,7 @@ class _UpdateAppBottomDialogState extends State<UpdateAppBottomDialog> {
                   borderRadius: BorderRadius.circular(15), color: Colors.white),
               child: Center(
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CircularProgressIndicator(),
                   //LinearProgressIndicator(),
@@ -327,11 +327,23 @@ class _UpdateAppBottomDialogState extends State<UpdateAppBottomDialog> {
                       style: TextStyle(color: Colors.blue)),
                   style: TextButton.styleFrom(backgroundColor: Colors.white),
                 ),
-                Text('1.4.0',
-                    style: TextStyle(
-                        color: Colors.green,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 14)),
+                FutureBuilder(
+                    future:
+                        AppVersionUtil.getVersion(AppVersion.latest_version),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        return Container(
+                          child: Text(
+                            '${snapshot.data.toString()}',
+                            style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.green,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        );
+                      } else
+                        return Text("");
+                    }),
               ],
             ),
             Container(
@@ -399,15 +411,28 @@ class _UpdateAppBottomDialogState extends State<UpdateAppBottomDialog> {
               children: [
                 TextButton(
                   onPressed: () {},
-                  child: Text('Newest version :',
+                  child: Text('Latest version :',
                       style: TextStyle(color: Colors.blue)),
                   style: TextButton.styleFrom(backgroundColor: Colors.white),
                 ),
-                Text('1.4.0',
-                    style: TextStyle(
-                        color: Colors.green,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 15)),
+                FutureBuilder(
+                    future: AppVersionUtil.getUsersVersion(),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        return Container(
+                          child: Text(
+                            '${snapshot.data.toString()}',
+                            style:
+                                TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.green,
+                                    fontWeight: FontWeight.w500
+                                ),
+                          ),
+                        );
+                      } else
+                        return Text("");
+                    }),
               ],
             ),
             Container(
