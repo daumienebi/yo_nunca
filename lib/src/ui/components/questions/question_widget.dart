@@ -86,8 +86,8 @@ class _QuestionWidgetState extends State<QuestionWidget> {
                   // of widgets to the questions), else display the error page.
                   futureWidgets =
                       snapshot.data != null && snapshot.data.length > 0
-                          ? _questionContainerWidget(snapshot)
-                          : _noQuestionWidget();
+                          ? questionContainerWidget(snapshot)
+                          : noQuestionWidget();
                 } else if (snapshot.hasError) {
                   futureWidgets = <Widget>[
                     Messages.errorWidget(AppLocalizations.of(context)!.questionsCouldNotBeLoaded),
@@ -113,19 +113,19 @@ class _QuestionWidgetState extends State<QuestionWidget> {
 
   /// Parent container for the fav button,question textWidget and the Previous
   /// & Next Button
-  _questionContainerWidget(AsyncSnapshot snapshot) {
+  questionContainerWidget(AsyncSnapshot snapshot) {
     //Begin the game with a random index instead of 0
     //displays this widget when data is received
     return <Widget>[
       Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        _questionTextWidget(snapshot.data[gameOrder[currentIndex]]),
+        questionTextWidget(snapshot.data[gameOrder[currentIndex]]),
         SizedBox(height: 5),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            _previousQuestionButton(),
+            previousQuestionButton(),
             SizedBox(width: 25),
-            _nextQuestionButton(snapshot.data.length)
+            nextQuestionButton(snapshot.data.length)
           ],
         )
       ])
@@ -134,7 +134,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
 
   /// Displays this widget when no data is received or when the category has
   /// no questions
-  _noQuestionWidget() {
+  noQuestionWidget() {
     String part1 = AppLocalizations.of(context)!.noQuestionWidgetPart1;
     String part2 = AppLocalizations.of(context)!.noQuestionWidgetPart2;
     final textStyle =  GoogleFonts.varelaRound(
@@ -180,12 +180,15 @@ class _QuestionWidgetState extends State<QuestionWidget> {
               color: Colors.black87
           ),
         ),
-        style: TextButton.styleFrom(backgroundColor: Colors.greenAccent),
+        style: TextButton.styleFrom(
+            backgroundColor: Colors.greenAccent,
+            shape: StadiumBorder()
+        ),
       )
     ];
   }
 
-  Widget _questionTextWidget(Question question) {
+  Widget questionTextWidget(Question question) {
     Icon likedIcon = Icon(
       Icons.favorite,
       color: Colors.red,
@@ -265,7 +268,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
     );
   }
 
-  Widget _previousQuestionButton() {
+  Widget previousQuestionButton() {
     //Previous question button
     final btnStyle = ElevatedButton.styleFrom(
         textStyle: GoogleFonts.varelaRound(fontSize: 17),
@@ -287,7 +290,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
   }
 
   /// [listLength] - to obtain the length of the questions list
-  Widget _nextQuestionButton(int listLength) {
+  Widget nextQuestionButton(int listLength) {
     final btnStyle = ElevatedButton.styleFrom(
         textStyle: GoogleFonts.varelaRound(fontSize: 17),
         shape: StadiumBorder()

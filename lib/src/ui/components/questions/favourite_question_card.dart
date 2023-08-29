@@ -22,7 +22,7 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
 
   @override
   void initState() {
-    _loadCards();
+    loadCards();
     super.initState();
   }
 
@@ -31,7 +31,7 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
     return Future.delayed(Duration(seconds: 2), () => questions);
   }
 
-  void _loadCards(){
+  void loadCards(){
     QuestionProvider provider =
         Provider.of<QuestionProvider>(context, listen: false);
     questions = provider.favouriteQuestions;
@@ -110,6 +110,14 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(30)),
             color: Colors.teal[50],
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 2,
+                blurRadius: 10,
+                offset: Offset(0, 3), // changes position of shadow
+              ),
+            ],
           ),
           child: Column(children: [
             SizedBox(
@@ -152,7 +160,7 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
       onPressed: () {
         if (cards.isEmpty) {
           setState(() {
-            _loadCards();
+            loadCards();
           });
         }
         //Hide the Restart button after reloading the cards
