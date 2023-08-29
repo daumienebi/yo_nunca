@@ -109,5 +109,10 @@
   "termsAndConditions" : "Terminos y condiciones",
   "termsAndConditionsText" : "Terminos y condiciones de la app",
   "helpContents" : "Contenido de ayuda",
-  "helpContentsText" : "Información sobre la app y como usarla"
+  "helpContentsText" : "Información sobre la app y como usarla",
+  "checkingForUpdates" : "Comprobando actualizaciones...",
+  "latestVersion" : "Versión nueva :",
+  "newUpdateAvailable" : "!Hay una actualización disponible!",
+  "usersWithoutGooglePlay" : "Usuarios sin Google play :",
+  "appUpToDate" : "Tu aplicación está actualizada"
 }

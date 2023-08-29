@@ -302,7 +302,7 @@ class _UpdateAppBottomDialogState extends State<UpdateAppBottomDialog> {
                   CircularProgressIndicator(),
                   //LinearProgressIndicator(),
                   SizedBox(height: 7),
-                  Text('Checking for updates')
+                  Text(AppLocalizations.of(context)!.checkingForUpdates)
                 ],
               )),
             );
@@ -326,7 +326,7 @@ class _UpdateAppBottomDialogState extends State<UpdateAppBottomDialog> {
               children: [
                 TextButton(
                   onPressed: () {},
-                  child: Text('Latest version :',
+                  child: Text(AppLocalizations.of(context)!.latestVersion,
                       style: TextStyle(color: Colors.blue)),
                   style: TextButton.styleFrom(backgroundColor: Colors.white),
                 ),
@@ -353,7 +353,7 @@ class _UpdateAppBottomDialogState extends State<UpdateAppBottomDialog> {
               margin: EdgeInsets.only(top: 7, bottom: 7),
               child: Column(
                 children: [
-                  Text('A new update is available!'),
+                  Text(AppLocalizations.of(context)!.newUpdateAvailable),
                   TextButton(
                     onPressed: () async {
                       String appId = Constants.playStoreId;
@@ -363,7 +363,7 @@ class _UpdateAppBottomDialogState extends State<UpdateAppBottomDialog> {
                           mode: LaunchMode.externalApplication);
                     },
                     child: Text(
-                      'Update',
+                      AppLocalizations.of(context)!.updateApp,
                       style: TextStyle(color: Colors.white),
                     ),
                     style: TextButton.styleFrom(
@@ -371,17 +371,14 @@ class _UpdateAppBottomDialogState extends State<UpdateAppBottomDialog> {
                         shape: StadiumBorder(),
                         minimumSize: Size(double.infinity, 20)),
                   ),
-                  Text('Users without Google play store :'),
+                  Text(AppLocalizations.of(context)!.usersWithoutGooglePlay),
                   TextButton(
                     onPressed: () async {
-                      String appId = Constants.playStoreId;
-                      final url = Uri.parse(
-                          'https://play.google.com/store/apps/details?id=$appId');
-                      await launchUrl(url,
-                          mode: LaunchMode.externalApplication);
+                      final url = Uri.parse('https://daumienebi.github.io/yo_nunca/');
+                      await launchUrl(url,mode: LaunchMode.externalApplication);
                     },
                     child: Text(
-                      'Download APK',
+                      AppLocalizations.of(context)!.downloadApk,
                       style: TextStyle(color: Colors.white),
                     ),
                     style: TextButton.styleFrom(
@@ -414,7 +411,7 @@ class _UpdateAppBottomDialogState extends State<UpdateAppBottomDialog> {
               children: [
                 TextButton(
                   onPressed: () {},
-                  child: Text('Latest version :',
+                  child: Text(AppLocalizations.of(context)!.latestVersion,
                       style: TextStyle(color: Colors.blue)),
                   style: TextButton.styleFrom(backgroundColor: Colors.white),
                 ),
@@ -442,7 +439,7 @@ class _UpdateAppBottomDialogState extends State<UpdateAppBottomDialog> {
               //margin: EdgeInsets.only(top: 7, bottom: 7),
               child: Column(
                 children: [
-                  Text('Your app is up to date!'),
+                  Text(AppLocalizations.of(context)!.appUpToDate),
                   SizedBox(height: 7),
                   Icon(
                     Icons.check_circle,
