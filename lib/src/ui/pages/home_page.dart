@@ -12,6 +12,7 @@ import 'package:yo_nunca/src/utils/app_routes.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
 import 'package:yo_nunca/src/ui/components/components.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:yo_nunca/src/utils/navigator_util.dart';
 import 'package:yo_nunca/src/utils/shared_preferences_util.dart';
 
 class HomePage extends StatelessWidget {
@@ -85,10 +86,7 @@ class HomePage extends StatelessWidget {
                     ElevatedButton(
                       onPressed: (){
                         Navigator.of(context).push(
-                          _createRoute(
-                              settingsName: AppRoutes.routeStrings.newCategory,
-                              page: const NewCategoryPage()
-                          )
+                          NavigatorUtil.createRouteWithSlideAnimation(newPage: NewCategoryPage())
                         );
                       },
                       child: Text(
@@ -96,7 +94,6 @@ class HomePage extends StatelessWidget {
                         style: TextStyle(color: Colors.black87,fontSize: 14.5),
                       ),
                       style: TextButton.styleFrom(
-                          //backgroundColor: Colors.greenAccent,
                           backgroundColor: Colors.greenAccent,
                           shape: StadiumBorder()
                       ),

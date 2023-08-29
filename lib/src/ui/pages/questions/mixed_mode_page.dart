@@ -9,7 +9,7 @@ class MixedModePage extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    //In this case, a category with ID:0 will be received
+    //In this case, a category with id:0 will be received
     Category category = ModalRoute.of(context)!.settings.arguments as Category;
     return Scaffold(
         appBar: CustomAppBar(title: Text(category.description,style: TextStyle(

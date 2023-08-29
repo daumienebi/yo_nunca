@@ -3,10 +3,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
-import 'package:yo_nunca/src/ui/pages/categories/category_management_page.dart';
-import 'package:yo_nunca/src/utils/app_routes.dart';
+import 'package:yo_nunca/src/ui/pages/pages.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:yo_nunca/src/utils/constants.dart';
+import 'package:yo_nunca/src/utils/navigator_util.dart';
 // ignore_for_file: prefer_const_constructors
 
 class CategoryListPage extends StatelessWidget {
@@ -27,8 +27,9 @@ class CategoryListPage extends StatelessWidget {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15)),
               child: Icon(Icons.add),
-              onPressed: () => Navigator.pushNamed(
-                  context, AppRoutes.routeStrings.newCategory)),
+              onPressed: () => Navigator.of(context).push(
+                  NavigatorUtil.createRouteWithSlideAnimation(newPage: NewCategoryPage())
+              )),
           appBar: AppBar(
             title: Text(AppLocalizations.of(context)!.manageCategories),
             bottom: TabBar(
@@ -133,7 +134,10 @@ class CategoryListPage extends StatelessWidget {
         )),
         ElevatedButton(
           onPressed: () {
-            Navigator.pushNamed(context, AppRoutes.routeStrings.newCategory);
+            //Navigator.pushNamed(context, AppRoutes.routeStrings.newCategory);
+            Navigator.of(context).push(
+                NavigatorUtil.createRouteWithSlideAnimation(newPage: NewCategoryPage())
+            );
           },
           child: Text(
             AppLocalizations.of(context)!.addCategory,

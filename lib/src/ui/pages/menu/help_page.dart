@@ -47,8 +47,8 @@ class HelpPage extends StatelessWidget{
           subtitle: AppLocalizations.of(context)!.termsAndConditionsText,
           iconData: Icons.file_present,
           onTap: () async{
-            final url = Uri.parse('https://daumienebi.github.io/yo_nunca/policy.html');
-            await launchUrl(url,mode: LaunchMode.externalApplication);
+            final url = Uri.parse('https://daumienebi.github.io/yo_nunca/terms_and_conditions.html');
+            _launchUrl(url);
           },
         ),
         _HelpListTile(

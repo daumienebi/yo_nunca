@@ -4,9 +4,10 @@ import 'package:provider/provider.dart';
 import 'package:yo_nunca/src/models/question.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
 import 'package:yo_nunca/src/ui/components/components.dart';
-import 'package:yo_nunca/src/utils/app_routes.dart';
+import 'package:yo_nunca/src/ui/pages/pages.dart';
 import 'package:yo_nunca/src/utils/messages.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:yo_nunca/src/utils/navigator_util.dart';
 
 class FavouritesPage extends StatefulWidget {
   const FavouritesPage({Key? key = const Key("favouritePage")}); //wtf
@@ -48,7 +49,7 @@ class _FavouritesPageState extends State<FavouritesPage> {
             return Column(children: [
               Expanded(
                   child: _favouriteQuestions.isNotEmpty
-                      ? _favouriteQuestionsWidget(_favouriteQuestions)
+                      ? favouriteQuestionsWidget(_favouriteQuestions)
                       : Center(
                           child: Container(
                             padding: EdgeInsets.only(left: 7,right: 7),
@@ -76,7 +77,7 @@ class _FavouritesPageState extends State<FavouritesPage> {
         ));
   }
 
-  Widget _favouriteQuestionsWidget(List<Question> favouriteQuestions) {
+  Widget favouriteQuestionsWidget(List<Question> favouriteQuestions) {
     return Column(
       children: [
         Expanded(
@@ -84,7 +85,7 @@ class _FavouritesPageState extends State<FavouritesPage> {
             margin: EdgeInsets.all(5),
             child: ListView.separated(
               itemBuilder: (_, int index) =>
-                  _favListTile(favouriteQuestions[index]),
+                  favouriteListTile(favouriteQuestions[index]),
               separatorBuilder: (context, index) => Divider(
                 color: Colors.transparent,
                 height: 2,
@@ -106,7 +107,7 @@ class _FavouritesPageState extends State<FavouritesPage> {
     );
   }
 
-  _favListTile(Question question) {
+  Widget favouriteListTile(Question question) {
     return Consumer(
       builder: (_, QuestionProvider provider, __) => ListTile(
         title: Text(question.description, overflow: TextOverflow.ellipsis),
@@ -116,8 +117,8 @@ class _FavouritesPageState extends State<FavouritesPage> {
             await provider.removeFromFavourites(question);
           },
           child: Icon(
-            Icons.delete_forever_rounded,
-            color: Colors.red,
+            Icons.delete_outline_sharp,
+            color: Colors.black54,
           ),
         ),
       ),
@@ -127,10 +128,15 @@ class _FavouritesPageState extends State<FavouritesPage> {
   Widget createGameButton() {
     final btnStyle = TextButton.styleFrom(
         textStyle: TextStyle(color: Colors.blue, fontSize: 17),
-        backgroundColor: Colors.greenAccent);
+        backgroundColor: Colors.greenAccent,
+        shape: StadiumBorder()
+    );
     return ElevatedButton(
       onPressed: () {
-        Navigator.pushNamed(context, AppRoutes.routeStrings.favouriteQuestionPage);
+        //Navigator.pushNamed(context, AppRoutes.routeStrings.favouriteQuestionPage);
+        Navigator.of(context).push(
+            NavigatorUtil.createRouteWithSlideAnimation(newPage: FavouriteQuestionPage())
+        );
       },
       child: Text(
         AppLocalizations.of(context)!.createGame,

@@ -27,7 +27,7 @@ class MenuPage extends StatelessWidget {
 
   Widget _mainBody(context) {
     return Container(
-      margin: EdgeInsets.only(top: 15, left: 20, right: 20),
+      margin: EdgeInsets.only(top: 15, left: 15, right: 15),
       child: Column(
         children: [
           _buildLastEntryWidget(context),
@@ -154,9 +154,10 @@ class MenuPage extends StatelessWidget {
             AppLocalizations.of(context)!.questionsWithCategoriesText,
             style: subTitleStyle),
         leading: Icon(Icons.list_alt_outlined, color: Colors.black54),
+        //contentPadding: EdgeInsets.all(5),
         trailing: Icon(
           Icons.arrow_forward_ios_sharp,
-          size: 10,
+          size: 12,
         ),
         onTap: () => Navigator.of(context).push(
             NavigatorUtil.createRouteWithSlideAnimation(
@@ -171,7 +172,7 @@ class MenuPage extends StatelessWidget {
       leading: Icon(FontAwesomeIcons.googlePlay, color: Colors.black54),
       trailing: Icon(
         Icons.arrow_forward_ios_sharp,
-        size: 10,
+        size: 12,
       ),
       onTap: () async {
         String appId = Constants.playStoreId;
@@ -189,7 +190,7 @@ class MenuPage extends StatelessWidget {
         Icons.people_outline,
         color: Colors.black54,
       ),
-      trailing: Icon(Icons.arrow_forward_ios_sharp, size: 10),
+      trailing: Icon(Icons.arrow_forward_ios_sharp, size: 12),
       onTap: () => Navigator.of(context).push(
           NavigatorUtil.createRouteWithSlideAnimation(newPage: CreditsPage())),
     ));
@@ -219,11 +220,13 @@ class MenuPage extends StatelessWidget {
       leading: Icon(Icons.update_sharp, color: Colors.black54),
       trailing: Icon(
         Icons.arrow_forward_ios_sharp,
-        size: 10,
+        size: 12,
       ),
       onTap: () {
         showModalBottomSheet(
           context: context,
+          backgroundColor: Colors.transparent,
+          barrierColor: Colors.black26,
           builder: (context) {
             return UpdateAppBottomDialog(); // Pass the required data.
           },
@@ -238,7 +241,7 @@ class MenuPage extends StatelessWidget {
       leading: Icon(Icons.help_outline, color: Colors.black54),
       trailing: Icon(
         Icons.arrow_forward_ios_sharp,
-        size: 10,
+        size: 12,
       ),
       onTap: () {
         Navigator.of(context).push(
@@ -308,7 +311,7 @@ class _UpdateAppBottomDialogState extends State<UpdateAppBottomDialog> {
   }
 
   //Dialog to be shown is an update is required
-  updateRequiredDialog() {
+  Widget updateRequiredDialog() {
     return Container(
       padding: const EdgeInsets.all(10),
       //margin: const EdgeInsets.only(left: 7, right: 7,bottom: 7),
@@ -396,7 +399,7 @@ class _UpdateAppBottomDialogState extends State<UpdateAppBottomDialog> {
   }
 
   //Dialog to be shown if no update is required
-  updateNotRequiredDialog() {
+  Widget updateNotRequiredDialog() {
     return Container(
       padding: const EdgeInsets.all(10),
       //margin: const EdgeInsets.only(left: 7, right: 7,bottom: 7),

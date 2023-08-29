@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:yo_nunca/src/models/question.dart';
 import 'package:yo_nunca/src/providers/providers.dart';
-import 'package:yo_nunca/src/utils/constants.dart';
 import 'package:yo_nunca/src/utils/messages.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -19,7 +18,7 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
   List<Widget> cards = [];
   List<Question> questions = [];
   bool visible = false;
-  final ValueNotifier<bool> isPotrait = ValueNotifier<bool>(true);
+  final ValueNotifier<bool> isPortrait = ValueNotifier<bool>(true);
 
   @override
   void initState() {
@@ -37,7 +36,7 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
         Provider.of<QuestionProvider>(context, listen: false);
     questions = provider.favouriteQuestions;
     for (var question in questions) {
-      cards.add(_questionCard(question.description));
+      cards.add(questionCard(question.description));
     }
   }
 
@@ -46,15 +45,15 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
     // TODO: implement build
     return OrientationBuilder(
       builder: (BuildContext context,Orientation orientation){
-          isPotrait.value = orientation == Orientation.portrait;
+          isPortrait.value = orientation == Orientation.portrait;
           return Center(
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  _questionAppinioSwiper(),
+                  questionAppinioSwiper(),
                   SizedBox(height: 5),
-                  Center(child: Visibility(child: _restartButton(),
+                  Center(child: Visibility(child: restartButton(),
                       visible: visible))
                 ]),
           );
@@ -62,7 +61,7 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
     );
   }
 
-  Widget _questionAppinioSwiper() {
+  Widget questionAppinioSwiper() {
     // Added the future just to fake a loading screen, data will always be
     // available in the favourite list to create the new game
     final AppinioSwiperController controller = AppinioSwiperController();
@@ -83,7 +82,7 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
                 textAlign: TextAlign.center,),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.48,//48%
-                width: isPotrait.value == true ? 370 : 500,
+                width: isPortrait.value == true ? 370 : 500,
                 child: AppinioSwiper(
                   unlimitedUnswipe: true,
                   controller: controller,
@@ -102,20 +101,20 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
         });
   }
 
-  Widget _questionCard(String question) {
+  Widget questionCard(String question) {
     return ValueListenableBuilder(
-      valueListenable: isPotrait,
+      valueListenable: isPortrait,
       builder: (BuildContext context,_,Widget ?child){
         return Container(
           alignment: Alignment.bottomCenter,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(30)),
-            color: Colors.redAccent,
+            color: Colors.teal[50],
           ),
           child: Column(children: [
             SizedBox(
               // make the questions readable in landscape mode
-              height: isPotrait.value ? 200 : 100,
+              height: isPortrait.value ? 200 : 100,
               width: double.infinity,
               child: Center(
                 child: Text(
@@ -123,8 +122,8 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
                   textAlign: TextAlign.center,
                   style: GoogleFonts.varelaRound(
                     fontSize: 20,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w800,
+                    color: Colors.black87,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
               ),
@@ -143,10 +142,12 @@ class _FavouriteQuestionCardState extends State<FavouriteQuestionCard> {
     }
   }
 
-  Widget _restartButton() {
+  Widget restartButton() {
     final btnStyle = TextButton.styleFrom(
-        textStyle: TextStyle(color: Colors.blue, fontSize: 20),
-        backgroundColor: Colors.greenAccent);
+        textStyle: TextStyle(color: Colors.blue, fontSize: 16),
+        backgroundColor: Colors.greenAccent,
+        shape: StadiumBorder()
+    );
     return ElevatedButton(
       onPressed: () {
         if (cards.isEmpty) {
