@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:yo_nunca/src/models/category.dart';
 import 'package:yo_nunca/src/models/question.dart';
@@ -58,7 +59,6 @@ class CategorySearchDelegate extends SearchDelegate {
       //To avoid an error that showed up whe trying to close the detail page
       category = Category(id:0,description: '',imageRoute: '');
     }
-
     return SingleChildScrollView(child: CategoryDetail(category: category));
   }
 
@@ -126,7 +126,11 @@ class _CategoryDetailState extends State<CategoryDetail> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    //Make the status bar the same as the scaffold color
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+        statusBarColor: Colors.red,
+        systemNavigationBarDividerColor: Colors.transparent
+    ));
     return Center(
       child: Column(children: [
         Container(

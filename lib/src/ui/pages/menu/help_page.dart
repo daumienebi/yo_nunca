@@ -20,18 +20,15 @@ class HelpPage extends StatelessWidget{
   Widget helpOptions(BuildContext context){
     return ListView(
       children: [
-        /*
         _HelpListTile(
             title: AppLocalizations.of(context)!.helpContents,
             subtitle: AppLocalizations.of(context)!.helpContentsText,
             iconData: Icons.help_outline,
             onTap: (){
-              Navigator.of(context).push(
-                  NavigatorUtil.createRouteWithSlideAnimation(newPage: HelpContentsPage())
-              );
+              final url = Uri.parse('https://daumienebi.github.io/yo_nunca/help/');
+              _launchUrl(url);
             }
         ),
-        */
         _HelpListTile(
           title: AppLocalizations.of(context)!.privacy,
           subtitle: AppLocalizations.of(context)!.dataManagement,
