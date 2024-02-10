@@ -4,7 +4,9 @@ import 'package:yo_nunca/src/ui/pages/pages.dart';
 import 'package:yo_nunca/src/utils/app_routes.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
+// New Dart updates requires "implements" instead of "with"
+// class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double barHeight = 10;
   final Text? title;
 
