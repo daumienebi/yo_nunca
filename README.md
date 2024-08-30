@@ -8,6 +8,15 @@ but the questions are in ``Spanish`` since it is directed to the spanish audienc
   |:--------------------------:|:-----------------------------:|:-----------------------------------------:|:----------------------------------:|
   ![file1](https://user-images.githubusercontent.com/90214727/229649194-2e78e4fe-4dc7-4b25-9e57-cde88421b987.png) | ![file2](https://user-images.githubusercontent.com/90214727/229649185-a9d723c5-dcd2-430d-ab84-46cb906fa64f.png) | ![file3](https://user-images.githubusercontent.com/90214727/229649188-960181a1-3b5d-4677-9591-b04ea77cb518.png) | ![file4](https://user-images.githubusercontent.com/90214727/229649193-b397902c-c930-47e1-9116-30e68e6dfb15.png)
 
+# Download the app
+  ### Platforms
+
+  | Android | iOS | MacOS | Web |
+  | :-----: | :-: | :---: | :-: |
+  |   ✅    | ❌  |  ❌   | ❌  |
+  
+ <a href='https://play.google.com/store/apps/details?id=com.devdaumienebi.yonunca' target="_blank"><img alt='Get it on Google Play' src='assets/images/google-play-badge.png'/></a>
+
 # Credits
 - Splash screen and app icon :
   - [Birthday and party icons created by cah nggunung - Flaticon](https://www.flaticon.com/free-icons/birthday-and-party)
@@ -28,13 +37,19 @@ but the questions are in ``Spanish`` since it is directed to the spanish audienc
   - [Psicología y Mente](https://psicologiaymente.com/miscelanea/preguntas-yo-nunca)
   - [Business Insider](https://www.businessinsider.es/67-preguntas-picantes-hacerle-novio-novia-1076687)
 
-# Download the app
-  ### Platforms
+ # Developer Notes
 
-  | Android | iOS | MacOS | Web |
-  | :-----: | :-: | :---: | :-: |
-  |   ✅    | ❌  |  ❌   | ❌  |
-  
- <a href='https://play.google.com/store/apps/details?id=com.devdaumienebi.yonunca' target="_blank"><img alt='Get it on Google Play' src='assets/images/google-play-badge.png'/></a>
- 
+  ## Upgrade packages
+  - run ``flutter pub outdated`` to view outdated packages
+  - run ``flutter pub upgrade --major-versions`` to upgrade to the major versions
+   
+  ## Release
+  - Update pubspec.yaml (to indicate the new version and build number) and app_version.json (for the version control)
+  - run ``flutter clean``
+  - run `flutter pub get`
+    ### Android
+    - run ``flutter build appbundle`` to generate the appbundle
+    - run ``flutter build apk`` to generate the apk
+    - more info about building and releasing an Android app [here](https://docs.flutter.dev/deployment/android#build-an-apk)
+    
 ⛔️ **You are not permitted to publish this app as your own.** ⛔️
