@@ -3,6 +3,7 @@ import 'package:yo_nunca/src/ui/components/components.dart';
 import 'package:yo_nunca/src/ui/pages/pages.dart';
 import 'package:yo_nunca/src/utils/app_routes.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:yo_nunca/src/utils/messages.dart';
 
 // New Dart updates requires "implements" instead of "with"
 // class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
@@ -40,7 +41,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       //  ),
       //),
       actions: [
-        //Search icon
+        //Favourite icon
         IconButton(
           onPressed: () => Navigator.of(context).push(createRouteWithSlideAnimation(page: FavouritesPage())),
           icon: const Center(
@@ -55,7 +56,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
         ),
 
-        //Favourites icon
+        //Search icon
         IconButton(
             onPressed: () => showSearch(
                 context: context,
@@ -72,6 +73,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             minimumSize: Size(50,20)
           ),
         ),
+
         const SizedBox(
           width: 10,
         ),

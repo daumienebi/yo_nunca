@@ -128,7 +128,7 @@ class _CategoryDetailState extends State<CategoryDetail> {
   Widget build(BuildContext context) {
     //Make the status bar the same as the scaffold color
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-        statusBarColor: Colors.red,
+        statusBarColor: Colors.transparent,
         systemNavigationBarDividerColor: Colors.transparent
     ));
     return Center(
@@ -159,7 +159,7 @@ class _CategoryDetailState extends State<CategoryDetail> {
             ),
           ),
         ),
-        SizedBox(height: 5,),
+        SizedBox(height: 5),
         ListTile(
             title: Text(
               AppLocalizations.of(context)!.numberOfQuestions,
@@ -181,7 +181,7 @@ class _CategoryDetailState extends State<CategoryDetail> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextButton(
+            ElevatedButton(
               onPressed: () {
                 SharedPreferencesUtil.setUserLastEntry();
                 Navigator.popAndPushNamed(context,
@@ -194,11 +194,12 @@ class _CategoryDetailState extends State<CategoryDetail> {
               ),
               style: TextButton.styleFrom(
                 backgroundColor: Colors.greenAccent,
+                shape: StadiumBorder(),
                 fixedSize: Size(100, 40),
               ),
             ),
             SizedBox(width: 15),
-            TextButton(
+            ElevatedButton(
               onPressed: () {
                 Navigator.pop(context);
               },
@@ -209,6 +210,7 @@ class _CategoryDetailState extends State<CategoryDetail> {
               ),
               style: TextButton.styleFrom(
                 backgroundColor: Colors.redAccent[200],
+                shape: StadiumBorder(),
                 fixedSize: Size(100, 40),
               ),
             )

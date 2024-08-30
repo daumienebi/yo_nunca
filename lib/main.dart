@@ -45,6 +45,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         primarySwatch: Constants.primarySwatch,
         textTheme: GoogleFonts.varelaRoundTextTheme(),
+        useMaterial3: false //It was automatically being used
       ),
     );
   }

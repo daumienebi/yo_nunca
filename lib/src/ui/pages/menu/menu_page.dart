@@ -226,7 +226,7 @@ class MenuPage extends StatelessWidget {
         showModalBottomSheet(
           context: context,
           backgroundColor: Colors.transparent,
-          barrierColor: Colors.black26,
+          barrierColor: Colors.black12,
           builder: (context) {
             return UpdateAppBottomDialog(); // Pass the required data.
           },
@@ -292,9 +292,12 @@ class _UpdateAppBottomDialogState extends State<UpdateAppBottomDialog> {
             return Container(
               padding: const EdgeInsets.all(10),
               //margin: const EdgeInsets.only(left: 7, right: 7,bottom: 7),
-              height: MediaQuery.of(context).size.height * 0.27,
+              height: MediaQuery.of(context).size.height * 0.20,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15), color: Colors.white),
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(15),
+                      topRight: Radius.circular(15)),
+                  color: Colors.white),
               child: Center(
                   child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -317,7 +320,9 @@ class _UpdateAppBottomDialogState extends State<UpdateAppBottomDialog> {
       //margin: const EdgeInsets.only(left: 7, right: 7,bottom: 7),
       height: MediaQuery.of(context).size.height * 0.27,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15), color: Colors.white),
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(15), topRight: Radius.circular(15)),
+          color: Colors.white),
       child: SingleChildScrollView(
         child: Column(
           children: [
@@ -374,17 +379,19 @@ class _UpdateAppBottomDialogState extends State<UpdateAppBottomDialog> {
                   Text(AppLocalizations.of(context)!.usersWithoutGooglePlay),
                   TextButton(
                     onPressed: () async {
-                      final url = Uri.parse('https://daumienebi.github.io/yo_nunca/');
-                      await launchUrl(url,mode: LaunchMode.externalApplication);
+                      final url =
+                          Uri.parse('https://daumienebi.github.io/yo_nunca/');
+                      await launchUrl(url,
+                          mode: LaunchMode.externalApplication);
                     },
                     child: Text(
                       AppLocalizations.of(context)!.downloadApk,
                       style: TextStyle(color: Colors.white),
                     ),
                     style: TextButton.styleFrom(
-                      backgroundColor: Colors.black87,
-                      shape: StadiumBorder(),
-                    ),
+                        backgroundColor: Colors.black87,
+                        shape: StadiumBorder(),
+                        minimumSize: Size(double.infinity, 20)),
                   ),
                 ],
               ),
@@ -402,7 +409,9 @@ class _UpdateAppBottomDialogState extends State<UpdateAppBottomDialog> {
       //margin: const EdgeInsets.only(left: 7, right: 7,bottom: 7),
       height: MediaQuery.of(context).size.height * 0.20,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15), color: Colors.white),
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(15), topRight: Radius.circular(15)),
+          color: Colors.white),
       child: SingleChildScrollView(
         child: Column(
           children: [
@@ -422,12 +431,10 @@ class _UpdateAppBottomDialogState extends State<UpdateAppBottomDialog> {
                         return Container(
                           child: Text(
                             '${snapshot.data.toString()}',
-                            style:
-                                TextStyle(
-                                    fontSize: 16,
-                                    color: Colors.green,
-                                    fontWeight: FontWeight.w500
-                                ),
+                            style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.green,
+                                fontWeight: FontWeight.w500),
                           ),
                         );
                       } else

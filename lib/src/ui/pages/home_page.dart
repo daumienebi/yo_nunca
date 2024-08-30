@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
         onPressed: () {
           showModalBottomSheet(
               backgroundColor: Colors.transparent,
-              barrierColor: Colors.black26,
+              barrierColor: Colors.black12,
               context: context,
               builder: (BuildContext context) {
                 return Container(
@@ -43,22 +43,27 @@ class HomePage extends StatelessWidget {
                   //margin: const EdgeInsets.only(left: 7, right: 7),
                   decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(15)
+                      borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(15),
+                          topLeft: Radius.circular(15)
+                      )
                   ),
-                  height: 120,
+                  height: 110,
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           AppLocalizations.of(context)!.shareApp,textAlign: TextAlign.left,
                           style: TextStyle(
                               color: Colors.black54,
-                              fontSize: 20
+                              fontSize: 17
                           ),
                         ),
-                        const SizedBox(height: 5),
+                        const SizedBox(height: 10),
                         Expanded(
                           child: ListView(
+                            //padding: EdgeInsets.only(left: 20),
                             scrollDirection: Axis.horizontal,
                             children: socialMediaButtons(context),
                           ),
@@ -112,15 +117,12 @@ class HomePage extends StatelessWidget {
     //Very shitty work around
     // TODO : Change it later on
     List<Widget> items = [];
-    items.add(SizedBox(
-      width: 10,
-    ));
     items.add(socialButton(
         socialMedia: SocialMedia.Whatsapp.name,
         icon: Icon(
           FontAwesomeIcons.whatsapp,
           color: Colors.green,
-          size: 40,
+          size: 35,
         ),
         onClicked: (){
           Navigator.pop(context);
@@ -130,15 +132,15 @@ class HomePage extends StatelessWidget {
       width: 15,
     ));
     items.add(socialButton(
-        socialMedia: SocialMedia.Twitter.name,
+        socialMedia: SocialMedia.X.name,
         icon: Icon(
-          FontAwesomeIcons.twitter,
-          color: Colors.lightBlueAccent,
-          size: 40,
+          FontAwesomeIcons.x,
+          color: Colors.black87,
+          size: 35,
         ),
         onClicked: (){
           Navigator.pop(context);
-          share(SocialMedia.Twitter,context);
+          share(SocialMedia.X,context);
         }));
     items.add(SizedBox(
       width: 15,
@@ -148,22 +150,7 @@ class HomePage extends StatelessWidget {
         icon: Icon(
           FontAwesomeIcons.facebook,
           color: Colors.indigo,
-          size: 40,
-        ),
-        onClicked: (){
-          Navigator.pop(context);
-          share(SocialMedia.Facebook,context);
-        }));
-    items.add(SizedBox(
-      width: 15,
-    ));
-    // add the translation
-    items.add(socialButton(
-        socialMedia: SocialMedia.Email.name,
-        icon: const Icon(
-          Icons.email,
-          color: Colors.redAccent,
-          size: 40,
+          size: 35,
         ),
         onClicked: (){
           Navigator.pop(context);
@@ -178,7 +165,7 @@ class HomePage extends StatelessWidget {
         icon: Icon(
           Icons.copy,
           color: Colors.grey,
-          size: 40,
+          size: 35,
         ),
         onClicked: () async{
           String appId = Constants.playStoreId;
@@ -356,7 +343,7 @@ class HomePage extends StatelessWidget {
     final urls = {
       SocialMedia.Facebook:
           'https://www.facebook.com/sharer/sharer.php?u=$urlShare&t=$text',
-      SocialMedia.Twitter:
+      SocialMedia.X:
           'https://twitter.com/intent/tweet?url=$urlShare&text=$text',
       SocialMedia.Whatsapp: 'https://api.whatsapp.com/send?text=$text $urlShare',
     };

@@ -127,7 +127,7 @@ class _FavouritesPageState extends State<FavouritesPage> {
 
   Widget createGameButton() {
     final btnStyle = TextButton.styleFrom(
-        textStyle: TextStyle(color: Colors.blue, fontSize: 17),
+        textStyle: TextStyle(color: Colors.blue, fontSize: 16),
         backgroundColor: Colors.greenAccent,
         shape: StadiumBorder()
     );
