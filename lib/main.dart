@@ -27,7 +27,8 @@ class MyApp extends StatelessWidget {
     //Make the status bar the same as the scaffold color
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
         statusBarColor: Constants.primarySwatch.shade500,
-        systemNavigationBarDividerColor: Colors.transparent
+        systemNavigationBarDividerColor: Colors.transparent,
+        systemNavigationBarColor: Colors.white
     ));
     return MaterialApp(
       initialRoute: AppRoutes.routeStrings.homepage,
